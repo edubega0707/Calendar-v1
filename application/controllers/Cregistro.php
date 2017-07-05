@@ -45,7 +45,7 @@ class Cregistro extends CI_controller
 			$param['clave_usuario']=$this->input->post('mail_usuario');
 			$param['pass_usuario']=$this->input->post('pass_usuario');
 			$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
-			$param['rol_usuario']='ASESOR'
+			$param['rol_usuario']='ASESOR';
 
 
              $res=$this->Mregistro->registrar($param);
@@ -79,6 +79,7 @@ class Cregistro extends CI_controller
 			$password=$this->input->post('contraseña_usuario');		    
 
 			if ($username=='ADMINISTRADOR') {
+				
 				if ($this->Mregistro->can_login($username, $password)) 
 				{
 					$session_data=array(
@@ -184,13 +185,10 @@ class Cregistro extends CI_controller
 
 
 	function logout()
-
 	{
-
 		$this->session->unset_userdata('username');
 
 		redirect(base_url(). 'Cregistro/login_validation');
-
 	}
 
 

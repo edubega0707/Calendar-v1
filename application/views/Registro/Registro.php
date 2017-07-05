@@ -86,7 +86,7 @@
 
 		<div>
 
-			<p class="h3  text-center">Sistema  Agenda Dipra digital</p>
+			<p class="h3  text-center">Sistema  Agenda Dipra Digital</p>
 
 		</div>
 
@@ -114,15 +114,9 @@
 
 	$(document).ready(function() {
 
-
-
 		$.post('<?php echo base_url();?>ccalendar/getEventos',  
 
 			function(data){
-
-				//alert(data);
-
-
 
 				$('#calendar').fullCalendar({
 
@@ -136,7 +130,7 @@
 
 					},
 
-					defaultDate: new Date(),
+				defaultDate: new Date(),
 
 				navLinks: true, // can click day/week names to navigate views
 
@@ -155,16 +149,11 @@
 					 var id= event.id;					
 
 					 $.post("<?php echo base_url();?>Ccalendar/mostrar_evento",
-
 						{
-
 							id:id							
-
 						},
 
 						function(data){
-
-					
 
 							var c=JSON.parse(data);								
 
@@ -184,16 +173,9 @@
 
 								$('#status_evento').val(item.status);
 
-								
-
-
-
 							});
 
-
-
 						});
-
 				}				
 
 			});
@@ -398,17 +380,12 @@
 					<input type="password" class="form-control" id="contraseña_usuario" name="contraseña_usuario" placeholder="Contraseña">
 
 					<span class="text-warning"><strong><?php echo form_error('contraseña_usuario'); ?></strong></span>
-
 				</div>
-
 				<div class="d-flex flex-column justify-content-center align-items-center text-white mb-5">
-
 					<button type="submit" class="btn btn btn-success"  href="#login_registro" name="inicia_sesion" id="inicia_sesion">Iniciar Sesion</button>
-
 					<?php
 
 							echo $this->session->flashdata('error');
-
 					?>
 
 				</div>
@@ -421,16 +398,7 @@
 
 </section>
 
-
-
-
-
 <footer></footer>
 
-
-
-	
-
-	
 
 </html>

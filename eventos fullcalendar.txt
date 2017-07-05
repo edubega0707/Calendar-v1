@@ -1,0 +1,150 @@
+ /*   eventClick: function(event, jsEvent, view){
+			     $('#calendar').fullcalendar('removeEvent',event.id);
+			     if (!confirm("Esta seguro de eliminar el evento??")) {
+						revertFunc();
+
+					}else
+					{
+						$.post("<?php echo base_url();?>/Ccalendar/updEvento",
+						{
+						  id:id,
+						  fecini:fi,
+						  fecfin:ff
+
+						},
+
+						function(data){
+							if (data==1) {
+								alert('Se actualizo correctamente');
+							}
+							else{
+								alert('ERROR');
+							}
+
+						});
+					}
+
+				},*/
+				eventRender: function(event, element) 
+				{
+					var el =element.html();
+					element.html("<div style='width:90%; float: left;'>"+el+"</div><div style='color: red; text-align: right;color:red;' class='close'>X</div>");
+					element.find('.close').click(function(){
+
+						if (!confirm("Esta seguro de eliminar el evento?")) {
+							revertFunc();
+						}
+						else{
+							var id=event.id;
+							$.post("<?php echo base_url();?>ccalendar/deleteEvento",
+							{
+								id:id
+							},
+							function(data){
+								if(data=1){
+									$('#calendar').fullcalendar('removeEvents', event.id);
+									alert('Se elimino correctamente');
+								}
+								else{
+									alert('ERROR');
+								}
+
+							});
+						}
+					});
+
+				}
+
+
+	eventDrop: function(event, delta, revertFunc){
+					var id= event.id;
+					var fi=event.start.format();
+					var ff=event.end.format();
+
+					if (!confirm("Esta seguro??")) {
+						revertFunc();
+					}else
+					{
+						$.post("<?php echo base_url();?>/ccalendar/updEvento",
+						{
+							id:id,
+							fecini:fi,
+							fecfin:ff
+
+						},
+
+						function(data){
+							if (data==1) {
+								alert('Se actualizo correctamente');
+							}
+							else{
+								alert('ERROR');
+							}
+
+						});
+					}				
+				},
+
+				eventResize: function(event, delta, revertFunc){
+					var id= event.id;
+					var fi=event.start.format();
+					var ff=event.end.format();
+
+					if (!confirm("Esta seguro de cambiar la fecha??")) {
+						revertFunc();
+
+					}else
+					{
+						$.post("<?php echo base_url();?>/ccalendar/updEvento",
+						{
+							id:id,
+							fecini:fi,
+							fecfin:ff
+						},
+						function(data){
+							if (data==1) {
+								alert('Se cambio correctamente');
+							}
+							else{	
+								alert('ERROR');
+							}
+
+						});
+					}	
+				}
+
+
+
+
+
+is_unique[usuarios.correo_usuario]
+
+
+<!-- <form action="<?php echo base_url();?>Cregistro/registrar" method="POST"> 
+
+
+ <?php echo form_open('Cregistro/registrar'); ?>
+
+
+
+function enter_admin()
+	{
+		if($this->session->userdata('username')!= '')
+		{		
+			$data['session']=$this->session->userdata('username');		
+			$data['logout']='<a href="'.base_url().'Cregistro/logout">Cerrar Sesion</a>';
+
+			$usuario=$this->Mregistro->getasesor($data['session']);
+			$data['asesor']=$usuario;
+
+			$this->load->view('Calendar/vheader', $data);
+			$this->load->view('Calendar/vcalendar_admin');
+			$this->load->view('Calendar/vfooter');
+		}
+		else
+		{
+			redirect(base_url(). 'Cregistro/login_validation');
+		}
+	}
+
+			

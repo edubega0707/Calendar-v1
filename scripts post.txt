@@ -1,0 +1,54 @@
+Para charly
+Dice doña blanquita que si puedes traer el garrafon de pino si estas en caa de su jefe
+
+
+			<script type="text/javascript">
+				$(document).ready(function(){
+					 var  nombre_usuario= $('#nombre_usuario').val();
+					 var  tel_usuario= $('#tel_usuario').val();
+					 var  correo_usuario= $('#mail_usuario').val();
+					 var  contraseña_usuario= $('#pass_usuario').val();
+					
+					
+
+					$('#registrar').click(function(){
+						 $.post("<?php echo base_url();?>Cregistro/registrar",
+						{
+							nombre_usuario:nombre_usuario,
+							tel_usuario:tel_usuario,
+							correo_usuario:correo_usuario,
+							contraseña_usuario:contraseña_usuario
+
+						},
+
+						function(data){
+							alert("Registro guardado exitosamente");
+					
+						});
+					});
+				});
+
+			</script>
+
+
+	
+			<script type="text/javascript">
+				$(document).ready(function(){
+					
+					 var  correo_usuario= $('#correo_usuario').val();
+					 var  contraseña_usuario= $('#contraseña_usuario').val();
+	
+					$('#inicia_sesion').click(function(){
+						 $.post("<?php echo base_url();?>Cregistro/iniciar_sesion",
+						{							
+							correo_usuario:correo_usuario,
+							contraseña_usuario:contraseña_usuario
+						},
+						function(data){
+							
+					
+						});
+					});
+				});
+
+			</script>

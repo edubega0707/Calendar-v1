@@ -1,0 +1,235 @@
+SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT( * ) AS ventas
+FROM reclutado
+WHERE decision =  'Rechazado'AND  fecha  like  '%2016-09%'
+GROUP BY  user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol =  'RECLUTADOR'
+AND user_email =  'reclutamientopachuca@dipra.com'
+
+-----------------------------------------------------------------
+SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT( * ) AS ventas
+FROM reclutado
+WHERE decision =  'Rechazado'AND  (fecha  between  '2017-01-01' and  '2017-04-31')
+GROUP BY  user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol =  'RECLUTADOR'
+AND user_email =  'formadorsatelite@dipra.com.mx'
+
+
+----------------------------------------------------------------
+
+
+
+<?php $sesion=base64_decode($_GET['sesion']);
+
+
+if($Home=="PRODUCTOR"){
+
+$selectventas="SELECT * 
+FROM  usuario
+LEFT JOIN (
+SELECT user_id, COUNT(*) as ventas
+FROM  reclutado
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR' and user_email='".$sesion."'";
+						
+$selectrechazo="SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT(*) AS rechazos
+FROM reclutado
+WHERE decision =  'Rechazado'
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR' and user_email='".$sesion."'";
+
+
+$selectpendientes="SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT(*) AS pendientes
+FROM reclutado
+WHERE decision =  ''
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR' and user_email='".$sesion."'";
+
+$selectreclutados="SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT( * ) AS reclutados
+FROM reclutado
+WHERE decision LIKE  'A%'
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR' and user_email='".$sesion."'";
+
+$selecttradicional="SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT( * ) AS tradicional
+FROM reclutado
+WHERE decision =  'Asesor tradicional'
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR' and user_email='".$sesion."'";
+
+
+$selectwalmart="SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT( * ) AS walmart
+FROM reclutado
+WHERE decision =  'Asesor walmart'
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR' and user_email='".$sesion."'";
+
+} 
+
+
+
+else
+{
+
+$selectventas="SELECT * 
+FROM  usuario
+LEFT JOIN (
+SELECT user_id, COUNT(*) as ventas
+FROM  reclutado
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR'";
+
+
+$selectrechazo="SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT( * ) AS rechazos
+FROM reclutado
+WHERE decision =  'Rechazado'
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR'";
+
+
+$selectpendientes="SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT( * ) AS pendientes
+FROM reclutado
+WHERE decision =  ''
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR'";
+
+
+
+$selectreclutados="SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT( * ) AS reclutados
+FROM reclutado
+WHERE decision LIKE  'A%'
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR'";
+
+
+$selecttradicional="SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT( * ) AS tradicional
+FROM reclutado
+WHERE decision =  'Asesor tradicional'
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR'";
+
+
+$selectwalmart="SELECT * 
+FROM usuario
+LEFT JOIN (
+
+SELECT user_id, COUNT( * ) AS walmart
+FROM reclutado
+WHERE decision =  'Asesor walmart'
+GROUP BY user_id
+)reclutado ON usuario.user_id = reclutado.user_id
+WHERE user_rol = 'RECLUTADOR'";}
+						
+
+
+                        $consultaventas = mysqli_query($conexImprove,$selectventas);
+						$consultarechazo = mysqli_query($conexImprove,$selectrechazo);
+						$consultapendientes = mysqli_query($conexImprove,$selectpendientes);
+						$consultareclutados = mysqli_query($conexImprove,$selectreclutados);
+						$consultatradicional = mysqli_query($conexImprove,$selecttradicional);
+						$consultawalmart = mysqli_query($conexImprove,$selectwalmart);
+                        echo "
+                        <div class='col-ms-12>
+                        <div class='table-responsive'> 
+                                <table class='table table-bordered'>
+                                    <thead>
+                                      <tr>
+                                       
+                                        <th>Oficina</th>
+                                        <th>Reclutador</th>
+										<th>Total de Ventas de carrera</th>
+										<th>Rechazos</th>
+										<th>Ventas de carrera pendientes</th>
+										<th>Total Asesores Reclutados</th>
+										<th>Total Tradicionales</th>
+										<th>Total Walmart</th>									
+                                      </tr>
+                                    </thead>
+                                    <tbody>";
+									
+//If de estados <td>".$Estatus."</td>
+                           
+
+
+									
+                        while($lista_ventas = mysqli_fetch_assoc($consultaventas) and $lista_rechazo = mysqli_fetch_assoc($consultarechazo) and $lista_pendientes = mysqli_fetch_assoc($consultapendientes) and $lista_reclutados = mysqli_fetch_assoc($consultareclutados) and $lista_tradicional = mysqli_fetch_assoc($consultatradicional) and $lista_walmart = mysqli_fetch_assoc($consultawalmart)){
+							$rechazo=$lista_rechazo['rechazos'];
+							$pendientes=$lista_pendientes['pendientes'];
+							$reclutados=$lista_reclutados['reclutados'];
+							$tradicional=$lista_tradicional['tradicional'];
+							$walmart=$lista_walmart['walmart'];
+                  echo "
+							<tr>
+                                    <td>".$lista_ventas['sucursal']."</td>
+                                    <td>".$lista_ventas['nombre_user']."</td>
+									<td>".$lista_ventas['ventas']."</td>
+									<td>".$rechazo."</td>
+									<td>".$pendientes."</td>
+									<td>".$reclutados."</td>
+									<td>".$tradicional."</td>
+									<td>".$walmart."</td>
+									
+
+                                  </tr>";
+                        }
+                        echo "</tbody>
+                            </table>
+                            </div>
+                            </div><br><br><br>";
+                            ?>

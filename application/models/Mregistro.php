@@ -2,27 +2,13 @@
  
 <?php 
 
-
-
-/**
-
-* 
-
-*/
-
+ 
 class Mregistro extends CI_Model
-
-{
-
-
+{ 
 
 	public function registrar($param)
-
         {
-
                 $campos = array(
-
-
 
                 		'id_usuario'=>$param['id_usuario'], 
 
@@ -30,19 +16,19 @@ class Mregistro extends CI_Model
 
                         'tel_usuario'=>$param['tel_usuario'],
 
-                        'correo_usuario'=>$param['correo_usuario'],
+                        'clave_usuario'=>$param['clave_usuario'],
 
-                        'pass_usuario'=>$param['pass_usuario']                                         
+                        'pass_usuario'=>$param['pass_usuario'],
+
+                        'sucursal_usuario'=>$param['sucursal_usuario'],  
+
+                        'rol_usuario'=>$param['rol_usuario']                                            
 
                 );
-
-
 
                 return   $this->db->insert('usuarios', $campos); 
 
         }      
-
-
 
 	public function can_login($correo_usuario, $contraseña_usuario)
 
@@ -70,7 +56,7 @@ class Mregistro extends CI_Model
 
 		foreach ($query->result() as $row ) 
 		{
-			return $row->nombre_usuario;
+			return $row;
 		}
 	}
 }

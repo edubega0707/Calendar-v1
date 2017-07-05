@@ -1,23 +1,16 @@
 <?php 
 
 
-
-/**
-
- * 
-
- */
-
  class Mcalendar extends CI_Model
 
  {	
 
- 	public function getEventos()  
+ 	public function getEventos($sucursal_usuario)  
 
  	{
 
  		$this->db->select ('idEvento id, nombre_asesor title, des_evento, concat(fecInicio,"T",hora_inicio) as start, concat(fecFin,"T",hora_fin) as end, evento_color backgroundColor, status');
-
+        $this->db->where('sucursal_usuario', $sucursal_usuario);
  		$this->db->from('eventos');
 
  		return $this->db->get()->result();
@@ -33,6 +26,8 @@
             'idEvento'=>$param['idEvento'],       
 
             'nombre_asesor'=>$param['nombre_asesor'],
+
+            'sucursal_usuario'=>$param['sucursal_usuario'],
 
             'des_evento'=>$param['des_evento'],
 

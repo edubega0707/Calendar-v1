@@ -26,6 +26,20 @@
 	<script src='<?php echo base_url();?>/assets/fullcalendar/locale/es.js'></script>
 	 
 	
+	<style>
+
+	.bienvenido{background: #E3FDFD; }
+
+	.color1{background: #95E1D3;} 
+
+	.color2{background: #EAFFD0;}
+
+	.color3{background: #A8D8EA;}
+
+	.sesion{ height: auto;}
+
+</style>
+
 	
 
 </head>

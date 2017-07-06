@@ -75,6 +75,7 @@
        					<div class="form-group">
        						<label for="nom_asesor">Nombre asesor:</label>
        						<input type="text" class="form-control form-control-sm" id="nom_asesor">
+
        					</div>
        					<div class="form-group">
        						<label for="des_event">Descripción:</label>
@@ -140,6 +141,7 @@
 							<textarea class="form-control form-control-sm" id="desc_evento" name="desc_evento" rows="5" placeholder="Descripción" required style="text-transform:uppercase;"></textarea>
 						</div>
 						<input type="text" name="nombre_asesor" value="<?php echo $usuario; ?>" style="display: none;">
+						<input type="text" name="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
 					</div>
  				
 					<div class="form-group row justify-content-sm-center">
@@ -252,7 +254,7 @@
 				</div>	
 </div>
 
-<script type="text/javascript">
+<script type="text/javascript"> 
 	$(document).ready(function(){
 
 	$('#a_instruct').click(function(){

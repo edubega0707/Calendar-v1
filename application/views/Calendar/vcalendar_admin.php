@@ -1,5 +1,5 @@
 
- 
+  
 
 <script type="text/javascript"> 
 
@@ -138,7 +138,6 @@
 
        					<script>
              
-
        						$(document).ready(function()
        						{		
 
@@ -189,4 +188,209 @@
 </div>
 </div>
 
-<!-- Fin del modal -->
+<!-- FIND DEL MODAL -->
+
+<!-- fORMULARIO DE REGISTRO DE EVENTOS -->
+<div class="container formulario">
+                        <h4>Solicitar Tableta</h4>
+                        <hr>
+                        <form action="<?php echo base_url();?>Ccalendar/insert_event_admin" method="POST">
+                         
+                              <div class="form-group row justify-content-sm-center">
+                                    <label for="desc_evento" class="col-sm-3 col-form-label">Descripción:</label>
+                                    <div class="col-sm-7">
+                                          <textarea class="form-control form-control-sm" id="desc_evento" name="desc_evento" rows="5" placeholder="Descripción" required style="text-transform:uppercase;"></textarea>
+                                    </div>
+                                    <input type="text" name="nombre_asesor" value="<?php echo $usuario; ?>" style="display: none;">
+                                    <input type="text" name="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
+                              </div>
+                        
+                              <div class="form-group row justify-content-sm-center">
+                                    <label for="desc_evento" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
+                                    <div class="col-sm-2">  
+                                          <div class="input-group date" id="fecha_inicio">
+                                                <input type="text" class="form-control form-control-sm" name="fecha_inicio"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
+                                          </div>                                                                        
+                                    </div>
+
+                                    <label for="desc_evento" class="col-sm-2 col-form-label">Hora solicitud:</label>
+                                    <div class="col-sm-2">  
+                                          <select class="form-control form-control-sm" id="select_hora_inicio" name="select_hora_inicio" required>
+                                                 <option>00:00</option>
+                                                 <option>01:00</option>
+                                                 <option>02:00</option>
+                                                 <option>03:00</option>
+                                                 <option>04:00</option>
+                                                 <option>05:00</option>
+                                                 <option>06:00</option>
+                                                 <option>07:00</option>
+                                                 <option>08:00</option>
+                                                 <option>09:00</option>
+                                                 <option>10:00</option>
+                                                 <option>11:00</option>
+                                                 <option>12:00</option>
+                                                 <option>13:00</option>
+                                                 <option>14:00</option>
+                                                 <option>15:00</option>
+                                                 <option>16:00</option>
+                                                 <option>17:00</option>
+                                                 <option>18:00</option>
+                                                 <option>19:00</option>
+                                                 <option>20:00</option>
+                                                 <option>21:00</option>
+                                                 <option>22:00</option>
+                                                 <option>23:00</option>
+                                          </select>
+                                    </div>      
+
+                   </div>
+
+
+                              <div class="form-group row justify-content-sm-center">
+                                          <label for="desc_evento" class="col-sm-2 col-form-label">Fecha entrega:</label>
+                                          <div class="col-sm-2">  
+                                                <div class="input-group date" id="fecha_fin">
+                                                      <input type="text" class="form-control form-control-sm" name="fecha_fin"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
+                                                </div>                                                                        
+                                          </div>
+                        
+                                    <label for="desc_evento" class="col-sm-2 col-form-label">Hora entrega:</label required>
+                                    <div class="col-sm-2">
+                                          <select class="form-control form-control-sm" id="select_hora_fin" name="select_hora_fin">
+                                             <option>00:00</option>
+                                                 <option>01:00</option>
+                                                 <option>02:00</option>
+                                                 <option>03:00</option>
+                                                 <option>04:00</option>
+                                                 <option>05:00</option>
+                                                 <option>06:00</option>
+                                                 <option>07:00</option>
+                                                 <option>08:00</option>
+                                                 <option>09:00</option>
+                                                 <option>10:00</option>
+                                                 <option>11:00</option>
+                                                 <option>12:00</option>
+                                                 <option>13:00</option>
+                                                 <option>14:00</option>
+                                                 <option>15:00</option>
+                                                 <option>16:00</option>
+                                                 <option>17:00</option>
+                                                 <option>18:00</option>
+                                                 <option>19:00</option>
+                                                 <option>20:00</option>
+                                                 <option>21:00</option>
+                                                 <option>22:00</option>
+                                                 <option>23:00</option> 
+                                          </select>                                                                     
+                                    </div>
+                                    
+                                    
+                              </div>
+
+                              <div class="form-group row justify-content-sm-center">
+                                    <div class="input-group date col-sm-2">                                       
+                                      <button type="submit" class="btn btn-primary" id="registrar_evento">Enviar</button>
+                                    </div>
+                              </div>
+                              
+                        </form>
+
+                        <script type="text/javascript">
+                   
+
+                              $('#fecha_inicio').datepicker({
+                                    format: "yyyy-mm-dd",
+                                    language: "es"
+                              });
+
+                              $('#fecha_fin').datepicker({
+                                    format: "yyyy-mm-dd",
+                                    language: "es"
+                              });
+                        </script>
+                       
+</div>
+
+<!-- fIN DE FORMULARIO DE REGISTRO DE EVENTOS -->
+
+
+
+<!-- FORMULARIO DE REGISTRO DE USUARIOS -->
+<section class="container">
+      <div class="row flex-md-column  align-items-center justify-content-center">
+                  <div class="col-md-4  flex-md-column  align-items-center justify-content-center" id="registro"> 
+
+                      <div class="color3 p-4 m-2  my-3">
+                              
+                              <form action="<?php echo base_url();?>Cregistro/registrar" method="POST"> 
+                                    
+                                    <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
+
+                                          <img  class="img-fluid  mr-5" width="50px;" src="<?php echo base_url();?>/public/img/edit.svg" alt="Calendar">
+
+                                          <p class="h5 text-center">Formulario de registro</p>              
+
+                                    </div>      
+
+                                    <div class="form-group">
+
+                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-user mr-3" aria-hidden="true"  style="text-transform:uppercase; font-size: 30px;"></i>Nombre completo:</label>
+
+                                          <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;">
+                                          <span class="text-white"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
+
+                                          <!-- Este input guardara el valor de la sucursal del administrador que se pasara como parametro al registro del asesor que solicite la tableta -->
+
+                                          <input type="text" class="form-control form-control-sm" id="sucursal_usuario" name="sucursal_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase; display: none;">
+
+                                    </div>
+
+                                    <div class="form-group">
+
+                                          <label for="tel_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-mobile mr-3" aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
+
+                                          <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" >
+                                          <span class="text-white"><strong><?php echo form_error('tel_usuario'); ?> </strong></span>
+
+
+                                    </div>
+
+                                    <div class="form-group">
+
+                                          <label for="correo_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>Clave:</label>
+
+                                          <input type="text" class="form-control form-control-sm" id="mail_usuario" name="mail_usuario" placeholder="Clave" >
+                                          <span class="text-white"><strong><?php echo form_error('mail_usuario'); ?> </strong></span>
+
+                                    </div>
+
+                                    <div class="form-group">
+
+                                          <label for="pass_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>PIN:</label>
+
+                                          <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Contraseña" >
+                                          <span class="text-white"><strong><?php echo form_error('pass_usuario'); ?> </strong></span
+
+                                    </div>
+
+
+
+                                    <div class="d-flex flex-row justify-content-center align-items-center text-white mt-3" >
+
+                                          <div class="d-flex flex-column justify-content-center align-items-center text-white">
+
+                                                <button type="submit" class="btn  btn-success" id="registrar">Registrar</button>
+
+                                          </div>
+
+                                    </div>
+
+                              </form>
+
+                        </div>
+
+            </div>
+
+      </div>
+</section>
+<!-- FIN DE FORMULARIO DE REGISTRO DE USUARIOS -->

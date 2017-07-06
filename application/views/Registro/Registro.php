@@ -86,7 +86,7 @@
 
 		<div>
 
-			<p class="h3  text-center">Sistema  Agenda Dipra digital</p>
+			<p class="h3  text-center">Sistema  Agenda Dipra Digital</p>
 
 		</div>
 
@@ -114,15 +114,9 @@
 
 	$(document).ready(function() {
 
-
-
 		$.post('<?php echo base_url();?>ccalendar/getEventos',  
 
 			function(data){
-
-				//alert(data);
-
-
 
 				$('#calendar').fullCalendar({
 
@@ -136,7 +130,7 @@
 
 					},
 
-					defaultDate: new Date(),
+				defaultDate: new Date(),
 
 				navLinks: true, // can click day/week names to navigate views
 
@@ -155,16 +149,11 @@
 					 var id= event.id;					
 
 					 $.post("<?php echo base_url();?>Ccalendar/mostrar_evento",
-
 						{
-
 							id:id							
-
 						},
 
 						function(data){
-
-					
 
 							var c=JSON.parse(data);								
 
@@ -184,16 +173,9 @@
 
 								$('#status_evento').val(item.status);
 
-								
-
-
-
 							});
 
-
-
 						});
-
 				}				
 
 			});
@@ -358,30 +340,17 @@
 
 </div>
 
-
-
-
-
 </section>
-
-
 
 <section class="container">
 
 	<div class="row sesion" id="login_registro">  	
 
-		<div class="col-md-6  my-3 d-flex	flex-md-column  align-items-center justify-content-center">
+		<div class="col-md-5  my-3 d-flex	flex-md-column  align-items-center justify-content-center">
 
 			<div class="rounded p-5 bg-primary text-white">
 
-
-
 			<form action="<?php echo base_url();?>Cregistro/login_validation" method="POST">
-
-
-
-
-
 
 
 				<div class="d-flex flex-column justify-content-center align-items-center text-white my-2" >
@@ -390,201 +359,46 @@
 
 				</div>
 
-
-
 				<div class="d-flex flex-column justify-content-center align-items-center text-white mb-3" >
 
-
-
 				</div>
-
-
-
-
 
 				<div class="form-group">
 
-					<label for="correo_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-user mr-3" aria-hidden="true"></i>Correo usuario:</label>
+					<label for="correo_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-user mr-3" aria-hidden="true"></i>clave:</label>
 
-					<input type="text" class="form-control" id="correo_usuario" name="correo_usuario" placeholder="Usuario"  >
+					<input type="text" class="form-control" id="clave_usuario" name="clave_usuario" placeholder="Usuario"  >
 
-					<span class="text-white"><strong><?php echo form_error('correo_usuario'); ?> </strong></span>
+					<span class="text-warning"><strong><?php echo form_error('clave_usuario'); ?> </strong></span>
 
 				</div>
 
 				<div class="form-group">
 
-					<label for="contraseña_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true"></i>Contraseña</label>
+					<label for="contraseña_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true"></i>PIN:</label>
 
 					<input type="password" class="form-control" id="contraseña_usuario" name="contraseña_usuario" placeholder="Contraseña">
 
-					<span class="text-white"><strong><?php echo form_error('contraseña_usuario'); ?></strong></span>
-
+					<span class="text-warning"><strong><?php echo form_error('contraseña_usuario'); ?></strong></span>
 				</div>
-
 				<div class="d-flex flex-column justify-content-center align-items-center text-white mb-5">
-
 					<button type="submit" class="btn btn btn-success"  href="#login_registro" name="inicia_sesion" id="inicia_sesion">Iniciar Sesion</button>
-
 					<?php
 
 							echo $this->session->flashdata('error');
-
 					?>
 
 				</div>
 
-
-
-
-
-
-
-				<!-- <div class="d-flex flex-column justify-content-center align-items-center text-white mt-2">
-
-					<p class="h4">¿ No tienes Cuenta?</p>	
-
-				</div>
-
-				<div class="d-flex flex-row justify-content-center align-items-center text-white " >
-
-					<p class="h5 mr-3">Registrate: </p>
-
-					<div class="d-flex flex-column justify-content-center align-items-center text-white">
-
-						<button type="button"  id="btn_registro" class="btn btn btn-success">Registrar</button>
-
-					</div>
-
-				</div> -->
-
-
-
 			</form>
-
-		</div>	
-
-		
-
-		<!-- <script type="text/javascript">
-
-			$(document).ready(function(){
-
-				$('#btn_registro').click(function(){
-
-					$('#registro').toggle(1000);
-
-				});
-
-			});
-
-		
-
-		</script> -->	
-
+	
 		</div>
-
-
-
-		<div class="col-md-6  flex-md-column  align-items-center justify-content-center" id="registro">	
-
-				<div class="color3 p-4 m-2  my-3">
-					 
-					
-					<form action="<?php echo base_url();?>Cregistro/registrar" method="POST"> 
-						
-						<?php echo validation_errors(); ?>
-
-						<div class="row d-flex flex-row justify-content-center align-items-center mb-4">			
-
-							<img  class="img-fluid  mr-5" width="50px;" src="<?php echo base_url();?>/public/img/edit.svg" alt="Calendar">
-
-							<p class="h5 text-center">Formulario de registro</p>			
-
-						</div>	
-
-						<div class="form-group">
-								
-							<label for="nombre_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-user mr-3" aria-hidden="true"  style="text-transform:uppercase;"></i>Nombre completo:</label>
-
-							<input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo" >
-							<span class="text-white"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
-							
-
-						</div>
-
-						<div class="form-group">
-
-							<label for="tel_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-mobile mr-3" aria-hidden="true"></i>Telefono Celular:</label>
-
-							<input type="text" class="form-control" id="tel_usuario" name="tel_usuario" placeholder="Celular" >
-							<span class="text-white"><strong><?php echo form_error('tel_usuario'); ?> </strong></span>
-
-
-						</div>
-
-						<div class="form-group">
-
-							<label for="correo_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-envelope-o mr-3" aria-hidden="true"></i>Correo electronico:</label>
-
-							<input type="text" class="form-control" id="mail_usuario" name="mail_usuario" placeholder="Email" >
-							<span class="text-white"><strong><?php echo form_error('mail_usuario'); ?> </strong></span>
-
-						</div>
-
-						<div class="form-group">
-
-							<label for="pass_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true"></i>Contraseña:</label>
-
-							<input type="password" class="form-control" id="pass_usuario" name="pass_usuario" placeholder="Contraseña" >
-							<span class="text-white"><strong><?php echo form_error('pass_usuario'); ?> </strong></span
-
-						</div>
-
-
-
-						<div class="d-flex flex-row justify-content-center align-items-center text-white mt-3" >
-
-							<div class="d-flex flex-column justify-content-center align-items-center text-white">
-
-								<button type="submit" class="btn  btn-success" id="registrar">Registrar</button>
-
-							</div>
-
-						</div>
-
-					</form>
-
-				</div>
-
-		</div>
-
-
-
-
-
-		
-
-		
 
 	</div>
 
-
-
-	
-
 </section>
-
-
-
-
 
 <footer></footer>
 
-
-
-	
-
-	
 
 </html>

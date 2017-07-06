@@ -9,10 +9,11 @@
 
  	{
 
- 		$this->db->select ('idEvento id, nombre_asesor title, des_evento, concat(fecInicio,"T",hora_inicio) as start, concat(fecFin,"T",hora_fin) as end, evento_color backgroundColor, status', 'sucursal_usuario');
+ 		$this->db->select ('idEvento id, nombre_asesor title, des_evento, concat(fecInicio,"T",hora_inicio) as start, concat(fecFin,"T",hora_fin) as end, evento_color backgroundColor, status, sucursal_usuario');
+        $this->db->from('eventos');
+        $this->db->join('usuarios', 'eventos.usuarios_id_usuario=usuarios.id_usuario', 'inner');
         $this->db->where('sucursal_usuario', $sucursal_usuario);
- 		$this->db->from('eventos');
-
+ 		
  		return $this->db->get()->result();
 
  	}
@@ -43,8 +44,7 @@
 
             'status'=>'PENDIENTE',
 
-            'usuarios_id_usuario'=>$param['usuarios_id_usuario']; 
-
+            'usuarios_id_usuario'=>$param['usuarios_id_usuario'] 
 
             );
 

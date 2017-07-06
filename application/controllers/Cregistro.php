@@ -143,7 +143,7 @@ class Cregistro extends CI_controller
 			$row=$this->Mregistro->getasesor($data['session']);	
 			$data['usuario']=$row->nombre_usuario;
 			$data['sucursal_usuario']=$row->sucursal_usuario;
-			$data['usuarios_id_usuario']=$row->usuarios_id_usuario;			
+			$data['usuarios_id_usuario']=$row->id_usuario;			
 
 			/*$data['logout']='<a class= "dropdown-item" href="'.base_url().'Cregistro/logout" style="text-decoration: none;" ><i class="fa fa-sign-out" aria-hidden="true">Cerrar Sesion</a>';*/
 	
@@ -173,7 +173,7 @@ class Cregistro extends CI_controller
 			$row=$this->Mregistro->getasesor($data['session']);	
 			$data['usuario']=$row->nombre_usuario;
 			$data['sucursal_usuario']=$row->sucursal_usuario;
-			$data['usuarios_id_usuario']=$row->usuarios_id_usuario;		
+			$data['usuarios_id_usuario']=$row->id_usuario;		
 
 			$this->load->view('Calendar/vheader', $data);
 			$this->load->view('Calendar/vcalendar_admin');

@@ -131,7 +131,7 @@
 
        					<div class="form-group row justify-content-sm-center">
        						<div class="input-group date col-sm-2">	
-       				<input type="text" name="correo_asesor" id="correo_asesor" value="<?php echo $session; ?>" style="display: none;">						
+       				<!-- <input type="text" name="correo_asesor" id="correo_asesor" value="<?php echo $session; ?>" style="display: none;">             -->				
        				<button type="button" class="btn btn-primary" id="modificar_evento" data-dismiss="modal">Guardar</button>
        						</div>
        					</div>
@@ -203,6 +203,7 @@
                                     </div>
                                     <input type="text" name="nombre_asesor" value="<?php echo $usuario; ?>" style="display: none;">
                                     <input type="text" name="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
+                                    <input type="text" name="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
                         
                               <div class="form-group row justify-content-sm-center">

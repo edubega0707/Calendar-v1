@@ -33,7 +33,7 @@ class Mregistro extends CI_Model
 	public function can_login($correo_usuario, $contraseña_usuario)
 
 	{
-		$this->db->where('correo_usuario', $correo_usuario);
+		$this->db->where('clave_usuario', $correo_usuario);
 		$this->db->where('pass_usuario',   $contraseña_usuario);
 		$query=$this->db->get('usuarios');
 
@@ -51,7 +51,7 @@ class Mregistro extends CI_Model
 
 	public function getasesor($sesion)
 	{
-		$this->db->where('correo_usuario',  $sesion);
+		$this->db->where('clave_usuario',  $sesion);
 		$query=$this->db->get('usuarios');
 
 		foreach ($query->result() as $row ) 

@@ -1,5 +1,5 @@
 <?php 
- 
+  
 class Ccalendar extends CI_controller 
 { 
 	
@@ -21,12 +21,14 @@ class Ccalendar extends CI_controller
 
 		$param['idEvento']="event".DATE('Ymdhis');
 		$param['nombre_asesor']=$this->input->post('nombre_asesor');
-		$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
+		//$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
 		$param['des_evento']=$this->input->post('desc_evento');
 		$param['fecInicio']=$this->input->post('fecha_inicio');
 		$param['fecFin']=$this->input->post('fecha_fin');
 		$param['hora_inicio']=$this->input->post('select_hora_inicio');		
 		$param['hora_fin']=$this->input->post('select_hora_fin');
+		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
+
 
 
 		$res=$this->Mcalendar->insert($param);
@@ -37,25 +39,23 @@ class Ccalendar extends CI_controller
 
 
 	public function insert_event_admin()
-	{   
-
+	{  
 		$param['idEvento']="event".DATE('Ymdhis');
 		$param['nombre_asesor']=$this->input->post('nombre_asesor');
-		$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
+		//$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
 		$param['des_evento']=$this->input->post('desc_evento');
 		$param['fecInicio']=$this->input->post('fecha_inicio');
 		$param['fecFin']=$this->input->post('fecha_fin');
 		$param['hora_inicio']=$this->input->post('select_hora_inicio');		
 		$param['hora_fin']=$this->input->post('select_hora_fin');
+		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
 
 
 		$res=$this->Mcalendar->insert($param);
 
 
-	    redirect('Cregistro/enter_admin');
+		redirect('Cregistro/enter');	
 	}
-
-
 
 
 	public function getEventos()

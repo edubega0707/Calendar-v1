@@ -51,7 +51,7 @@ class Mregistro extends CI_Model
 
 	public function getasesor($sesion)
 	{
-		$this->db->where('correo_usuario',  $sesion);
+		$this->db->where('clave_usuario',  $sesion);
 		$query=$this->db->get('usuarios');
 
 		foreach ($query->result() as $row ) 

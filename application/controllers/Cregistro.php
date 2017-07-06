@@ -1,5 +1,5 @@
 <?php 
-
+ 
 class Cregistro extends CI_controller
 {
  
@@ -29,7 +29,7 @@ class Cregistro extends CI_controller
 		$this->form_validation->set_rules('tel_usuario', 'Telefono del Usuario', 'required|trim|max_length[10]',
                         array('required' => 'Debes ingresar el telefono'));
 
-		$this->form_validation->set_rules('mail_usuario', 'Correo del Usuario', 'required|trim|max_length[100]|is_unique[usuarios.correo_usuario]',
+		$this->form_validation->set_rules('clave_usuario', 'Clave del Usuario', 'required|trim|max_length[100]|is_unique[usuarios.correo_usuario]',
                         array('required' => 'Debes ingresar el nombre',
                         	  'is_unique'=>'El correo existe elije otro'));
  
@@ -142,7 +142,8 @@ class Cregistro extends CI_controller
 			$data['session']=$this->session->userdata('username');
 			$row=$this->Mregistro->getasesor($data['session']);	
 			$data['usuario']=$row->nombre_usuario;
-			$data['sucursal_usuario']=$row->sucursal_usuario;		
+			$data['sucursal_usuario']=$row->sucursal_usuario;
+			$data['usuarios_id_usuario']=$row->usuarios_id_usuario;			
 
 			/*$data['logout']='<a class= "dropdown-item" href="'.base_url().'Cregistro/logout" style="text-decoration: none;" ><i class="fa fa-sign-out" aria-hidden="true">Cerrar Sesion</a>';*/
 	
@@ -171,7 +172,8 @@ class Cregistro extends CI_controller
 			$data['session']=$this->session->userdata('username');
 			$row=$this->Mregistro->getasesor($data['session']);	
 			$data['usuario']=$row->nombre_usuario;
-			$data['sucursal_usuario']=$row->sucursal_usuario;	
+			$data['sucursal_usuario']=$row->sucursal_usuario;
+			$data['usuarios_id_usuario']=$row->usuarios_id_usuario;		
 
 			$this->load->view('Calendar/vheader', $data);
 			$this->load->view('Calendar/vcalendar_admin');

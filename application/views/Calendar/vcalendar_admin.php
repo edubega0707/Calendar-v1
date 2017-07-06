@@ -203,6 +203,7 @@
                                     </div>
                                     <input type="text" name="nombre_asesor" value="<?php echo $usuario; ?>" style="display: none;">
                                     <input type="text" name="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
+                                    <input type="text" name="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
                         
                               <div class="form-group row justify-content-sm-center">

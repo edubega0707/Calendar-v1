@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
+ 
 <head>
  
 	<meta charset="UTF-8">
@@ -75,42 +75,24 @@
 </body>
 
 <section class="container-fluid bienvenido">
-
 	<div class="row  d-flex flex-row justify-content-around align-items-center">
-
 		<div>
-
 		    <img  class="img-fluid w-75" src="<?php echo base_url();?>/public/img/calendar.svg" alt="Calendar">
-
 		</div>
-
 		<div>
-
 			<p class="h3  text-center">Sistema  Agenda Dipra Digital</p>
-
 		</div>
-
 		<div>
-
 			<img  class="img-fluid w-75" src="<?php echo base_url();?>/public/img/calendar.svg" alt="Calendar">
-
 		</div>
-
 	</div>
-
 </section >
-
-
-
-
 
 
 
 <section class="container" >
 
 	<script type="text/javascript">
-
-
 
 	$(document).ready(function() {
 
@@ -121,23 +103,16 @@
 				$('#calendar').fullCalendar({
 
 					header: {
-
 						left: 'prev,next today',
-
 						center: 'title',
-
 						right: 'month,basicWeek,basicDay'
 
 					},
 
 				defaultDate: new Date(),
-
 				navLinks: true, // can click day/week names to navigate views
-
 				editable: false,
-
 				eventLimit: true, // allow "more" link when too many events
-
 				events: $.parseJSON(data),
 
 
@@ -160,17 +135,11 @@
 							$.each(c,function(i,item){
 
 								$('#nom_asesor').val(item.nombre_asesor);
-
 								$('#des_event').val(item.des_evento);
-
 								$('#fec_inic').val(item.fecInicio);
-
 								$('#fec_fin').val(item.fecFin);
-
 								$('#hora_inic').val(item.hora_inicio);
-
 								$('#hora_finic').val(item.hora_fin);							
-
 								$('#status_evento').val(item.status);
 
 							});
@@ -183,7 +152,6 @@
 			});
 
 		
-
 	});
 
 
@@ -311,11 +279,6 @@
 									</div>
 
 								</div>
-
-
-
-
-
 
 
 							</fieldset>

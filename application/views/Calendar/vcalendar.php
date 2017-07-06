@@ -6,7 +6,11 @@
 
 	$(document).ready(function() {
 
-		$.post('<?php echo base_url();?>ccalendar/getEventos',  
+        var sucursal_usuario=$('#sucursal_usuario').val();
+		$.post('<?php echo base_url();?>ccalendar/getEventos',
+			{
+				sucursal_usuario:sucursal_usuario
+			},  
 			function(data){
 				//alert(data);
 
@@ -47,6 +51,8 @@
 						});
 				}				
 			});
+
+
 			});
 		
 	});
@@ -141,7 +147,8 @@
 							<textarea class="form-control form-control-sm" id="desc_evento" name="desc_evento" rows="5" placeholder="Descripción" required style="text-transform:uppercase;"></textarea>
 						</div>
 						<input type="text" name="nombre_asesor" value="<?php echo $usuario; ?>" style="display: none;">
-						<input type="text" name="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
+
+						<input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
 
 						<input type="text" name="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
 					</div>

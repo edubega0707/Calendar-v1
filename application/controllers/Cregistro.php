@@ -56,12 +56,12 @@ class Cregistro extends CI_controller
 
              $res=$this->Mregistro->registrar($param);
 
-             redirect(base_url(). 'Cregistro/login_validation');	
+             redirect(base_url(). 'Cregistro/enter');	
 		}
 
 		else
 		{
-			 redirect(base_url(). 'Cregistro/login_validation');
+			 redirect(base_url(). 'Cregistro/enter');
 
 		}
 

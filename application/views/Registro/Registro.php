@@ -89,7 +89,7 @@
 </section >
 
 
-
+<!-- 
 <section class="container" >
 
 	<script type="text/javascript">
@@ -164,7 +164,7 @@
 
 	
 
-</div>
+</div> -->
 
 
 
@@ -361,7 +361,33 @@
 
 </section>
 
-<footer></footer>
+<footer style="height: 120px;">
+	<section class="container">
+		<div class="row justify-content-center d-flex flex-md-row flex-sm-column align-items-center ">
+			<div class="col-md-4 col-sm-4 text-center my-1">
+				<img  class="img-fluid w-25" src="<?php echo base_url();?>/public/img/logodipra.png" alt="Calendar">
+			</div>
+			<div class="col-md-4 col-sm-4 text-center my-1">
+				<h6 class="text-white">DIRECCION EN PREVENCION DE RIESGOS Y ASESORIA FINANCIERA</h6>
+			</div>
+			<div class="col-md-4 col-sm-4 d-flex flex-md-row align-items-center justify-content-center my-1">
+				<i class="fa fa-facebook-official text-white mr-2" aria-hidden="true" style="font-size: 16px;"></i>
+				<a href="" class="text-white" style="text-decoration: none; font-size: 16px;">Perfil dipra</a>
+				
+			</div>		
+		</div>
+		<div class="row justify-content-center d-flex flex-md-row align-items-center ">
+			<div class="col-md-6 col-sm-6  d-flex flex-md-row align-items-center ">
+					
+			</div>
+			<div class="col-md-6 col-sm-6">
+				<a href="" class="text-white">www.dipra.com.mx</a>
+			</div>
+		
+		</div>
+	</section>
+
+</footer>
 
 
 </html>

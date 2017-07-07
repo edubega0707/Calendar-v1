@@ -40,8 +40,7 @@
                         //alert(data);
                        
                          
-
-                        $('#calendar').fullCalendar({
+                  $('#calendar').fullCalendar({
                               header: {
                                     left: 'prev,next today',
                                     center: 'title',
@@ -241,9 +240,9 @@
                   
                   <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
 
-                        <img  class="img-fluid  mr-5" width="50px;" src="<?php echo base_url();?>/public/img/edit.svg" alt="Calendar">
+                        <img  class="img-fluid  mr-3" width="50px;" src="<?php echo base_url();?>/public/img/edit.svg" alt="Calendar">
 
-                        <p class="h5 text-center">Formulario de registro</p>              
+                        <p class="h5 text-center">REGISTRO DE USUARIOS</p>              
 
                   </div>      
 

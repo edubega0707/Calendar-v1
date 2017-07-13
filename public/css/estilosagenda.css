@@ -26,7 +26,7 @@
 				.link_instruc a{ text-decoration: none; }
 				.link_instruc i{ margin-right: 10px;}
 
-	.instrucciones{max-width: 900px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); display: none;}
+	.instrucciones{max-width: 900px; box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 25px 0 rgba(0, 0, 0, 0.19); display: none;}
 		.article{ padding: 15px;}
 		.article h6{ letter-spacing: 3px;}
 		 	.hr_p1{border: 2px solid #e70000;}
@@ -43,13 +43,20 @@
 		padding-bottom: 50px;
 	}
 
-
-.modal_header {background: #FF6A38;}
-	.modal_header h5 {letter-spacing: 3px; color: #fff;}
+	
 
 footer{background: #303841; display: flex; flex-direction: row nowrap; align-items: center; align-content: center; color: #fff; margin-top: 20px; height: 50px; padding: 15px;} 
-	
-	
+
+/* Estilos para la pagina de registro*/
+
+.bg-sesion {background: #e1f5f2; color: #222831; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+.color-error{color: #ab1212;}
+.width-icons{font-size: 22px; font-family: 'Open Sans Condensed', sans-serif; }
+	.width-icons i {font-size: 30px;}
+
+
+
+
 
 
 

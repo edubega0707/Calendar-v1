@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en"> 
  
 <head>
  
@@ -10,9 +10,10 @@
 
 </head>
 
-
+  
 
 <link href="https://fonts.googleapis.com/css?family=Khula|Lato" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet"> 
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/font-awesome.min.css">
 
@@ -62,7 +63,8 @@
 
 	.color3{background: #A8D8EA;}
 
-	.sesion{ height: auto;}
+	.sesion{height: 600px;}
+
 
 	
 
@@ -174,16 +176,11 @@
 
 		<div class="modal-content">
 
-			<div class="modal-header" >
-
+			<div class="modal-header bg-primary" >
 				<h5 class="modal-title" id="exampleModalLabel">Informacíon del evento</h5>
-
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-
 					<span aria-hidden="true">&times;</span>
-
 				</button>
-
 			</div>
 
 			<div class="modal-body"> 
@@ -311,38 +308,38 @@
 
 		<div class="col-md-5  my-3 d-flex	flex-md-column  align-items-center justify-content-center">
 
-			<div class="rounded p-5 bg-primary text-white">
+			<div class="rounded p-4   bg-sesion">
 
 			<form action="<?php echo base_url();?>Cregistro/login_validation" method="POST">
 
 
-				<div class="d-flex flex-column justify-content-center align-items-center text-white my-2" >
+				<div class="d-flex flex-column justify-content-center align-items-center my-2" >
 
 					<p class="h4">Iniciar Sesion</p>
 
 				</div>
 
-				<div class="d-flex flex-column justify-content-center align-items-center text-white mb-3" >
+				<div class="d-flex flex-column justify-content-center align-items-center  mb-3" >
 
 				</div>
 
 				<div class="form-group">
 
-					<label for="correo_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-user mr-3" aria-hidden="true"></i>clave:</label>
+					<label for="correo_usuario" class="d-flex flex-row align-items-center width-icons"><i class="fa fa-user mr-3 " aria-hidden="true"></i>CLAVE:</label>
 
 					<input type="text" class="form-control" id="clave_usuario" name="clave_usuario" placeholder="Usuario"  >
 
-					<span class="text-warning"><strong><?php echo form_error('clave_usuario'); ?> </strong></span>
+					<span class="color-error width-icons text-center"><strong><?php echo form_error('clave_usuario'); ?> </strong></span>
 
 				</div>
 
 				<div class="form-group">
 
-					<label for="contraseña_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true"></i>PIN:</label>
+					<label for="contraseña_usuario" class="d-flex flex-row align-items-center width-icons"><i class="fa fa-key mr-3 " aria-hidden="true"></i>PIN:</label>
 
 					<input type="password" class="form-control" id="contraseña_usuario" name="contraseña_usuario" placeholder="Contraseña">
 
-					<span class="text-warning"><strong><?php echo form_error('contraseña_usuario'); ?></strong></span>
+					<span class="color-error width-icons text-center"><strong><?php echo form_error('contraseña_usuario'); ?></strong></span>
 				</div>
 				<div class="d-flex flex-column justify-content-center align-items-center text-white mb-5">
 					<button type="submit" class="btn btn btn-success"  href="#login_registro" name="inicia_sesion" id="inicia_sesion">Iniciar Sesion</button>
@@ -361,9 +358,26 @@
 
 </section>
 
-<footer style="height: 120px;">
+<footer class="container-fluid bg-inverse text-white">
+	<div class="row">
+		<div class="col-md-4 col-sm-4">
+			<img  class="img-fluid w-25" src="<?php echo base_url();?>/public/img/logodipra.png" alt="Calendar">
+		</div>
+		<div class="col-md-4 col-sm-4">
+			<h6 class="text-white">DIRECCION EN PREVENCION DE RIESGOS Y ASESORIA FINANCIERA</h6>
+		</div>
+		<div class="col-md-4 col-sm-4">
+			<i class="fa fa-facebook-official text-white mr-2" aria-hidden="true" style="font-size: 16px;"></i>
+			<a href="" class="text-white" style="text-decoration: none; font-size: 16px;">Perfil dipra</a>
+		</div>      
+	</div>
+	<div class="row">
+      
+	</div>
+</footer>
+<!-- <footer>
 	<section class="container">
-		<div class="row justify-content-center d-flex flex-md-row flex-sm-column align-items-center ">
+		<div class="row">
 			<div class="col-md-4 col-sm-4 text-center my-1">
 				<img  class="img-fluid w-25" src="<?php echo base_url();?>/public/img/logodipra.png" alt="Calendar">
 			</div>
@@ -387,7 +401,7 @@
 		</div>
 	</section>
 
-</footer>
+</footer> -->
 
 
 </html>

@@ -46,17 +46,24 @@
 	
 
 footer{background: #303841; display: flex; flex-direction: row nowrap; align-items: center; align-content: center; color: #fff; margin-top: 20px; height: 50px; padding: 15px;} 
+/* Estilos para el encabezado*/
+
+
+
 
 /* Estilos para la pagina de registro*/
 
 .bg-sesion {background: #e1f5f2; color: #222831; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-.color-error{color: #ab1212;}
+.color-error{color: #ab1212; font-size: 16px; font-family: 'Open Sans Condensed', sans-serif; }
 .width-icons{font-size: 22px; font-family: 'Open Sans Condensed', sans-serif; }
 	.width-icons i {font-size: 30px;}
 
 
 
+/* Estilos para la pagina de admin general*/
 
+
+.form-shadow{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
 
 
 

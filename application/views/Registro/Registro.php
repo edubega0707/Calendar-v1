@@ -55,7 +55,7 @@
 
 <style>
 
-	.bienvenido{background: #E3FDFD; }
+	
 
 	.color1{background: #95E1D3;} 
 
@@ -63,7 +63,9 @@
 
 	.color3{background: #A8D8EA;}
 
-	.sesion{height: 600px;}
+	.sesion{height: 500px;}
+
+	.img-encabezado{background: #3EC1D3; height: auto;}
 
 
 	
@@ -76,15 +78,15 @@
 
 </body>
 
-<section class="container-fluid bienvenido">
-	<div class="row  d-flex flex-row justify-content-around align-items-center">
-		<div>
+<section class="container-fluid">
+	<div class="row  d-flex flex-row justify-content-around align-items-center img-encabezado  py-3">
+		<div class="p-2">
 		    <img  class="img-fluid w-75" src="<?php echo base_url();?>/public/img/calendar.svg" alt="Calendar">
 		</div>
-		<div>
+		<div class="p-2">
 			<p class="h3  text-center">Sistema  Agenda Dipra Digital</p>
 		</div>
-		<div>
+		<div class="p-2">
 			<img  class="img-fluid w-75" src="<?php echo base_url();?>/public/img/calendar.svg" alt="Calendar">
 		</div>
 	</div>
@@ -308,7 +310,7 @@
 
 		<div class="col-md-5  my-3 d-flex	flex-md-column  align-items-center justify-content-center">
 
-			<div class="rounded p-4   bg-sesion">
+			<div class="rounded p-4  bg-sesion">
 
 			<form action="<?php echo base_url();?>Cregistro/login_validation" method="POST">
 
@@ -329,7 +331,7 @@
 
 					<input type="text" class="form-control" id="clave_usuario" name="clave_usuario" placeholder="Usuario"  >
 
-					<span class="color-error width-icons text-center"><strong><?php echo form_error('clave_usuario'); ?> </strong></span>
+					<span class="color-error  text-center"><strong><?php echo form_error('clave_usuario'); ?> </strong></span>
 
 				</div>
 
@@ -339,14 +341,14 @@
 
 					<input type="password" class="form-control" id="contraseña_usuario" name="contraseña_usuario" placeholder="Contraseña">
 
-					<span class="color-error width-icons text-center"><strong><?php echo form_error('contraseña_usuario'); ?></strong></span>
+					<span class="color-error  text-center"><strong><?php echo form_error('contraseña_usuario'); ?></strong></span>
 				</div>
 				<div class="d-flex flex-column justify-content-center align-items-center text-white mb-5">
 					<button type="submit" class="btn btn btn-success"  href="#login_registro" name="inicia_sesion" id="inicia_sesion">Iniciar Sesion</button>
-					<?php
-
-							echo $this->session->flashdata('error');
-					?>
+						
+						
+						<span class="color-error  text-center"><strong><?php echo $this->session->flashdata('error'); ?> </strong></span>
+				
 
 				</div>
 
@@ -358,28 +360,11 @@
 
 </section>
 
-<footer class="container-fluid bg-inverse text-white">
-	<div class="row">
-		<div class="col-md-4 col-sm-4">
-			<img  class="img-fluid w-25" src="<?php echo base_url();?>/public/img/logodipra.png" alt="Calendar">
-		</div>
-		<div class="col-md-4 col-sm-4">
-			<h6 class="text-white">DIRECCION EN PREVENCION DE RIESGOS Y ASESORIA FINANCIERA</h6>
-		</div>
-		<div class="col-md-4 col-sm-4">
-			<i class="fa fa-facebook-official text-white mr-2" aria-hidden="true" style="font-size: 16px;"></i>
-			<a href="" class="text-white" style="text-decoration: none; font-size: 16px;">Perfil dipra</a>
-		</div>      
-	</div>
-	<div class="row">
-      
-	</div>
-</footer>
-<!-- <footer>
-	<section class="container">
-		<div class="row">
+ <footer class="container-fluid">
+	
+		<div class="row  bg-inverse text-white flex-row justify-content-center align-items-center ">
 			<div class="col-md-4 col-sm-4 text-center my-1">
-				<img  class="img-fluid w-25" src="<?php echo base_url();?>/public/img/logodipra.png" alt="Calendar">
+				<img  class="img-fluid w-50" src="<?php echo base_url();?>/public/img/logodipra.png" alt="Calendar">
 			</div>
 			<div class="col-md-4 col-sm-4 text-center my-1">
 				<h6 class="text-white">DIRECCION EN PREVENCION DE RIESGOS Y ASESORIA FINANCIERA</h6>
@@ -390,18 +375,8 @@
 				
 			</div>		
 		</div>
-		<div class="row justify-content-center d-flex flex-md-row align-items-center ">
-			<div class="col-md-6 col-sm-6  d-flex flex-md-row align-items-center ">
-					
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<a href="" class="text-white">www.dipra.com.mx</a>
-			</div>
-		
-		</div>
-	</section>
 
-</footer> -->
+</footer> 
 
 
 </html>

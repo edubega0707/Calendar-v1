@@ -1,10 +1,10 @@
 
 
- <div class="container my-4">
+ <div class="container my-5">
        <div class="row justify-content-sm-center my-3 ">
              <h4 id="titulo_historial">CALENDARIO DE PRESTAMO DE TABLETA</h4>
        </div>
-       <div class="row">
+       <div class="row ">
             <div class="col-sm-5">
                   <div class="form-group row justify-content-sm-center">
                   <label for="select_status" class="col-sm-5 col-form-label">Consultar Calendario : </label>
@@ -156,8 +156,7 @@
 
 				<div class="form-group row justify-content-sm-center">
 					<label for="select_status" class="col-sm-4 col-form-label">Cambiar Status: </label>
-					<select class="form-control-sm  col-sm-5" id="select_status" name="select_status">
-						<option>Seleccionar estado</option>
+					<select class="form-control-sm col-sm-5" id="select_status" name="select_status">
 						<option>PENDIENTE</option>
 						<option>ACEPTADO</option>
 						<option>RECHAZADO</option>       							
@@ -230,77 +229,91 @@
 
 <!-- FORMULARIO DE REGISTRO DE USUARIOS -->
 <section class="container">
-<div class="row flex-md-column  align-items-center justify-content-center">
-<div class="col-md-4  flex-md-column  align-items-center justify-content-center" id="registro"> 
+      <div class="row flex-md-column  align-items-center justify-content-center">
+      <div class="col-md-8  flex-md-column  align-items-center justify-content-center" id="registro"> 
 
-    <div class="color3 p-4 m-2  my-3">
+    <div class="p-4 m-2  my-3 form-shadow">
             
-
-            <form action="<?php echo base_url();?>Cregistro/registrar" method="POST"> 
+            <form action="<?php echo base_url();?>Cregistro/registrar" method="POST" > 
                   
                   <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
 
                         <img  class="img-fluid  mr-3" width="50px;" src="<?php echo base_url();?>/public/img/edit.svg" alt="Calendar">
 
-                        <p class="h5 text-center">REGISTRO DE USUARIOS</p>              
-
-                  </div>      
-
-                  <div class="form-group">
-
-                        <label for="nombre_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-user mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre completo:</label>
-
-                        <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;">
-
-                        <span class="text-white"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
+                        <p class="h5 text-center">REGISTRO DE USUARIOS</p>
+                                  
 
                   </div>
+                     <hr class="hr_p2 my-5">       
 
-                  <div class="form-group row justify-content-sm-center">
-                        <label for="select_status" class="col-sm-6 col-form-label">Seleccionar tipo de Usuario: </label>
-                        <select class="form-control-sm  col-sm-6" id="rol_usuario" name="rol_usuario">
+                  <div class="form-group row">
+                        <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre completo:</label>
+                        <div class="col-12 col-sm-6 col-md-7">
+                             <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;">
+                        </div>
+                       
+                        <span class="text-white"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
+                  </div>
+
+                  <div class="form-group row ">
+                        <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user-plus mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar tipo de Usuario:</label>
+                        <div class="col-12 col-sm-6 col-md-7" >
+                               <select class="form-control-sm" id="rol_usuario" name="rol_usuario">
+                              <option>SELECCIONAR USUARIO </option>
                               <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                               <option value="ASESOR">ASESOR</option>                                           
                         </select>
+                        </div>
+                       
                   </div>
 
-                   <div class="form-group row justify-content-sm-center">
-                        <label for="select_status" class="col-sm-6 col-form-label">Seleccionar sucursal: </label>
-                        <select class="form-control-sm  col-sm-6" id="sucursal_usuario" name="sucursal_usuario">
-                              <option>Seleccionar Sucursal: </option>
+                   <div class="form-group row ">
+                       
+                        <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
+                        <div class="col-12 col-sm-6 col-md-7">
+                              <select class="form-control-sm " id="sucursal_usuario" name="sucursal_usuario">
+                              <option>SELECCIONAR SUCURSAL </option>
                               <option value="PACHUCA">PACHUCA</option>
                               <option value="PACHUCAII">PACHUCAII</option>
                               <option value="SATELITE">SATELITE</option>
                               <option value="CD_AZTECA">CD AZTECA</option>
                               <option value="PUEBLA">PUEBLA</option>
                               <option value="SAN_LUIS_POTOSI">SAN LUIS POTOSI</option>                                           
-                        </select>
+                        </select> 
+                        </div>
+                       
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group row">
 
-                        <label for="tel_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-mobile mr-3" aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
-
-                        <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" >
+                        <label for="tel_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-mobile mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
+                        <div class="col-12 col-sm-6 col-md-7"> 
+                            <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" >  
+                        </div>
+                  
                         <span class="text-white"><strong><?php echo form_error('tel_usuario'); ?> </strong></span>
 
-
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group row">
 
-                        <label for="clave_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>Clave usuario:</label>
+                        <label for="clave_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>Clave usuario:</label>
+                         <div class="col-12 col-sm-6 col-md-7"> 
+                             <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave" >
+                        </div>
+                        
 
-                        <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave" >
                         <span class="text-white"><strong><?php echo form_error('mail_usuario'); ?> </strong></span>
 
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group row">
 
-                        <label for="pass_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>PIN usaurio:</label>
-
-                        <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="PIN usuario" >
+                        <label for="pass_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>PIN usuario:</label>
+                      
+                         <div class="col-12 col-sm-6 col-md-7"> 
+                             <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="PIN usuario" >
+                        </div>
                         <span class="text-white"><strong><?php echo form_error('pass_usuario'); ?> </strong></span>
 
                   </div>

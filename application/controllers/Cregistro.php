@@ -55,8 +55,8 @@ class Cregistro extends CI_controller
 
 
              $res=$this->Mregistro->registrar($param);
-
-             redirect(base_url(). 'Cregistro/enter');	
+			
+             
 		}
 
 		else

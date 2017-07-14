@@ -12,6 +12,7 @@
 	<link href='<?php echo base_url();?>/assets/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
 	<link href='<?php echo base_url();?>/assets/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print'/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/estilosagenda.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/jquery-confirm.min.css">
 
 
 	<script type="text/javascript" src="<?php echo base_url();?>/public/js/jquery-3.2.1.min.js"></script>
@@ -22,8 +23,9 @@
 	<script type="text/javascript" src="<?php echo base_url();?>/public/libs/bootstrap-datepicker/locales/bootstrap-datepicker.ar.min.js"></script>
 	
 	
-	<script src='<?php echo base_url();?>/assets/fullcalendar/fullcalendar.js'></script> 
-	<script src='<?php echo base_url();?>/assets/fullcalendar/locale/es.js'></script>
+	<script  type="text/javascript" src='<?php echo base_url();?>/assets/fullcalendar/fullcalendar.js'></script> 
+	<script  type="text/javascript" src='<?php echo base_url();?>/assets/fullcalendar/locale/es.js'></script>
+	<script  type="text/javascript" src="<?php echo base_url();?>/public/js/jquery-confirm.min.js"></script>
 	 
 	
 	<style>
@@ -44,7 +46,7 @@
 
 </head>
 <body>
-	<div class="container-fluid header">
+	<div class="container-fluid header ">
 		<div class="row justify-content-center">
 				<div class="col-md-3 col-sm-3 col-12 logo"><img src="<?php echo base_url();?>/public/img/logo.png"></div>
 				<div class="col-md-6 col-sm-6 col-12 titulo"><h4>Sistema Integral para el prestamo de tablet</h4></div>

@@ -8,7 +8,7 @@
             <div class="col-sm-5">
                   <div class="form-group row justify-content-sm-center">
                   <label for="select_status" class="col-sm-5 col-form-label">Consultar Calendario : </label>
-                        <select class="form-control-sm  col-sm-5" id="select_his_suc" name="select_his_suc">
+                        <select class="form-control form-control-sm  col-sm-5" id="select_his_suc" name="select_his_suc">
                               <option value="DIPRA">Seleccionar Sucursal</option>
                               <option value="PACHUCA">PACHUCA</option>
                               <option value="PACHUCAII">PACHUCAII</option>
@@ -156,7 +156,7 @@
 
 				<div class="form-group row justify-content-sm-center">
 					<label for="select_status" class="col-sm-4 col-form-label">Cambiar Status: </label>
-					<select class="form-control-sm col-sm-5" id="select_status" name="select_status">
+					<select class="form-control form-control-sm col-sm-5" id="select_status" name="select_status">
 						<option>PENDIENTE</option>
 						<option>ACEPTADO</option>
 						<option>RECHAZADO</option>       							
@@ -168,46 +168,96 @@
 
                                 <input type="text" name="clave_asesor" id="clave_asesor" value="<?php echo $session; ?>" style="display: none;"> 
 
-                                <button type="button" class="btn btn-primary" id="modificar_evento" data-dismiss="modal">Guardar</button>
+                                <button type="button" class="btn btn-primary" id="modificar_evento" data-dismiss="modal">MODIFICAR</button>
                           </div>
                     </div>
 
 				<script>
 
 					$(document).ready(function()
-					{		
+					{	
+                                    
+                                    function modificar()
+                                    {
+                                          var id=$('#id_Evento').val();
+                                          var status=$('#select_status').val();
+                                          var color='';
+
+                                          switch(status)
+                                          {
+                                                case 'PENDIENTE':
+                                                      color='#E85B48';
+                                                break;
+                                                case 'RECHAZADO':
+                                                      color='#C50000';
+                                                break;
+                                                case 'ACEPTADO':
+                                                color='#A5F2E7';
+                                                break;
+
+                                          }
+                                          var data = '&status='+status+'&id='+id+'&color='+color;
+                                                                                        
+                                          $.ajax
+                                          ({  
+
+                                                url: '<?php echo base_url();?>Ccalendar/modificar_evento',
+                                                type: 'POST',
+                                                data: data,                                         
+                                                success: function(data)
+                                                {
+                                                      $.alert
+                                                      ({
+                                                            title: 'Registro Modificado',
+                                                            content: 'Registro modificado exitosamente!', 
+                                                             type: 'red',                                              
+                                                             theme: 'material',                                                        
+                                                      });
+                                                }
+
+                                          })
+
+                                    }	
 
 						$('#modificar_evento').on('click',function()
-                              {
-                                    var id=$('#id_Evento').val();
-                                    var status=$('#select_status').val();
-                                    var color='';
+                                    {
+                                          $.confirm
+                                          ({
+                                                title: 'Confirmar',
+                                                content: '¿Desea Realmente modificar este evento?',
+                                                type: 'dark',                                              
+                                                theme: 'material',
+                                                animation: 'zoom',
+                                                animationSpeed: 600,
+                                                closeAnimation: 'scale',
+                                                alignMiddle: true,                          
+                                                buttons: 
+                                                {
+                                                        Aceptar: {
+                                                                  text: 'Aceptar',
+                                                                  btnClass: 'btn-blue',
+                                                                  action: function()
+                                                                  {
+                                                                        modificar();
+                                                                  }
+                                                            },
+                                                      Cancelar: {
+                                                            text: 'Cancelar',
+                                                            btnClass: 'btn-red',
+                                                            action: function(){
+                                                            }
+                                                      }
+                                                      
+                                                }
+                                                     
+                                          });  
 
-                                     switch(status)
-                                     {
-                                          case 'PENDIENTE':
-                                                color='#E85B48';
-                                          break;
-                                          case 'RECHAZADO':
-                                                color='#C50000';
-                                          break;
-                                          case 'ACEPTADO':
-                                               color='#A5F2E7';
-                                          break;
+                                    }) 
 
-                                     }
 
-							$.post("<?php echo base_url();?>Ccalendar/modificar_evento",
-							{
-								status:status,
-								id:id,
-                                                color:color
-							},
-							function(data, status){
-								alert("El evento se modifico exitosamente");
-							});
+                                  
 
-						})
+						
 
 					});
 				
@@ -234,7 +284,7 @@
 
     <div class="p-4 m-2  my-3 form-shadow">
             
-            <form action="<?php echo base_url();?>Cregistro/registrar" method="POST" > 
+            <form > 
                   
                   <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
 
@@ -249,7 +299,7 @@
                   <div class="form-group row">
                         <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre completo:</label>
                         <div class="col-12 col-sm-6 col-md-7">
-                             <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;">
+                             <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;" required>
                         </div>
                        
                         <span class="text-white"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
@@ -258,20 +308,19 @@
                   <div class="form-group row ">
                         <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user-plus mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar tipo de Usuario:</label>
                         <div class="col-12 col-sm-6 col-md-7" >
-                               <select class="form-control-sm" id="rol_usuario" name="rol_usuario">
+                              <select class="form-control form-control-sm" id="rol_usuario" name="rol_usuario" required>
                               <option>SELECCIONAR USUARIO </option>
                               <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                               <option value="ASESOR">ASESOR</option>                                           
                         </select>
-                        </div>
-                       
+                        </div>                     
                   </div>
 
                    <div class="form-group row ">
                        
                         <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
                         <div class="col-12 col-sm-6 col-md-7">
-                              <select class="form-control-sm " id="sucursal_usuario" name="sucursal_usuario">
+                              <select class="form-control form-control-sm " id="sucursal_usuario" name="sucursal_usuario" required>
                               <option>SELECCIONAR SUCURSAL </option>
                               <option value="PACHUCA">PACHUCA</option>
                               <option value="PACHUCAII">PACHUCAII</option>
@@ -288,7 +337,7 @@
 
                         <label for="tel_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-mobile mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
                         <div class="col-12 col-sm-6 col-md-7"> 
-                            <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" >  
+                            <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" required >  
                         </div>
                   
                         <span class="text-white"><strong><?php echo form_error('tel_usuario'); ?> </strong></span>
@@ -299,7 +348,7 @@
 
                         <label for="clave_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>Clave usuario:</label>
                          <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave" >
+                             <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave" required>
                         </div>
                         
 
@@ -312,7 +361,7 @@
                         <label for="pass_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>PIN usuario:</label>
                       
                          <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="PIN usuario" >
+                             <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Pin usuario" required>
                         </div>
                         <span class="text-white"><strong><?php echo form_error('pass_usuario'); ?> </strong></span>
 
@@ -332,10 +381,71 @@
 
             </form>
 
+      
       </div>
 
 </div>
 
 </div>
 </section>
+
+<script>
+     
+
+      $(document).ready(function()
+            {
+                        
+            $('#registrar').submit(function()
+            {
+                  registra_usuario();
+
+            }) 
+         
+            function registra_usuario()
+            {
+                    var nombre_usuario=$('#nombre_usuario').val();
+                    var tel_usuario=$('#tel_usuario').val();
+                    var clave_usuario=$('#clave_usuario').val();
+                    var pass_usuario=$('#pass_usuario').val();
+                    var sucursal_usuario=$('#sucursal_usuario').val();
+                    var rol_usuario=$('#rol_usuario').val();
+                   
+
+                    var data='&nombre_usuario='+nombre_usuario+'&tel_usuario='+tel_usuario+'&clave_usuario='+clave_usuario+'&pass_usuario='+pass_usuario+'&sucursal_usuario='+sucursal_usuario+'&rol_usuario='+rol_usuario;
+
+                    $.ajax
+                    ({  
+
+                        url:  '<?php echo base_url();?>Cregistro/registrar',
+                        type: 'POST',
+                        data: data,                                         
+                        success: function(data)
+                        {
+                                $.alert
+                                ({
+                                      title: 'Registro Modificado',
+                                      content: 'Registro modificado exitosamente!', 
+                                        type: 'red',                                              
+                                        theme: 'material',                                                        
+                                });
+                        },
+                        error: function(data)
+                        {
+                             $.alert
+                                ({
+                                    title: 'Error',
+                                    content: 'Error no se registro el usuario!', 
+                                        type: 'red',                                              
+                                        theme: 'material',                                                        
+                                });
+                        }
+
+                    })
+            }	
+
+    
+
+});
+
+</script>
 <!-- FIN DE FORMULARIO DE REGISTRO DE USUARIOS -->

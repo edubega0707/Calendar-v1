@@ -125,7 +125,7 @@
        					<div class="form-group row justify-content-sm-center">
        						<label for="select_status" class="col-sm-4 col-form-label">Cambiar Status: </label>
        						<select class="form-control-sm  col-sm-5" id="select_status" name="select_status">
-       							<option>Seleccionar estado</option>
+       			
        							<option>PENDIENTE</option>
        							<option>ACEPTADO</option>
        							<option>RECHAZADO</option>       							
@@ -139,19 +139,19 @@
        						</div>
        					</div>
 
-       					<script>
-             
-       						$(document).ready(function()
-       						{		
+       				<script>
 
-       							$('#modificar_evento').on('click',function()
+                                          $(document).ready(function()
+                                          {	
+                                                
+                                                function modificar()
                                                 {
                                                       var id=$('#id_Evento').val();
                                                       var status=$('#select_status').val();
                                                       var color='';
 
-                                                       switch(status)
-                                                       {
+                                                      switch(status)
+                                                      {
                                                             case 'PENDIENTE':
                                                                   color='#E85B48';
                                                             break;
@@ -159,26 +159,76 @@
                                                                   color='#C50000';
                                                             break;
                                                             case 'ACEPTADO':
-                                                                 color='#A5F2E7';
+                                                            color='#A5F2E7';
                                                             break;
 
-                                                       }
+                                                      }
+                                                      var data = '&status='+status+'&id='+id+'&color='+color;
+                                                                                                
+                                                      $.ajax
+                                                      ({  
 
-       								$.post("<?php echo base_url();?>Ccalendar/modificar_evento",
-       								{
-       									status:status,
-       									id:id,
-                                                            color:color
-       								},
-       								function(data, status){
-       									alert("El evento se modifico exitosamente");
-       								});
+                                                            url: '<?php echo base_url();?>Ccalendar/modificar_evento',
+                                                            type: 'POST',
+                                                            data: data,                                         
+                                                            success: function(data)
+                                                            {
+                                                                  $.alert
+                                                                  ({
+                                                                        title: 'Registro Modificado',
+                                                                        content: 'Registro modificado exitosamente!', 
+                                                                        type: 'red',                                              
+                                                                        theme: 'material',                                                        
+                                                                  });
+                                                            }
 
-       							})
+                                                      })
 
-       						});
-       					
-       					</script>
+                                                }	
+
+                                                $('#modificar_evento').on('click',function()
+                                                {
+                                                      $.confirm
+                                                      ({
+                                                            title: 'Confirmar',
+                                                            content: '¿Desea Realmente modificar este evento?',
+                                                            type: 'dark',                                              
+                                                            theme: 'material',
+                                                            animation: 'zoom',
+                                                            animationSpeed: 600,
+                                                            closeAnimation: 'scale',
+                                                            alignMiddle: true,                          
+                                                            buttons: 
+                                                            {
+                                                                  Aceptar: {
+                                                                              text: 'Aceptar',
+                                                                              btnClass: 'btn-blue',
+                                                                              action: function()
+                                                                              {
+                                                                                    modificar();
+                                                                              }
+                                                                        },
+                                                                  Cancelar: {
+                                                                        text: 'Cancelar',
+                                                                        btnClass: 'btn-red',
+                                                                        action: function(){
+                                                                        }
+                                                                  }
+                                                                  
+                                                            }
+                                                            
+                                                      });  
+
+                                                }) 
+
+
+                                          
+
+                                                
+
+                                          });
+                                    
+                              </script>
 		
        			</div>
        		</div>

@@ -26,65 +26,70 @@
 
       $(document).ready(function() {
        
-            $('#select_his_suc').on('change', function(){
-
-                  var sucursal_usuario =$('#select_his_suc').val();
-                  $("#titulo_historial").text("Calendario prestamo tableta "+ sucursal_usuario);
-                 
-                  $.post('<?php echo base_url();?>ccalendar/getEventos',
-                  {
-                        sucursal_usuario:sucursal_usuario
-                  },  
-
-                  function(data){
-                        //alert(data);
-                       
-                         
-                  $('#calendar').fullCalendar({
+                $('#calendar').fullCalendar({
                               header: {
                                     left: 'prev,next today',
                                     center: 'title',
                                     right: 'month,basicWeek,basicDay'
                               },
-                              defaultDate: new Date(),
-                        navLinks: true, // can click day/week names to navigate views
-                        editable: true,
-                        eventLimit: true, // allow "more" link when too many events
-                        events: $.parseJSON(data),
-
-                        eventClick: function(event, jsEvent, view){
-                               $('#modalEvento').modal();
-                               var id= event.id;      
-                              
-                                                
-                               $.post("<?php echo base_url();?>Ccalendar/mostrar_evento",
+                                    defaultDate: new Date(),
+                                    navLinks: true, // can click day/week names to navigate views
+                                    editable: true,
+                                    eventLimit: true, // allow "more" link when too many events
+                                    events: function() 
                                     {
-                                          id:id                                     
-                                    },
-                                    function(data){
+                                     $('#select_his_suc').on('change', function(){
+
+                                    var sucursal_usuario =$('#select_his_suc').val();
+                                    $("#titulo_historial").text("Calendario prestamo tableta "+ sucursal_usuario);
                               
-                                          var c=JSON.parse(data);                                           
-                                          $.each(c,function(i,item){
-                                                $('#id_Evento').val(item.idEvento);
-                                                $('#nom_asesor').val(item.nombre_asesor);
-                                                $('#des_event').val(item.des_evento);
-                                                $('#fec_inic').val(item.fecInicio);
-                                                $('#fec_fin').val(item.fecFin);
-                                                $('#hora_inic').val(item.hora_inicio);
-                                                $('#hora_finic').val(item.hora_fin);                                          
-                                                $('#status_evento').val(item.status);
-                                                
-                                          });
+                                    $.post('<?php echo base_url();?>ccalendar/getEventos',
+                                    {
+                                          sucursal_usuario:sucursal_usuario
+                                    },  
 
-                                    });
-                        }                       
+                                    function(data){
+                                          $.parseJSON(data);                      
+                              
+                                    })
+      
+                                     });
+                                    },
+                                                                        
+
+                              
+                                    eventClick: function(event, jsEvent, view)
+                                    {           
+                                          $('#modalEvento').modal();
+                                          var id= event.id;      
+                                          
+                                                            
+                                          $.post("<?php echo base_url();?>Ccalendar/mostrar_evento",
+                                                {
+                                                      id:id                                     
+                                                },
+                                                function(data){
+                                          
+                                                      var c=JSON.parse(data);                                           
+                                                      $.each(c,function(i,item){
+                                                            $('#id_Evento').val(item.idEvento);
+                                                            $('#nom_asesor').val(item.nombre_asesor);
+                                                            $('#des_event').val(item.des_evento);
+                                                            $('#fec_inic').val(item.fecInicio);
+                                                            $('#fec_fin').val(item.fecFin);
+                                                            $('#hora_inic').val(item.hora_inicio);
+                                                            $('#hora_finic').val(item.hora_fin);                                          
+                                                            $('#status_evento').val(item.status);
+                                                            
+                                                      });
+
+                                                });
+                                    }                       
                   });
                   });
 
-            })
-                  
-             
-           });
+
+            
 
 
 
@@ -281,11 +286,14 @@
 <section class="container">
       <div class="row flex-md-column  align-items-center justify-content-center">
       <div class="col-md-8  flex-md-column  align-items-center justify-content-center" id="registro"> 
-
-    <div class="p-4 m-2  my-3 form-shadow">
+      
+    
             
-            <form > 
-                  
+      
+       <div class="p-4 m-2  my-3 form-shadow">
+
+              <form id="form_registro" name="form_registro">
+           
                   <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
 
                         <img  class="img-fluid  mr-3" width="50px;" src="<?php echo base_url();?>/public/img/edit.svg" alt="Calendar">
@@ -301,12 +309,13 @@
                         <div class="col-12 col-sm-6 col-md-7">
                              <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;" required>
                         </div>
+                        <span class="color-error  text-center"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
                        
-                        <span class="text-white"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
+                       
                   </div>
 
                   <div class="form-group row ">
-                        <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user-plus mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar tipo de Usuario:</label>
+                        <label for="rol_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user-plus mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar tipo de Usuario:</label>
                         <div class="col-12 col-sm-6 col-md-7" >
                               <select class="form-control form-control-sm" id="rol_usuario" name="rol_usuario" required>
                               <option>SELECCIONAR USUARIO </option>
@@ -318,10 +327,10 @@
 
                    <div class="form-group row ">
                        
-                        <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
+                        <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
                         <div class="col-12 col-sm-6 col-md-7">
                               <select class="form-control form-control-sm " id="sucursal_usuario" name="sucursal_usuario" required>
-                              <option>SELECCIONAR SUCURSAL </option>
+                              <option>SELECCIONAR SUCURSAL</option>
                               <option value="PACHUCA">PACHUCA</option>
                               <option value="PACHUCAII">PACHUCAII</option>
                               <option value="SATELITE">SATELITE</option>
@@ -340,8 +349,6 @@
                             <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" required >  
                         </div>
                   
-                        <span class="text-white"><strong><?php echo form_error('tel_usuario'); ?> </strong></span>
-
                   </div>
 
                   <div class="form-group row">
@@ -352,7 +359,7 @@
                         </div>
                         
 
-                        <span class="text-white"><strong><?php echo form_error('mail_usuario'); ?> </strong></span>
+                       
 
                   </div>
 
@@ -363,10 +370,9 @@
                          <div class="col-12 col-sm-6 col-md-7"> 
                              <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Pin usuario" required>
                         </div>
-                        <span class="text-white"><strong><?php echo form_error('pass_usuario'); ?> </strong></span>
+                   
 
                   </div>
-
 
 
                   <div class="d-flex flex-row justify-content-center align-items-center text-white mt-3" >
@@ -379,73 +385,19 @@
 
                   </div>
 
-            </form>
-
+      
+             </form>
+             <script>
+                var  base_url= "<?php echo base_url();?>"
+             </script>
       
       </div>
 
-</div>
+      </div>
+      
 
 </div>
 </section>
 
-<script>
-     
 
-      $(document).ready(function()
-            {
-                        
-            $('#registrar').submit(function()
-            {
-                  registra_usuario();
-
-            }) 
-         
-            function registra_usuario()
-            {
-                    var nombre_usuario=$('#nombre_usuario').val();
-                    var tel_usuario=$('#tel_usuario').val();
-                    var clave_usuario=$('#clave_usuario').val();
-                    var pass_usuario=$('#pass_usuario').val();
-                    var sucursal_usuario=$('#sucursal_usuario').val();
-                    var rol_usuario=$('#rol_usuario').val();
-                   
-
-                    var data='&nombre_usuario='+nombre_usuario+'&tel_usuario='+tel_usuario+'&clave_usuario='+clave_usuario+'&pass_usuario='+pass_usuario+'&sucursal_usuario='+sucursal_usuario+'&rol_usuario='+rol_usuario;
-
-                    $.ajax
-                    ({  
-
-                        url:  '<?php echo base_url();?>Cregistro/registrar',
-                        type: 'POST',
-                        data: data,                                         
-                        success: function(data)
-                        {
-                                $.alert
-                                ({
-                                      title: 'Registro Modificado',
-                                      content: 'Registro modificado exitosamente!', 
-                                        type: 'red',                                              
-                                        theme: 'material',                                                        
-                                });
-                        },
-                        error: function(data)
-                        {
-                             $.alert
-                                ({
-                                    title: 'Error',
-                                    content: 'Error no se registro el usuario!', 
-                                        type: 'red',                                              
-                                        theme: 'material',                                                        
-                                });
-                        }
-
-                    })
-            }	
-
-    
-
-});
-
-</script>
 <!-- FIN DE FORMULARIO DE REGISTRO DE USUARIOS -->

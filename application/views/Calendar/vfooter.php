@@ -16,7 +16,7 @@
 		</div>
 
 </footer> 
-
+<script  type="text/javascript" src='<?php echo base_url();?>/assets/registra_usuarios.js'></script> 
 	
 </body>
 

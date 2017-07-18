@@ -259,11 +259,6 @@
 
                                     }) 
 
-
-                                  
-
-						
-
 					});
 				
 				</script>
@@ -288,7 +283,6 @@
       <div class="col-md-8  flex-md-column  align-items-center justify-content-center" id="registro"> 
       
     
-            
       
        <div class="p-4 m-2  my-3 form-shadow">
 

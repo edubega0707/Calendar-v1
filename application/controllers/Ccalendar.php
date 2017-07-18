@@ -41,7 +41,7 @@ class Ccalendar extends CI_controller
 	public function insert_event_admin()
 	{  
 		$param['idEvento']="event".DATE('Ymdhis');
-		$param['nombre_asesor']=$this->input->post('nombre_asesor');
+		$param['nombre_asesor']=$this->input->post('select_asesor_evento');
 		//$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
 		$param['des_evento']=$this->input->post('desc_evento');
 		$param['fecInicio']=$this->input->post('fecha_inicio');

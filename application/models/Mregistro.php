@@ -59,6 +59,15 @@ class Mregistro extends CI_Model
 			return $row;
 		}
 	}
+
+	public function getasesores($sucursal)
+	{
+		$this->db->where('sucursal_usuario',  $sucursal);
+		$this->db->where('rol_usuario', 'ASESOR');
+		$query=$this->db->get('usuarios');
+         return $query->result_array();
+	}
+	
 }
 
 

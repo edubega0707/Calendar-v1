@@ -182,6 +182,7 @@
                                                                         theme: 'material',                                                        
                                                                   });
                                                             }
+                                                            
 
                                                       })
 
@@ -207,6 +208,7 @@
                                                                               action: function()
                                                                               {
                                                                                     modificar();
+                                                                                    location.href =base_url+'Cregistro/enter'; 
                                                                               }
                                                                         },
                                                                   Cancelar: {
@@ -248,23 +250,31 @@
 <div class="container formulario">
                         <h4>Solicitar Tableta</h4>
                         <hr>
-                        <form action="<?php echo base_url();?>Ccalendar/insert_event_admin" method="POST">
-                         
+
+                        <form id="form_eventos" name="form_eventos" >
                               <div class="form-group row justify-content-sm-center">
-                                    <label for="desc_evento" class="col-sm-3 col-form-label">Descripción:</label>
-                                    <div class="col-sm-7">
+                                    <label for="select_status" class="col-sm-2 col-form-label">Seleccionar asesor:</label>
+                                    <select class="form-control form-control-sm col-sm-6" id="select_asesor_evento" name="select_asesor_evento">
+                                         <?php foreach ($lista_asesores as $asesor): ?>
+                                                <option><?php echo $asesor['nombre_usuario']; ?></option>                                                   
+                                           <?php endforeach; ?>  							
+                                    </select>
+                              </div>
+
+                              <div class="form-group row justify-content-sm-center">
+                                    <label for="desc_evento" class="col-sm-2 col-form-label">Descripción:</label>
+                                    <div class="col-sm-6">
                                           <textarea class="form-control form-control-sm" id="desc_evento" name="desc_evento" rows="5" placeholder="Descripción" required style="text-transform:uppercase;"></textarea>
-                                    </div>
-                                    <input type="text" name="nombre_asesor" value="<?php echo $usuario; ?>" style="display: none;">
+                                    </div>                                 
                                     <input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
-                                    <input type="text" name="usuarios_id_usuario"  value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
+                                    <input type="text" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
                         
                               <div class="form-group row justify-content-sm-center">
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
                                     <div class="col-sm-2">  
-                                          <div class="input-group date" id="fecha_inicio">
-                                                <input type="text" class="form-control form-control-sm" name="fecha_inicio"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
+                                          <div class="input-group date" id="fecha_inicio_evento">
+                                                <input type="text" class="form-control form-control-sm" name="fecha_inicio" id="fecha_inicio"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
                                           </div>                                                                        
                                     </div>
 
@@ -304,8 +314,8 @@
                               <div class="form-group row justify-content-sm-center">
                                           <label for="desc_evento" class="col-sm-2 col-form-label">Fecha entrega:</label>
                                           <div class="col-sm-2">  
-                                                <div class="input-group date" id="fecha_fin">
-                                                      <input type="text" class="form-control form-control-sm" name="fecha_fin"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
+                                                <div class="input-group date" id="fecha_fin_evento">
+                                                      <input type="text" class="form-control form-control-sm" name="fecha_fin" id="fecha_fin"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
                                                 </div>                                                                        
                                           </div>
                         
@@ -349,19 +359,23 @@
                               </div>
                               
                         </form>
+                       
 
                         <script type="text/javascript">
-                   
+                              var  base_url= "<?php echo base_url();?>"
 
-                              $('#fecha_inicio').datepicker({
+                              $('#fecha_inicio_evento').datepicker({
                                     format: "yyyy-mm-dd",
                                     language: "es"
                               });
 
-                              $('#fecha_fin').datepicker({
+                              $('#fecha_fin_evento').datepicker({
                                     format: "yyyy-mm-dd",
                                     language: "es"
                               });
+
+
+                             
                         </script>
                        
 </div>
@@ -375,13 +389,13 @@
       <div class="row flex-md-column  align-items-center justify-content-center">
                   <div class="col-md-4  flex-md-column  align-items-center justify-content-center" id="registro"> 
 
-                      <div class="color3 p-4 m-2  my-3">
+                      <div class="p-4 m-2  my-3 form-shadow  bg-form-asesores">
                               
-                              <form action="<?php echo base_url();?>Cregistro/registrar" method="POST"> 
+                              <form id="form_asesores" name="form_asesores"> 
                                     
                                     <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
 
-                                          <img  class="img-fluid mr-1" width="50px;" src="<?php echo base_url();?>/public/img/edit.svg" alt="Calendar">
+                                         
                                           <p class="h5 text-center">REGISTRO DE ASESORES</p>              
 
                                     </div>      
@@ -391,7 +405,7 @@
                                           <label for="nombre_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-user mr-3" aria-hidden="true"  style="text-transform:uppercase; font-size: 30px;"></i>Nombre completo:</label>
                                                
 
-                                          <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;">
+                                          <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;" required> 
                                           <span class="text-white"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
 
                                         
@@ -402,7 +416,7 @@
 
                                           <label for="tel_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-mobile mr-3" aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
 
-                                          <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" >
+                                          <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" required>
                                           <span class="text-white"><strong><?php echo form_error('tel_usuario'); ?> </strong></span>
 
 
@@ -412,7 +426,7 @@
 
                                           <label for="clave_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>Clave:</label>
 
-                                          <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave Usuario" >
+                                          <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave Usuario" required>
                                           <span class="text-white"><strong><?php echo form_error('clave_usuario'); ?> </strong></span>
 
                                     </div>
@@ -421,11 +435,11 @@
 
                                           <label for="pass_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>PIN:</label>
 
-                                          <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Contraseña" >
+                                          <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Contraseña" required>
                                           <span class="text-white"><strong><?php echo form_error('pass_usuario'); ?> </strong></span>
 
-                                          <input type="text" name="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
-                                          <input type="text" name="rol_usuario" value="ASESOR" style="display: none;">
+                                          <input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
+                                          <input type="text" name="rol_usuario" id="rol_usuario" value="ASESOR" style="display: none;">
 
                                     </div>
 

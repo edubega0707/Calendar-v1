@@ -126,10 +126,9 @@ class Cregistro extends CI_controller
 
 		   if ($data['session']== 'ADMINISTRADOR') 
 		   {
-
-			   	
+	   	
 			   	$row=$this->Mregistro->getasesor($data['session']);	
-			   	$data['usuario']=$row->nombre_usuario;
+			   	//$data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
 			   	$data['usuarios_id_usuario']=$row->id_usuario;			
 
@@ -143,11 +142,13 @@ class Cregistro extends CI_controller
 		   {
 
 		   		$row=$this->Mregistro->getasesor($data['session']);	
-			   	$data['usuario']=$row->nombre_usuario;
+			   	//$data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
-			   	$data['usuarios_id_usuario']=$row->id_usuario;			
+			   	$data['usuarios_id_usuario']=$row->id_usuario;
 
+				$data['lista_asesores'] = $this->Mregistro->getasesores($data['sucursal_usuario']);
 
+						
 			   	$this->load->view('Calendar/vheader', $data);
 			   	$this->load->view('Calendar/vcalendar_admin');
 			   	$this->load->view('Calendar/vfooter');
@@ -158,7 +159,7 @@ class Cregistro extends CI_controller
 		   {
 
 			   	$row=$this->Mregistro->getasesor($data['session']);	
-			   	$data['usuario']=$row->nombre_usuario;
+			   	//$data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
 			   	$data['usuarios_id_usuario']=$row->id_usuario;			
 
@@ -177,6 +178,7 @@ class Cregistro extends CI_controller
 
 		}
 	}
+
 
 
 

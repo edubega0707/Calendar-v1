@@ -56,7 +56,7 @@ footer{background: #303841; display: flex; flex-direction: row nowrap; align-ite
 .bg-sesion {background: #e1f5f2; color: #222831; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 .color-error{color: #ab1212; font-size: 16px; font-family: 'Open Sans Condensed', sans-serif; }
 .width-icons{font-size: 22px; font-family: 'Open Sans Condensed', sans-serif; }
-	.width-icons i {font-size: 30px;}
+.width-icons i {font-size: 30px;}
 
 
 
@@ -65,5 +65,9 @@ footer{background: #303841; display: flex; flex-direction: row nowrap; align-ite
 
 .form-shadow{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
 
+
+/* Estilos formulario de administradores */
+
+.bg-form-asesores{background: #C4EDDE; }
 
 

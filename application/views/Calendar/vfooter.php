@@ -17,7 +17,8 @@
 
 </footer> 
 <script  type="text/javascript" src='<?php echo base_url();?>/assets/registra_usuarios.js'></script> 
-	
+<script  type="text/javascript" src='<?php echo base_url();?>/assets/registra_asesores.js'></script>
+<script  type="text/javascript" src='<?php echo base_url();?>/assets/registra_eventos.js'></script>  	
 </body>
 
 </html>

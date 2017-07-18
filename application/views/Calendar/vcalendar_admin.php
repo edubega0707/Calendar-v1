@@ -4,7 +4,7 @@
 <script type="text/javascript"> 
 
 	$(document).ready(function() {
-                  var sucursal_usuario =$('#sucursal_usuario').val();
+            var sucursal_usuario =$('#sucursal_usuario').val();
 		$.post('<?php echo base_url();?>ccalendar/getEventos',
                   {
                         sucursal_usuario:sucursal_usuario
@@ -24,7 +24,8 @@
 				eventLimit: true, // allow "more" link when too many events
 				events: $.parseJSON(data),
 
-				eventClick: function(event, jsEvent, view){
+                        eventClick: function(event, jsEvent, view)
+                        {
 					 $('#modalEvento').modal();
 					 var id= event.id;	
 					

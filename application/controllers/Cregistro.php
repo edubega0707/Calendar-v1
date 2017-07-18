@@ -47,11 +47,13 @@ class Cregistro extends CI_controller
 		{
 			$param['id_usuario']="usr".DATE('Ymdhis');
 			$param['nombre_usuario']=$this->input->post('nombre_usuario');
+			$param['rol_usuario']=$this->input->post('rol_usuario');
+			$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
 			$param['tel_usuario']=$this->input->post('tel_usuario');
 			$param['clave_usuario']=$this->input->post('clave_usuario');
 			$param['pass_usuario']=$this->input->post('pass_usuario');
-			$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
-			$param['rol_usuario']=$this->input->post('rol_usuario');
+			
+			
 
 
              $res=$this->Mregistro->registrar($param);

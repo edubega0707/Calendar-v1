@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1.0, maximum-scale=1.0, minimum-sacale=1.0">
 
 	<link href="https://fonts.googleapis.com/css?family=Khula|Lato" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans|Roboto+Slab" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/libs/bootstrap-datepicker/css/bootstrap-datepicker.css">

@@ -51,7 +51,7 @@ class Cregistro extends CI_controller
 			$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
 			$param['tel_usuario']=$this->input->post('tel_usuario');
 			$param['clave_usuario']=$this->input->post('clave_usuario');
-			$param['pass_usuario']=$this->input->post('pass_usuario');
+			$param['pass_usuario']=md5($this->input->post('pass_usuario'));
 			
 			
 
@@ -115,9 +115,7 @@ class Cregistro extends CI_controller
 	}
 
 
-
 	function enter()
-
 	{
 		$data['session']=$this->session->userdata('username');
 
@@ -159,7 +157,7 @@ class Cregistro extends CI_controller
 		   {
 
 			   	$row=$this->Mregistro->getasesor($data['session']);	
-			   	//$data['usuario']=$row->nombre_usuario;
+			   	$data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
 			   	$data['usuarios_id_usuario']=$row->id_usuario;			
 

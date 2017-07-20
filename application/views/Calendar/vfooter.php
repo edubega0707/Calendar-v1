@@ -1,5 +1,5 @@
 
- <footer class="container-fluid">
+ <footer class="container-fluid mt-5">
 	
 		<div class="row  bg-inverse text-white flex-row justify-content-center align-items-center ">
 			<div class="col-md-4 col-sm-4 text-center my-1">

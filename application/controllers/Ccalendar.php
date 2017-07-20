@@ -89,38 +89,4 @@ class Ccalendar extends CI_controller
 
 
 
-	// public function updEvento(){
-
-	// 	       $param['id']= $this->input->post('id');
-
- 	//         $param['fecini']= $this->input->post('fecini');
-
-	//         $param['fecfin']= $this->input->post('fecfin');
-
-
-
- 	//         $r=$this->Mcalendar->updEvento($param);
-
- 	//         echo $r;
-
-
-
-	// }
-
-
-
-	// public function deleteEvento(){
-
-	// 	$id=$this->input->post('id');
-
-	// 	$r=$this->Mcalendar->deleteEvento($id);
-
-	// 	echo  $r;
-
-
-
-	// }
-
-
-
  ?>

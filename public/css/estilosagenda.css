@@ -65,9 +65,16 @@ footer{background: #303841; display: flex; flex-direction: row nowrap; align-ite
 
 .form-shadow{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
 
+.nav-registros{font-family: 'Roboto Slab', serif;   font-size: 14px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+
+.enlaces-registros{color: #fff;}
+  .enlaces-registros a{color:#222831; font-weight: 5px;}
+  .enlaces-registros a:hover{background:#EEEEEE; color:#222831; }
 
 /* Estilos formulario de administradores */
 
 .bg-form-asesores{background: #C4EDDE; }
-
-
+/* 
+Registro de oficinas */
+.bg-registro-oficina{background: #3EC1D3;}
+ /* Final de estilos de registro de oficinas */

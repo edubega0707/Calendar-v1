@@ -1,5 +1,29 @@
 
 
+ <!-- Seccion de menu para las opciones de registro -->
+
+ <div class="container">
+      <nav class="navbar  navbar-toggleable-md  nav-registros " >
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                  <img src="<?php echo base_url();?>/public/img/calendar.svg" width="40" height="40" class="d-inline-block align-top" alt="">            
+            </a>
+            <div class="collapse navbar-collapse " id="navbarTogglerDemo01">  
+                  <div class="navbar-nav mr-auto ml-auto enlaces-registros">
+                        <a class="nav-item nav-link d-md-flex flex-md-row  justify-content-center align-items-center mr-2 px-2 rounded" href="#"><i class="fa fa-calendar mr-1" aria-hidden="true"></i>CALENDARIO </a>
+                        <a class="nav-item nav-link d-md-flex flex-md-row  justify-content-center align-items-center mr-2 px-2 rounded" href="#"><i class="fa fa-user-plus mr-1" aria-hidden="true"></i>REGISTRO DE USUARIOS</a>
+                        <a class="nav-item nav-link d-md-flex flex-md-row  justify-content-center align-items-center mr-2 px-2 rounded" href="#"><i class="fa fa-building mr-1" aria-hidden="true"></i>REGISTRO DE OFICINAS</a>               
+                        <a class="nav-item nav-link d-md-flex flex-md-row  justify-content-center align-items-center mr-2 px-2 rounded" href="#"><i class="fa fa-tablet mr-1" aria-hidden="true"></i>REGISTRO DE TABLETAS</a>
+                        <a class="nav-item nav-link d-md-flex flex-md-row  justify-content-center align-items-center mr-2 px-2 rounded" href="#"><i class="fa fa-plus-square mr-1" aria-hidden="true"></i>REGISTRO DE BIOMETRICOS</a>
+                  </div>                              
+            </div>
+      </nav>
+ </div>
+      
+ <!-- Fin de  menu de seccion de admin_general -->
+ 
  <div class="container my-5">
        <div class="row justify-content-sm-center my-3 ">
              <h4 id="titulo_historial">CALENDARIO DE PRESTAMO DE TABLETA</h4>
@@ -278,7 +302,7 @@
 
 
 <!-- FORMULARIO DE REGISTRO DE USUARIOS -->
-<section class="container">
+<section class="container mb-3">
       <div class="row flex-md-column  align-items-center justify-content-center">
       <div class="col-md-8  flex-md-column  align-items-center justify-content-center" id="registro"> 
       
@@ -290,7 +314,7 @@
            
                   <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
 
-                        <img  class="img-fluid  mr-3" width="50px;" src="<?php echo base_url();?>/public/img/edit.svg" alt="Calendar">
+                        <img  class="img-fluid  mr-3" width="50px;" src="<?php echo base_url();?>/public/img/user.svg" alt="Usuarios">
 
                         <p class="h5 text-center">REGISTRO DE USUARIOS</p>
                                   
@@ -390,8 +414,243 @@
       </div>
       
 
-</div>
+      </div>
 </section>
-
-
 <!-- FIN DE FORMULARIO DE REGISTRO DE USUARIOS -->
+
+<!-- FORMULARIO DE REGISTRO DE OFICINAS -->
+<section class="container-fluid mb-3 ">     
+      <div class="row flex-md-column  align-items-center justify-content-center">
+      <div class="col-md-6  flex-md-column  align-items-center justify-content-center" id="registro">    
+       <div class="p-4 m-2  my-3 form-shadow">
+
+              <form id="form_registro_oficina" name="form_registro_oficina">         
+                  <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
+                         <img  class="img-fluid  mr-3" width="50px;" src="<?php echo base_url();?>/public/img/building.svg" alt="Usuarios">
+                        <p class="h5 text-center">REGISTRO DE OFICINAS</p>                        
+                  </div>
+                     <hr class="hr_p2 my-5">
+                     
+                  <div class="form-group row ">      
+                        <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-globe mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar ubicación:</label>
+                        <div class="col-12 col-sm-6 col-md-7">
+                              <select class="form-control form-control-sm " id="ubicacion_oficina" name="ubicacion_oficina" required>
+                              <option value="Todo México">Todo México</option>
+                                        <option value="Aguascalientes">Aguascalientes</option>
+                                        <option value="Baja California">Baja California</option>
+                                        <option value="Baja California Sur">Baja California Sur</option>
+                                        <option value="Campeche">Campeche</option>
+                                        <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+                                        <option value="Colima">Colima</option>
+                                        <option value="Chiapas">Chiapas</option>
+                                        <option value="Chihuahua">Chihuahua</option>
+                                        <option value="Distrito Federal">Distrito Federal</option>
+                                        <option value="Durango">Durango</option>
+                                        <option value="Guanajuato">Guanajuato</option>
+                                        <option value="Guerrero">Guerrero</option>
+                                        <option value="Hidalgo">Hidalgo</option>
+                                        <option value="Jalisco">Jalisco</option>
+                                        <option value="México">México</option>
+                                        <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+                                        <option value="Morelos">Morelos</option>
+                                        <option value="Nayarit">Nayarit</option>
+                                        <option value="Nuevo León">Nuevo León</option>
+                                        <option value="Oaxaca">Oaxaca</option>
+                                        <option value="Puebla">Puebla</option>
+                                        <option value="Querétaro">Querétaro</option>
+                                        <option value="Quintana Roo">Quintana Roo</option>
+                                        <option value="San Luis Potosí">San Luis Potosí</option>
+                                        <option value="Sinaloa">Sinaloa</option>
+                                        <option value="Sonora">Sonora</option>
+                                        <option value="Tabasco">Tabasco</option>
+                                        <option value="Tamaulipas">Tamaulipas</option>
+                                        <option value="Tlaxcala">Tlaxcala</option>
+                                        <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
+                                        <option value="Yucatán">Yucatán</option>
+                                        <option value="Zacatecas">Zacatecas</option>                                          
+                                     </select> 
+                        </div>
+                       
+                  </div>
+
+                  <div class="form-group row">
+                        <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-map-marker mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Direccion de la oficina:</label>
+                        <div class="col-12 col-sm-6 col-md-7">  
+                              <textarea class="form-control form-control-sm" id="direccion_oficina" name="direccion_oficina" rows="5" placeholder="Direccion de la oficina" required style="text-transform:uppercase;"></textarea>                                
+                        </div>
+                        <span class="color-error  text-center"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>   
+                  </div>
+
+                  <div class="form-group row">
+
+                        <label for="tel_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-phone mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefono oficina:</label>
+                        <div class="col-12 col-sm-6 col-md-7"> 
+                            <input type="text" class="form-control form-control-sm" id="telefono_oficina" name="telefono_oficina" placeholder="Telefono Oficina" required >  
+                        </div>
+                  
+                  </div>
+
+                  <div class="form-group row">
+
+                        <label for="clave_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user mr-3" aria-hidden="true" style="font-size: 30px;"></i>Jefe de oficina:</label>
+                         <div class="col-12 col-sm-6 col-md-7"> 
+                             <input type="text" class="form-control form-control-sm" id="jefe_oficina" name="jefe_oficina" placeholder="Oficina" required>
+                        </div>         
+
+                  </div>
+             
+                 <div class="d-flex flex-row justify-content-center align-items-center text-white mt-3" >
+
+                        <div class="d-flex flex-column justify-content-center align-items-center text-white">
+
+                              <button type="submit" class="btn  btn-success" id="registrar_oficina">Registrar</button>
+
+                        </div>
+
+                  </div>
+
+      
+             </form>
+             <script>
+                var  base_url= "<?php echo base_url();?>"
+             </script>
+      
+      </div>
+
+      </div>
+      
+
+      </div>
+</section>
+<!-- FIN DE FORMULARIO DE OFICINAS -->
+
+<!-- FORMULARIO DE REGISTRO DE EQUIPOS -->
+<section class="container mb-3">
+      <div class="row flex-md-row  align-items-center justify-content-around ">
+            <div class="col-md-6  flex-md-column  align-items-center justify-content-center" id="registro"> 
+            
+                  <div class="p-4 m-2  my-3 form-shadow">
+
+                        <form id="form_registro_tableta" name="form_registro_tableta">
+                  
+                              <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
+
+                                    <img  class="img-fluid  mr-3" width="50px;" src="<?php echo base_url();?>/public/img/tablet.svg" alt="Calendar">
+
+                                    <p class="h5 text-center">REGISTRO DE TABLETA</p>
+                                          
+
+                              </div>
+                              <hr class="hr_p2 my-5">       
+
+                              <div class="form-group row">
+                                    <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-tablet mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Marca tableta:</label>
+                                    <div class="col-12 col-sm-6 col-md-7">
+                                    <input type="text" class="form-control form-control-sm" id="marca_tableta" name="marca_tableta" placeholder="Marca tableta"  style="text-transform:uppercase;" required>
+                                    </div>
+                                                
+                              </div>
+
+                              <div class="form-group row ">
+                                    <label for="rol_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-circle-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar Color:</label>
+                                    <div class="col-12 col-sm-6 col-md-7" >
+                                          <select class="form-control form-control-sm" id="color_tableta" name="color_tableta" required>
+                                          <option>SELECCIONAR COLOR </option>
+                                          <option value="BLANCO">BLANCO</option>
+                                          <option value="NEGRO">NEGRO</option> 
+                                          <option value="NEGRO">GRIS</option>                                           
+                                    </select>
+                                    </div>                     
+                              </div>
+                              <div class="form-group row">
+                                    <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Descripcion del equipo:</label>
+                                    <div class="col-12 col-sm-6 col-md-7">  
+                                          <textarea class="form-control form-control-sm" id="descripcion_tableta" name="descripcion_tableta" rows="5" placeholder="Descripcion del equipo" required style="text-transform:uppercase;"></textarea>                                
+                                    </div>
+                                    
+                              </div>
+
+
+                              <div class="d-flex flex-row justify-content-center align-items-center text-white mt-3" >
+
+                                    <div class="d-flex flex-column justify-content-center align-items-center text-white">
+
+                                          <button type="submit" class="btn  btn-primary" id="registrar">Registrar</button>
+
+                                    </div>
+
+                              </div>
+
+                  
+                        </form>
+            
+                  </div>
+
+            </div>
+
+             <div class="col-md-6  flex-md-column  align-items-center justify-content-center" id="registro"> 
+                  <div class="p-4 m-2  my-3 form-shadow">
+                        <form id="form_registro_biometrico" name="form_registro_biometrico">
+                  
+                              <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
+
+                                    <img  class="img-fluid  mr-3" width="50px;" src="<?php echo base_url();?>/public/img/add.svg" alt="Calendar">
+
+                                    <p class="h5 text-center">REGISTRO DE BIOMETRICO</p>
+                                          
+
+                              </div>
+                              <hr class="hr_p2 my-5">
+                                    
+                                    <div class="form-group row">
+                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-cube mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Marca biometrico:</label>
+                                          <div class="col-12 col-sm-6 col-md-7">
+                                          <input type="text" class="form-control form-control-sm" id="marca_biometrico" name="marca_biometrico" placeholder="Marca biometrico"  style="text-transform:uppercase;" required>
+                                          </div>
+                                                
+                                    </div>
+
+                                    <div class="form-group row ">
+                                          <label for="rol_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-circle-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Color biometrico:</label>
+                                          <div class="col-12 col-sm-6 col-md-7" >
+                                                <select class="form-control form-control-sm" id="color_tableta" name="color_tableta" required>
+                                                <option>SELECCIONAR COLOR </option>
+                                                <option value="BLANCO">BLANCO</option>
+                                                <option value="NEGRO">NEGRO</option> 
+                                                <option value="NEGRO">GRIS</option>                                           
+                                          </select>
+                                          </div>                     
+                                    </div>
+                                    <div class="form-group row">
+                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Descripcion del equipo:</label>
+                                          <div class="col-12 col-sm-6 col-md-7">  
+                                                <textarea class="form-control form-control-sm" id="descripcion_biometrico" name="descripcion_biometrico" rows="5" placeholder="Descripcion del equipo" required style="text-transform:uppercase;"></textarea>                                
+                                          </div>
+                                          
+                                    </div>
+
+                  
+                  
+
+
+                              <div class="d-flex flex-row justify-content-center align-items-center text-white mt-3" >
+
+                                    <div class="d-flex flex-column justify-content-center align-items-center text-white">
+
+                                          <button type="submit" class="btn  btn-primary" id="registrar_biometrico">Registrar</button>
+
+                                    </div>
+
+                              </div>
+
+                  
+                        </form>
+
+                  </div>
+            </div>
+
+      </div>
+</section>
+<!-- FIN DE FORMULARIO DE EQUIPOS-->
+
+

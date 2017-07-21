@@ -27,6 +27,9 @@
 	<script  type="text/javascript" src='<?php echo base_url();?>/assets/fullcalendar/fullcalendar.js'></script> 
 	<script  type="text/javascript" src='<?php echo base_url();?>/assets/fullcalendar/locale/es.js'></script>
 	<script  type="text/javascript" src="<?php echo base_url();?>/public/js/jquery-confirm.min.js"></script>
+	<script  type="text/javascript" src="<?php echo base_url();?>/public/js/smooth-scroll.min.js"></script>
+
+	
 	 
 	
 	<style>
@@ -46,7 +49,7 @@
 	
 
 </head>
-<body>
+<body >
 	<div class="container-fluid header ">
 		<div class="row justify-content-center">
 				<div class="col-md-3 col-sm-3 col-12 logo"><img src="<?php echo base_url();?>/public/img/logo.png"></div>

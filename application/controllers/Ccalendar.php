@@ -21,7 +21,6 @@ class Ccalendar extends CI_controller
 
 		$param['idEvento']="event".DATE('Ymdhis');
 		$param['nombre_asesor']=$this->input->post('nombre_asesor');
-		//$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
 		$param['des_evento']=$this->input->post('desc_evento');
 		$param['fecInicio']=$this->input->post('fecha_inicio');
 		$param['fecFin']=$this->input->post('fecha_fin');
@@ -84,6 +83,37 @@ class Ccalendar extends CI_controller
 		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color);
 		echo $evento;
 	}
+
+
+	public function insert_admin()
+	{   
+	
+
+		$param_oficina['nombre_oficina']=$this->input->post('nombre_oficina');
+		$param_oficina['ubicacion_oficina']=$this->input->post('ubicacion_oficina');
+		$param_oficina['direccion_oficina']=$this->input->post('direccion_oficina');
+		$param_oficina['telefono_oficina']=$this->input->post('telefono_oficina');
+		$param_oficina['jefe_oficina']=$this->input->post('jefe_oficina');
+
+	
+		$param_tableta['marca_tableta']=$this->input->post('marca_tableta');
+		$param_tableta['color_tableta']=$this->input->post('color_tableta');
+		$param_tableta['descripcion_tableta']=$this->input->post('descripcion_tableta');
+		
+
+		$param_biometrico['marca_biometrico']=$this->input->post('marca_biometrico');
+		$param_biometrico['color_biometrico']=$this->input->post('color_biometrico');
+		$param_biometrico['descripcion_biometrico']=$this->input->post('descripcion_biometrico');
+		
+
+
+		$this->Mcalendar->insert_oficinas($param_oficina);
+		$this->Mcalendar->insert_tabletas($param_tableta);
+		$this->Mcalendar->insert_biometrico($param_biometrico);
+
+	}
+
+
 
 }
 

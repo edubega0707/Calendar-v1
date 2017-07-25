@@ -23,6 +23,9 @@
             'fecFin'=>$param['fecFin'],
             'hora_inicio'=>$param['hora_inicio'].':00',
             'hora_fin'=>$param['hora_fin'].':00',
+            'tableta_evento'=>$param['tableta_evento'],
+            'biometrico_evento'=>$param['biometrico_evento'],
+            'folio_evento'=>$param['folio_evento'],
             'evento_color'=>'#E85B48',  
             'status'=>'PENDIENTE',
             'usuarios_id_usuario'=>$param['usuarios_id_usuario'] 
@@ -66,7 +69,7 @@
 
              return   $this->db->insert('Oficinas', $campos); 
     }
-
+ 
 
 
     // Modelo para insertar registros en las tabletas
@@ -99,7 +102,26 @@
             );
 
         return   $this->db->insert('biometrico', $campos);  
+    }
+
+
+
+    public function modificar_status_tableta($id_tableta,$status)
+    {
+        $this->db->set('status_tableta', $status);
+        $this->db->where('id_tableta', $id_tableta);
+        $evento= $this->db->update('Tableta');
+        return $evento;
+    } 
+
+       public function modificar_status_biometrico($id_biometrico,$status)
+    {
+        $this->db->set('status_tableta', $status);
+        $this->db->where('id_biometrico', $id_biometrico);
+        $evento= $this->db->update('biometrico');
+        return $evento;
     }            
+           
 
 
  } 

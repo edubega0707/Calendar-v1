@@ -366,14 +366,11 @@
                         <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
                         <div class="col-12 col-sm-6 col-md-7">
                               <select class="form-control form-control-sm " id="sucursal_usuario" name="sucursal_usuario" required>
-                              <option>SELECCIONAR SUCURSAL</option>
-                              <option value="PACHUCA">PACHUCA</option>
-                              <option value="PACHUCAII">PACHUCAII</option>
-                              <option value="SATELITE">SATELITE</option>
-                              <option value="CD_AZTECA">CD AZTECA</option>
-                              <option value="PUEBLA">PUEBLA</option>
-                              <option value="SAN_LUIS_POTOSI">SAN LUIS POTOSI</option>                                           
-                        </select> 
+                               <?php foreach ($lista_oficinas as $oficinas): ?>
+                                    <option><?php echo $oficinas['nombre_oficina']; ?></option>                                                   
+                               <?php endforeach; ?> 
+
+                              </select> 
                         </div>
                        
                   </div>

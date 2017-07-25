@@ -6,7 +6,7 @@
  
 	<meta charset="UTF-8">
 
-	<title>Registro  de Usuario de tableta</title>
+	<title>SISTEMA PARA EL REGISTRO DE TABLETA</title>
 
 </head>
 
@@ -26,7 +26,6 @@
 	<link href='<?php echo base_url();?>/assets/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print'/>
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/estilosagenda.css">
-
 
 
 
@@ -93,85 +92,6 @@
 </section >
 
 
-<!-- 
-<section class="container" >
-
-	<script type="text/javascript">
-
-	$(document).ready(function() {
-
-		$.post('<?php echo base_url();?>ccalendar/getEventos',  
-
-			function(data){
-
-				$('#calendar').fullCalendar({
-
-					header: {
-						left: 'prev,next today',
-						center: 'title',
-						right: 'month,basicWeek,basicDay'
-
-					},
-
-				defaultDate: new Date(),
-				navLinks: true, // can click day/week names to navigate views
-				editable: false,
-				eventLimit: true, // allow "more" link when too many events
-				events: $.parseJSON(data),
-
-
-
-				eventClick: function(event, jsEvent, view){
-
-					 $('#modalEvento').modal();
-
-					 var id= event.id;					
-
-					 $.post("<?php echo base_url();?>Ccalendar/mostrar_evento",
-						{
-							id:id							
-						},
-
-						function(data){
-
-							var c=JSON.parse(data);								
-
-							$.each(c,function(i,item){
-
-								$('#nom_asesor').val(item.nombre_asesor);
-								$('#des_event').val(item.des_evento);
-								$('#fec_inic').val(item.fecInicio);
-								$('#fec_fin').val(item.fecFin);
-								$('#hora_inic').val(item.hora_inicio);
-								$('#hora_finic').val(item.hora_fin);							
-								$('#status_evento').val(item.status);
-
-							});
-
-						});
-				}				
-
-			});
-
-			});
-
-		
-	});
-
-
-
-</script>
-
-
-
-<div id='calendar'>
-
-	
-
-</div> -->
-
-
-
 <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
 	<div class="modal-dialog" role="document">
@@ -205,12 +125,11 @@
 
 								<div class="form-group">
 
-									<label for="des_event">Descripción:</label>
+									<label for="des_event">Descripción del movimiento:</label>
 
 									<textarea class="form-control form-control-sm" id="des_event" rows="3" ></textarea>
 
-								</div>      					
-
+								</div> 
 
 
 								<div class="form-group row justify-content-sm-center">
@@ -317,7 +236,7 @@
 
 				<div class="d-flex flex-column justify-content-center align-items-center my-2" >
 
-					<p class="h4">Iniciar Sesion</p>
+					<p class="h4">Iniciar Sesión</p>
 
 				</div>
 

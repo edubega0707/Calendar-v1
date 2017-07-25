@@ -11,6 +11,14 @@
                     var select_hora_inicio=$('#select_hora_inicio').val();
                     var fecha_fin=$('#fecha_fin').val();
                     var select_hora_fin=$('#select_hora_fin').val();
+                    var tableta_evento=$('#select_asesor_tableta').val();
+                    var biometrico_evento=$('#select_asesor_biometrico').val();
+                    var folio_evento=$('#folio_tys_evento').val();
+
+                  //   var id_tableta=$('#select_asesor_tableta').val();
+                  //   var id_biometrico=$('#select_asesor_biometrico').val();
+                  //   var status='OCUPADA';
+                    
                     
                   $.post( base_url+'Ccalendar/insert_event_admin', 
                   { 
@@ -21,7 +29,13 @@
                         fecha_inicio:fecha_inicio,
                         select_hora_inicio:select_hora_inicio,
                         fecha_fin:fecha_fin,
-                        select_hora_fin:select_hora_fin
+                        select_hora_fin:select_hora_fin,
+                        tableta_evento:tableta_evento,
+                        biometrico_evento:biometrico_evento,
+                        folio_evento:folio_evento
+                              // id_tableta:id_tableta,
+                              // id_biometrico:id_biometrico,
+                              // status:status
 
                   }, 
                   function() 
@@ -53,6 +67,7 @@
 
     $('#form_eventos').submit(function(e)
                     {
+                        
                         e.preventDefault()
 
                         $.confirm
@@ -86,7 +101,9 @@
                                     
                                 }
                                     
-                        });  
+                        });
+                        
+
 
                     })   
             

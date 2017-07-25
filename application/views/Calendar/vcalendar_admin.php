@@ -255,11 +255,44 @@
                               <div class="form-group row justify-content-sm-center">
                                     <label for="select_status" class="col-sm-2 col-form-label">Seleccionar asesor:</label>
                                     <select class="form-control form-control-sm col-sm-6" id="select_asesor_evento" name="select_asesor_evento">
-                                         <?php foreach ($lista_asesores as $asesor): ?>
+                                         <option>Seleccionar asesor</option> 
+                                         <?php foreach ($lista_asesores as $asesor): ?>             
                                                 <option><?php echo $asesor['nombre_usuario']; ?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
                               </div>
+
+                              <!-- Inicio Seleccionar tableta Y biometrico -->
+                              <div class="form-group row justify-content-sm-center">
+                                    <label for="select_status" class="col-sm-2 col-form-label">Seleccionar tableta:</label>
+                                    <select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
+                                         <option>Seleccionar tableta</option>
+                                         <?php foreach ($lista_tableta as $tableta): ?>                                              
+                                                <option value='<?php echo $tableta['id_tableta'];?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
+                                           <?php endforeach; ?>  							
+                                    </select>
+
+                                     <label for="select_status" class="col-sm-2 col-form-label">Seleccionar Biometrico:</label>
+                                    <select class="form-control form-control-sm col-sm-2" id="select_asesor_biometrico" name="select_asesor_biometrico">
+                                         <option>Seleccionar biometrico</option>
+                                         <?php foreach ($lista_biometrico as $biometrico): ?>
+                                               
+                                                <option value="<?php echo $biometrico['id_biometrico']; ?>"><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
+                                           <?php endforeach; ?>  							
+                                    </select>
+
+                              </div>
+                              <!-- Fin de  Seleccionar tableta y biometrico -->
+
+                              <!-- Fin de Select Biometrico -->
+                              <div class="form-group row justify-content-sm-center">
+                                 <div class="alert alert-info col-sm-8" role="alert">
+                                    <strong>Prestamo tableta</strong> This alert needs your attention, but it's not super important.
+                                 </div> 
+
+                              </div>
+                             
+                            
 
                               <div class="form-group row justify-content-sm-center">
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Descripción:</label>
@@ -269,6 +302,14 @@
                                     <input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
                                     <input type="text" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
+                              
+                              <div class="form-group row justify-content-sm-center">  
+                                 <label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS:</label>
+                                 <div class="col-sm-6">
+                                      <input type="text" class="form-control form-control-sm" id="folio_tys_evento" placeholder="Folio TYS" >
+                                 </div>                                
+                              </div> 
+
                         
                               <div class="form-group row justify-content-sm-center">
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
@@ -280,7 +321,7 @@
 
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Hora solicitud:</label>
                                     <div class="col-sm-2">  
-                                          <select class="form-control form-control-sm" id="select_hora_inicio" name="select_hora_inicio" required>
+                                          <select class="form-control form-control-sm" id="select_hora_inicio" name="select_hora_inicio" placeholder="Fecha Inicio" required>
                                                  <option>00:00</option>
                                                  <option>01:00</option>
                                                  <option>02:00</option>

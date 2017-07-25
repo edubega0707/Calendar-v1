@@ -4,7 +4,7 @@
 
  
 class Mregistro extends CI_Model
-{ 
+{  
 
 	public function registrar($param)
         {
@@ -60,12 +60,36 @@ class Mregistro extends CI_Model
 		}
 	}
 
+
 	public function getasesores($sucursal)
 	{
 		$this->db->where('sucursal_usuario',  $sucursal);
 		$this->db->where('rol_usuario', 'ASESOR');
 		$query=$this->db->get('usuarios');
          return $query->result_array();
+	}
+
+
+	public function gettableta()
+	{
+		
+		$this->db->where('status_tableta', 'DISPONIBLE');
+		$query=$this->db->get('Tableta');
+         return $query->result_array();
+	}
+
+	public function getbiometrico()
+	{
+		$this->db->where('status_biometrico', 'DISPONIBLE');
+		$query=$this->db->get('biometrico');
+        return $query->result_array();
+
+	}
+
+	public function getoficinas()
+	{
+		$query=$this->db->get('Oficinas');
+        return $query->result_array();
 	}
 	
 }

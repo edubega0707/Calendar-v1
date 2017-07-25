@@ -49,7 +49,8 @@
 
 						});
 
-				}				
+                        }
+                        				
 			});
 			});
 		
@@ -85,8 +86,27 @@
        					<div class="form-group">
        						<label for="des_event">Descripción:</label>
        						<textarea class="form-control form-control-sm" id="des_event" rows="3" ></textarea>
-       					</div>      					
+       					</div>
+                                </fieldset>
+                                    <div class="form-group row justify-content-sm-center">
+                                          <label for="select_status" class="col-sm-3 col-form-label">Seleccionar tableta:</label>
+                                          <select class="form-control form-control-sm col-sm-3" id="select_asesor_tableta_modal" name="select_asesor_tableta_modal">
+                                          <option>Sel tableta</option>
+                                                <?php foreach ($lista_tableta as $tableta): ?>                                              
+                                                            <option value='<?php echo $tableta['id_tableta']; ?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
+                                                      <?php endforeach; ?>  							
+                                                </select>
 
+                                          <label for="select_status" class="col-sm-3 col-form-label">Seleccionar Biometrico:</label>
+                                          <select class="form-control form-control-sm col-sm-3" id="select_asesor_biometrico_modal" name="select_asesor_biometrico_modal">
+                                                <option>Sel biometrico</option>
+                                                <?php foreach ($lista_biometrico as $biometrico): ?>
+                                                      
+                                                            <option value="<?php echo $biometrico['id_biometrico']; ?>"><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
+                                                <?php endforeach; ?>  							
+                                          </select>
+                                    </div>      					
+                              <fieldset disabled>
        					<div class="form-group row justify-content-sm-center">
        						<label for="fec_inic" class="col-sm-3 col-form-label">Fecha solicitud:</label>
        						<div class="col-sm-4">	
@@ -119,7 +139,7 @@
        							<input type="text" class="form-control form-control-sm" id="status_evento" >
        						</div>
        					</div>
-                        </fieldset>
+                               </fieldset>
 
        					<div class="form-group row justify-content-sm-center">
        						<label for="select_status" class="col-sm-4 col-form-label">Cambiar Status: </label>
@@ -127,7 +147,8 @@
        			
        							<option>PENDIENTE</option>
        							<option>ACEPTADO</option>
-       							<option>RECHAZADO</option>       							
+       							<option>RECHAZADO</option>
+                                                <option>FINALIZADO</option>        							
        						</select>
        					</div>
 
@@ -148,6 +169,9 @@
                                                       var id=$('#id_Evento').val();
                                                       var status=$('#select_status').val();
                                                       var color='';
+                                                      var tableta_evento=$('#select_asesor_tableta_modal').val();
+                                                      var biometrico_evento=$('#select_asesor_biometrico_modal').val();
+
 
                                                       switch(status)
                                                       {
@@ -158,11 +182,26 @@
                                                                   color='#C50000';
                                                             break;
                                                             case 'ACEPTADO':
-                                                            color='#A5F2E7';
+                                                                 color='#A5F2E7';
+                                                               
+
+                                                                   $.post( base_url+'Ccalendar/modificar_status_eventos', 
+                                                                        { 
+                                                                           tableta_evento:tableta_evento,
+                                                                           biometrico_evento:biometrico_evento                                                                                                
+                                                                        }, 
+                                                                        function() 
+                                                                        {
+                                                                              console.log("hola");
+                                                                        })
+                                                            
+                                                            break;
+                                                            case 'FINALIZADO':
+                                                                 color='#A5F2E7';
                                                             break;
 
                                                       }
-                                                      var data = '&status='+status+'&id='+id+'&color='+color;
+                                                      var data = '&status='+status+'&id='+id+'&color='+color+'&tableta_evento='+tableta_evento+'&biometrico_evento='+biometrico_evento;
                                                                                                 
                                                       $.ajax
                                                       ({  
@@ -351,17 +390,17 @@
 
 
                               <div class="form-group row justify-content-sm-center">
-                                          <label for="desc_evento" class="col-sm-2 col-form-label">Fecha entrega:</label>
+                                          <label for="fecha_fin" class="col-sm-2 col-form-label">Fecha entrega:</label>
                                           <div class="col-sm-2">  
                                                 <div class="input-group date" id="fecha_fin_evento">
                                                       <input type="text" class="form-control form-control-sm" name="fecha_fin" id="fecha_fin"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
                                                 </div>                                                                        
                                           </div>
                         
-                                    <label for="desc_evento" class="col-sm-2 col-form-label">Hora entrega:</label required>
+                                    <label for="select_hora_fin" class="col-sm-2 col-form-label">Hora entrega:</label required>
                                     <div class="col-sm-2">
                                           <select class="form-control form-control-sm" id="select_hora_fin" name="select_hora_fin">
-                                             <option>00:00</option>
+                                                 <option>00:00</option>
                                                  <option>01:00</option>
                                                  <option>02:00</option>
                                                  <option>03:00</option>

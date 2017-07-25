@@ -1,11 +1,8 @@
- 
  $(document).ready(function()
             {
             function registra_eventos()
             {
-                    var nombre_asesor=$('#select_asesor_evento').val();
-                    var tableta_evento=$('#select_asesor_tableta').val();
-                    var biometrico_evento=$('#select_asesor_biometrico').val();
+                    var nombre_asesor=$('#nombre_asesor').val();
                     var des_evento=$('#desc_evento').val();                                     
                     //var sucursal_usuario=$('#sucursal_usuario').val();
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val();
@@ -17,20 +14,18 @@
                     
                     
                     
-                 $.post( base_url+'Ccalendar/insert_event_admin', 
+                  $.post( base_url+'Ccalendar/insert_event', 
                   { 
                         nombre_asesor: nombre_asesor,
-                        tableta_evento:tableta_evento,
-                        biometrico_evento:biometrico_evento,
                         des_evento: des_evento, 
                        // sucursal_usuario:sucursal_usuario,
                         usuarios_id_usuario:usuarios_id_usuario,
                         folio_evento:folio_evento,
                         fecInicio:fecInicio,
                         hora_inicio:hora_inicio,
-                        hora_fin:hora_fin,
-                        fecFin:fecFin
-                             
+                        fecFin:fecFin,
+                        hora_fin:hora_fin
+                                                   
                   }, 
                   function() 
                   {
@@ -58,7 +53,7 @@
             }
 
 
-    $('#form_eventos').submit(function(e)
+    $('#form_registra_evento_asesor').submit(function(e)
                     {
                         
                         e.preventDefault()
@@ -81,7 +76,7 @@
                                           action: function()
                                           {
                                                 registra_eventos();
-                                                $('#form_eventos')[0].reset();  
+                                                $('#form_registra_evento_asesor')[0].reset();  
                                                 location.href =base_url+'Cregistro/enter';  
                                           }
                                     },

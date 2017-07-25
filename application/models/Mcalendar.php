@@ -11,7 +11,7 @@
  		
  		return $this->db->get()->result();
  	}
-
+ 
     public function insert($param)
     {
         $campos = array( 
@@ -22,9 +22,30 @@
             'fecInicio'=>$param['fecInicio'],
             'fecFin'=>$param['fecFin'],
             'hora_inicio'=>$param['hora_inicio'].':00',
-            'hora_fin'=>$param['hora_Fin'].':00',
+            'hora_fin'=>$param['hora_fin'].':00',
             'tableta_evento'=>$param['tableta_evento'],
             'biometrico_evento'=>$param['biometrico_evento'],
+            'folio_evento'=>$param['folio_evento'],
+            'evento_color'=>'#A5F2E7',  
+            'status'=>'ACEPTADO',
+            'usuarios_id_usuario'=>$param['usuarios_id_usuario'] 
+
+            );
+
+        return   $this->db->insert('eventos', $campos); 
+
+    } 
+
+    public function insert_event_asesor($param)
+    {
+        $campos = array( 
+            'idEvento'=>$param['idEvento'],       
+            'nombre_asesor'=>$param['nombre_asesor'],
+            'des_evento'=>$param['des_evento'],
+            'fecInicio'=>$param['fecInicio'],
+            'fecFin'=>$param['fecFin'],
+            'hora_inicio'=>$param['hora_inicio'].':00',
+            'hora_fin'=>$param['hora_fin'].':00',
             'folio_evento'=>$param['folio_evento'],
             'evento_color'=>'#E85B48',  
             'status'=>'PENDIENTE',
@@ -34,7 +55,7 @@
 
         return   $this->db->insert('eventos', $campos); 
 
-    }     
+    }      
 
     public function consulta_evento($id)
     {            
@@ -42,10 +63,12 @@
         return $consulta->result();
     }
 
-    public function modificar_evento($status, $idEvento, $color)
+    public function modificar_evento($status, $idEvento, $color, $id_tableta,$id_biometrico)
     {
         $this->db->set('status', $status);
         $this->db->set('evento_color',$color);
+        $this->db->set('tableta_evento',$id_tableta);
+        $this->db->set('biometrico_evento',$id_biometrico);
         $this->db->where('idEvento', $idEvento);
         $evento= $this->db->update('eventos');
         return $evento;
@@ -116,7 +139,7 @@
 
        public function modificar_status_biometrico($id_biometrico,$status)
     {
-        $this->db->set('status_tableta', $status);
+        $this->db->set('status_biometrico', $status);
         $this->db->where('id_biometrico', $id_biometrico);
         $evento= $this->db->update('biometrico');
         return $evento;

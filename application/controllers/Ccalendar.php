@@ -8,7 +8,7 @@ class Ccalendar extends CI_controller
 		parent::__construct();
 		$this->load->model('Mcalendar');
 	}
-
+ 
 	public function index()
 	{
 		$this->load->view('Calendar/vheader');
@@ -21,54 +21,43 @@ class Ccalendar extends CI_controller
 
 		$param['idEvento']="event".DATE('Ymdhis');
 		$param['nombre_asesor']=$this->input->post('nombre_asesor');
-		$param['des_evento']=$this->input->post('desc_evento');
-		$param['fecInicio']=$this->input->post('fecha_inicio');
-		$param['fecFin']=$this->input->post('fecha_fin');
-		$param['hora_inicio']=$this->input->post('select_hora_inicio');		
-		$param['hora_fin']=$this->input->post('select_hora_fin');
-		$param['tableta_evento']=$this->input->post('tableta_evento');
-		$param['biometrico_evento']=$this->input->post('biometrico_evento');
+		$param['des_evento']=$this->input->post('des_evento');
+		$param['fecInicio']=$this->input->post('fecInicio');
+		$param['fecFin']=$this->input->post('fecFin');
+		$param['hora_inicio']=$this->input->post('hora_inicio');		
+		$param['hora_fin']=$this->input->post('hora_fin');
 		$param['folio_evento']=$this->input->post('folio_evento');
 		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
 
-		$res=$this->Mcalendar->insert($param);
+		$res=$this->Mcalendar->insert_event_asesor($param);
 
-		$id_tableta=$this->input->post('id_tableta');
-		$id_biometrico=$this->input->post('id_biometrico');
-		$status=$this->input->post('status');
-
-		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta,$status);
-		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico,$status);
-
-
+	
 	    redirect('Cregistro/enter');
 	}
 
 
 	public function insert_event_admin()
 	{  
-		$param['idEvento']="event".DATE('Ymdhis');
-		$param['nombre_asesor']=$this->input->post('select_asesor_evento');
-		$param['des_evento']=$this->input->post('desc_evento');
-		$param['fecInicio']=$this->input->post('fecha_inicio');
-		$param['fecFin']=$this->input->post('fecha_fin');
-		$param['hora_inicio']=$this->input->post('select_hora_inicio');		
-		$param['hora_fin']=$this->input->post('select_hora_fin');
+	    $param['idEvento']="event".DATE('Ymdhis');
+		$param['nombre_asesor']=$this->input->post('nombre_asesor');
+		$param['des_evento']=$this->input->post('des_evento');
+		$param['fecInicio']=$this->input->post('fecInicio');
+		$param['fecFin']=$this->input->post('fecFin');
+		$param['hora_inicio']=$this->input->post('hora_inicio');		
+		$param['hora_fin']=$this->input->post('hora_fin');
 		$param['tableta_evento']=$this->input->post('tableta_evento');
 		$param['biometrico_evento']=$this->input->post('biometrico_evento');
 		$param['folio_evento']=$this->input->post('folio_evento');
 		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
 
-
 		$res=$this->Mcalendar->insert($param);
 
-		// $id_tableta=$this->input->post('id_tableta');
-		// $id_biometrico=$this->input->post('id_biometrico');
-		// $status=$this->input->post('status');
+		$id_tableta=$this->input->post('tableta_evento');
+		$id_biometrico=$this->input->post('biometrico_evento');
+		$status='OCUPADO';
 
-		// $this->Mcalendar->modificar_status_tableta($id_tableta,$status);
-		// $this->Mcalendar->modificar_status_biometrico($id_biometrico,$status);
-
+		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status);
+		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status);
 
 		redirect('Cregistro/enter');	
 	}
@@ -96,8 +85,11 @@ class Ccalendar extends CI_controller
 		$status=$this->input->post('status');
 		$idEvento=$this->input->post('id');
 		$color=$this->input->post('color');
+		$id_tableta=$this->input->post('tableta_evento');
+		$id_biometrico=$this->input->post('biometrico_evento');
 
-		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color);
+
+		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color,$id_tableta,$id_biometrico);
 
 		echo $evento;
 	}
@@ -132,7 +124,16 @@ class Ccalendar extends CI_controller
 		$this->Mcalendar->insert_biometrico($param_biometrico);
 	}
 
+	public function modificar_status_eventos()
+	{
+		
+		$id_tableta=$this->input->post('tableta_evento');
+		$id_biometrico=$this->input->post('biometrico_evento');
+		$status='OCUPADO';
 
+		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status);
+		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status);
+	}
 
 
 }

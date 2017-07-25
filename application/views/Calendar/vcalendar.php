@@ -139,25 +139,32 @@
 <div class="container formulario">
 				<h4>Solicitar Tableta</h4>
 				<hr>
-				<form action="<?php echo base_url();?>Ccalendar/insert_event" method="POST">
+				<form id="form_registra_evento_asesor" name="form_registra_evento_asesor">
 				 
 					<div class="form-group row justify-content-sm-center">
 						<label for="desc_evento" class="col-sm-3 col-form-label">Descripción:</label>
 						<div class="col-sm-7">
 							<textarea class="form-control form-control-sm" id="desc_evento" name="desc_evento" rows="5" placeholder="Descripción" required style="text-transform:uppercase;"></textarea>
 						</div>
-						<input type="text" name="nombre_asesor" value="<?php echo $usuario; ?>" style="display: none;">
+						<input type="text" name="nombre_asesor" id="nombre_asesor" value="<?php echo $usuario; ?>" style="display: none;">
 
 						<input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
 
-						<input type="text" name="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
+						<input type="text" name="usuarios_id_usuario"  id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
 					</div>
+
+					 <div class="form-group row justify-content-sm-center">  
+						<label for="folio_tys_evento" class="col-sm-3 col-form-label">Folio TYS:</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control form-control-sm" id="folio_tys_evento" name="folio_tys_evento" placeholder="Folio TYS" >
+						</div>                                
+                     </div> 
  				
 					<div class="form-group row justify-content-sm-center">
 						<label for="desc_evento" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
 						<div class="col-sm-2">	
-							<div class="input-group date" id="fecha_inicio">
-								<input type="text" class="form-control form-control-sm" name="fecha_inicio"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
+							<div class="input-group date" id="fecha_inicio_date">
+								<input type="text" class="form-control form-control-sm" name="fecha_inicio" id="fecha_inicio"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
 							</div>												
 						</div>
 
@@ -197,8 +204,8 @@
 					<div class="form-group row justify-content-sm-center">
 							<label for="desc_evento" class="col-sm-2 col-form-label">Fecha entrega:</label>
 							<div class="col-sm-2">	
-								<div class="input-group date" id="fecha_fin">
-									<input type="text" class="form-control form-control-sm" name="fecha_fin"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
+								<div class="input-group date" id="fecha_fin_date">
+									<input type="text" class="form-control form-control-sm" name="fecha_fin" id="fecha_fin"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
 								</div>												
 							</div>
 				
@@ -246,12 +253,12 @@
 				<script type="text/javascript">
 			 
 
-					$('#fecha_inicio').datepicker({
+					$('#fecha_inicio_date').datepicker({
 						format: "yyyy-mm-dd",
 						language: "es"
 					});
 
-					$('#fecha_fin').datepicker({
+					$('#fecha_fin_date').datepicker({
 						format: "yyyy-mm-dd",
 						language: "es"
 					});
@@ -263,7 +270,8 @@
 				</div>	
 </div>
 
-<script type="text/javascript"> 
+ <script type="text/javascript"> 
+  var  base_url= "<?php echo base_url();?>"
 	$(document).ready(function(){
 
 	$('#a_instruct').click(function(){

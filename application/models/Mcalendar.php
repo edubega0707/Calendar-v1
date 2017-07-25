@@ -14,7 +14,7 @@
 
     public function insert($param)
     {
-        $campos = array(
+        $campos = array( 
             'idEvento'=>$param['idEvento'],       
             'nombre_asesor'=>$param['nombre_asesor'],
             //'sucursal_usuario'=>$param['sucursal_usuario'],
@@ -22,7 +22,7 @@
             'fecInicio'=>$param['fecInicio'],
             'fecFin'=>$param['fecFin'],
             'hora_inicio'=>$param['hora_inicio'].':00',
-            'hora_fin'=>$param['hora_fin'].':00',
+            'hora_fin'=>$param['hora_Fin'].':00',
             'tableta_evento'=>$param['tableta_evento'],
             'biometrico_evento'=>$param['biometrico_evento'],
             'folio_evento'=>$param['folio_evento'],

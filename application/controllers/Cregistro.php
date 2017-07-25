@@ -78,7 +78,7 @@ class Cregistro extends CI_controller
 
 		$this->form_validation->set_rules('contraseña_usuario', 'Contraseña del usuario','required|trim|min_length[2]|max_length[150]',
                         array('required' => 'Debe Ingresar Contraseña'));
-     
+      
 
 		if($this->form_validation->run())
 		{

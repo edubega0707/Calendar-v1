@@ -3,9 +3,9 @@
             {
             function registra_eventos()
             {
-                    var select_asesor_evento=$('#select_asesor_evento').val();
+                    var nombre_asesor=$('#select_asesor_evento').val();
                     var desc_evento=$('#desc_evento').val();                  
-                    var sucursal_usuario=$('#sucursal_usuario').val();
+                    //var sucursal_usuario=$('#sucursal_usuario').val();
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val();
                     var fecha_inicio=$('#fecha_inicio').val();
                     var select_hora_inicio=$('#select_hora_inicio').val();
@@ -20,11 +20,11 @@
                   //   var status='OCUPADA';
                     
                     
-                  $.post( base_url+'Ccalendar/insert_event_admin', 
+                 $.post( base_url+'Ccalendar/insert_event_admin', 
                   { 
-                        select_asesor_evento: select_asesor_evento,
+                        nombre_asesor: nombre_asesor,
                         desc_evento: desc_evento, 
-                        sucursal_usuario:sucursal_usuario,
+                       // sucursal_usuario:sucursal_usuario,
                         usuarios_id_usuario:usuarios_id_usuario,
                         fecha_inicio:fecha_inicio,
                         select_hora_inicio:select_hora_inicio,
@@ -82,16 +82,16 @@
                                 alignMiddle: true,                          
                                 buttons: 
                                 {
-                                            Aceptar: {
-                                                text: 'Aceptar',
-                                                btnClass: 'btn-blue',
-                                                action: function()
-                                                {
-                                                     registra_eventos();
-                                                     $('#form_eventos')[0].reset();  
-                                                     location.href =base_url+'Cregistro/enter';  
-                                                }
-                                            },
+                                    Aceptar: {
+                                          text: 'Aceptar',
+                                          btnClass: 'btn-blue',
+                                          action: function()
+                                          {
+                                                registra_eventos();
+                                                $('#form_eventos')[0].reset();  
+                                                location.href =base_url+'Cregistro/enter';  
+                                          }
+                                    },
                                     Cancelar: {
                                             text: 'Cancelar',
                                             btnClass: 'btn-red',

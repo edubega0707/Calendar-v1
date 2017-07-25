@@ -1,7 +1,7 @@
 <?php 
    
 class Ccalendar extends CI_controller 
-{ 
+{  
 	
 	function __construct()
 	{

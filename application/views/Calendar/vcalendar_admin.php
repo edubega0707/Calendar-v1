@@ -1,6 +1,4 @@
-
-  
-
+ 
 <script type="text/javascript"> 
 
 	$(document).ready(function() {
@@ -268,7 +266,7 @@
                                     <select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
                                          <option>Seleccionar tableta</option>
                                          <?php foreach ($lista_tableta as $tableta): ?>                                              
-                                                <option value='<?php echo $tableta['id_tableta'];?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
+                                                <option value='<?php echo $tableta['id_tableta']; ?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 
@@ -287,7 +285,7 @@
                               <!-- Fin de Select Biometrico -->
                               <div class="form-group row justify-content-sm-center">
                                  <div class="alert alert-info col-sm-8" role="alert">
-                                    <strong>Prestamo tableta</strong> This alert needs your attention, but it's not super important.
+                                    <strong>Prestamo tableta</strong>
                                  </div> 
 
                               </div>
@@ -306,7 +304,7 @@
                               <div class="form-group row justify-content-sm-center">  
                                  <label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS:</label>
                                  <div class="col-sm-6">
-                                      <input type="text" class="form-control form-control-sm" id="folio_tys_evento" placeholder="Folio TYS" >
+                                      <input type="text" class="form-control form-control-sm" id="folio_tys_evento" name="folio_tys_evento" placeholder="Folio TYS" >
                                  </div>                                
                               </div> 
 

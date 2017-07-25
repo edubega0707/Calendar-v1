@@ -1,6 +1,6 @@
 
  
-<?php 
+<?php  
 
  
 class Mregistro extends CI_Model

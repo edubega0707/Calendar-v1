@@ -26,11 +26,19 @@ class Ccalendar extends CI_controller
 		$param['fecFin']=$this->input->post('fecFin');
 		$param['hora_inicio']=$this->input->post('hora_inicio');		
 		$param['hora_fin']=$this->input->post('hora_fin');
+		$param['tableta_evento']=$this->input->post('tableta_evento');
+		$param['biometrico_evento']=$this->input->post('biometrico_evento');
 		$param['folio_evento']=$this->input->post('folio_evento');
 		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
 
 		$res=$this->Mcalendar->insert_event_asesor($param);
+        
+		$id_tableta=$this->input->post('tableta_evento');
+		$id_biometrico=$this->input->post('biometrico_evento');
+		$status=$this->input->post('status');
 
+		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status);
+		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status);
 	
 	    redirect('Cregistro/enter');
 	}
@@ -54,7 +62,7 @@ class Ccalendar extends CI_controller
 
 		$id_tableta=$this->input->post('tableta_evento');
 		$id_biometrico=$this->input->post('biometrico_evento');
-		$status='OCUPADO';
+		$status=$this->input->post('status');
 
 		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status);
 		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status);
@@ -70,6 +78,8 @@ class Ccalendar extends CI_controller
 
 		echo  json_encode($r);
 	}
+
+
 
 	public function mostrar_evento()
 	{
@@ -87,10 +97,13 @@ class Ccalendar extends CI_controller
 		$color=$this->input->post('color');
 		$id_tableta=$this->input->post('tableta_evento');
 		$id_biometrico=$this->input->post('biometrico_evento');
+		$status_evento=$this->input->post('status_evento');
+
+		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color);
 
 
-		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color,$id_tableta,$id_biometrico);
-
+		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status_evento);
+		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status_evento);
 		echo $evento;
 	}
 
@@ -124,15 +137,22 @@ class Ccalendar extends CI_controller
 		$this->Mcalendar->insert_biometrico($param_biometrico);
 	}
 
-	public function modificar_status_eventos()
-	{
-		
-		$id_tableta=$this->input->post('tableta_evento');
-		$id_biometrico=$this->input->post('biometrico_evento');
-		$status='OCUPADO';
 
-		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status);
-		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status);
+
+	public function eventos_rechazados()
+	{
+		$nombre_asesor=$this->input->post('nombre_asesor');
+		$evento_rechazado= $this->Mcalendar->eventos_rechazados($nombre_asesor);
+		
+		if ($evento_rechazado==TRUE) 
+		{
+			echo "ESTE ASESOR  YA TIENE ASIGNADO  UNA TABLETA ";
+		} 
+		else 
+		{
+			echo "ASESOR DISPONIBLE";
+		}
+		
 	}
 
 

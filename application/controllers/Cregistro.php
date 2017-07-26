@@ -11,7 +11,7 @@ class Cregistro extends CI_controller
 		$this->load->model('Mregistro');
 		$this->load->helper(array('form', 'url'));
 	
-	}
+	} 
 
 	public function index()
 	{   
@@ -143,14 +143,10 @@ class Cregistro extends CI_controller
 		   {
 
 		   		$row=$this->Mregistro->getasesor($data['session']);	
-			   	//$data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
 
 				$data['lista_asesores'] = $this->Mregistro->getasesores($data['sucursal_usuario']);
-
-	
-
 				$data['lista_tableta'] = $this->Mregistro->gettableta();
 				$data['lista_biometrico'] = $this->Mregistro->getbiometrico();
 

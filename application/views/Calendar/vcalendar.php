@@ -82,7 +82,9 @@
        						<label for="nom_asesor">Nombre asesor:</label>
        						<input type="text" class="form-control form-control-sm" id="nom_asesor">
 
-       					</div>
+					</div>
+						
+
        					<div class="form-group">
        						<label for="des_event">Descripción:</label>
        						<textarea class="form-control form-control-sm" id="des_event" rows="3" ></textarea>
@@ -142,8 +144,8 @@
 				<form id="form_registra_evento_asesor" name="form_registra_evento_asesor">
 				 
 					<div class="form-group row justify-content-sm-center">
-						<label for="desc_evento" class="col-sm-3 col-form-label">Descripción:</label>
-						<div class="col-sm-7">
+						<label for="desc_evento" class="col-sm-2 col-form-label">Descripción:</label>
+						<div class="col-sm-6">
 							<textarea class="form-control form-control-sm" id="desc_evento" name="desc_evento" rows="5" placeholder="Descripción" required style="text-transform:uppercase;"></textarea>
 						</div>
 						<input type="text" name="nombre_asesor" id="nombre_asesor" value="<?php echo $usuario; ?>" style="display: none;">
@@ -153,9 +155,29 @@
 						<input type="text" name="usuarios_id_usuario"  id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
 					</div>
 
+					<div class="form-group row justify-content-sm-center">
+							<label for="select_status" class="col-sm-2 col-form-label">Seleccionar tableta:</label>
+							<select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
+									<option value="">Seleccionar tableta</option>
+									<?php foreach ($lista_tableta as $tableta): ?>                                              
+										<option value='<?php echo $tableta['id_tableta']; ?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
+									<?php endforeach; ?>  							
+							</select>
+
+								<label for="select_status" class="col-sm-2 col-form-label">Seleccionar Biometrico:</label>
+							<select class="form-control form-control-sm col-sm-2" id="select_asesor_biometrico" name="select_asesor_biometrico">
+									<option value="">Seleccionar biometrico</option>
+									<?php foreach ($lista_biometrico as $biometrico): ?>
+										
+										<option value="<?php echo $biometrico['id_biometrico']; ?>"><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
+									<?php endforeach; ?>  							
+							</select>
+
+						</div>
+
 					 <div class="form-group row justify-content-sm-center">  
-						<label for="folio_tys_evento" class="col-sm-3 col-form-label">Folio TYS:</label>
-						<div class="col-sm-7">
+						<label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS:</label>
+						<div class="col-sm-6">
 							<input type="text" class="form-control form-control-sm" id="folio_tys_evento" name="folio_tys_evento" placeholder="Folio TYS" >
 						</div>                                
                      </div> 

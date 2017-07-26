@@ -17,7 +17,6 @@
         $campos = array( 
             'idEvento'=>$param['idEvento'],       
             'nombre_asesor'=>$param['nombre_asesor'],
-            //'sucursal_usuario'=>$param['sucursal_usuario'],
             'des_evento'=>$param['des_evento'],
             'fecInicio'=>$param['fecInicio'],
             'fecFin'=>$param['fecFin'],
@@ -46,6 +45,8 @@
             'fecFin'=>$param['fecFin'],
             'hora_inicio'=>$param['hora_inicio'].':00',
             'hora_fin'=>$param['hora_fin'].':00',
+            'tableta_evento'=>$param['tableta_evento'],
+            'biometrico_evento'=>$param['biometrico_evento'],
             'folio_evento'=>$param['folio_evento'],
             'evento_color'=>'#E85B48',  
             'status'=>'PENDIENTE',
@@ -63,12 +64,10 @@
         return $consulta->result();
     }
 
-    public function modificar_evento($status, $idEvento, $color, $id_tableta,$id_biometrico)
+    public function modificar_evento($status, $idEvento, $color)
     {
         $this->db->set('status', $status);
         $this->db->set('evento_color',$color);
-        $this->db->set('tableta_evento',$id_tableta);
-        $this->db->set('biometrico_evento',$id_biometrico);
         $this->db->where('idEvento', $idEvento);
         $evento= $this->db->update('eventos');
         return $evento;
@@ -143,7 +142,23 @@
         $this->db->where('id_biometrico', $id_biometrico);
         $evento= $this->db->update('biometrico');
         return $evento;
-    }            
+    }
+ 
+	public function eventos_rechazados($nombre_asesor)
+	{
+     
+     	$this->db->where('nombre_asesor', $nombre_asesor);
+		$query=$this->db->get('eventos');
+      
+
+        if ( $query->num_rows()>1) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+        
+		
+	}            
            
 
 

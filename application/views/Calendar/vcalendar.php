@@ -1,7 +1,4 @@
 
-
-
- 
 <script type="text/javascript">
 
 	$(document).ready(function() {
@@ -81,9 +78,7 @@
        					<div class="form-group">
        						<label for="nom_asesor">Nombre asesor:</label>
        						<input type="text" class="form-control form-control-sm" id="nom_asesor">
-
-					</div>
-						
+						</div>						
 
        					<div class="form-group">
        						<label for="des_event">Descripción:</label>
@@ -100,7 +95,6 @@
        						<div class="col-sm-3">	
        							<input type="text" class="form-control form-control-sm" id="hora_inic">
        						</div>
-
        					</div>
 
        					<div class="form-group row justify-content-sm-center">   				
@@ -138,6 +132,7 @@
 </div>
 </div>
 
+
 <div class="container formulario">
 				<h4>Solicitar Tableta</h4>
 				<hr>
@@ -160,15 +155,14 @@
 							<select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
 									<option value="">Seleccionar tableta</option>
 									<?php foreach ($lista_tableta as $tableta): ?>                                              
-										<option value='<?php echo $tableta['id_tableta']; ?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
+										<option value='<?php echo $tableta['id_tableta'];?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
 									<?php endforeach; ?>  							
 							</select>
 
 								<label for="select_status" class="col-sm-2 col-form-label">Seleccionar Biometrico:</label>
 							<select class="form-control form-control-sm col-sm-2" id="select_asesor_biometrico" name="select_asesor_biometrico">
 									<option value="">Seleccionar biometrico</option>
-									<?php foreach ($lista_biometrico as $biometrico): ?>
-										
+									<?php foreach ($lista_biometrico as $biometrico): ?>									
 										<option value="<?php echo $biometrico['id_biometrico']; ?>"><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
 									<?php endforeach; ?>  							
 							</select>
@@ -277,7 +271,7 @@
 
 					$('#fecha_inicio_date').datepicker({
 						format: "yyyy-mm-dd",
-						language: "es"
+						language: 'es'
 					});
 
 					$('#fecha_fin_date').datepicker({
@@ -322,7 +316,7 @@
 					<ul>
 						<li>Completa los campos correctamente</li>
 						<li>Tu solicitud  sera registrada como pendiente</li>
-						<li></li>
+						<li>Estar pendiente en el sistema para verificar tu solicitud</li>
 					</ul>
 				</article>			
 		</div>
@@ -331,9 +325,9 @@
 					<h6>Paso 3</h6>
 					<hr class="hr_p3">
 					<ul>
-						<li>Coffee</li>
-						<li>Tea</li>
-						<li>Coca Cola</li>
+						<li></li>
+						<li></li>
+						<li></li>
 					</ul>
 				</article>			
 		</div>
@@ -342,9 +336,9 @@
 					<h6>Paso 4</h6>
 					<hr class="hr_p4">
 					<ul>
-						<li>Coffee</li>
-						<li>Tea</li>
-						<li>Coca Cola</li>
+						<li></li>
+						<li></li>
+						<li></li>
 					</ul>
 				</article>			
 		</div>

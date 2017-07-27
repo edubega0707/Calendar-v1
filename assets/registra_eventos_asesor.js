@@ -1,8 +1,11 @@
- $(document).ready(function()
+ 
+
+$(document).ready(function()
             {
             function registra_eventos()
             {
                     var nombre_asesor=$('#nombre_asesor').val();
+                    var nombre_oficina=$('#sucursal_usuario').val();
                     var des_evento=$('#desc_evento').val();                                     
                     var tableta_evento=$('#select_asesor_tableta').val();
                     var biometrico_evento=$('#select_asesor_biometrico').val();
@@ -19,6 +22,7 @@
                   $.post( base_url+'Ccalendar/insert_event', 
                   { 
                         nombre_asesor: nombre_asesor,
+                        nombre_oficina:nombre_oficina,
                         des_evento: des_evento, 
                         tableta_evento:tableta_evento,
                         biometrico_evento:biometrico_evento,

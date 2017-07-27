@@ -48,12 +48,16 @@ $(document).ready(function()
              function registra_tableta()
             {
                     var marca_tableta=$('#marca_tableta').val();
+                    var nombre_oficina=$('#sucursal_usuario_tableta').val();
                     var color_tableta=$('#color_tableta').val();
                     var descripcion_tableta=$('#descripcion_tableta').val();
+                 
+                
 
                   $.post( base_url+'Ccalendar/insert_tableta', 
                   { 
                         marca_tableta:marca_tableta,
+                        nombre_oficina:nombre_oficina,
                         color_tableta:color_tableta,
                         descripcion_tableta:descripcion_tableta                  
                   }, 
@@ -84,6 +88,7 @@ $(document).ready(function()
              function registra_biometrico()
             {
                     var marca_biometrico=$('#marca_biometrico').val();
+                    var nombre_oficina=$('#sucursal_usuario_biometrico').val();
                     var color_biometrico=$('#color_biometrico').val();
                     var descripcion_biometrico=$('#descripcion_biometrico').val();
                     
@@ -91,6 +96,7 @@ $(document).ready(function()
                   { 
 
                         marca_biometrico:marca_biometrico,
+                        nombre_oficina:nombre_oficina,
                         color_biometrico:color_biometrico,
                         descripcion_biometrico:descripcion_biometrico
                   }, 
@@ -141,6 +147,7 @@ $(document).ready(function()
                                           {
                                                 registra_oficina();
                                                 $('#form_registro_oficina')[0].reset(); 
+                                                location.href =base_url+'Cregistro/enter';  
                                           }
                                           },
                                     Cancelar: {

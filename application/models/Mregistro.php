@@ -10,7 +10,7 @@ class Mregistro extends CI_Model
         {
                 $campos = array(
 
-                		'id_usuario'=>$param['id_usuario'], 
+                		'id_usuario'=>$param['id_usuario'],  
 
                         'nombre_usuario'=>$param['nombre_usuario'],      
 
@@ -70,17 +70,19 @@ class Mregistro extends CI_Model
 	}
 
 
-	public function gettableta()
+	public function gettableta($sucursal)
 	{
 		
 		$this->db->where('status_tableta', 'DISPONIBLE');
+		$this->db->where('nombre_oficina', $sucursal);
 		$query=$this->db->get('Tableta');
          return $query->result_array();
 	}
 
-	public function getbiometrico()
+	public function getbiometrico($sucursal)
 	{
 		$this->db->where('status_biometrico', 'DISPONIBLE');
+		$this->db->where('nombre_oficina', $sucursal);
 		$query=$this->db->get('biometrico');
         return $query->result_array();
 

@@ -99,7 +99,8 @@
     {
         $campos = array(
             'id_tableta'=>'tablet'.DATE('Ymdhis'),
-            'marca_tableta'=>$param_tableta['marca_tableta'],
+            'marca_tableta'=>'TABLET'.$param_tableta['marca_tableta'],
+            'nombre_oficina'=>$param_tableta['nombre_oficina'],
             'color_tableta'=>$param_tableta['color_tableta'],
             'descripcion_tableta'=>$param_tableta['descripcion_tableta'],
             'status_tableta'=>'DISPONIBLE'
@@ -116,7 +117,8 @@
     {
         $campos = array(
             'id_biometrico'=>'biome'.DATE('Ymdhis'),
-            'marca_biometrico'=>$param_biometrico['marca_biometrico'],
+            'marca_biometrico'=>'BIO'.$param_biometrico['marca_biometrico'],
+            'nombre_oficina'=>$param_biometrico['nombre_oficina'],
             'color_biometrico'=>$param_biometrico['color_biometrico'],
             'descripcion_biometrico'=>$param_biometrico['descripcion_biometrico'],
             'status_biometrico'=>'DISPONIBLE'
@@ -128,18 +130,20 @@
 
 
 
-    public function modificar_status_tableta($id_tableta,$status)
+    public function modificar_status_tableta($id_tableta,$status,$sucursal)
     {
         $this->db->set('status_tableta', $status);
         $this->db->where('id_tableta', $id_tableta);
+        $this->db->where('nombre_oficina', $sucursal);
         $evento= $this->db->update('Tableta');
         return $evento;
     } 
 
-       public function modificar_status_biometrico($id_biometrico,$status)
+       public function modificar_status_biometrico($id_biometrico,$status,$sucursal)
     {
         $this->db->set('status_biometrico', $status);
         $this->db->where('id_biometrico', $id_biometrico);
+        $this->db->where('nombre_oficina', $sucursal);
         $evento= $this->db->update('biometrico');
         return $evento;
     }

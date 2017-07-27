@@ -13,7 +13,7 @@ class Cregistro extends CI_controller
 	
 	} 
 
-	public function index()
+	public function index() 
 	{   
 		$this->load->view('Registro/Registro');	
 	}
@@ -54,8 +54,6 @@ class Cregistro extends CI_controller
 			$param['pass_usuario']=md5($this->input->post('pass_usuario'));
 			
 			
-
-
              $res=$this->Mregistro->registrar($param);
 			
              
@@ -84,12 +82,13 @@ class Cregistro extends CI_controller
 		{
 
 			$username=$this->input->post('clave_usuario');
-			$password=$this->input->post('contraseña_usuario');		    
+			$password=md5($this->input->post('contraseña_usuario'));		    
 	
 				if ($this->Mregistro->can_login($username, $password)) 
 				{
 					$session_data=array(
-						'username'=>$username
+						'username'=>$username,
+						'clave'=>$password
 						);
 
 					$this->session->set_userdata($session_data);
@@ -117,12 +116,12 @@ class Cregistro extends CI_controller
 
 	function enter()
 	{
-		$data['session']=$this->session->userdata('username');
+		$data['session']=$this->session->userdata('clave');
 
 		if($data['session']!= '')
 		{	
 
-		   if ($data['session']== 'ADMINISTRADOR') 
+		   if ($data['session']=='ADMINISTRADOR') 
 		   {
 	   	
 			   	$row=$this->Mregistro->getasesor($data['session']);	
@@ -147,8 +146,8 @@ class Cregistro extends CI_controller
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
 
 				$data['lista_asesores'] = $this->Mregistro->getasesores($data['sucursal_usuario']);
-				$data['lista_tableta'] = $this->Mregistro->gettableta();
-				$data['lista_biometrico'] = $this->Mregistro->getbiometrico();
+				$data['lista_tableta'] = $this->Mregistro->gettableta($data['sucursal_usuario']);
+				$data['lista_biometrico'] = $this->Mregistro->getbiometrico($data['sucursal_usuario']);
 
 						
 			   	$this->load->view('Calendar/vheader', $data);
@@ -163,7 +162,10 @@ class Cregistro extends CI_controller
 			   	$row=$this->Mregistro->getasesor($data['session']);	
 			   	$data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
-			   	$data['usuarios_id_usuario']=$row->id_usuario;			
+			   	$data['usuarios_id_usuario']=$row->id_usuario;
+
+				$data['lista_tableta'] = $this->Mregistro->gettableta($data['sucursal_usuario']);
+				$data['lista_biometrico'] = $this->Mregistro->getbiometrico($data['sucursal_usuario']);			
 
 
 			   	$this->load->view('Calendar/vheader', $data);

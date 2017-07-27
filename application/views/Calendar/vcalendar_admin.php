@@ -163,11 +163,12 @@
                                                 function modificar()
                                                 {
                                                       var id=$('#id_Evento').val();
-                                                      var status=$('#select_status').val();
-                                                      var color='';
-                                                      var status_evento='';
+                                                      var status=$('#select_status').val();                                                     
                                                       var tableta_evento=$('#id_tableta').val();
                                                       var biometrico_evento=$('#id_biometrico').val();
+                                                      var nombre_oficina=$('#sucursal_usuario').val();
+                                                      var color='';
+                                                      var status_evento= '';
 
                                                       switch(status)
                                                       {
@@ -176,18 +177,17 @@
                                                             break;
                                                             case 'RECHAZADO':
                                                                   color='#C50000';
+                                                                  status_evento='DISPONIBLE';
                                                             break;
                                                             case 'ACEPTADO':
                                                                  color='#A5F2E7';                                                                                                                        
                                                             break;
                                                             case 'FINALIZADO':
                                                                  color='#DBE2EF';
-                                                                 status_evento='DISPONIBLE';
-                                                     
+                                                                 status_evento='DISPONIBLE';                                                    
                                                             break;
-
                                                       }
-                                                      var data = '&status='+status+'&id='+id+'&color='+color+'&tableta_evento='+tableta_evento+'&biometrico_evento='+biometrico_evento+'&status_evento='+status_evento;
+                                                      var data = '&status='+status+'&id='+id+'&color='+color+'&tableta_evento='+tableta_evento+'&biometrico_evento='+biometrico_evento+'&status_evento='+status_evento+'&nombre_oficina='+nombre_oficina;
                                                                                                 
                                                       $.ajax
                                                       ({  
@@ -323,7 +323,7 @@
                                     <select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
                                          <option value="">Seleccionar tableta</option>
                                          <?php foreach ($lista_tableta as $tableta): ?>                                              
-                                                <option value='<?php echo $tableta['id_tableta']; ?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
+                                                <option><?php echo $tableta['marca_tableta']; ?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 
@@ -332,7 +332,7 @@
                                          <option value="">Seleccionar biometrico</option>
                                          <?php foreach ($lista_biometrico as $biometrico): ?>
                                                
-                                                <option value="<?php echo $biometrico['id_biometrico']; ?>"><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
+                                                <option><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 

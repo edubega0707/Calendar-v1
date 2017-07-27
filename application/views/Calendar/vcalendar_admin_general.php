@@ -318,14 +318,11 @@
 
 
 
-
 <!-- FORMULARIO DE REGISTRO DE USUARIOS -->
 <div class="container my-4" id="seccion-usuarios">
       <div class="row flex-md-column  align-items-center justify-content-center">
       <div class="col-md-8  flex-md-column  align-items-center justify-content-center" id="registro"> 
-      
-    
-      
+         
        <div class="p-4 m-2  my-3 form-shadow">
 
               <form id="form_registro" name="form_registro">
@@ -343,7 +340,7 @@
                   <div class="form-group row">
                         <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre completo:</label>
                         <div class="col-12 col-sm-6 col-md-7">
-                             <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;" required>
+                             <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS"  required>
                         </div>
                         <span class="color-error  text-center"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
                        
@@ -360,6 +357,7 @@
                         </select>
                         </div>                     
                   </div>
+
 
                    <div class="form-group row ">
                        
@@ -379,7 +377,7 @@
 
                         <label for="tel_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-mobile mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
                         <div class="col-12 col-sm-6 col-md-7"> 
-                            <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" required >  
+                            <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular"   pattern="^[0-9]{10}" title="El telefono debe ser de 10 digitos" maxlength="10" required >  
                         </div>
                   
                   </div>
@@ -568,11 +566,22 @@
                               <hr class="hr_p2 my-5">       
 
                               <div class="form-group row">
-                                    <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-tablet mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Marca tableta:</label>
+                                    <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-tablet mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Clave Tableta:</label>
                                     <div class="col-12 col-sm-6 col-md-7">
-                                    <input type="text" class="form-control form-control-sm" id="marca_tableta" name="marca_tableta" placeholder="Marca tableta"  style="text-transform:uppercase;" required>
+                                    <input type="text" class="form-control form-control-sm" id="marca_tableta" name="marca_tableta" placeholder="Clave tableta"  style="text-transform:uppercase;" required>
                                     </div>
                                                 
+                              </div>
+                              <div class="form-group row ">                             
+                                    <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
+                                    <div class="col-12 col-sm-6 col-md-7">
+                                          <select class="form-control form-control-sm " id="sucursal_usuario_tableta" name="sucursal_usuario_tableta" required>
+                                          <?php foreach ($lista_oficinas as $oficinas): ?>
+                                                <option><?php echo $oficinas['nombre_oficina']; ?></option>                                                   
+                                          <?php endforeach; ?> 
+
+                                          </select> 
+                                    </div>                             
                               </div>
 
                               <div class="form-group row ">
@@ -625,11 +634,23 @@
                               <hr class="hr_p2 my-5">
                                     
                                     <div class="form-group row">
-                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-cube mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Marca biometrico:</label>
+                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-cube mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Clave Biometrico:</label>
                                           <div class="col-12 col-sm-6 col-md-7">
-                                          <input type="text" class="form-control form-control-sm" id="marca_biometrico" name="marca_biometrico" placeholder="Marca biometrico"  style="text-transform:uppercase;" required>
+                                          <input type="text" class="form-control form-control-sm" id="marca_biometrico" name="marca_biometrico" placeholder="Clave Biometrico"  style="text-transform:uppercase;" required>
                                           </div>
                                                 
+                                    </div>
+
+                                     <div class="form-group row ">                             
+                                          <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
+                                          <div class="col-12 col-sm-6 col-md-7">
+                                                <select class="form-control form-control-sm " id="sucursal_usuario_biometrico" name="sucursal_usuario" required>
+                                                <?php foreach ($lista_oficinas as $oficinas): ?>
+                                                      <option><?php echo $oficinas['nombre_oficina']; ?></option>                                                   
+                                                <?php endforeach; ?> 
+
+                                                </select> 
+                                          </div>                             
                                     </div>
 
                                     <div class="form-group row ">

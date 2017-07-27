@@ -4,6 +4,7 @@
             function registra_eventos()
             {
                     var nombre_asesor=$('#select_asesor_evento').val();
+                    var nombre_oficina=$('#sucursal_usuario').val();
                     var tableta_evento=$('#select_asesor_tableta').val();
                     var biometrico_evento=$('#select_asesor_biometrico').val();
                     var des_evento=$('#desc_evento').val();                                     
@@ -20,6 +21,7 @@
                  $.post( base_url+'Ccalendar/insert_event_admin', 
                   { 
                         nombre_asesor: nombre_asesor,
+                        nombre_oficina:nombre_oficina,
                         tableta_evento:tableta_evento,
                         biometrico_evento:biometrico_evento,
                         des_evento: des_evento, 

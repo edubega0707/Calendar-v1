@@ -449,7 +449,7 @@
                   <div class="form-group row">
                         <label for="tel_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-building mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Nombre oficina:</label>
                         <div class="col-12 col-sm-6 col-md-7"> 
-                            <input type="text" class="form-control form-control-sm" id="nombre_oficina" name="nombre_oficina" placeholder="Nombre Oficina" required >  
+                            <input type="text" class="form-control form-control-sm" id="nombre_oficina" name="nombre_oficina" placeholder="Nombre Oficina" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS"  required >  
                         </div>                
                   </div>
                      
@@ -498,7 +498,7 @@
                   <div class="form-group row">
                         <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-map-marker mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Direccion de la oficina:</label>
                         <div class="col-12 col-sm-6 col-md-7">  
-                              <textarea class="form-control form-control-sm" id="direccion_oficina" name="direccion_oficina" rows="5" placeholder="Direccion de la oficina" required style="text-transform:uppercase;"></textarea>                                
+                              <textarea class="form-control form-control-sm" id="direccion_oficina" name="direccion_oficina" rows="5" placeholder="Direccion de la oficina"  style="text-transform:uppercase;" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS" ></textarea>                                
                         </div>
                         <span class="color-error  text-center"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>   
                   </div>
@@ -506,17 +506,20 @@
                   <div class="form-group row">
 
                         <label for="tel_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-phone mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefono oficina:</label>
-                        <div class="col-12 col-sm-6 col-md-7"> 
-                            <input type="text" class="form-control form-control-sm" id="telefono_oficina" name="telefono_oficina" placeholder="Telefono Oficina" required >  
+                        <div class="col-12 col-sm-6 col-md-6"> 
+                            <input type="text" class="form-control form-control-sm" id="telefono_oficina" name="telefono_oficina" placeholder="Telefono "  pattern="^[0-9]{10}" title="El telefono debe ser de 10 digitos" required >  
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6"> 
+                            <input type="text" class="form-control form-control-sm" id="telefono_oficina_dos" name="telefono_oficina_dos" placeholder="Telefono "  pattern="^[0-9]{10}" title="El telefono debe ser de 10 digitos" required >  
                         </div>
                   
                   </div>
-
+     
                   <div class="form-group row">
 
                         <label for="clave_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user mr-3" aria-hidden="true" style="font-size: 30px;"></i>Jefe de oficina:</label>
                          <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="text" class="form-control form-control-sm" id="jefe_oficina" name="jefe_oficina" placeholder="Oficina" required>
+                             <input type="text" class="form-control form-control-sm" id="jefe_oficina" name="jefe_oficina" placeholder="Oficina" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS"  required>
                         </div>         
 
                   </div>
@@ -566,9 +569,9 @@
                               <hr class="hr_p2 my-5">       
 
                               <div class="form-group row">
-                                    <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-tablet mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Clave Tableta:</label>
+                                    <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-tablet mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre Clave Tableta:</label>
                                     <div class="col-12 col-sm-6 col-md-7">
-                                    <input type="text" class="form-control form-control-sm" id="marca_tableta" name="marca_tableta" placeholder="Clave tableta"  style="text-transform:uppercase;" required>
+                                    <input type="text" class="form-control form-control-sm" id="marca_tableta" name="marca_tableta" placeholder="Nombre clave tableta"  style="text-transform:uppercase;" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS"  required>
                                     </div>
                                                 
                               </div>
@@ -576,6 +579,7 @@
                                     <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
                                     <div class="col-12 col-sm-6 col-md-7">
                                           <select class="form-control form-control-sm " id="sucursal_usuario_tableta" name="sucursal_usuario_tableta" required>
+                                          <option value="">Seleccionar oficina</option> 
                                           <?php foreach ($lista_oficinas as $oficinas): ?>
                                                 <option><?php echo $oficinas['nombre_oficina']; ?></option>                                                   
                                           <?php endforeach; ?> 
@@ -588,17 +592,17 @@
                                     <label for="rol_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-circle-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar Color:</label>
                                     <div class="col-12 col-sm-6 col-md-7" >
                                           <select class="form-control form-control-sm" id="color_tableta" name="color_tableta" required>
-                                          <option>SELECCIONAR COLOR </option>
+                                          <option value="">SELECCIONAR COLOR </option>
                                           <option value="BLANCO">BLANCO</option>
                                           <option value="NEGRO">NEGRO</option> 
-                                          <option value="NEGRO">GRIS</option>                                           
+                                          <option value="GRIS">GRIS</option>                                           
                                     </select>
                                     </div>                     
                               </div>
                               <div class="form-group row">
                                     <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Descripcion del equipo:</label>
                                     <div class="col-12 col-sm-6 col-md-7">  
-                                          <textarea class="form-control form-control-sm" id="descripcion_tableta" name="descripcion_tableta" rows="5" placeholder="Descripcion del equipo" required style="text-transform:uppercase;"></textarea>                                
+                                          <textarea class="form-control form-control-sm" id="descripcion_tableta" name="descripcion_tableta" rows="5" placeholder="Descripcion del equipo" required style="text-transform:uppercase;" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS" ></textarea>                                
                                     </div>
                                     
                               </div>
@@ -634,9 +638,9 @@
                               <hr class="hr_p2 my-5">
                                     
                                     <div class="form-group row">
-                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-cube mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Clave Biometrico:</label>
+                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-cube mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre clave Biometrico:</label>
                                           <div class="col-12 col-sm-6 col-md-7">
-                                          <input type="text" class="form-control form-control-sm" id="marca_biometrico" name="marca_biometrico" placeholder="Clave Biometrico"  style="text-transform:uppercase;" required>
+                                          <input type="text" class="form-control form-control-sm" id="marca_biometrico" name="marca_biometrico" placeholder="Nombre clave Biometrico"  style="text-transform:uppercase;" required>
                                           </div>
                                                 
                                     </div>
@@ -657,10 +661,10 @@
                                           <label for="rol_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-circle-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Color biometrico:</label>
                                           <div class="col-12 col-sm-6 col-md-7" >
                                                 <select class="form-control form-control-sm" id="color_biometrico" name="color_biometrico" required>
-                                                <option>SELECCIONAR COLOR </option>
+                                                <option value="">SELECCIONAR COLOR </option>
                                                 <option value="BLANCO">BLANCO</option>
                                                 <option value="NEGRO">NEGRO</option> 
-                                                <option value="NEGRO">GRIS</option>                                           
+                                                <option value="GRIS">GRIS</option>                                           
                                           </select>
                                           </div>                     
                                     </div>

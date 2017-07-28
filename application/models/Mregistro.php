@@ -30,10 +30,10 @@ class Mregistro extends CI_Model
 
         }      
 
-	public function can_login($correo_usuario, $contraseña_usuario)
+	public function can_login($clave_usuario, $contraseña_usuario)
 
 	{
-		$this->db->where('clave_usuario', $correo_usuario);
+		$this->db->where('clave_usuario', $clave_usuario);
 		$this->db->where('pass_usuario',   $contraseña_usuario);
 		$query=$this->db->get('usuarios');
 
@@ -64,6 +64,14 @@ class Mregistro extends CI_Model
 	public function getasesores($sucursal)
 	{
 		$this->db->where('sucursal_usuario',  $sucursal);
+		$this->db->where('rol_usuario', 'ASESOR');
+		$query=$this->db->get('usuarios');
+         return $query->result_array();
+	}
+
+	public function perfil_asesor($sesion)
+	{
+		$this->db->where('clave_usuario', $sesion);
 		$this->db->where('rol_usuario', 'ASESOR');
 		$query=$this->db->get('usuarios');
          return $query->result_array();

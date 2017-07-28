@@ -52,6 +52,7 @@ class Mregistro extends CI_Model
 	public function getasesor($sesion)
 	{
 		$this->db->where('clave_usuario',  $sesion);
+		$this->db->where('rol_usuario',  'ADMINISTRADOR');
 		$query=$this->db->get('usuarios');
 
 		foreach ($query->result() as $row ) 
@@ -72,9 +73,12 @@ class Mregistro extends CI_Model
 	public function perfil_asesor($sesion)
 	{
 		$this->db->where('clave_usuario', $sesion);
-		$this->db->where('rol_usuario', 'ASESOR');
 		$query=$this->db->get('usuarios');
-         return $query->result_array();
+		foreach ($query->result() as $row ) 
+		{
+			return $row;
+		}
+        
 	}
 
 

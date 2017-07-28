@@ -84,7 +84,8 @@
             'nombre_oficina'=>$param_oficina['nombre_oficina'],       
             'ubicacion_oficina'=>$param_oficina['ubicacion_oficina'],
             'direccion_oficina'=>$param_oficina['direccion_oficina'],
-            'telefono_oficina'=>$param_oficina['telefono_oficina'],
+            'telefono_oficina_uno'=>$param_oficina['telefono_oficina_uno'],
+            'telefono_oficina_dos'=>$param_oficina['telefono_oficina_dos'],
             'jefe_oficina'=>$param_oficina['jefe_oficina'],
             'fecha_registro_oficina'=>DATE('Ymd')
             );

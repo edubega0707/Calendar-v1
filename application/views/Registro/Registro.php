@@ -11,8 +11,8 @@
 </head>
 
   
-
-<link href="https://fonts.googleapis.com/css?family=Khula|Lato" rel="stylesheet">
+	<link rel="shortcut icon" href="<?php echo base_url();?>/public/img/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Khula|Lato" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet"> 
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/font-awesome.min.css">

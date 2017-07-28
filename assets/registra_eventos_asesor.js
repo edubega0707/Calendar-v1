@@ -1,7 +1,7 @@
  
 
 $(document).ready(function()
-            {
+            { 
             function registra_eventos()
             {
                     var nombre_asesor=$('#nombre_asesor').val();

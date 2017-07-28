@@ -38,7 +38,9 @@
 							$.each(c,function(i,item){
 								$('#id_Evento').val(item.idEvento);
 								$('#nom_asesor').val(item.nombre_asesor);
-								$('#des_event').val(item.des_evento);
+                                                $('#des_event').val(item.des_evento);
+                                                $('#id_tableta').val(item.tableta_evento);
+                                                $('#id_biometrico').val(item.biometrico_evento);
 								$('#fec_inic').val(item.fecInicio);
 								$('#fec_fin').val(item.fecFin);
 								$('#hora_inic').val(item.hora_inicio);
@@ -87,26 +89,20 @@
        						<label for="des_event">Descripción:</label>
        						<textarea class="form-control form-control-sm" id="des_event" rows="3" ></textarea>
        					</div>
-                                </fieldset>
-                                    <div class="form-group row justify-content-sm-center">
-                                          <label for="select_status" class="col-sm-3 col-form-label">Seleccionar tableta:</label>
-                                          <select class="form-control form-control-sm col-sm-3" id="select_asesor_tableta_modal" name="select_asesor_tableta_modal">
-                                          <option>Sel tableta</option>
-                                                <?php foreach ($lista_tableta as $tableta): ?>                                              
-                                                            <option value='<?php echo $tableta['id_tableta']; ?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
-                                                      <?php endforeach; ?>  							
-                                                </select>
 
-                                          <label for="select_status" class="col-sm-3 col-form-label">Seleccionar Biometrico:</label>
-                                          <select class="form-control form-control-sm col-sm-3" id="select_asesor_biometrico_modal" name="select_asesor_biometrico_modal">
-                                                <option>Sel biometrico</option>
-                                                <?php foreach ($lista_biometrico as $biometrico): ?>
-                                                      
-                                                            <option value="<?php echo $biometrico['id_biometrico']; ?>"><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
-                                                <?php endforeach; ?>  							
-                                          </select>
-                                    </div>      					
-                              <fieldset disabled>
+                                     <div class="form-group row justify-content-sm-center">   				
+       						<label for="fec_fin" class="col-sm-2 col-form-label">Nombre Tableta</label>
+       						<div class="col-sm-4">	
+       							<input type="text" class="form-control form-control-sm" id="id_tableta" >
+       						</div>
+                                           <label for="fec_fin" class="col-sm-2 col-form-label">Nombre Biometrico</label>
+       						<div class="col-sm-4">	
+       							<input type="text" class="form-control form-control-sm" id="id_biometrico" >
+       						</div>
+       					</div>
+                             
+         					
+                             
        					<div class="form-group row justify-content-sm-center">
        						<label for="fec_inic" class="col-sm-3 col-form-label">Fecha solicitud:</label>
        						<div class="col-sm-4">	
@@ -167,11 +163,12 @@
                                                 function modificar()
                                                 {
                                                       var id=$('#id_Evento').val();
-                                                      var status=$('#select_status').val();
+                                                      var status=$('#select_status').val();                                                     
+                                                      var tableta_evento=$('#id_tableta').val();
+                                                      var biometrico_evento=$('#id_biometrico').val();
+                                                      var nombre_oficina=$('#sucursal_usuario').val();
                                                       var color='';
-                                                      var tableta_evento=$('#select_asesor_tableta_modal').val();
-                                                      var biometrico_evento=$('#select_asesor_biometrico_modal').val();
-
+                                                      var status_evento= '';
 
                                                       switch(status)
                                                       {
@@ -180,28 +177,17 @@
                                                             break;
                                                             case 'RECHAZADO':
                                                                   color='#C50000';
+                                                                  status_evento='DISPONIBLE';
                                                             break;
                                                             case 'ACEPTADO':
-                                                                 color='#A5F2E7';
-                                                               
-
-                                                                   $.post( base_url+'Ccalendar/modificar_status_eventos', 
-                                                                        { 
-                                                                           tableta_evento:tableta_evento,
-                                                                           biometrico_evento:biometrico_evento                                                                                                
-                                                                        }, 
-                                                                        function() 
-                                                                        {
-                                                                              console.log("hola");
-                                                                        })
-                                                            
+                                                                 color='#A5F2E7';                                                                                                                        
                                                             break;
                                                             case 'FINALIZADO':
-                                                                 color='#A5F2E7';
+                                                                 color='#DBE2EF';
+                                                                 status_evento='DISPONIBLE';                                                    
                                                             break;
-
                                                       }
-                                                      var data = '&status='+status+'&id='+id+'&color='+color+'&tableta_evento='+tableta_evento+'&biometrico_evento='+biometrico_evento;
+                                                      var data = '&status='+status+'&id='+id+'&color='+color+'&tableta_evento='+tableta_evento+'&biometrico_evento='+biometrico_evento+'&status_evento='+status_evento+'&nombre_oficina='+nombre_oficina;
                                                                                                 
                                                       $.ajax
                                                       ({  
@@ -298,23 +284,55 @@
                                            <?php endforeach; ?>  							
                                     </select>
                               </div>
+                              <div class="form-group row justify-content-sm-center">
+                                 <div class="alert alert-info col-sm-8" role="alert" id="evento_rechazado"  style="display: none;">
+                                    
+                                 </div> 
+
+                                 <script>
+                                       $('#select_asesor_evento').on('change',function()
+                                       {
+                                                function registra_eventos()
+                                                {
+                                                      var nombre_asesor=$('#select_asesor_evento').val();
+                                                                                      
+                                                      $.post( base_url+'Ccalendar/eventos_rechazados', 
+                                                            { 
+                                                                  nombre_asesor: nombre_asesor                                                                                                                            
+                                                            }, 
+                                                            function(data) 
+                                                            {
+                                                                  $('#evento_rechazado').fadeIn();
+                                                                  $('#evento_rechazado').text(data);
+
+                              
+
+                                                            })
+                                          
+                                                }
+
+                                       })
+
+                                 </script>
+
+                              </div>
 
                               <!-- Inicio Seleccionar tableta Y biometrico -->
                               <div class="form-group row justify-content-sm-center">
                                     <label for="select_status" class="col-sm-2 col-form-label">Seleccionar tableta:</label>
                                     <select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
-                                         <option>Seleccionar tableta</option>
+                                         <option value="">Seleccionar tableta</option>
                                          <?php foreach ($lista_tableta as $tableta): ?>                                              
-                                                <option value='<?php echo $tableta['id_tableta']; ?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
+                                                <option><?php echo $tableta['marca_tableta']; ?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 
                                      <label for="select_status" class="col-sm-2 col-form-label">Seleccionar Biometrico:</label>
                                     <select class="form-control form-control-sm col-sm-2" id="select_asesor_biometrico" name="select_asesor_biometrico">
-                                         <option>Seleccionar biometrico</option>
+                                         <option value="">Seleccionar biometrico</option>
                                          <?php foreach ($lista_biometrico as $biometrico): ?>
                                                
-                                                <option value="<?php echo $biometrico['id_biometrico']; ?>"><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
+                                                <option><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 
@@ -322,12 +340,7 @@
                               <!-- Fin de  Seleccionar tableta y biometrico -->
 
                               <!-- Fin de Select Biometrico -->
-                              <div class="form-group row justify-content-sm-center">
-                                 <div class="alert alert-info col-sm-8" role="alert">
-                                    <strong>Prestamo tableta</strong>
-                                 </div> 
-
-                              </div>
+                              
                              
                             
 

@@ -26,11 +26,20 @@ class Ccalendar extends CI_controller
 		$param['fecFin']=$this->input->post('fecFin');
 		$param['hora_inicio']=$this->input->post('hora_inicio');		
 		$param['hora_fin']=$this->input->post('hora_fin');
+		$param['tableta_evento']=$this->input->post('tableta_evento');
+		$param['biometrico_evento']=$this->input->post('biometrico_evento');
 		$param['folio_evento']=$this->input->post('folio_evento');
 		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
 
 		$res=$this->Mcalendar->insert_event_asesor($param);
+        
+		$id_tableta=$this->input->post('tableta_evento');
+		$id_biometrico=$this->input->post('biometrico_evento');
+		$status=$this->input->post('status');
+		$sucursal=$this->input->post('nombre_oficina');
 
+		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status, $sucursal);
+		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status, $sucursal);
 	
 	    redirect('Cregistro/enter');
 	}
@@ -54,10 +63,11 @@ class Ccalendar extends CI_controller
 
 		$id_tableta=$this->input->post('tableta_evento');
 		$id_biometrico=$this->input->post('biometrico_evento');
-		$status='OCUPADO';
+		$status=$this->input->post('status');
+		$sucursal=$this->input->post('nombre_oficina');
 
-		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status);
-		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status);
+		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status, $sucursal);
+		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status, $sucursal);
 
 		redirect('Cregistro/enter');	
 	}
@@ -69,7 +79,9 @@ class Ccalendar extends CI_controller
 		$r= $this->Mcalendar->getEventos($sucursal_usuario);
 
 		echo  json_encode($r);
-	}
+	} 
+
+
 
 	public function mostrar_evento()
 	{
@@ -87,10 +99,14 @@ class Ccalendar extends CI_controller
 		$color=$this->input->post('color');
 		$id_tableta=$this->input->post('tableta_evento');
 		$id_biometrico=$this->input->post('biometrico_evento');
+		$status_evento=$this->input->post('status_evento');
 
+		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color);
 
-		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color,$id_tableta,$id_biometrico);
+		$sucursal=$this->input->post('nombre_oficina');
 
+		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status_evento, $sucursal);
+		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status_evento, $sucursal);
 		echo $evento;
 	}
 
@@ -104,12 +120,15 @@ class Ccalendar extends CI_controller
 		$param_oficina['jefe_oficina']=$this->input->post('jefe_oficina');
 
 		$this->Mcalendar->insert_oficinas($param_oficina);
+		redirect('Cregistro/enter');
+
 
 	}
 
 	public function insert_tableta()
 	{
 		$param_tableta['marca_tableta']=$this->input->post('marca_tableta');
+		$param_tableta['nombre_oficina']=$this->input->post('nombre_oficina');
 		$param_tableta['color_tableta']=$this->input->post('color_tableta');
 		$param_tableta['descripcion_tableta']=$this->input->post('descripcion_tableta');
 		$this->Mcalendar->insert_tabletas($param_tableta);
@@ -118,21 +137,29 @@ class Ccalendar extends CI_controller
 	public function insert_biometrico()
 	{
 		$param_biometrico['marca_biometrico']=$this->input->post('marca_biometrico');
+		$param_biometrico['nombre_oficina']=$this->input->post('nombre_oficina');
 		$param_biometrico['color_biometrico']=$this->input->post('color_biometrico');
 		$param_biometrico['descripcion_biometrico']=$this->input->post('descripcion_biometrico');
 		
 		$this->Mcalendar->insert_biometrico($param_biometrico);
 	}
 
-	public function modificar_status_eventos()
-	{
-		
-		$id_tableta=$this->input->post('tableta_evento');
-		$id_biometrico=$this->input->post('biometrico_evento');
-		$status='OCUPADO';
 
-		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status);
-		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status);
+
+	public function eventos_rechazados()
+	{
+		$nombre_asesor=$this->input->post('nombre_asesor');
+		$evento_rechazado= $this->Mcalendar->eventos_rechazados($nombre_asesor);
+		
+		if ($evento_rechazado==TRUE) 
+		{
+			echo "ESTE ASESOR  YA TIENE ASIGNADO  UNA TABLETA ";
+		} 
+		else 
+		{
+			echo "ASESOR DISPONIBLE";
+		}
+		
 	}
 
 

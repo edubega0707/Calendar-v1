@@ -1,30 +1,38 @@
- $(document).ready(function()
+ 
+
+$(document).ready(function()
             {
             function registra_eventos()
             {
                     var nombre_asesor=$('#nombre_asesor').val();
+                    var nombre_oficina=$('#sucursal_usuario').val();
                     var des_evento=$('#desc_evento').val();                                     
-                    //var sucursal_usuario=$('#sucursal_usuario').val();
+                    var tableta_evento=$('#select_asesor_tableta').val();
+                    var biometrico_evento=$('#select_asesor_biometrico').val();
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val();
                     var folio_evento=$('#folio_tys_evento').val();
                     var fecInicio=$('#fecha_inicio').val();
                     var hora_inicio=$('#select_hora_inicio').val();
                     var fecFin=$('#fecha_fin').val();
                     var hora_fin=$('#select_hora_fin').val();
+                    var status='RESERVADO';
                     
                     
                     
                   $.post( base_url+'Ccalendar/insert_event', 
                   { 
                         nombre_asesor: nombre_asesor,
+                        nombre_oficina:nombre_oficina,
                         des_evento: des_evento, 
-                       // sucursal_usuario:sucursal_usuario,
+                        tableta_evento:tableta_evento,
+                        biometrico_evento:biometrico_evento,
                         usuarios_id_usuario:usuarios_id_usuario,
                         folio_evento:folio_evento,
                         fecInicio:fecInicio,
                         hora_inicio:hora_inicio,
                         fecFin:fecFin,
-                        hora_fin:hora_fin
+                        hora_fin:hora_fin,
+                        status:status
                                                    
                   }, 
                   function() 

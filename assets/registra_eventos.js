@@ -4,32 +4,34 @@
             function registra_eventos()
             {
                     var nombre_asesor=$('#select_asesor_evento').val();
+                    var nombre_oficina=$('#sucursal_usuario').val();
                     var tableta_evento=$('#select_asesor_tableta').val();
                     var biometrico_evento=$('#select_asesor_biometrico').val();
                     var des_evento=$('#desc_evento').val();                                     
-                    //var sucursal_usuario=$('#sucursal_usuario').val();
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val();
                     var folio_evento=$('#folio_tys_evento').val();
                     var fecInicio=$('#fecha_inicio').val();
                     var hora_inicio=$('#select_hora_inicio').val();
                     var fecFin=$('#fecha_fin').val();
                     var hora_fin=$('#select_hora_fin').val();
+                    var status='RESERVADO';
                     
                     
                     
                  $.post( base_url+'Ccalendar/insert_event_admin', 
                   { 
                         nombre_asesor: nombre_asesor,
+                        nombre_oficina:nombre_oficina,
                         tableta_evento:tableta_evento,
                         biometrico_evento:biometrico_evento,
                         des_evento: des_evento, 
-                       // sucursal_usuario:sucursal_usuario,
                         usuarios_id_usuario:usuarios_id_usuario,
                         folio_evento:folio_evento,
                         fecInicio:fecInicio,
                         hora_inicio:hora_inicio,
                         hora_fin:hora_fin,
-                        fecFin:fecFin
+                        fecFin:fecFin,
+                        status:status
                              
                   }, 
                   function() 
@@ -66,7 +68,7 @@
                         $.confirm
                         ({
                                 title: 'Registrar',
-                                content: '¿Quiere registrar este evento?',
+                                content: '¿Desea registrar este evento?',
                                 type: 'dark',                                              
                                 theme: 'material',
                                 animation: 'zoom',

@@ -59,7 +59,7 @@
 				<div class="btn-group my-2 p-2">
 						<button type="button" class="btn btn-danger dropdown-toggle d-flex flex-row justify-content-around align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<i class="fa fa-user" aria-hidden="true" style="color: #fff;">
-							</i><?php echo 'Usuario: '.$session; ?>
+							</i><?php echo $usuario; ?>
 						</button>
 						<div class="dropdown-menu">
 							<a class="dropdown-item d-flex flex-row justify-content-center align-items-center" href="<?php echo base_url()."Cregistro/logout"; ?>"><i class="fa fa-sign-out" aria-hidden="true"></i>Cerrar Sesion</a>

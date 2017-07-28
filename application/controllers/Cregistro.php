@@ -71,17 +71,17 @@ class Cregistro extends CI_controller
 	public function login_validation()
 	{
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('clave_usuario', 'Clave del usuario', 'required|trim|min_length[2]|max_length[150]',
+		$this->form_validation->set_rules('clave_usuario', 'Clave del usuario', 'required|trim|min_length[10]|max_length[30]',
                         array('required' => 'Debe ingresar su Clave'));
 
-		$this->form_validation->set_rules('contraseña_usuario', 'Contraseña del usuario','required|trim|min_length[2]|max_length[150]',
+		$this->form_validation->set_rules('contraseña_usuario', 'Contraseña del usuario','required|trim|min_length[10]|max_length[20]',
                         array('required' => 'Debe Ingresar Contraseña'));
       
 
 		if($this->form_validation->run())
 		{
 
-			$username=$this->input->post('clave_usuario');
+			$username=$this->input->post('clave_usuario');			
 			$password=md5($this->input->post('contraseña_usuario'));		    
 	
 				if ($this->Mregistro->can_login($username, $password)) 
@@ -116,14 +116,16 @@ class Cregistro extends CI_controller
 
 	function enter()
 	{
-		$data['session']=$this->session->userdata('clave');
+		$data['session']=$this->session->userdata('username');
+		$data['password']=$this->session->userdata('clave');
 
-		if($data['session']!= '')
+		if($data['session']!= '' || $data['clave']!= '')
 		{	
 
-		   if ($data['session']=='ADMINISTRADOR') 
+		   if ($data['session']=='ADMINISTRADOR' && $data['clave']=='ADMINISTRADOR' ) 
 		   {
-	   	
+
+
 			   	$row=$this->Mregistro->getasesor($data['session']);	
 			   	//$data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
@@ -138,12 +140,15 @@ class Cregistro extends CI_controller
 			   	$this->load->view('Calendar/vfooter');
 
 		   } 
-		   else if($data['session']=='ADMINPACHUCA' || $data['session']=='ADMINPUEBLA' || $data['session']=='ADMINPACHUCAII' || $data['session']=='ADMINSATELITE' || $data['session']=='ADMINSANLUIS' || $data['session']=='ADMINCDAZTECA' || $data['session']=='ADMINPUEBLA' || $data['session']=='ADMINCANCUN' )
+		   //else if($data['session']=='ADMINPACHUCA' || $data['session']=='ADMINPUEBLA' || $data['session']=='ADMINPACHUCAII' || $data['session']=='ADMINSATELITE' || $data['session']=='ADMINSANLUIS' || $data['session']=='ADMINCDAZTECA' || $data['session']=='ADMINPUEBLA' || $data['session']=='ADMINCANCUN' )
+		    else if($data['clave']=='OFIADMIN')
 		   {
 
-		   		$row=$this->Mregistro->getasesor($data['session']);	
+		   		$row=$this->Mregistro->getasesor($data['session']);
+			    $data['usuario']=$row->nombre_usuario;	
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
+
 
 				$data['lista_asesores'] = $this->Mregistro->getasesores($data['sucursal_usuario']);
 				$data['lista_tableta'] = $this->Mregistro->gettableta($data['sucursal_usuario']);
@@ -159,7 +164,7 @@ class Cregistro extends CI_controller
 		   else 
 		   {
 
-			   	$row=$this->Mregistro->getasesor($data['session']);	
+			   	$row=$this->Mregistro->perfil_asesor($data['session']);	
 			   	$data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
 			   	$data['usuarios_id_usuario']=$row->id_usuario;

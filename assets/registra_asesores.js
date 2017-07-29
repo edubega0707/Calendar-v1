@@ -73,7 +73,8 @@
                                                 action: function()
                                                 {
                                                      registra_asesor();
-                                                     $('#form_asesores')[0].reset();  
+                                                     $('#form_asesores')[0].reset();
+                                                     location.href =base_url+'Cregistro/enter';    
                                        
                                                 }
                                             },

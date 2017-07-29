@@ -4,6 +4,7 @@
 	<meta charset="UTF-8"></meta>
 	<title>Agenda Dipradigital</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1.0, maximum-scale=1.0, minimum-sacale=1.0">
+	<link rel="shortcut icon" href="<?php echo base_url();?>/public/img/favicon.ico" />
 
 	<link href="https://fonts.googleapis.com/css?family=Khula|Lato" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans|Roboto+Slab" rel="stylesheet">

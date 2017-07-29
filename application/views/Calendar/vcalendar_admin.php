@@ -323,7 +323,7 @@
                                     <select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
                                          <option value="">Seleccionar tableta</option>
                                          <?php foreach ($lista_tableta as $tableta): ?>                                              
-                                                <option><?php echo $tableta['marca_tableta']; ?></option>                                                   
+                                                <option value='<?php echo $tableta['id_tableta'];?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 
@@ -332,7 +332,7 @@
                                          <option value="">Seleccionar biometrico</option>
                                          <?php foreach ($lista_biometrico as $biometrico): ?>
                                                
-                                                <option><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
+                                                <option value='<?php echo $tableta['id_tableta'];?>'><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 

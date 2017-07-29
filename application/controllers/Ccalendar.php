@@ -116,7 +116,8 @@ class Ccalendar extends CI_controller
 		$param_oficina['nombre_oficina']=$this->input->post('nombre_oficina');
 		$param_oficina['ubicacion_oficina']=$this->input->post('ubicacion_oficina');
 		$param_oficina['direccion_oficina']=$this->input->post('direccion_oficina');
-		$param_oficina['telefono_oficina']=$this->input->post('telefono_oficina');
+		$param_oficina['telefono_oficina_uno']=$this->input->post('telefono_oficina_uno');
+		$param_oficina['telefono_oficina_dos']=$this->input->post('telefono_oficina_dos');
 		$param_oficina['jefe_oficina']=$this->input->post('jefe_oficina');
 
 		$this->Mcalendar->insert_oficinas($param_oficina);

@@ -1,4 +1,4 @@
- 
+  
  $(document).ready(function()
             {
             function registra_eventos()
@@ -7,7 +7,7 @@
                     var nombre_oficina=$('#sucursal_usuario').val();
                     var tableta_evento=$('#select_asesor_tableta').val();
                     var biometrico_evento=$('#select_asesor_biometrico').val();
-                    var des_evento=$('#desc_evento').val();                                     
+                    var des_evento=$('#desc_evento').val();                                    
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val();
                     var folio_evento=$('#folio_tys_evento').val();
                     var fecInicio=$('#fecha_inicio').val();

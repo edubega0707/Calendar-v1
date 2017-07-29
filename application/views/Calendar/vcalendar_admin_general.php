@@ -500,17 +500,19 @@
                         <div class="col-12 col-sm-6 col-md-7">  
                               <textarea class="form-control form-control-sm" id="direccion_oficina" name="direccion_oficina" rows="5" placeholder="Direccion de la oficina"  style="text-transform:uppercase;" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS" ></textarea>                                
                         </div>
-                        <span class="color-error  text-center"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>   
+                         
                   </div>
 
                   <div class="form-group row">
 
-                        <label for="tel_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-phone mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefono oficina:</label>
+                        <label for="tel_usuario" class="d-flex flex-row align-items-center  col-10 col-sm-6 col-md-4"><i class="fa fa-phone mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefonos oficina:</label>
                         <div class="col-12 col-sm-6 col-md-6"> 
-                            <input type="text" class="form-control form-control-sm" id="telefono_oficina" name="telefono_oficina" placeholder="Telefono "  pattern="^[0-9]{10}" title="El telefono debe ser de 10 digitos" required >  
+                            <input type="text" class="form-control form-control-sm" id="telefono_oficina_uno" name="telefono_oficina_uno" placeholder="Telefono 1"  required>  
                         </div>
-                        <div class="col-12 col-sm-6 col-md-6"> 
-                            <input type="text" class="form-control form-control-sm" id="telefono_oficina_dos" name="telefono_oficina_dos" placeholder="Telefono "  pattern="^[0-9]{10}" title="El telefono debe ser de 10 digitos" required >  
+
+                       
+                        <div class="col-12 col-sm-6 col-md-6 offset-md-4 offset-sm-6 mt-3"> 
+                            <input type="text" class="form-control form-control-sm" id="telefono_oficina_dos" name="telefono_oficina_dos" placeholder="Telefono 2" >  
                         </div>
                   
                   </div>

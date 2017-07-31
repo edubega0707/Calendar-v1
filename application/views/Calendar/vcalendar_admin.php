@@ -41,6 +41,8 @@
                                                 $('#des_event').val(item.des_evento);
                                                 $('#id_tableta').val(item.tableta_evento);
                                                 $('#id_biometrico').val(item.biometrico_evento);
+                                                $('#desc_tableta').val(item.desc_tableta_evento );
+                                                $('#desc_biometrico').val(item.desc_biometrico_evento);
 								$('#fec_inic').val(item.fecInicio);
 								$('#fec_fin').val(item.fecFin);
 								$('#hora_inic').val(item.hora_inicio);
@@ -100,8 +102,16 @@
        							<input type="text" class="form-control form-control-sm" id="id_biometrico" >
        						</div>
        					</div>
-                             
-         					
+
+                                     <div class="form-group">
+       						<label for="des_eve">Descripción tableta:</label>
+       						<textarea class="form-control form-control-sm" id="desc_tableta" rows="2" ></textarea>
+       					</div>
+                                     <div class="form-group">
+       						<label for="des_event">Descripción biometrico:</label>
+       						<textarea class="form-control form-control-sm" id="desc_biometrico" rows="2" ></textarea>
+       					</div>
+  					
                              
        					<div class="form-group row justify-content-sm-center">
        						<label for="fec_inic" class="col-sm-3 col-form-label">Fecha solicitud:</label>
@@ -323,16 +333,15 @@
                                     <select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
                                          <option value="">Seleccionar tableta</option>
                                          <?php foreach ($lista_tableta as $tableta): ?>                                              
-                                                <option value='<?php echo $tableta['id_tableta'];?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
+                                                <option><?php echo $tableta['id_tableta'];?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 
                                      <label for="select_status" class="col-sm-2 col-form-label">Seleccionar Biometrico:</label>
                                     <select class="form-control form-control-sm col-sm-2" id="select_asesor_biometrico" name="select_asesor_biometrico">
                                          <option value="">Seleccionar biometrico</option>
-                                         <?php foreach ($lista_biometrico as $biometrico): ?>
-                                               
-                                                <option value='<?php echo $tableta['id_tableta'];?>'><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
+                                         <?php foreach ($lista_biometrico as $biometrico): ?>                                            
+                                                <option><?php echo $biometrico['id_biometrico'];?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 
@@ -340,6 +349,93 @@
                               <!-- Fin de  Seleccionar tableta y biometrico -->
 
                               <!-- Fin de Select Biometrico -->
+                              <div id="descripcion_eventos_equipos" class="form-group row justify-content-sm-center" style="display: none;">
+						<div class="alert alert-success col-md-8 col-sm-10 my-3" role="alert" >
+							<div class="row">
+							  <div class="col-md-12 col-sm-12 my-1">
+									<strong>Tableta</strong><p id="descripcion_tableta"></p> 
+							  </div>
+							   <div class="col-md-12 col-sm-12">
+							   		<strong>Biometrico</strong><p id="descripcion_biometrico"></p>
+							  </div>				
+							</div>														
+						</div>
+					</div>
+
+					 <script>
+					    
+							$(document).ready(function()
+							{ 
+							   $('#select_asesor_tableta').on('change', function()
+							   {
+										var id_tableta=$('#select_asesor_tableta').val();
+										if (id_tableta=='') 
+										{
+											$('#descripcion_eventos_equipos').hide(600);											
+										} 
+										else 
+										{
+											$.post( base_url+'Ccalendar/consulta_tableta', 
+											{ 
+													id_tableta:id_tableta
+													
+											}, 
+											function(data) 
+											{						
+											$('#descripcion_eventos_equipos').show(1000);
+											$('#descripcion_tableta').text(data);		
+																								
+											})
+											.fail(function() 
+											{
+												console.log("Error")
+											})	
+										}
+										
+							
+											
+							   })
+
+							   $('#select_asesor_biometrico').on('change', function()
+							   {
+										var id_biometrico=$('#select_asesor_biometrico').val();
+										
+										if (id_biometrico=='') 
+										{
+											$('#descripcion_eventos_equipos').hide(600);	
+										} 
+										else 
+										{
+											$.post( base_url+'Ccalendar/consulta_biometrico', 
+											{ 
+													id_biometrico:id_biometrico
+													
+											}, 
+											function(data) 
+											{					
+											      $('#descripcion_eventos_equipos').show(500);
+												$("#descripcion_biometrico").text(data);
+												$("#descripcion_biometrico").show(1000);
+													
+												
+												
+																								
+											})
+											.fail(function() 
+											{
+												console.log("Error")
+											})	
+										}
+									
+															
+							   })
+
+
+								
+										
+							});
+											
+					</script>
                               
                              
                             
@@ -353,12 +449,92 @@
                                     <input type="text" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
                               
-                              <div class="form-group row justify-content-sm-center">  
-                                 <label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS:</label>
-                                 <div class="col-sm-6">
-                                      <input type="text" class="form-control form-control-sm" id="folio_tys_evento" name="folio_tys_evento" placeholder="Folio TYS" >
-                                 </div>                                
-                              </div> 
+                              <div class="form-group row justify-content-sm-center">
+
+					 	<label for="select_status" class="col-sm-3 col-form-label">Folios TYS a capturar:</label>
+							<select class="form-control form-control-sm col-sm-2" id="select_asesor_folios" name="select_asesor_folios">
+									<option value="0">Folio</option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>															
+							</select>
+						                              
+                               </div> 
+
+					  <?php 
+					  for ($i=1; $i <=5 ; $i++) { ?>		  
+						<div class="form-group row justify-content-sm-center" id="folio_tys_evento<?php echo$i; ?>" style="display: none;">
+							<label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS No<?php echo " ".$i.":"; ?></label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control form-control-sm" id="folio_evento<?php echo$i; ?>" name="folio_evento<?php echo$i;?>" placeholder="Folio TYS <?php echo$i;?>"  >
+							</div> 
+						</div>
+					  <?php } ?>
+
+
+					  <script>
+					    
+							$(document).ready(function()
+							{ 
+							   $('#select_asesor_folios').on('change', function(){
+									var no_folio=$('#select_asesor_folios').val();
+
+									switch (no_folio) {
+									
+										case '1':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').hide(1000);
+											$('#folio_tys_evento3').hide(1000);
+											$('#folio_tys_evento4').hide(1000);
+											$('#folio_tys_evento5').hide(1000);
+								
+										break;
+										case '2':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').hide(1000);
+											$('#folio_tys_evento4').hide(1000);
+											$('#folio_tys_evento5').hide(1000);
+								
+										break;
+										case '3':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').show(1000);
+											$('#folio_tys_evento4').hide(1000);
+											$('#folio_tys_evento5').hide(1000);
+										break;
+										case '4':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').show(1000);
+											$('#folio_tys_evento4').show(1000);
+											$('#folio_tys_evento5').hide(1000);
+										break;
+										case '5':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').show(1000);
+											$('#folio_tys_evento4').show(1000);
+											$('#folio_tys_evento5').show(1000);
+										break;
+									
+										default:
+
+										 
+										break;
+									}
+
+							   })
+
+								
+										
+							});
+											
+					  </script>
+
 
                         
                               <div class="form-group row justify-content-sm-center">

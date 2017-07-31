@@ -154,19 +154,20 @@
 					
 
 					<div class="form-group row justify-content-sm-center">
-							<label for="select_status" class="col-sm-2 col-form-label mt-2">Seleccionar tableta:</label>
+									
+							<label for="select_asesor_tableta" class="col-sm-2 col-form-label">Seleccionar tableta:</label>
 							<select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
 									<option value="">Seleccionar tableta</option>
 									<?php foreach ($lista_tableta as $tableta): ?>                                              
-										<option ><?php echo $tableta['id_tableta'];?></option>                                                   
+										<option><?php echo $tableta['id_tableta'];?></option>                                                   
 									<?php endforeach; ?>  							
 							</select>
 
-							<label for="select_status" class="col-sm-2 col-form-label mt-2">Seleccionar Biometrico:</label>
+							<label for="select_asesor_biometrico" class="col-sm-2 col-form-label ">Seleccionar Biometrico:</label>
 							<select class="form-control form-control-sm col-sm-2" id="select_asesor_biometrico" name="select_asesor_biometrico">
 									<option value="">Seleccionar biometrico</option>
 									<?php foreach ($lista_biometrico as $biometrico): ?>									
-										<option ><?php echo $biometrico['id_biometrico']; ?></option>                                                   
+										<option><?php echo $biometrico['id_biometrico']; ?></option>                                                   
 									<?php endforeach; ?>  							
 							</select>
 					</div>
@@ -191,36 +192,65 @@
 							{ 
 							   $('#select_asesor_tableta').on('change', function()
 							   {
-									 var id_tableta=$('#select_asesor_tableta').val();
-									 $.post( base_url+'Ccalendar/consulta_tableta', 
-										{ 
-												id_tableta:id_tableta
-												
-										}, 
-										function(data) 
-										{						
-										 $("#descripcion_eventos_equipos").show(1000);
-										  $("#descripcion_tableta").text(data);		
-										         								  			
-										})
+										var id_tableta=$('#select_asesor_tableta').val();
+										if (id_tableta=='') 
+										{
+											$('#descripcion_eventos_equipos').hide(600);											
+										} 
+										else 
+										{
+											$.post( base_url+'Ccalendar/consulta_tableta', 
+											{ 
+													id_tableta:id_tableta
+													
+											}, 
+											function(data) 
+											{						
+											$('#descripcion_eventos_equipos').show(1000);
+											$('#descripcion_tableta').text(data);		
+																								
+											})
+											.fail(function() 
+											{
+												console.log("Error")
+											})	
+										}
+										
 							
 											
 							   })
 
 							   $('#select_asesor_biometrico').on('change', function()
 							   {
-									 var id_biometrico=$('#select_asesor_biometrico').val();
-									 $.post( base_url+'Ccalendar/consulta_biometrico', 
-										{ 
-												id_biometrico:id_biometrico
+										var id_biometrico=$('#select_asesor_biometrico').val();
+										
+										if (id_biometrico=='') 
+										{
+											$('#descripcion_eventos_equipos').hide(600);	
+										} 
+										else 
+										{
+											$.post( base_url+'Ccalendar/consulta_biometrico', 
+											{ 
+													id_biometrico:id_biometrico
+													
+											}, 
+											function(data) 
+											{					
+											$('#descripcion_eventos_equipos').show(500);
+												$("#descripcion_biometrico").text(data);
+												$("#descripcion_biometrico").show(1000);
+													
 												
-										}, 
-										function(data) 
-										{						
-										  $("#descripcion_evento_biometrico").show(500);
-										  $("#descripcion_biometrico").text(data);		
-										         								  			
-										})
+												
+																								
+											})
+											.fail(function() 
+											{
+												console.log("Error")
+											})	
+										}
+									
 															
 							   })
 
@@ -229,7 +259,7 @@
 										
 							});
 											
-					  </script>
+					</script>
 
 
 

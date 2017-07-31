@@ -39,7 +39,7 @@
       </script>
 
  <!-- Fin de  menu de seccion de admin_general -->
- 
+<!--  
  <div id="seccion-calendario" class="my-3">
       <div class="container my-5">
             <div class="row justify-content-sm-center my-3 ">
@@ -48,7 +48,7 @@
             <div class="row ">
                   <div class="col-sm-5">
                         <div class="form-group row justify-content-sm-center">
-                        <label for="select_status" class="col-sm-5 col-form-label">Consultar Calendario : </label>
+                        <label for="select_status" class="col-sm-5 col-form-label">Consultar Eventos : </label>
                               <select class="form-control form-control-sm  col-sm-5" id="select_his_suc" name="select_his_suc">
                                     <option value="DIPRA">Seleccionar Sucursal</option>
                                     <option value="PACHUCA">PACHUCA</option>
@@ -62,83 +62,41 @@
                   </div>       
             </div>
       </div>
-      <script type="text/javascript"> 
+      
+       <!-- <div  class="container" id='calendar'>
+            <div class="row">
+                  <table class="table table-sm table-hover">
+                  <thead class="thead-inverse">
+                  <tr>
+                        <th>id_evento</th>
+                        <th>Nombre de asesor</th>
+                        <th>Descripcion del evento</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Folios TYS</th>
+                        
+                  </tr>
+                  </thead>
+                  <tbody>
 
-            $(document).ready(function() {
-            
-                  $('#calendar').fullCalendar({
-                                    header: {
-                                          left: 'prev,next today',
-                                          center: 'title',
-                                          right: 'month,basicWeek,basicDay'
-                                    },
-                                          defaultDate: new Date(),
-                                          navLinks: true, // can click day/week names to navigate views
-                                          editable: true,
-                                          eventLimit: true, // allow "more" link when too many events
-                                          events: function() 
-                                          {
-                                          $('#select_his_suc').on('change', function(){
-
-                                          var sucursal_usuario =$('#select_his_suc').val();
-                                          $("#titulo_historial").text("Calendario prestamo tableta "+ sucursal_usuario);
-                                    
-                                          $.post('<?php echo base_url();?>ccalendar/getEventos',
-                                          {
-                                                sucursal_usuario:sucursal_usuario
-                                          },  
-
-                                          function(data){
-                                                $.parseJSON(data);                      
-                                    
-                                          })
-            
-                                          });
-                                          },
-                                                                              
-
-                                    
-                                          eventClick: function(event, jsEvent, view)
-                                          {           
-                                                $('#modalEvento').modal();
-                                                var id= event.id;      
-                                                
-                                                                  
-                                                $.post("<?php echo base_url();?>Ccalendar/mostrar_evento",
-                                                      {
-                                                            id:id                                     
-                                                      },
-                                                      function(data){
-                                                
-                                                            var c=JSON.parse(data);                                           
-                                                            $.each(c,function(i,item){
-                                                                  $('#id_Evento').val(item.idEvento);
-                                                                  $('#nom_asesor').val(item.nombre_asesor);
-                                                                  $('#des_event').val(item.des_evento);
-                                                                  $('#fec_inic').val(item.fecInicio);
-                                                                  $('#fec_fin').val(item.fecFin);
-                                                                  $('#hora_inic').val(item.hora_inicio);
-                                                                  $('#hora_finic').val(item.hora_fin);                                          
-                                                                  $('#status_evento').val(item.status);
-                                                                  
-                                                            });
-
-                                                      });
-                                          }                       
-                        });
-                        });
+                  	<?php foreach ($lista_eventos as $evento): ?>	
+                              <tr>
+                                    <th><?php echo $evento['id']; ?></th>
+                                    <td><?php echo $evento['title']; ?></td>
+                                    <td><?php echo $evento['start']; ?></td>
+                                    <td><?php echo $evento['end']; ?></td>
+                                    <td><?php echo $evento['folio_evento']; ?></td>
+                              </tr>    				                                                   
+				<?php endforeach; ?>  
+                                
+                  </tbody>
+                  </table>          
+            </div>
+      </div>  -->
 
 
-                  
-
-
-
-      </script>
-      <div id='calendar'>
-
-      </div> 
- </div>
-    
+ </div> 
+     -->
 <!-- INICIO DEL MODAL -->
       <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -521,7 +479,7 @@
 
                         <label for="clave_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user mr-3" aria-hidden="true" style="font-size: 30px;"></i>Jefe de oficina:</label>
                          <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="text" class="form-control form-control-sm" id="jefe_oficina" name="jefe_oficina" placeholder="Oficina" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS"  required>
+                             <input type="text" class="form-control form-control-sm" id="jefe_oficina" name="jefe_oficina" placeholder="Jefe de oficina" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS"  required>
                         </div>         
 
                   </div>

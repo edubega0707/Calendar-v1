@@ -127,7 +127,9 @@ class Cregistro extends CI_controller
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
 
-				$data['lista_oficinas'] = $this->Mregistro->getoficinas();							
+				$data['lista_oficinas'] = $this->Mregistro->getoficinas();	
+
+				//$data['lista_eventos'] = $this->Mcalendar->getEventos($data['sucursal_usuario']);						
 
 			   	$this->load->view('Calendar/vheader', $data);
 			   	$this->load->view('Calendar/vcalendar_admin_general');
@@ -148,6 +150,8 @@ class Cregistro extends CI_controller
 				$data['lista_asesores'] = $this->Mregistro->getasesores($data['sucursal_usuario']);
 				$data['lista_tableta'] = $this->Mregistro->gettableta($data['sucursal_usuario']);
 				$data['lista_biometrico'] = $this->Mregistro->getbiometrico($data['sucursal_usuario']);
+
+
 
 						
 			   	$this->load->view('Calendar/vheader', $data);

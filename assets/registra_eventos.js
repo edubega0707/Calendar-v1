@@ -7,9 +7,21 @@
                     var nombre_oficina=$('#sucursal_usuario').val();
                     var tableta_evento=$('#select_asesor_tableta').val();
                     var biometrico_evento=$('#select_asesor_biometrico').val();
-                    var des_evento=$('#desc_evento').val();                                    
+                    var des_evento=$('#desc_evento').val();
+                    var desc_tableta_evento=$('#descripcion_tableta').text();
+                    var desc_biometrico_evento=$('#descripcion_biometrico').text();         
+
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val();
-                    var folio_evento=$('#folio_tys_evento').val();
+                    
+                    var folio_evento_1=$('#folio_evento1').val();
+                    var folio_evento_2=$('#folio_evento2').val();
+                    var folio_evento_3=$('#folio_evento3').val();
+                    var folio_evento_4=$('#folio_evento4').val();
+                    var folio_evento_5=$('#folio_evento5').val();
+
+                    var folios=[folio_evento_1,folio_evento_2,folio_evento_3,folio_evento_4,folio_evento_5];                
+                    var folio_evento=folios.toString();
+
                     var fecInicio=$('#fecha_inicio').val();
                     var hora_inicio=$('#select_hora_inicio').val();
                     var fecFin=$('#fecha_fin').val();
@@ -24,6 +36,8 @@
                         nombre_oficina:nombre_oficina,
                         tableta_evento:tableta_evento,
                         biometrico_evento:biometrico_evento,
+                        desc_tableta_evento:desc_tableta_evento,
+                        desc_biometrico_evento:desc_biometrico_evento,
                         des_evento: des_evento, 
                         usuarios_id_usuario:usuarios_id_usuario,
                         folio_evento:folio_evento,

@@ -9,6 +9,8 @@ $(document).ready(function()
                     var des_evento=$('#desc_evento').val();                                     
                     var tableta_evento=$('#select_asesor_tableta').val();
                     var biometrico_evento=$('#select_asesor_biometrico').val();
+                    var desc_tableta_evento=$('#descripcion_tableta').text();
+                    var desc_biometrico_evento=$('#descripcion_biometrico').text();             
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val();                 
                     
                     var folio_evento_1=$('#folio_evento1').val();
@@ -36,6 +38,8 @@ $(document).ready(function()
                         des_evento: des_evento, 
                         tableta_evento:tableta_evento,
                         biometrico_evento:biometrico_evento,
+                        desc_tableta_evento:desc_tableta_evento,
+                        desc_biometrico_evento:desc_biometrico_evento,
                         usuarios_id_usuario:usuarios_id_usuario,
                         folio_evento:folio_evento,
                         fecInicio:fecInicio,

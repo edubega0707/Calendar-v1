@@ -28,6 +28,8 @@ class Ccalendar extends CI_controller
 		$param['hora_fin']=$this->input->post('hora_fin');
 		$param['tableta_evento']=$this->input->post('tableta_evento');
 		$param['biometrico_evento']=$this->input->post('biometrico_evento');
+		$param['desc_tableta_evento']=$this->input->post('desc_tableta_evento');
+		$param['desc_biometrico_evento']=$this->input->post('desc_biometrico_evento');
 		$param['folio_evento']=$this->input->post('folio_evento');
 		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
  
@@ -58,6 +60,8 @@ class Ccalendar extends CI_controller
 		$param['hora_fin']=$this->input->post('hora_fin');
 		$param['tableta_evento']=$this->input->post('tableta_evento');
 		$param['biometrico_evento']=$this->input->post('biometrico_evento');
+		$param['desc_tableta_evento']=$this->input->post('desc_tableta_evento');
+		$param['desc_biometrico_evento']=$this->input->post('desc_biometrico_evento');
 		$param['folio_evento']=$this->input->post('folio_evento');
 		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
 
@@ -142,9 +146,8 @@ class Ccalendar extends CI_controller
 	{
 
 		$id_tableta=$this->input->post('id_tableta');
-		$row=$this->Mcalendar->consulta_tableta($id_tableta);
-		$descripcion_tableta=$row->descripcion_tableta;
-		return $descripcion_tableta;
+		$descripcion_tableta=$this->Mcalendar->consulta_tableta($id_tableta);		
+		echo $descripcion_tableta;
 			
 	}
 
@@ -163,9 +166,8 @@ class Ccalendar extends CI_controller
 	{
 
 		$id_biometrico=$this->input->post('id_biometrico');
-		$row=$this->Mcalendar->consulta_biometrico($id_biometrico);
-		$descripcion_biometrico=$row->descripcion_biometrico;
-		return $descripcion_biometrico;
+		$descripcion_biometrico=$this->Mcalendar->consulta_biometrico($id_biometrico);
+		echo $descripcion_biometrico;
 			
 	}
 

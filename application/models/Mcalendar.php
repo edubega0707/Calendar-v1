@@ -24,6 +24,8 @@
             'hora_fin'=>$param['hora_fin'].':00',
             'tableta_evento'=>$param['tableta_evento'],
             'biometrico_evento'=>$param['biometrico_evento'],
+            'desc_tableta_evento'=>$param['desc_tableta_evento'],
+            'desc_biometrico_evento'=>$param['desc_biometrico_evento'],
             'folio_evento'=>$param['folio_evento'],
             'evento_color'=>'#A5F2E7',  
             'status'=>'ACEPTADO',
@@ -47,6 +49,8 @@
             'hora_fin'=>$param['hora_fin'].':00',
             'tableta_evento'=>$param['tableta_evento'],
             'biometrico_evento'=>$param['biometrico_evento'],
+            'desc_tableta_evento'=>$param['desc_tableta_evento'],
+            'desc_biometrico_evento'=>$param['desc_biometrico_evento'],
             'folio_evento'=>$param['folio_evento'],
             'evento_color'=>'#E85B48',  
             'status'=>'PENDIENTE',
@@ -55,7 +59,6 @@
             );
 
         return   $this->db->insert('eventos', $campos); 
-
     }      
 
     public function consulta_evento($id)
@@ -115,9 +118,8 @@
 		$query=$this->db->get('Tableta');
 		foreach ($query->result() as $row ) 
 		{
-			return $row;
+			return $row->descripcion_tableta;
 		}
-
 	
 	}
       
@@ -143,7 +145,7 @@
 		$query=$this->db->get('biometrico');
 		foreach ($query->result() as $row ) 
 		{
-			return $row;
+			return $row->descripcion_biometrico;
 		}
 
 	

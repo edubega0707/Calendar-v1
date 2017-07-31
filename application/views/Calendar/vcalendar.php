@@ -143,48 +143,193 @@
 						<div class="col-sm-6">
 							<textarea class="form-control form-control-sm" id="desc_evento" name="desc_evento" rows="5" placeholder="Descripción" required style="text-transform:uppercase;"></textarea>
 						</div>
-						<input type="text" name="nombre_asesor" id="nombre_asesor" value="<?php echo $usuario; ?>" style="display: none;">
 
-						<input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
+						<input type="text" name="nombre_asesor" id="nombre_asesor" value="<?php echo $usuario; ?>"  style="display:none;">
 
-						<input type="text" name="usuarios_id_usuario"  id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
+						<input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display:none;" >
+
+						<input type="text" name="usuarios_id_usuario"  id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display:none;">
 					</div>
 
+					
+
 					<div class="form-group row justify-content-sm-center">
-							<label for="select_status" class="col-sm-2 col-form-label">Seleccionar tableta:</label>
+							<label for="select_status" class="col-sm-2 col-form-label mt-2">Seleccionar tableta:</label>
 							<select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
 									<option value="">Seleccionar tableta</option>
 									<?php foreach ($lista_tableta as $tableta): ?>                                              
-										<option value='<?php echo $tableta['id_tableta'];?>'><?php echo $tableta['marca_tableta']; ?></option>                                                   
+										<option ><?php echo $tableta['id_tableta'];?></option>                                                   
 									<?php endforeach; ?>  							
 							</select>
 
-								<label for="select_status" class="col-sm-2 col-form-label">Seleccionar Biometrico:</label>
+							<label for="select_status" class="col-sm-2 col-form-label mt-2">Seleccionar Biometrico:</label>
 							<select class="form-control form-control-sm col-sm-2" id="select_asesor_biometrico" name="select_asesor_biometrico">
 									<option value="">Seleccionar biometrico</option>
 									<?php foreach ($lista_biometrico as $biometrico): ?>									
-										<option value="<?php echo $biometrico['id_biometrico']; ?>"><?php echo $biometrico['marca_biometrico']; ?></option>                                                   
+										<option ><?php echo $biometrico['id_biometrico']; ?></option>                                                   
 									<?php endforeach; ?>  							
 							</select>
+					</div>
 
+					<div id="descripcion_eventos_equipos" class="form-group row justify-content-sm-center" style="display: none;">
+						<div class="alert alert-success col-md-8 col-sm-10 my-3" role="alert" >
+							<div class="row">
+							  <div class="col-md-12 col-sm-12 my-1">
+									<strong>Tableta</strong><p id="descripcion_tableta"></p> 
+							  </div>
+							   <div class="col-md-12 col-sm-12">
+							   		<strong>Biometrico</strong><p id="descripcion_biometrico"></p>
+							  </div>				
+							</div>														
 						</div>
+					</div>
 
-					 <div class="form-group row justify-content-sm-center">  
-						<label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS:</label>
-						<div class="col-sm-6">
-							<input type="text" class="form-control form-control-sm" id="folio_tys_evento" name="folio_tys_evento" placeholder="Folio TYS" >
-						</div>                                
+
+					 <script>
+					    
+							$(document).ready(function()
+							{ 
+							   $('#select_asesor_tableta').on('change', function()
+							   {
+									 var id_tableta=$('#select_asesor_tableta').val();
+									 $.post( base_url+'Ccalendar/consulta_tableta', 
+										{ 
+												id_tableta:id_tableta
+												
+										}, 
+										function(data) 
+										{						
+										 $("#descripcion_eventos_equipos").show(1000);
+										  $("#descripcion_tableta").text(data);		
+										         								  			
+										})
+							
+											
+							   })
+
+							   $('#select_asesor_biometrico').on('change', function()
+							   {
+									 var id_biometrico=$('#select_asesor_biometrico').val();
+									 $.post( base_url+'Ccalendar/consulta_biometrico', 
+										{ 
+												id_biometrico:id_biometrico
+												
+										}, 
+										function(data) 
+										{						
+										  $("#descripcion_evento_biometrico").show(500);
+										  $("#descripcion_biometrico").text(data);		
+										         								  			
+										})
+															
+							   })
+
+
+								
+										
+							});
+											
+					  </script>
+
+
+
+
+					 <div class="form-group row justify-content-sm-center">
+
+					 	<label for="select_status" class="col-sm-3 col-form-label">Folios TYS a capturar:</label>
+							<select class="form-control form-control-sm col-sm-2" id="select_asesor_folios" name="select_asesor_folios">
+									<option value="0">Folio</option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>															
+							</select>
+						                              
                      </div> 
+
+					  <?php 
+					  for ($i=1; $i <=5 ; $i++) { ?>		  
+						<div class="form-group row justify-content-sm-center" id="folio_tys_evento<?php echo$i; ?>" style="display: none;">
+							<label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS No <?php echo " ".$i.":"; ?></label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control form-control-sm" id="folio_evento<?php echo$i; ?>" name="folio_evento<?php echo$i;?>" placeholder="Folio TYS <?php echo$i;?>"  >
+							</div> 
+						</div>
+					  <?php } ?>
+
+
+					  <script>
+					    
+							$(document).ready(function()
+							{ 
+							   $('#select_asesor_folios').on('change', function(){
+									var no_folio=$('#select_asesor_folios').val();
+
+									switch (no_folio) {
+									
+										case '1':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').hide(1000);
+											$('#folio_tys_evento3').hide(1000);
+											$('#folio_tys_evento4').hide(1000);
+											$('#folio_tys_evento5').hide(1000);
+								
+										break;
+										case '2':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').hide(1000);
+											$('#folio_tys_evento4').hide(1000);
+											$('#folio_tys_evento5').hide(1000);
+								
+										break;
+										case '3':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').show(1000);
+											$('#folio_tys_evento4').hide(1000);
+											$('#folio_tys_evento5').hide(1000);
+										break;
+										case '4':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').show(1000);
+											$('#folio_tys_evento4').show(1000);
+											$('#folio_tys_evento5').hide(1000);
+										break;
+										case '5':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').show(1000);
+											$('#folio_tys_evento4').show(1000);
+											$('#folio_tys_evento5').show(1000);
+										break;
+									
+										default:
+
+										 
+										break;
+									}
+
+							   })
+
+								
+										
+							});
+											
+					  </script>
+
  				
 					<div class="form-group row justify-content-sm-center">
-						<label for="desc_evento" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
+						<label for="fecha_inicio" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
 						<div class="col-sm-2">	
 							<div class="input-group date" id="fecha_inicio_date">
 								<input type="text" class="form-control form-control-sm" name="fecha_inicio" id="fecha_inicio"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
 							</div>												
 						</div>
 
-						<label for="desc_evento" class="col-sm-2 col-form-label">Hora solicitud:</label>
+						<label for="select_hora_inicio" class="col-sm-2 col-form-label">Hora solicitud:</label>
 						<div class="col-sm-2">	
 							<select class="form-control form-control-sm" id="select_hora_inicio" name="select_hora_inicio" required>
 								 <option>00:00</option>
@@ -225,7 +370,7 @@
 								</div>												
 							</div>
 				
-						<label for="desc_evento" class="col-sm-2 col-form-label">Hora entrega:</label required>
+						<label for="desc_evento" class="col-sm-2 col-form-label">Hora entrega:</label>
 						<div class="col-sm-2">
 							<select class="form-control form-control-sm" id="select_hora_fin" name="select_hora_fin">
 							   <option>00:00</option>
@@ -325,9 +470,9 @@
 					<h6>Paso 3</h6>
 					<hr class="hr_p3">
 					<ul>
-						<li></li>
-						<li></li>
-						<li></li>
+						<li>Verificar el estado de su peticion</li>
+						<li>Si la peticion es aceptada presentarse en la oficina</li>
+						<li>Presentarse de forma puntual para la entrega de la tableta</li>
 					</ul>
 				</article>			
 		</div>
@@ -336,9 +481,9 @@
 					<h6>Paso 4</h6>
 					<hr class="hr_p4">
 					<ul>
-						<li></li>
-						<li></li>
-						<li></li>
+						<li>Se hara entrega de los dispositivos</li>
+						<li>Entregar en tiempo y forma el dispositivo</li>
+						<li>En caso de no hacerlo se hara acredor a una sancion</li>
 					</ul>
 				</article>			
 		</div>

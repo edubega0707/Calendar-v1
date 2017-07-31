@@ -16,7 +16,7 @@ class Ccalendar extends CI_controller
 		$this->load->view('Calendar/vfooter');
 	}
 
-	public function insert_event()
+	public function insert_event_asesor()
 	{   
 
 		$param['idEvento']="event".DATE('Ymdhis');
@@ -30,8 +30,10 @@ class Ccalendar extends CI_controller
 		$param['biometrico_evento']=$this->input->post('biometrico_evento');
 		$param['folio_evento']=$this->input->post('folio_evento');
 		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
-
+ 
+ 
 		$res=$this->Mcalendar->insert_event_asesor($param);
+
         
 		$id_tableta=$this->input->post('tableta_evento');
 		$id_biometrico=$this->input->post('biometrico_evento');
@@ -100,10 +102,11 @@ class Ccalendar extends CI_controller
 		$id_tableta=$this->input->post('tableta_evento');
 		$id_biometrico=$this->input->post('biometrico_evento');
 		$status_evento=$this->input->post('status_evento');
+		$sucursal=$this->input->post('nombre_oficina');
 
 		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color);
 
-		$sucursal=$this->input->post('nombre_oficina');
+		
 
 		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status_evento, $sucursal);
 		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status_evento, $sucursal);
@@ -128,21 +131,42 @@ class Ccalendar extends CI_controller
 
 	public function insert_tableta()
 	{
-		$param_tableta['marca_tableta']=$this->input->post('marca_tableta');
-		$param_tableta['nombre_oficina']=$this->input->post('nombre_oficina');
-		$param_tableta['color_tableta']=$this->input->post('color_tableta');
+		
+		$param_tableta['nombre_oficina']=$this->input->post('nombre_oficina');		
 		$param_tableta['descripcion_tableta']=$this->input->post('descripcion_tableta');
 		$this->Mcalendar->insert_tabletas($param_tableta);
 
 	}
+
+	public function consulta_tableta()
+	{
+
+		$id_tableta=$this->input->post('id_tableta');
+		$row=$this->Mcalendar->consulta_tableta($id_tableta);
+		$descripcion_tableta=$row->descripcion_tableta;
+		return $descripcion_tableta;
+			
+	}
+
+
+
 	public function insert_biometrico()
 	{
-		$param_biometrico['marca_biometrico']=$this->input->post('marca_biometrico');
+		
 		$param_biometrico['nombre_oficina']=$this->input->post('nombre_oficina');
-		$param_biometrico['color_biometrico']=$this->input->post('color_biometrico');
 		$param_biometrico['descripcion_biometrico']=$this->input->post('descripcion_biometrico');
 		
 		$this->Mcalendar->insert_biometrico($param_biometrico);
+	}
+
+	public function consulta_biometrico()
+	{
+
+		$id_biometrico=$this->input->post('id_biometrico');
+		$row=$this->Mcalendar->consulta_biometrico($id_biometrico);
+		$descripcion_biometrico=$row->descripcion_biometrico;
+		return $descripcion_biometrico;
+			
 	}
 
 

@@ -134,6 +134,7 @@ class Cregistro extends CI_controller
 			   	$this->load->view('Calendar/vfooter');
 
 		   } 
+
 		   //else if($data['session']=='ADMINPACHUCA' || $data['session']=='ADMINPUEBLA' || $data['session']=='ADMINPACHUCAII' || $data['session']=='ADMINSATELITE' || $data['session']=='ADMINSANLUIS' || $data['session']=='ADMINCDAZTECA' || $data['session']=='ADMINPUEBLA' || $data['session']=='ADMINCANCUN' )
 		    else if( $data['password']=='OFICINA' )
 		   {
@@ -155,8 +156,7 @@ class Cregistro extends CI_controller
 		  
 		   }
  
-		   else 
-		 
+		   else 		 
 		   {
 
 			   	$row=$this->Mregistro->perfil_asesor($data['session']);	
@@ -165,14 +165,14 @@ class Cregistro extends CI_controller
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
 
 				$data['lista_tableta'] = $this->Mregistro->gettableta($data['sucursal_usuario']);
-				$data['lista_biometrico'] = $this->Mregistro->getbiometrico($data['sucursal_usuario']);			
+				$data['lista_biometrico'] = $this->Mregistro->getbiometrico($data['sucursal_usuario']);
+							
 
 
 			   	$this->load->view('Calendar/vheader', $data);
 			   	$this->load->view('Calendar/vcalendar');
 			   	$this->load->view('Calendar/vfooter');
 		   }
-
 	
 		}
 

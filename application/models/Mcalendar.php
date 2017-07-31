@@ -99,28 +99,35 @@
      public function insert_tabletas($param_tableta)
     {
         $campos = array(
-            'id_tableta'=>'tablet'.DATE('Ymdhis'),
-            'marca_tableta'=>'TABLET'.$param_tableta['marca_tableta'],
-            'nombre_oficina'=>$param_tableta['nombre_oficina'],
-            'color_tableta'=>$param_tableta['color_tableta'],
+            'id_tableta'=>'tablet'.DATE('his'),
+            'nombre_oficina'=>$param_tableta['nombre_oficina'],          
             'descripcion_tableta'=>$param_tableta['descripcion_tableta'],
             'status_tableta'=>'DISPONIBLE'
             );
 
          return   $this->db->insert('Tableta', $campos); 
-    }      
+    } 
 
 
-    
+    public function consulta_tableta($id_tableta)
+	{
+        $this->db->where('id_tableta', $id_tableta);
+		$query=$this->db->get('Tableta');
+		foreach ($query->result() as $row ) 
+		{
+			return $row;
+		}
+
+	
+	}
+      
 
     // Modelo para insertar registros en los biometricos
      public function insert_biometrico($param_biometrico)
     {
         $campos = array(
-            'id_biometrico'=>'biome'.DATE('Ymdhis'),
-            'marca_biometrico'=>'BIO'.$param_biometrico['marca_biometrico'],
+            'id_biometrico'=>'biome'.DATE('his'),
             'nombre_oficina'=>$param_biometrico['nombre_oficina'],
-            'color_biometrico'=>$param_biometrico['color_biometrico'],
             'descripcion_biometrico'=>$param_biometrico['descripcion_biometrico'],
             'status_biometrico'=>'DISPONIBLE'
 
@@ -129,6 +136,18 @@
         return   $this->db->insert('biometrico', $campos);  
     }
 
+
+  public function consulta_biometrico($id_biometrico)
+	{
+        $this->db->where('id_biometrico', $id_biometrico);
+		$query=$this->db->get('biometrico');
+		foreach ($query->result() as $row ) 
+		{
+			return $row;
+		}
+
+	
+	}
 
 
     public function modificar_status_tableta($id_tableta,$status,$sucursal)

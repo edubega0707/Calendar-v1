@@ -49,6 +49,8 @@ class Mregistro extends CI_Model
 		}
 	}
 
+
+
 	public function getasesor($sesion)
 	{
 		$this->db->where('clave_usuario',  $sesion);
@@ -80,6 +82,7 @@ class Mregistro extends CI_Model
 		}
         
 	}
+
 
 
 	public function gettableta($sucursal)

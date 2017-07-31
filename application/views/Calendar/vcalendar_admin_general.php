@@ -241,7 +241,7 @@
                                                             break;
 
                                                       }
-                                                      var data = '&status='+status+'&id='+id+'&color='+color;
+                                                            var data = '&status='+status+'&id='+id+'&color='+color;
                                                                                                 
                                                       $.ajax
                                                       ({  
@@ -340,7 +340,7 @@
                   <div class="form-group row">
                         <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre completo:</label>
                         <div class="col-12 col-sm-6 col-md-7">
-                             <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS"  required>
+                             <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;" pattern="^[A-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS SOLO MAYUSCULAS"  required>
                         </div>
                         <span class="color-error  text-center"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
                        
@@ -386,7 +386,7 @@
 
                         <label for="clave_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>Clave usuario:</label>
                          <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave" required>
+                             <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave"   title="lA CLAVE DEBE SER DE 5 CARACTERES" maxlength="5" required>
                         </div>
                         
 
@@ -569,14 +569,6 @@
 
                               </div>
                               <hr class="hr_p2 my-5">       
-
-                              <div class="form-group row">
-                                    <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-tablet mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre Clave Tableta:</label>
-                                    <div class="col-12 col-sm-6 col-md-7">
-                                    <input type="text" class="form-control form-control-sm" id="marca_tableta" name="marca_tableta" placeholder="Nombre clave tableta"  style="text-transform:uppercase;" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS"  required>
-                                    </div>
-                                                
-                              </div>
                               <div class="form-group row ">                             
                                     <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
                                     <div class="col-12 col-sm-6 col-md-7">
@@ -590,17 +582,7 @@
                                     </div>                             
                               </div>
 
-                              <div class="form-group row ">
-                                    <label for="rol_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-circle-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar Color:</label>
-                                    <div class="col-12 col-sm-6 col-md-7" >
-                                          <select class="form-control form-control-sm" id="color_tableta" name="color_tableta" required>
-                                          <option value="">SELECCIONAR COLOR </option>
-                                          <option value="BLANCO">BLANCO</option>
-                                          <option value="NEGRO">NEGRO</option> 
-                                          <option value="GRIS">GRIS</option>                                           
-                                    </select>
-                                    </div>                     
-                              </div>
+                           
                               <div class="form-group row">
                                     <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Descripcion del equipo:</label>
                                     <div class="col-12 col-sm-6 col-md-7">  
@@ -638,15 +620,7 @@
 
                               </div>
                               <hr class="hr_p2 my-5">
-                                    
-                                    <div class="form-group row">
-                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-cube mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre clave Biometrico:</label>
-                                          <div class="col-12 col-sm-6 col-md-7">
-                                          <input type="text" class="form-control form-control-sm" id="marca_biometrico" name="marca_biometrico" placeholder="Nombre clave Biometrico"  style="text-transform:uppercase;" required>
-                                          </div>
-                                                
-                                    </div>
-
+                       
                                      <div class="form-group row ">                             
                                           <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
                                           <div class="col-12 col-sm-6 col-md-7">
@@ -659,17 +633,6 @@
                                           </div>                             
                                     </div>
 
-                                    <div class="form-group row ">
-                                          <label for="rol_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-circle-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Color biometrico:</label>
-                                          <div class="col-12 col-sm-6 col-md-7" >
-                                                <select class="form-control form-control-sm" id="color_biometrico" name="color_biometrico" required>
-                                                <option value="">SELECCIONAR COLOR </option>
-                                                <option value="BLANCO">BLANCO</option>
-                                                <option value="NEGRO">NEGRO</option> 
-                                                <option value="GRIS">GRIS</option>                                           
-                                          </select>
-                                          </div>                     
-                                    </div>
                                     <div class="form-group row">
                                           <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Descripcion del equipo:</label>
                                           <div class="col-12 col-sm-6 col-md-7">  

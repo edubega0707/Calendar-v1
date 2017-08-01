@@ -50,6 +50,7 @@ class Cregistro extends CI_controller
 			$param['rol_usuario']=$this->input->post('rol_usuario');
 			$param['sucursal_usuario']=$this->input->post('sucursal_usuario');
 			$param['tel_usuario']=$this->input->post('tel_usuario');
+			$param['correo_usuario']=$this->input->post('correo_usuario');		
 			$param['clave_usuario']=$this->input->post('clave_usuario');
 			$param['pass_usuario']=$this->input->post('pass_usuario');
 			
@@ -84,12 +85,18 @@ class Cregistro extends CI_controller
 	
 				if ($this->Mregistro->can_login($username, $password)) 
 				{
+					$row=$this->Mregistro->perfil_asesor($username);	
+			  	 	$rol_usuario=$row->rol_usuario;
+
 					$session_data=array(
 						'username'=>$username,
-						'clave'=>$password
+						'clave'=>$password,
+						'rol_usuario'=>$rol_usuario
 						);
 
 					$this->session->set_userdata($session_data);
+
+
 					redirect(base_url().'Cregistro/enter');
 				}
 
@@ -116,15 +123,16 @@ class Cregistro extends CI_controller
 	{
 		$data['session']=$this->session->userdata('username');
 		$data['password']=$this->session->userdata('clave');
+		$data['rol_usuario']=$this->session->userdata('rol_usuario');
 
 		if($data['session']!='')
 		{	
 
-		   if ($data['session']=='ADMINISTRADOR' && ($data['password']=='ADMINISTRADOR' || $data['password']=='administrador' ) ) 
+		   if ($data['session']=='ADMINISTRADOR' && $data['rol_usuario']=='ADMINISTRADOR' && ($data['password']=='ADMINISTRADOR' || $data['password']=='administrador' ) ) 
 		   {
 			   	$row=$this->Mregistro->getasesor($data['session']);	
 			   	$data['usuario']=$row->nombre_usuario;
-			   	$data['sucursal_usuario']=$row->sucursal_usuario;
+			   	$data['sucursal_usuario']=$row->sucursal_usuario;				   
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
 
 				$data['lista_oficinas'] = $this->Mregistro->getoficinas();	
@@ -138,11 +146,11 @@ class Cregistro extends CI_controller
 		   } 
 
 		   //else if($data['session']=='ADMINPACHUCA' || $data['session']=='ADMINPUEBLA' || $data['session']=='ADMINPACHUCAII' || $data['session']=='ADMINSATELITE' || $data['session']=='ADMINSANLUIS' || $data['session']=='ADMINCDAZTECA' || $data['session']=='ADMINPUEBLA' || $data['session']=='ADMINCANCUN' )
-		    else if( $data['password']=='OFICINA' )
+		    else if($data['rol_usuario']=='JEFEOFICINA')
 		   {
 
-		   		$row=$this->Mregistro->getasesor($data['session']);
-			    $data['usuario']=$row->nombre_usuario;	
+		   		$row=$this->Mregistro->get_jefes_oficina($data['session']);
+			    $data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
 
@@ -160,11 +168,12 @@ class Cregistro extends CI_controller
 		  
 		   }
  
-		   else 		 
+		   else if ($data['rol_usuario']=='ASESOR') 		 
 		   {
 
 			   	$row=$this->Mregistro->perfil_asesor($data['session']);	
 			   	$data['usuario']=$row->nombre_usuario;
+				$data['correo_usuario']=$row->correo_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
 
@@ -176,6 +185,10 @@ class Cregistro extends CI_controller
 			   	$this->load->view('Calendar/vheader', $data);
 			   	$this->load->view('Calendar/vcalendar');
 			   	$this->load->view('Calendar/vfooter');
+		   }
+		   else
+		   {
+			   redirect(base_url(). 'Cregistro/login_validation');
 		   }
 	
 		}

@@ -9,6 +9,7 @@
                     var rol_usuario=$('#rol_usuario').val();
                     var sucursal_usuario=$('#sucursal_usuario').val();
                     var tel_usuario=$('#tel_usuario').val();
+                    var correo_usuario=$('#correo_usuario').val();
                     var clave_usuario=$('#clave_usuario').val();
                     var pass_usuario=$('#pass_usuario').val();
                     
@@ -18,6 +19,7 @@
                         rol_usuario: rol_usuario,
                         sucursal_usuario:sucursal_usuario,
                         tel_usuario:tel_usuario,
+                        correo_usuario:correo_usuario,
                         clave_usuario:clave_usuario,
                         pass_usuario:pass_usuario
                   }, 

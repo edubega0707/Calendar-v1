@@ -16,6 +16,8 @@ class Mregistro extends CI_Model
 
                         'tel_usuario'=>$param['tel_usuario'],
 
+						'correo_usuario'=>$param['correo_usuario'],
+
                         'clave_usuario'=>$param['clave_usuario'],
 
                         'pass_usuario'=>$param['pass_usuario'],
@@ -34,7 +36,7 @@ class Mregistro extends CI_Model
 
 	{
 		$this->db->where('clave_usuario', $clave_usuario);
-		$this->db->where('pass_usuario',   $contraseña_usuario);
+		$this->db->where('pass_usuario',  $contraseña_usuario);
 		$query=$this->db->get('usuarios');
 
 		if ($query->num_rows()==1) 
@@ -55,6 +57,18 @@ class Mregistro extends CI_Model
 	{
 		$this->db->where('clave_usuario',  $sesion);
 		$this->db->where('rol_usuario',  'ADMINISTRADOR');
+		$query=$this->db->get('usuarios');
+
+		foreach ($query->result() as $row ) 
+		{
+			return $row;
+		}
+	}
+
+	public function get_jefes_oficina($sesion)
+	{
+		$this->db->where('clave_usuario',  $sesion);
+		$this->db->where('rol_usuario',  'JEFEOFICINA');
 		$query=$this->db->get('usuarios');
 
 		foreach ($query->result() as $row ) 

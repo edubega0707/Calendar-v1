@@ -39,18 +39,18 @@
       </script>
 
  <!-- Fin de  menu de seccion de admin_general -->
-<!--  
+
  <div id="seccion-calendario" class="my-3">
       <div class="container my-5">
-            <div class="row justify-content-sm-center my-3 ">
-                  <h4 id="titulo_historial">CALENDARIO DE PRESTAMO DE TABLETA</h4>
+            <div class="row justify-content-sm-center my-2">
+                  <h4 id="titulo_historial">HISTORIAL TABLETA</h4>
             </div>
-            <div class="row ">
-                  <div class="col-sm-5">
-                        <div class="form-group row justify-content-sm-center">
-                        <label for="select_status" class="col-sm-5 col-form-label">Consultar Eventos : </label>
-                              <select class="form-control form-control-sm  col-sm-5" id="select_his_suc" name="select_his_suc">
-                                    <option value="DIPRA">Seleccionar Sucursal</option>
+            <div class="row">
+                  <div class="col-md-3 col-sm-4">
+                        <div class="form-group">
+                        <label for="select_status">Oficina:</label>
+                              <select class="form-control form-control-sm" id="select_his_suc" name="select_his_suc">
+                                    <option value="">Seleccionar Sucursal</option>
                                     <option value="PACHUCA">PACHUCA</option>
                                     <option value="PACHUCAII">PACHUCAII</option>
                                     <option value="SATELITE">SATELITE</option>
@@ -59,44 +59,27 @@
                                     <option value="SAN_LUIS_POTOSI">SAN LUIS POTOSI</option>                                           
                               </select>
                         </div>
-                  </div>       
+                  </div>
+                   <div class="col-md-3 col-sm-4">
+                         <div class="form-group">
+                              <label for="nom_asesor">Nombre asesor:</label>
+                              <input type="text" class="form-control form-control-sm" id="nom_asesor">
+                        </div>                           
+                  </div> 
+                   <div class="col-md-3 col-sm-4">
+                        <div class="form-group">
+                              <label for="nom_asesor">Fecha:</label>
+                              <input type="text" class="form-control form-control-sm" id="nom_asesor">
+                        </div>  
+                      
+                  </div>        
             </div>
       </div>
       
-       <!-- <div  class="container" id='calendar'>
-            <div class="row">
-                  <table class="table table-sm table-hover">
-                  <thead class="thead-inverse">
-                  <tr>
-                        <th>id_evento</th>
-                        <th>Nombre de asesor</th>
-                        <th>Descripcion del evento</th>
-                        <th>Fecha Inicio</th>
-                        <th>Fecha Fin</th>
-                        <th>Folios TYS</th>
-                        
-                  </tr>
-                  </thead>
-                  <tbody>
-
-                  	<?php foreach ($lista_eventos as $evento): ?>	
-                              <tr>
-                                    <th><?php echo $evento['id']; ?></th>
-                                    <td><?php echo $evento['title']; ?></td>
-                                    <td><?php echo $evento['start']; ?></td>
-                                    <td><?php echo $evento['end']; ?></td>
-                                    <td><?php echo $evento['folio_evento']; ?></td>
-                              </tr>    				                                                   
-				<?php endforeach; ?>  
-                                
-                  </tbody>
-                  </table>          
-            </div>
-      </div>  -->
 
 
  </div> 
-     -->
+
 <!-- INICIO DEL MODAL -->
       <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -195,7 +178,7 @@
                                                                   color='#C50000';
                                                             break;
                                                             case 'ACEPTADO':
-                                                            color='#A5F2E7';
+                                                                  color='#A5F2E7';
                                                             break;
 
                                                       }
@@ -310,7 +293,7 @@
                         <div class="col-12 col-sm-6 col-md-7" >
                               <select class="form-control form-control-sm" id="rol_usuario" name="rol_usuario" required>
                               <option>SELECCIONAR USUARIO </option>
-                              <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                              <option value="JEFEOFICINA">JEFEOFICINA</option>
                               <option value="ASESOR">ASESOR</option>                                           
                         </select>
                         </div>                     
@@ -336,6 +319,14 @@
                         <label for="tel_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-mobile mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
                         <div class="col-12 col-sm-6 col-md-7"> 
                             <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular"   pattern="^[0-9]{10}" title="El telefono debe ser de 10 digitos" maxlength="10" required >  
+                        </div>
+                  
+                  </div>
+                  <div class="form-group row">
+
+                        <label for="correo_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-envelope-o mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Correo Usuario:</label>
+                        <div class="col-12 col-sm-6 col-md-7"> 
+                            <input type="mail" class="form-control form-control-sm" id="correo_usuario" name="correo_usuario" placeholder="correo electronico"  required >  
                         </div>
                   
                   </div>

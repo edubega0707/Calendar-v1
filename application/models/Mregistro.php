@@ -76,6 +76,19 @@ class Mregistro extends CI_Model
 			return $row;
 		}
 	}
+	
+	public function get_correo_oficina($nombre_oficina)
+	{
+		$this->db->where('sucursal_usuario', $nombre_oficina);
+		$this->db->where('rol_usuario',  'JEFEOFICINA');
+		$query=$this->db->get('usuarios');
+
+		foreach ($query->result() as $row ) 
+		{
+			return $row;
+		}
+
+	}
 
 
 	public function getasesores($sucursal)

@@ -348,7 +348,7 @@
                         <label for="pass_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>PIN usuario:</label>
                       
                          <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Pin usuario" required>
+                             <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Pin usuario" title="EL PIN DEBE SER DE 5 CARACTERES" maxlength="5" required>
                         </div>
                    
 

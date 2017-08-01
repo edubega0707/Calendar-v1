@@ -135,6 +135,7 @@
 
 <div class="container formulario">
 				<h4>Solicitar Tableta</h4>
+				<span>Recuerda que unicamente los equipos se prestaran un dia habil de la semana.</span>
 				<hr>
 				<form id="form_registra_evento_asesor" name="form_registra_evento_asesor">
 				 
@@ -478,9 +479,9 @@
 					<h6>Paso 1</h6>
 					<hr class="hr_p1">
 					<ul>
-						<li>Revisa el calendario</li>
-						<li>Pulsa clic sobre los eventos para observar su informacion</li>
-						<li>Pasa al formulario de solicitud</li>
+						<li>Revisa tu calendario</li>
+						<li>Puedes pulsar clic sobre los eventos para saber su información</li>
+						<li>Completa los campos correctamente</li>
 					</ul>
 				</article>			
 		</div>
@@ -489,9 +490,9 @@
 					<h6>Paso 2</h6>
 					<hr class="hr_p2">
 					<ul>
-						<li>Completa los campos correctamente</li>
 						<li>Tu solicitud  sera registrada como pendiente</li>
-						<li>Estar pendiente en el sistema para verificar tu solicitud</li>
+						<li>Automaticamente se enviara un correo al jefe de oficina</li>
+						<li>El jefe de oficina autorizara tu solcitud.</li>
 					</ul>
 				</article>			
 		</div>
@@ -501,8 +502,8 @@
 					<hr class="hr_p3">
 					<ul>
 						<li>Verificar el estado de su peticion</li>
-						<li>Si la peticion es aceptada presentarse en la oficina</li>
-						<li>Presentarse de forma puntual para la entrega de la tableta</li>
+						<li>Si la peticion es aceptada presentarse en la oficina en el horario que solicito el equipo</li>
+						<li>Presentarse de forma puntual para la entrega del equipo</li>
 					</ul>
 				</article>			
 		</div>

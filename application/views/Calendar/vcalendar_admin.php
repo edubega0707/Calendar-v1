@@ -448,7 +448,7 @@
                                     <input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
                                     <input type="text" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
-                              
+ <!--  
                               <div class="form-group row justify-content-sm-center">
 
 					 	<label for="select_status" class="col-sm-3 col-form-label">Folios TYS a capturar:</label>
@@ -533,7 +533,7 @@
 										
 							});
 											
-					  </script>
+					  </script> -->
 
 
                         
@@ -687,6 +687,12 @@
                                           <span class="text-white"><strong><?php echo form_error('tel_usuario'); ?> </strong></span>
 
 
+                                    </div>
+                                     <div class="form-group row">
+
+                                          <label for="correo_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-envelope-o mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Correo Usuario:</label>
+                                          <input type="mail" class="form-control form-control-sm" id="correo_usuario" name="correo_usuario" placeholder="correo electronico"  required >  
+                                          
                                     </div>
 
                                     <div class="form-group">

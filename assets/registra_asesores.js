@@ -5,6 +5,7 @@
             {
                     var nombre_usuario=$('#nombre_usuario').val();
                     var tel_usuario=$('#tel_usuario').val();
+                    var correo_usuario=$('#correo_usuario').val();
                     var clave_usuario=$('#clave_usuario').val();
                     var pass_usuario=$('#pass_usuario').val();
                     var sucursal_usuario=$('#sucursal_usuario').val();
@@ -16,6 +17,7 @@
                   { 
                         nombre_usuario: nombre_usuario, 
                         tel_usuario: tel_usuario,
+                        correo_usuario:correo_usuario,
                         clave_usuario:clave_usuario,
                         pass_usuario:pass_usuario,
                         sucursal_usuario:sucursal_usuario,

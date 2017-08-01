@@ -96,10 +96,21 @@ $(document).ready(function()
                                           text: 'Aceptar',
                                           btnClass: 'btn-blue',
                                           action: function()
-                                          {
+                                          {     
+                                                var correo_usuario=$('#correo_usuario').val();
+                                                $.post( base_url+'/assets/envia_correo.php', 
+                                                { 
+                                                      correo_usuario: correo_usuario                                                                             
+                                                }, 
+                                                function(data) 
+                                                {
+                                                    console.log(data);  
+                                                })
+
                                                 registra_eventos();
                                                 $('#form_registra_evento_asesor')[0].reset();  
-                                                location.href =base_url+'Cregistro/enter';  
+                                                location.href =base_url+'Cregistro/enter';
+                                                
                                           }
                                     },
                                     Cancelar: {

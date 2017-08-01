@@ -149,6 +149,7 @@
 						<input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display:none;" >
 
 						<input type="text" name="usuarios_id_usuario"  id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display:none;">
+						<input type="text" name="correo_usuario"  id="correo_usuario" value="<?php echo $correo_usuario; ?>" style="display:none;" >
 					</div>
 
 					
@@ -262,7 +263,7 @@
 					</script>
 
 
-
+<!-- 
 
 					 <div class="form-group row justify-content-sm-center">
 
@@ -287,7 +288,6 @@
 							</div> 
 						</div>
 					  <?php } ?>
-
 
 					  <script>
 					    
@@ -348,7 +348,7 @@
 										
 							});
 											
-					  </script>
+					  </script> -->
 
  				
 					<div class="form-group row justify-content-sm-center">

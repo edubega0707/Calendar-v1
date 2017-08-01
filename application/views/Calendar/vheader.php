@@ -51,14 +51,14 @@
 
 </head>
 <body >
-	<div class="container-fluid header ">
+	<div class="container-fluid header">
 		<div class="row justify-content-center">
-				<div class="col-md-3 col-sm-3 col-12 logo"><img src="<?php echo base_url();?>/public/img/logo.png"></div>
-				<div class="col-md-6 col-sm-6 col-12 titulo"><h4>Sistema Integral para el prestamo de tablet</h4></div>
+				<div class="col-md-3 col-sm-3 col-12 logo"><img src="<?php echo base_url();?>/public/img/logodipra.png"></div>
+				<div class="col-md-6 col-sm-6 col-12 titulo"><h4>SERVICIO DE AGENDA DE INTEGRACION DINAMICA</h4></div>
 				<div class="col-md-3 col-sm-3 col-12 sesion ">
 
 				<div class="btn-group my-2 p-2">
-						<button type="button" class="btn btn-danger dropdown-toggle d-flex flex-row justify-content-around align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<button type="button" class="btn btn-primary dropdown-toggle d-flex flex-row justify-content-around align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<i class="fa fa-user" aria-hidden="true" style="color: #fff;">
 							</i><?php echo $usuario; ?>
 						</button>
@@ -68,14 +68,6 @@
 					</div>
 
 				</div>
-
-
-
-				<!-- Example single danger button -->
-
-				
-
-
 		</div>
 	
 	</div>

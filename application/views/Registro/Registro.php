@@ -64,7 +64,7 @@
 
 	.sesion{height: 500px;}
 
-	.img-encabezado{background: #3EC1D3; height: auto;}
+	.img-encabezado{background: #6A2C70; height: auto;}
 
 
 	
@@ -83,7 +83,7 @@
 		    <img  class="img-fluid w-75" src="<?php echo base_url();?>/public/img/calendar.svg" alt="Calendar">
 		</div>
 		<div class="p-2">
-			<p class="h3  text-center">Sistema  Agenda Dipra Digital</p>
+			<p class="h3 text-center text-white">SERVICIO DE AGENDA DE INTEGRACION DINAMICA</p>
 		</div>
 		<div class="p-2">
 			<img  class="img-fluid w-75" src="<?php echo base_url();?>/public/img/calendar.svg" alt="Calendar">

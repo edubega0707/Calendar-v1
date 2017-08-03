@@ -108,27 +108,27 @@ $(document).ready(function()
                                                       var hora_fin=$('#select_hora_fin').val();
                                                       var correo_usuario=$('#correo_usuario').val();
 
-                                                $.post( base_url+'Ccorreo/enviar_correo_dos', 
-                                                { 
-                                                      nombre_asesor: nombre_asesor,
-                                                      nombre_oficina:nombre_oficina,
-                                                      des_evento: des_evento, 
-                                                      desc_tableta_evento:desc_tableta_evento,
-                                                      desc_biometrico_evento:desc_biometrico_evento,                      
-                                                      fecInicio:fecInicio,
-                                                      hora_inicio:hora_inicio,
-                                                      fecFin:fecFin,
-                                                      hora_fin:hora_fin,
-                                                      correo_usuario: correo_usuario                                                                             
-                                                }, 
-                                                function(data) 
-                                                {
-                                                    console.log(data);  
-                                                })
+                                                      $.post( base_url+'Ccorreo/enviar_correo_dos', 
+                                                      { 
+                                                            nombre_asesor: nombre_asesor,
+                                                            nombre_oficina:nombre_oficina,
+                                                            des_evento: des_evento, 
+                                                            desc_tableta_evento:desc_tableta_evento,
+                                                            desc_biometrico_evento:desc_biometrico_evento,                      
+                                                            fecInicio:fecInicio,
+                                                            hora_inicio:hora_inicio,
+                                                            fecFin:fecFin,
+                                                            hora_fin:hora_fin,
+                                                            correo_usuario:correo_usuario                                                                             
+                                                      }, 
+                                                      function(data) 
+                                                      {
+                                                      console.log(data);  
+                                                      })
 
                                                 registra_eventos();
                                                 $('#form_registra_evento_asesor')[0].reset();  
-                                                location.href =base_url+'Cregistro/enter';
+                                                location.href=base_url+'Cregistro/enter';
                                                 
                                           }
                                     },
@@ -137,14 +137,10 @@ $(document).ready(function()
                                             btnClass: 'btn-red',
                                             action: function(){
                                             }
-                                    }
-                                    
+                                    }                                   
                                 }
                                     
                         });
-                        
-
-
                     })   
             
 });

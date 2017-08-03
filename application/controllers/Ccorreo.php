@@ -68,7 +68,7 @@ class Ccorreo extends CI_Controller
 			$correo_jefe_oficina=$row->correo_usuario;
 
 
-			$para  = $correo_jefe_oficina;
+			$para = $correo_jefe_oficina;
 
 			// título
 			$título = 'Solicitud de Prestamo de tableta';
@@ -95,7 +95,7 @@ class Ccorreo extends CI_Controller
 				<br>
 				<h4>El asesor solicita la tableta para la fecha siguiente</h4>
 				<br>
-				<p>FECHA DE INICIO: '.$fecInicio.'     HORA INICIO: '.$hora_inicio.'</p>
+				<p>FECHA DE INICIO: '.$fecInicio.'   HORA INICIO: '.$hora_inicio.'</p>
 				<br>
 				<p>FECHA DE TERMINO: '.$fecFin.'     HORA INICIO: '.$hora_fin.'</p>				
 				</body>

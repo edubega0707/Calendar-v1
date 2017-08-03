@@ -10,7 +10,7 @@
 			</div>
 			<div class="col-md-4 col-sm-4 d-flex flex-md-row align-items-center justify-content-center my-1">
 				<i class="fa fa-facebook-official text-white mr-2" aria-hidden="true" style="font-size: 16px;"></i>
-				<a href="" class="text-white" style="text-decoration: none; font-size: 16px;">Perfil dipra</a>
+				<a href="" class="text-white" style="text-decoration: none; font-size: 16px;">DIPRA</a>
 				
 			</div>		
 		</div>

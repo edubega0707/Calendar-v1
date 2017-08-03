@@ -158,7 +158,7 @@
 					<div class="form-group row justify-content-sm-center">
 									
 							<label for="select_asesor_tableta" class="col-sm-2 col-form-label">Seleccionar tableta:</label>
-							<select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
+							<select class="form-control form-control-sm col-sm-2 mb-3" id="select_asesor_tableta" name="select_asesor_tableta">
 									<option value="">Seleccionar tableta</option>
 									<?php foreach ($lista_tableta as $tableta): ?>                                              
 										<option><?php echo $tableta['id_tableta'];?></option>                                                   
@@ -166,7 +166,7 @@
 							</select>
 
 							<label for="select_asesor_biometrico" class="col-sm-2 col-form-label ">Seleccionar Biometrico:</label>
-							<select class="form-control form-control-sm col-sm-2" id="select_asesor_biometrico" name="select_asesor_biometrico">
+							<select class="form-control form-control-sm col-sm-2 mb-3" id="select_asesor_biometrico" name="select_asesor_biometrico">
 									<option value="">Seleccionar biometrico</option>
 									<?php foreach ($lista_biometrico as $biometrico): ?>									
 										<option><?php echo $biometrico['id_biometrico']; ?></option>                                                   
@@ -263,12 +263,9 @@
 											
 					</script>
 
-
-<!-- 
-
 					 <div class="form-group row justify-content-sm-center">
 
-					 	<label for="select_status" class="col-sm-3 col-form-label">Folios TYS a capturar:</label>
+					 	<label for="select_status" class="col-sm-3 col-form-label">Seleccionar el numero de tramitesr:</label>
 							<select class="form-control form-control-sm col-sm-2" id="select_asesor_folios" name="select_asesor_folios">
 									<option value="0">Folio</option>
 									<option>1</option>
@@ -278,7 +275,12 @@
 									<option>5</option>															
 							</select>
 						                              
-                     </div> 
+                     </div>
+
+
+<!-- 
+
+					 
 
 					  <?php 
 					  for ($i=1; $i <=5 ; $i++) { ?>		  

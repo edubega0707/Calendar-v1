@@ -66,6 +66,7 @@
 	
 </div>
 
+<!-- INICIO DEL MODAL -->
 
 <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -194,7 +195,8 @@
                                                             break;
                                                             case 'FINALIZADO':
                                                                  color='#DBE2EF';
-                                                                 status_evento='DISPONIBLE';                                                    
+                                                                 status_evento='DISPONIBLE';
+
                                                             break;
                                                       }
                                                       var data = '&status='+status+'&id='+id+'&color='+color+'&tableta_evento='+tableta_evento+'&biometrico_evento='+biometrico_evento+'&status_evento='+status_evento+'&nombre_oficina='+nombre_oficina;
@@ -279,7 +281,104 @@
 
 <!-- FIND DEL MODAL -->
 
-<!-- fORMULARIO DE REGISTRO DE EVENTOS -->
+
+
+<!-- INICIO DEL MODAL REGISTRO DE FOLIOS-->
+
+<div class="modal fade" id="modal_registro de folios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel">REGISTRO DE TRAMITES</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"> 
+       <div class="container-fluid">
+       		<div class="row">
+			<?php 
+                        for ($i=1; $i <=5 ; $i++) { ?>		  
+                        <div class="form-group row justify-content-sm-center" id="folio_tys_evento<?php echo$i; ?>" style="display: none;">
+                              <label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS No<?php echo " ".$i.":"; ?></label>
+                              <div class="col-sm-5">
+                                    <input type="text" class="form-control form-control-sm" id="folio_evento<?php echo$i; ?>" name="folio_evento<?php echo$i;?>" placeholder="Folio TYS <?php echo$i;?>"  >
+                              </div> 
+                        </div>
+			 <?php } ?>
+               			<script>					    
+							$(document).ready(function()
+							{ 
+									var no_folio=$('#select_asesor_folios').val();
+
+									switch (no_folio) {
+									
+										case '1':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').hide(1000);
+											$('#folio_tys_evento3').hide(1000);
+											$('#folio_tys_evento4').hide(1000);
+											$('#folio_tys_evento5').hide(1000);
+								
+										break;
+										case '2':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').hide(1000);
+											$('#folio_tys_evento4').hide(1000);
+											$('#folio_tys_evento5').hide(1000);
+								
+										break;
+										case '3':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').show(1000);
+											$('#folio_tys_evento4').hide(1000);
+											$('#folio_tys_evento5').hide(1000);
+										break;
+										case '4':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').show(1000);
+											$('#folio_tys_evento4').show(1000);
+											$('#folio_tys_evento5').hide(1000);
+										break;
+										case '5':
+											$('#folio_tys_evento1').show(1000);
+											$('#folio_tys_evento2').show(1000);
+											$('#folio_tys_evento3').show(1000);
+											$('#folio_tys_evento4').show(1000);
+											$('#folio_tys_evento5').show(1000);
+										break;
+									
+										default:
+
+										 
+										break;
+									}							
+										
+							});
+											
+					  </script> 
+
+       			
+       		</div>
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FIND DEL MODAL REGISTRO DE FOLIOS-->
+
+
+
+
+
+<!-- fORMULARIO DE REGISTRO DE TRAMITES -->
 <div class="container formulario">
                         <h4>Solicitar Tableta</h4>
                         <hr>
@@ -448,7 +547,7 @@
                                     <input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
                                     <input type="text" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
- <!--  
+                              <!--  
                               <div class="form-group row justify-content-sm-center">
 
 					 	<label for="select_status" class="col-sm-3 col-form-label">Folios TYS a capturar:</label>
@@ -537,6 +636,10 @@
 
 
                         
+                             
+                             
+                             
+                             
                               <div class="form-group row justify-content-sm-center">
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
                                     <div class="col-sm-2">  

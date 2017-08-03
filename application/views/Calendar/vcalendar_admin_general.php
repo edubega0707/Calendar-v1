@@ -40,7 +40,7 @@
 
  <!-- Fin de  menu de seccion de admin_general -->
 
- <div id="seccion-calendario" class="my-3">
+ <!-- <div id="seccion-calendario" class="my-3">
       <div class="container my-5">
             <div class="row justify-content-sm-center my-2">
                   <h4 id="titulo_historial">HISTORIAL TABLETA</h4>
@@ -74,11 +74,36 @@
                       
                   </div>        
             </div>
+
+             <!-- <div class="row">
+                  <table class="table table-hover">
+                        <thead class="thead-inverse">
+                              <tr>
+                                    <th>ID</th>
+                                    <th>NOMBRE DE ASESOR</th>
+                                    <th>DESCRIPCION DEL EVENTO</th>
+                                    <th>FECHA DE INICIO</th>
+                                    <th>FECHA DE FIN</th>
+                              </tr> 
+                        </thead>
+                        <tbody>
+                        <tr>
+                              <th >1</th>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                        </tr>
+                  
+                        </tbody>
+                  </table>
+            
+            </div>  -->
+
+            
       </div>
       
 
-
- </div> 
+ </div>  -->
 
 <!-- INICIO DEL MODAL -->
       <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

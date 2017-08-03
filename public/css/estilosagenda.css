@@ -8,15 +8,15 @@
    
 
 	.header{
-	 background: #6A2C70;
-     color: #F8F3D4;
+	 background: #48466D;
+     color: #FFFFFF;
      top: 0;
      margin-bottom: 50px;
 	}
 
 	.color_dipra{
-	background: #6A2C70;
-     color: #F8F3D4;}
+	background: #48466D;
+     color: #FFFFFF;}
 
 
 		.logo{display: flex; flex-direction: row nowrap; align-items: center; justify-content: center;}

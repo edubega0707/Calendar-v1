@@ -5,8 +5,9 @@
 <head>
  
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1.0, maximum-scale=1.0, minimum-sacale=1.0">
 
-	<title>SISTEMA PARA EL REGISTRO DE TABLETA</title>
+	<title>SISTEMA DE AGENDA DE INTEGRACION DINAMICA</title>
 
 </head>
 
@@ -64,7 +65,7 @@
 
 	.sesion{height: 500px;}
 
-	.img-encabezado{background: #6A2C70; height: auto;}
+	.img-encabezado{background: #48466D;}
 
 
 	
@@ -78,15 +79,15 @@
 </body>
 
 <section class="container-fluid">
-	<div class="row  d-flex flex-row justify-content-around align-items-center img-encabezado  py-3">
-		<div class="p-2">
-		    <img  class="img-fluid w-75" src="<?php echo base_url();?>/public/img/calendar.svg" alt="Calendar">
+	<div class="row   color_dipra py-3">
+		<div class="col-md-3 p-2 d-flex flex-row justify-content-center align-items-center">
+		    <img  class="img-fluid w-25" src="<?php echo base_url();?>/public/img/calendar.svg" alt="Calendar">
 		</div>
-		<div class="p-2">
+		<div class="col-md-6 p-2 d-flex flex-row justify-content-center align-items-center">
 			<p class="h3 text-center text-white">SERVICIO DE AGENDA DE INTEGRACION DINAMICA</p>
 		</div>
-		<div class="p-2">
-			<img  class="img-fluid w-75" src="<?php echo base_url();?>/public/img/calendar.svg" alt="Calendar">
+		<div class="col-md-3 p-2 d-flex flex-row justify-content-center align-items-center">
+			<img  class="img-fluid w-25" src="<?php echo base_url();?>/public/img/calendar.svg" alt="Calendar">
 		</div>
 	</div>
 </section >
@@ -290,7 +291,7 @@
 			</div>
 			<div class="col-md-4 col-sm-4 d-flex flex-md-row align-items-center justify-content-center my-1">
 				<i class="fa fa-facebook-official text-white mr-2" aria-hidden="true" style="font-size: 16px;"></i>
-				<a href="" class="text-white" style="text-decoration: none; font-size: 16px;">Perfil dipra</a>
+				<a href="" class="text-white" style="text-decoration: none; font-size: 16px;">DIPRA</a>
 				
 			</div>		
 		</div>

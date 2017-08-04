@@ -29,6 +29,9 @@ class Cregistro extends CI_controller
 		$this->form_validation->set_rules('tel_usuario', 'Telefono del Usuario', 'required|trim|max_length[10]',
                         array('required' => 'Debes ingresar el telefono'));
 
+		$this->form_validation->set_rules('correo_usuario', 'Sucursal del usuario', 'required|trim',
+                        array('required' => 'Debes ingresar  correo'));
+
 		$this->form_validation->set_rules('clave_usuario', 'Clave del Usuario', 'required|trim|max_length[100]|is_unique[usuarios.clave_usuario]',
                         array('required' => 'Debes ingresar el nombre',
                         	  'is_unique'=>'El correo existe elije otro'));

@@ -40,7 +40,7 @@
 
  <!-- Fin de  menu de seccion de admin_general -->
 
- <div id="seccion-calendario" class="my-3">
+ <!-- <div id="seccion-calendario" class="my-3">
       <div class="container my-5">
             <div class="row justify-content-sm-center my-2">
                   <h4 id="titulo_historial">HISTORIAL TABLETA</h4>
@@ -74,11 +74,36 @@
                       
                   </div>        
             </div>
+
+             <!-- <div class="row">
+                  <table class="table table-hover">
+                        <thead class="thead-inverse">
+                              <tr>
+                                    <th>ID</th>
+                                    <th>NOMBRE DE ASESOR</th>
+                                    <th>DESCRIPCION DEL EVENTO</th>
+                                    <th>FECHA DE INICIO</th>
+                                    <th>FECHA DE FIN</th>
+                              </tr> 
+                        </thead>
+                        <tbody>
+                        <tr>
+                              <th >1</th>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                        </tr>
+                  
+                        </tbody>
+                  </table>
+            
+            </div>  -->
+
+            
       </div>
       
 
-
- </div> 
+ </div>  -->
 
 <!-- INICIO DEL MODAL -->
       <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -348,7 +373,7 @@
                         <label for="pass_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>PIN usuario:</label>
                       
                          <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Pin usuario" required>
+                             <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Pin usuario" title="EL PIN DEBE SER DE 5 CARACTERES" maxlength="5" required>
                         </div>
                    
 

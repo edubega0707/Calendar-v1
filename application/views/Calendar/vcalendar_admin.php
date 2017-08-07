@@ -25,9 +25,7 @@
                         eventClick: function(event, jsEvent, view)
                         {
 					 $('#modalEvento').modal();
-					 var id= event.id;	
-					
-					 			
+					 var id= event.id;						 			
 					 $.post("<?php echo base_url();?>Ccalendar/mostrar_evento",
 						{
 							id:id							
@@ -36,7 +34,8 @@
 					
 							var c=JSON.parse(data);								
 							$.each(c,function(i,item){
-								$('#id_Evento').val(item.idEvento);
+                                                $('#id_Evento').val(item.idEvento);
+                                                $('#no_tramites_evento').val(item.no_tramites_evento);
 								$('#nom_asesor').val(item.nombre_asesor);
                                                 $('#des_event').val(item.des_evento);
                                                 $('#id_tableta').val(item.tableta_evento);
@@ -86,6 +85,7 @@
        					<div class="form-group">
        						<label for="nom_asesor">Nombre asesor:</label>
        						<input type="text" class="form-control form-control-sm" id="id_Evento" name="id_Evento" style="display: none;">
+                                           <input type="text" class="form-control form-control-sm" id="no_tramites_evento" name="no_tramites_evento" style="display: none;">
        						<input type="text" class="form-control form-control-sm" id="nom_asesor">
        					</div>
        					<div class="form-group">
@@ -159,114 +159,104 @@
        						</select>
        					</div>
 
+                              <div class="form-group row justify-content-sm-center" style="display: none;" id="titu_tramites">     				
+                                    <label for="select_status" class="col-sm-10 col-form-label">Ingresa Tus tramites: </label>     						
+       				</div>
+                              <?php 
+                              for ($i=1; $i <=5 ; $i++) { ?>		  
+                              <div class="form-group row justify-content-sm-center" id="folio_tys_evento<?php echo$i; ?>" style="display: none;">
+                                    <label for="folio_tys_evento" class="col-sm-4 col-form-label">Folio TYS No<?php echo " ".$i.":"; ?></label>
+                                    <div class="col-sm-5">
+                                          <input type="text" class="form-control form-control-sm" id="folio_evento<?php echo$i; ?>" name="folio_evento<?php echo$i;?>" placeholder="Folio TYS <?php echo$i;?>"  >
+                                    </div> 
+                              </div>
+                              <?php } ?>   
+
+
+                                     <script>
+                                           $("#select_status").on('change', function() 
+                                           {
+                                                 var  no_tramites_evento=$('#no_tramites_evento').val();
+                                                 var status=$("#select_status").val();
+                                                 if(status=='FINALIZADO')
+                                                 {                                                   
+                                                      switch (no_tramites_evento) 
+                                                      {
+                                                            case '0':
+                                                                  $('#titu_tramites').hide(1000);
+                                                                  $('#folio_tys_evento1').hide(1000);
+                                                                  $('#folio_tys_evento2').hide(1000);
+                                                                  $('#folio_tys_evento3').hide(1000);
+                                                                  $('#folio_tys_evento4').hide(1000);
+                                                                  $('#folio_tys_evento5').hide(1000);
+                                                
+                                                            break;
+                                                            case '1':
+                                                                  $('#titu_tramites').show(1000);
+                                                                  $('#folio_tys_evento1').show(1000);
+                                                                  $('#folio_tys_evento2').hide(1000);
+                                                                  $('#folio_tys_evento3').hide(1000);
+                                                                  $('#folio_tys_evento4').hide(1000);
+                                                                  $('#folio_tys_evento5').hide(1000);
+                                                
+                                                            break;
+                                                            case '2':
+                                                                  $('#titu_tramites').show(1000);
+                                                                  $('#folio_tys_evento1').show(1000);
+                                                                  $('#folio_tys_evento2').show(1000);
+                                                                  $('#folio_tys_evento3').hide(1000);
+                                                                  $('#folio_tys_evento4').hide(1000);
+                                                                  $('#folio_tys_evento5').hide(1000);
+                                                
+                                                            break;
+                                                            case '3':
+                                                                  $('#titu_tramites').show(1000);
+                                                                  $('#folio_tys_evento1').show(1000);
+                                                                  $('#folio_tys_evento2').show(1000);
+                                                                  $('#folio_tys_evento3').show(1000);
+                                                                  $('#folio_tys_evento4').hide(1000);
+                                                                  $('#folio_tys_evento5').hide(1000);
+                                                            break;
+                                                            case '4':
+                                                                  $('#folio_tys_evento1').show(1000);
+                                                                  $('#folio_tys_evento2').show(1000);
+                                                                  $('#folio_tys_evento3').show(1000);
+                                                                  $('#folio_tys_evento4').show(1000);
+                                                                  $('#folio_tys_evento5').hide(1000);
+                                                            break;
+                                                            case '5':
+                                                                  $('#titu_tramites').show(1000);
+                                                                  $('#folio_tys_evento1').show(1000);
+                                                                  $('#folio_tys_evento2').show(1000);
+                                                                  $('#folio_tys_evento3').show(1000);
+                                                                  $('#folio_tys_evento4').show(1000);
+                                                                  $('#folio_tys_evento5').show(1000);
+                                                            break;
+                                                      
+                                                            default:
+                                                                  $('#titu_tramites').hide(1000);
+                                                                  $('#folio_tys_evento1').hide(1000);
+                                                                  $('#folio_tys_evento2').hide(1000);
+                                                                  $('#folio_tys_evento3').hide(1000);
+                                                                  $('#folio_tys_evento4').hide(1000);
+                                                                  $('#folio_tys_evento5').hide(1000);                                                              
+                                                            break;
+                                                      }	
+                                                 }
+                                                 else
+                                                 {
+                                                      
+                                                 }
+                                                                                     
+                                      })
+                                     </script>
+
        					<div class="form-group row justify-content-sm-center">
        						<div class="input-group date col-sm-2">	
-       				<!-- <input type="text" name="correo_asesor" id="correo_asesor" value="<?php echo $session; ?>" style="display: none;">             -->				
-       				<button type="button" class="btn btn-primary" id="modificar_evento" data-dismiss="modal">Guardar</button>
+       				     			
+       				                  <button type="button" class="btn btn-primary" id="modificar_evento" data-dismiss="modal">Guardar</button>
        						</div>
-       					</div>
-
-       				<script>
-
-                                          $(document).ready(function()
-                                          {	
-                                                
-                                                function modificar()
-                                                {
-                                                      var id=$('#id_Evento').val();
-                                                      var status=$('#select_status').val();                                                     
-                                                      var tableta_evento=$('#id_tableta').val();
-                                                      var biometrico_evento=$('#id_biometrico').val();
-                                                      var nombre_oficina=$('#sucursal_usuario').val();
-                                                      var color='';
-                                                      var status_evento= '';
-
-                                                      switch(status)
-                                                      {
-                                                            case 'PENDIENTE':
-                                                                  color='#E85B48';
-                                                            break;
-                                                            case 'RECHAZADO':
-                                                                  color='#C50000';
-                                                                  status_evento='DISPONIBLE';
-                                                            break;
-                                                            case 'ACEPTADO':
-                                                                 color='#A5F2E7';                                                                                                                        
-                                                            break;
-                                                            case 'FINALIZADO':
-                                                                 color='#DBE2EF';
-                                                                 status_evento='DISPONIBLE';
-
-                                                            break;
-                                                      }
-                                                      var data = '&status='+status+'&id='+id+'&color='+color+'&tableta_evento='+tableta_evento+'&biometrico_evento='+biometrico_evento+'&status_evento='+status_evento+'&nombre_oficina='+nombre_oficina;
-                                                                                                
-                                                      $.ajax
-                                                      ({  
-
-                                                            url: '<?php echo base_url();?>Ccalendar/modificar_evento',
-                                                            type: 'POST',
-                                                            data: data,                                         
-                                                            success: function(data)
-                                                            {
-                                                                  $.alert
-                                                                  ({
-                                                                        title: 'Registro Modificado',
-                                                                        content: 'Registro modificado exitosamente!', 
-                                                                        type: 'red',                                              
-                                                                        theme: 'material',                                                        
-                                                                  });
-                                                            }
-                                                            
-
-                                                      })
-
-                                                }	
-
-                                                $('#modificar_evento').on('click',function()
-                                                {
-                                                      $.confirm
-                                                      ({
-                                                            title: 'Confirmar',
-                                                            content: '¿Desea Realmente modificar este evento?',
-                                                            type: 'dark',                                              
-                                                            theme: 'material',
-                                                            animation: 'zoom',
-                                                            animationSpeed: 600,
-                                                            closeAnimation: 'scale',
-                                                            alignMiddle: true,                          
-                                                            buttons: 
-                                                            {
-                                                                  Aceptar: {
-                                                                              text: 'Aceptar',
-                                                                              btnClass: 'btn-blue',
-                                                                              action: function()
-                                                                              {
-                                                                                    modificar();
-                                                                                    location.href =base_url+'Cregistro/enter'; 
-                                                                              }
-                                                                        },
-                                                                  Cancelar: {
-                                                                        text: 'Cancelar',
-                                                                        btnClass: 'btn-red',
-                                                                        action: function(){
-                                                                        }
-                                                                  }
-                                                                  
-                                                            }
-                                                            
-                                                      });  
-
-                                                }) 
-
-
-                                          
-
-                                                
-
-                                          });
-                                    
-                              </script>
+       					</div>   		
 		
        			</div>
        		</div>
@@ -280,100 +270,6 @@
 </div>
 
 <!-- FIND DEL MODAL -->
-
-
-
-<!-- INICIO DEL MODAL REGISTRO DE FOLIOS-->
-
-<div class="modal fade" id="modal_registro de folios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header" >
-        <h5 class="modal-title" id="exampleModalLabel">REGISTRO DE TRAMITES</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body"> 
-       <div class="container-fluid">
-       		<div class="row">
-			<?php 
-                        for ($i=1; $i <=5 ; $i++) { ?>		  
-                        <div class="form-group row justify-content-sm-center" id="folio_tys_evento<?php echo$i; ?>" style="display: none;">
-                              <label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS No<?php echo " ".$i.":"; ?></label>
-                              <div class="col-sm-5">
-                                    <input type="text" class="form-control form-control-sm" id="folio_evento<?php echo$i; ?>" name="folio_evento<?php echo$i;?>" placeholder="Folio TYS <?php echo$i;?>"  >
-                              </div> 
-                        </div>
-			 <?php } ?>
-               			<script>					    
-							$(document).ready(function()
-							{ 
-									var no_folio=$('#select_asesor_folios').val();
-
-									switch (no_folio) {
-									
-										case '1':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').hide(1000);
-											$('#folio_tys_evento3').hide(1000);
-											$('#folio_tys_evento4').hide(1000);
-											$('#folio_tys_evento5').hide(1000);
-								
-										break;
-										case '2':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').hide(1000);
-											$('#folio_tys_evento4').hide(1000);
-											$('#folio_tys_evento5').hide(1000);
-								
-										break;
-										case '3':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').show(1000);
-											$('#folio_tys_evento4').hide(1000);
-											$('#folio_tys_evento5').hide(1000);
-										break;
-										case '4':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').show(1000);
-											$('#folio_tys_evento4').show(1000);
-											$('#folio_tys_evento5').hide(1000);
-										break;
-										case '5':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').show(1000);
-											$('#folio_tys_evento4').show(1000);
-											$('#folio_tys_evento5').show(1000);
-										break;
-									
-										default:
-
-										 
-										break;
-									}							
-										
-							});
-											
-					  </script> 
-
-       			
-       		</div>
-       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- FIND DEL MODAL REGISTRO DE FOLIOS-->
-
 
 
 
@@ -415,7 +311,6 @@
                                                                   $('#evento_rechazado').text(data);
 
                               
-
                                                             })
                                           
                                                 }
@@ -547,12 +442,12 @@
                                     <input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
                                     <input type="text" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
-                              <!--  
-                              <div class="form-group row justify-content-sm-center">
 
-					 	<label for="select_status" class="col-sm-3 col-form-label">Folios TYS a capturar:</label>
+                               <div class="form-group row justify-content-sm-center">
+
+					 	<label for="select_status" class="col-sm-3 col-form-label">No tramites a ingresar:</label>
 							<select class="form-control form-control-sm col-sm-2" id="select_asesor_folios" name="select_asesor_folios">
-									<option value="0">Folio</option>
+									<option value="0">Tramites</option>
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -561,81 +456,9 @@
 							</select>
 						                              
                                </div> 
+                 
+                             
 
-					  <?php 
-					  for ($i=1; $i <=5 ; $i++) { ?>		  
-						<div class="form-group row justify-content-sm-center" id="folio_tys_evento<?php echo$i; ?>" style="display: none;">
-							<label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS No<?php echo " ".$i.":"; ?></label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control form-control-sm" id="folio_evento<?php echo$i; ?>" name="folio_evento<?php echo$i;?>" placeholder="Folio TYS <?php echo$i;?>"  >
-							</div> 
-						</div>
-					  <?php } ?>
-
-
-					  <script>
-					    
-							$(document).ready(function()
-							{ 
-							   $('#select_asesor_folios').on('change', function(){
-									var no_folio=$('#select_asesor_folios').val();
-
-									switch (no_folio) {
-									
-										case '1':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').hide(1000);
-											$('#folio_tys_evento3').hide(1000);
-											$('#folio_tys_evento4').hide(1000);
-											$('#folio_tys_evento5').hide(1000);
-								
-										break;
-										case '2':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').hide(1000);
-											$('#folio_tys_evento4').hide(1000);
-											$('#folio_tys_evento5').hide(1000);
-								
-										break;
-										case '3':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').show(1000);
-											$('#folio_tys_evento4').hide(1000);
-											$('#folio_tys_evento5').hide(1000);
-										break;
-										case '4':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').show(1000);
-											$('#folio_tys_evento4').show(1000);
-											$('#folio_tys_evento5').hide(1000);
-										break;
-										case '5':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').show(1000);
-											$('#folio_tys_evento4').show(1000);
-											$('#folio_tys_evento5').show(1000);
-										break;
-									
-										default:
-
-										 
-										break;
-									}
-
-							   })
-
-								
-										
-							});
-											
-					  </script> -->
-
-
-                        
                              
                              
                              

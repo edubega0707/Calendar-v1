@@ -30,7 +30,7 @@ class Ccalendar extends CI_controller
 		$param['biometrico_evento']=$this->input->post('biometrico_evento');
 		$param['desc_tableta_evento']=$this->input->post('desc_tableta_evento');
 		$param['desc_biometrico_evento']=$this->input->post('desc_biometrico_evento');
-		$param['folio_evento']=$this->input->post('folio_evento');
+		$param['no_tramites_evento']=$this->input->post('no_tramites_evento');
 		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
  
  
@@ -62,7 +62,7 @@ class Ccalendar extends CI_controller
 		$param['biometrico_evento']=$this->input->post('biometrico_evento');
 		$param['desc_tableta_evento']=$this->input->post('desc_tableta_evento');
 		$param['desc_biometrico_evento']=$this->input->post('desc_biometrico_evento');
-		$param['folio_evento']=$this->input->post('folio_evento');
+		$param['no_tramites_evento']=$this->input->post('no_tramites_evento');
 		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
 
 		$res=$this->Mcalendar->insert($param);
@@ -87,6 +87,7 @@ class Ccalendar extends CI_controller
 		echo  json_encode($r);
 	} 
 
+	//Consulta de eventos para construir los historiales
 
 
 	public function mostrar_evento()
@@ -107,11 +108,11 @@ class Ccalendar extends CI_controller
 		$id_biometrico=$this->input->post('biometrico_evento');
 		$status_evento=$this->input->post('status_evento');
 		$sucursal=$this->input->post('nombre_oficina');
+		$folio_evento=$this->input->post('folio_evento');
 
-		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color);
+		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color, $folio_evento);
 
 		
-
 		$tableta=$this->Mcalendar->modificar_status_tableta($id_tableta, $status_evento, $sucursal);
 		$biometrico=$this->Mcalendar->modificar_status_biometrico($id_biometrico, $status_evento, $sucursal);
 		echo $evento;
@@ -125,7 +126,7 @@ class Ccalendar extends CI_controller
 		$param_oficina['direccion_oficina']=$this->input->post('direccion_oficina');
 		$param_oficina['telefono_oficina_uno']=$this->input->post('telefono_oficina_uno');
 		$param_oficina['telefono_oficina_dos']=$this->input->post('telefono_oficina_dos');
-		$param_oficina['jefe_oficina']=$this->input->post('jefe_oficina');
+		//$param_oficina['jefe_oficina']=$this->input->post('jefe_oficina');
 
 		$this->Mcalendar->insert_oficinas($param_oficina);
 		redirect('Cregistro/enter');

@@ -11,8 +11,7 @@
                     var sucursal_usuario=$('#sucursal_usuario').val();
                     var rol_usuario=$('#rol_usuario').val();
                     
-                  
-                    
+                
                   $.post( base_url+'Cregistro/registrar', 
                   { 
                         nombre_usuario: nombre_usuario, 
@@ -22,9 +21,7 @@
                         pass_usuario:pass_usuario,
                         sucursal_usuario:sucursal_usuario,
                         rol_usuario:rol_usuario
-                        
                   
-
                   }, 
                   function() 
                   {

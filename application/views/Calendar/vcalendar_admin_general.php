@@ -45,19 +45,16 @@
             <div class="row justify-content-sm-center my-2">
                   <h4 id="titulo_historial">HISTORIAL TABLETA</h4>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                   <div class="col-md-3 col-sm-4">
                         <div class="form-group">
                         <label for="select_status">Oficina:</label>
-                              <select class="form-control form-control-sm" id="select_his_suc" name="select_his_suc">
-                                    <option value="">Seleccionar Sucursal</option>
-                                    <option value="PACHUCA">PACHUCA</option>
-                                    <option value="PACHUCAII">PACHUCAII</option>
-                                    <option value="SATELITE">SATELITE</option>
-                                    <option value="CD_AZTECA">CD AZTECA</option>
-                                    <option value="PUEBLA">PUEBLA</option>
-                                    <option value="SAN_LUIS_POTOSI">SAN LUIS POTOSI</option>                                           
-                              </select>
+                              <select class="form-control form-control-sm " id="suc_historial" name="suc_historial" >
+                                          <option>Seleccionar Oficina</option>     
+                                          <?php foreach ($lista_oficinas as $oficinas): ?>
+                                                 <option><?php echo $oficinas['nombre_oficina']; ?></option>                                                   
+                                           <?php endforeach; ?> 
+                              </select>                             
                         </div>
                   </div>
                    <div class="col-md-3 col-sm-4">
@@ -70,40 +67,70 @@
                         <div class="form-group">
                               <label for="nom_asesor">Fecha:</label>
                               <input type="text" class="form-control form-control-sm" id="nom_asesor">
-                        </div>  
-                      
+                        </div>                     
                   </div>        
             </div>
 
-             <!-- <div class="row">
-                  <table class="table table-hover">
-                        <thead class="thead-inverse">
-                              <tr>
-                                    <th>ID</th>
-                                    <th>NOMBRE DE ASESOR</th>
-                                    <th>DESCRIPCION DEL EVENTO</th>
-                                    <th>FECHA DE INICIO</th>
-                                    <th>FECHA DE FIN</th>
-                              </tr> 
-                        </thead>
-                        <tbody>
-                        <tr>
-                              <th >1</th>
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
-                        </tr>
-                  
-                        </tbody>
-                  </table>
+            <div class="row justify-content-center" id="historiales_eventos" style="display: none;" >
+                  <div class="col-md-10 col-sm-12 col-12"> 
+                   <p>Sucursal: <?php echo $oficina_nosirve;  ?></p>
+                        <table class="table table-responsive table-hover">
+                              <thead class="thead-inverse">
+                                    <tr>
+                                          <th>ID</th>
+                                          <th>NOMBRE DE ASESOR</th>
+                                          <th>DESCRIPCION DEL EVENTO</th>
+                                          <th>FECHA DE INICIO</th>
+                                          <th>FECHA DE FIN</th>
+                                    </tr> 
+                              </thead>
+                              <tbody>
+                              <?php foreach ($eventos_oficinas as $eventos): ?>
+                                    <tr>
+                                          <th><?php echo $eventos['idEvento'];?></th>
+                                          <td><?php echo $eventos['nombre_asesor']; ?></td>
+                                          <td><?php echo $eventos['des_evento']; ?></td>
+                                          <td><?php echo $eventos['fecInicio']; ?></td>
+                                          <td><?php echo $eventos['fecFin']; ?></td>
+                                    </tr>                                                             
+                              <?php endforeach; ?>  
+                                          
+                              </tbody>
+                        </table>
+                  </div>
+                   <script>
+                         var  base_url="<?php echo base_url();?>";
+      
+                     $(document).ready(function()
+                        {
+                              $('#suc_historial').on('change', function () 
+                              {
+                                    var sucursal_historial=$('#suc_historial').val();
+                                    
+                                    $.post(base_url+'Cregistro/enter', 
+                                    {                                          
+                                          sucursal_historial:sucursal_historial
+                                    }, 
+                                    function(data) 
+                                    {
+                                          console.log(sucursal_historial);
+                                          $('#historiales_eventos').show();
+                                    })
+                                    
+                              }) 
+
+                        });
+         
+                   </script>
             
-            </div>  -->
+            </div> 
+
 
             
       </div>
       
 
- </div>  -->
+ </div>   -->
 
 <!-- INICIO DEL MODAL -->
       <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -307,6 +334,7 @@
                         <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre completo:</label>
                         <div class="col-12 col-sm-6 col-md-7">
                              <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;" pattern="^[A-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS SOLO MAYUSCULAS"  required>
+                             <input type="text" class="form-control form-control-sm" id="correo_usuario_admin" name="correo_usuario_admin" value="<?php echo $correo_usuario; ?>" style="display:none;">
                         </div>
                         <span class="color-error  text-center"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
                        
@@ -392,9 +420,7 @@
 
       
              </form>
-             <script>
-                var  base_url= "<?php echo base_url();?>"
-             </script>
+            
       
       </div>
 
@@ -491,15 +517,6 @@
                   
                   </div>
      
-                  <div class="form-group row">
-
-                        <label for="clave_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user mr-3" aria-hidden="true" style="font-size: 30px;"></i>Jefe de oficina:</label>
-                         <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="text" class="form-control form-control-sm" id="jefe_oficina" name="jefe_oficina" placeholder="Jefe de oficina" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS"  required>
-                        </div>         
-
-                  </div>
-             
                  <div class="d-flex flex-row justify-content-center align-items-center text-white mt-3" >
 
                         <div class="d-flex flex-column justify-content-center align-items-center text-white">

@@ -68,6 +68,25 @@
                                                 btnClass: 'btn-blue',
                                                 action: function()
                                                 {
+                                                      var nombre_usuario=$('#nombre_usuario').val();
+                                                      var rol_usuario=$('#rol_usuario').val();                                                                                            
+                                                      var correo_usuario=$('#correo_usuario').val();
+                                                      var correo_usuario_admin=$('#correo_usuario_admin').val();
+                                                      var clave_usuario=$('#clave_usuario').val();
+                                                      var pass_usuario=$('#pass_usuario').val();
+                                                      
+                                                      $.post( base_url+'Ccorreo/enviar_correo_claves', 
+                                                      { 
+                                                            nombre_usuario: nombre_usuario, 
+                                                            rol_usuario: rol_usuario,
+                                                            correo_usuario:correo_usuario,
+                                                            correo_usuario_admin:correo_usuario_admin,
+                                                            clave_usuario:clave_usuario,
+                                                            pass_usuario:pass_usuario
+                                                      }, 
+                                                      function() 
+                                                      {                                      
+                                                      })
                                                       registra_usuario();
                                                       $('#form_registro')[0].reset(); 
                                                 }

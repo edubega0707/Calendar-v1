@@ -26,7 +26,7 @@
             'biometrico_evento'=>$param['biometrico_evento'],
             'desc_tableta_evento'=>$param['desc_tableta_evento'],
             'desc_biometrico_evento'=>$param['desc_biometrico_evento'],
-            'folio_evento'=>$param['folio_evento'],
+            'no_tramites_evento'=>$param['no_tramites_evento'],
             'evento_color'=>'#A5F2E7',  
             'status'=>'ACEPTADO',
             'usuarios_id_usuario'=>$param['usuarios_id_usuario'] 
@@ -51,7 +51,7 @@
             'biometrico_evento'=>$param['biometrico_evento'],
             'desc_tableta_evento'=>$param['desc_tableta_evento'],
             'desc_biometrico_evento'=>$param['desc_biometrico_evento'],
-            'folio_evento'=>$param['folio_evento'],
+            'no_tramites_evento'=>$param['no_tramites_evento'],
             'evento_color'=>'#E85B48',  
             'status'=>'PENDIENTE',
             'usuarios_id_usuario'=>$param['usuarios_id_usuario'] 
@@ -61,16 +61,21 @@
         return   $this->db->insert('eventos', $campos); 
     }      
 
+
+
     public function consulta_evento($id)
     {            
         $consulta= $this->db->get_where('eventos', array('idEvento'=>$id));
         return $consulta->result();
     }
 
-    public function modificar_evento($status, $idEvento, $color)
+
+
+    public function modificar_evento($status, $idEvento, $color,$folio_evento)
     {
         $this->db->set('status', $status);
         $this->db->set('evento_color',$color);
+        $this->db->set('folio_evento',$folio_evento);
         $this->db->where('idEvento', $idEvento);
         $evento= $this->db->update('eventos');
         return $evento;
@@ -89,13 +94,13 @@
             'direccion_oficina'=>$param_oficina['direccion_oficina'],
             'telefono_oficina_uno'=>$param_oficina['telefono_oficina_uno'],
             'telefono_oficina_dos'=>$param_oficina['telefono_oficina_dos'],
-            'jefe_oficina'=>$param_oficina['jefe_oficina'],
             'fecha_registro_oficina'=>DATE('Ymd')
             );
 
              return   $this->db->insert('Oficinas', $campos); 
     }
  
+
 
 
     // Modelo para insertar registros en las tabletas
@@ -112,6 +117,9 @@
     } 
 
 
+
+
+
     public function consulta_tableta($id_tableta)
 	{
         $this->db->where('id_tableta', $id_tableta);
@@ -122,7 +130,9 @@
 		}
 	
 	}
-      
+
+
+
 
     // Modelo para insertar registros en los biometricos
      public function insert_biometrico($param_biometrico)
@@ -139,6 +149,8 @@
     }
 
 
+
+
   public function consulta_biometrico($id_biometrico)
 	{
         $this->db->where('id_biometrico', $id_biometrico);
@@ -152,6 +164,7 @@
 	}
 
 
+
     public function modificar_status_tableta($id_tableta,$status,$sucursal)
     {
         $this->db->set('status_tableta', $status);
@@ -161,6 +174,9 @@
         return $evento;
     } 
 
+
+
+
        public function modificar_status_biometrico($id_biometrico,$status,$sucursal)
     {
         $this->db->set('status_biometrico', $status);
@@ -169,7 +185,9 @@
         $evento= $this->db->update('biometrico');
         return $evento;
     }
- 
+
+
+
 	public function eventos_rechazados($nombre_asesor)
 	{
      
@@ -184,7 +202,19 @@
         }
         
 		
-	}            
+	}   
+
+    public function folio_evento($idEvento, $folio_evento)
+    {
+        $this->db->set('folio_evento', $folio_evento);
+        $this->db->where('idEvento', $idEvento);
+        $evento= $this->db->update('eventos');
+        return $evento;
+    }
+
+
+  
+         
            
 
 

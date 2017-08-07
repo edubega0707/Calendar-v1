@@ -41,8 +41,6 @@
 								$('#hora_inic').val(item.hora_inicio);
 								$('#hora_finic').val(item.hora_fin);							
 								$('#status_evento').val(item.status);
-								
-
 							});
 
 						});
@@ -133,6 +131,8 @@
 </div>
 
 
+
+
 <div class="container formulario">
 				<h4>Solicitar Tableta</h4>
 				<span>Recuerda que unicamente los equipos se prestaran un dia habil de la semana.</span>
@@ -144,19 +144,15 @@
 						<div class="col-sm-6">
 							<textarea class="form-control form-control-sm" id="desc_evento" name="desc_evento" rows="5" placeholder="Descripción" required style="text-transform:uppercase;"></textarea>
 						</div>
-
 						<input type="text" name="nombre_asesor" id="nombre_asesor" value="<?php echo $usuario; ?>"  style="display:none;">
-
 						<input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display:none;" >
-
 						<input type="text" name="usuarios_id_usuario"  id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display:none;">
 						<input type="text" name="correo_usuario"  id="correo_usuario" value="<?php echo $correo_usuario; ?>" style="display:none;" >
 					</div>
 
 					
 
-					<div class="form-group row justify-content-sm-center">
-									
+					<div class="form-group row justify-content-sm-center">									
 							<label for="select_asesor_tableta" class="col-sm-2 col-form-label">Seleccionar tableta:</label>
 							<select class="form-control form-control-sm col-sm-2 mb-3" id="select_asesor_tableta" name="select_asesor_tableta">
 									<option value="">Seleccionar tableta</option>
@@ -264,94 +260,17 @@
 					</script>
 
 					 <div class="form-group row justify-content-sm-center">
-
-					 	<label for="select_status" class="col-sm-3 col-form-label">Seleccionar el numero de tramitesr:</label>
+					 	<label for="select_asesor_folios" class="col-sm-3 col-form-label">Seleccionar el numero de tramites:</label>
 							<select class="form-control form-control-sm col-sm-2" id="select_asesor_folios" name="select_asesor_folios">
-									<option value="0">Folio</option>
+									<option value="0">NO de tramites</option>
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
 									<option>4</option>
 									<option>5</option>															
-							</select>
-						                              
+							</select>						                              
                      </div>
 
-
-<!-- 
-
-					 
-
-					  <?php 
-					  for ($i=1; $i <=5 ; $i++) { ?>		  
-						<div class="form-group row justify-content-sm-center" id="folio_tys_evento<?php echo$i; ?>" style="display: none;">
-							<label for="folio_tys_evento" class="col-sm-2 col-form-label">Folio TYS No <?php echo " ".$i.":"; ?></label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control form-control-sm" id="folio_evento<?php echo$i; ?>" name="folio_evento<?php echo$i;?>" placeholder="Folio TYS <?php echo$i;?>"  >
-							</div> 
-						</div>
-					  <?php } ?>
-
-					  <script>
-					    
-							$(document).ready(function()
-							{ 
-							   $('#select_asesor_folios').on('change', function(){
-									var no_folio=$('#select_asesor_folios').val();
-
-									switch (no_folio) {
-									
-										case '1':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').hide(1000);
-											$('#folio_tys_evento3').hide(1000);
-											$('#folio_tys_evento4').hide(1000);
-											$('#folio_tys_evento5').hide(1000);
-								
-										break;
-										case '2':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').hide(1000);
-											$('#folio_tys_evento4').hide(1000);
-											$('#folio_tys_evento5').hide(1000);
-								
-										break;
-										case '3':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').show(1000);
-											$('#folio_tys_evento4').hide(1000);
-											$('#folio_tys_evento5').hide(1000);
-										break;
-										case '4':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').show(1000);
-											$('#folio_tys_evento4').show(1000);
-											$('#folio_tys_evento5').hide(1000);
-										break;
-										case '5':
-											$('#folio_tys_evento1').show(1000);
-											$('#folio_tys_evento2').show(1000);
-											$('#folio_tys_evento3').show(1000);
-											$('#folio_tys_evento4').show(1000);
-											$('#folio_tys_evento5').show(1000);
-										break;
-									
-										default:
-
-										 
-										break;
-									}
-
-							   })
-
-								
-										
-							});
-											
-					  </script> -->
 
  				
 					<div class="form-group row justify-content-sm-center">
@@ -474,6 +393,8 @@
 });
 
 </script>
+
+
 <div class="container instrucciones" id="instruc_toggle">
 	<div class="row">
 		<div class="col-md-3 col-sm-6 article">		

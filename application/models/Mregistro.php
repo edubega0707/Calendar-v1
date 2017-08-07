@@ -77,7 +77,7 @@ class Mregistro extends CI_Model
 		}
 	}
 	
-	public function get_correo_oficina($nombre_oficina)
+	public function correo_oficina($nombre_oficina)
 	{
 		$this->db->where('sucursal_usuario', $nombre_oficina);
 		$this->db->where('rol_usuario',  'JEFEOFICINA');
@@ -85,7 +85,7 @@ class Mregistro extends CI_Model
 
 		foreach ($query->result() as $row ) 
 		{
-			return $row;
+			return $row->correo_usuario;
 		}
 
 	}
@@ -135,6 +135,39 @@ class Mregistro extends CI_Model
 		$query=$this->db->get('Oficinas');
         return $query->result_array();
 	}
+
+
+
+	  public function get_eventos_oficina($sucursal_usuario)
+    {            
+        $this->db->select ('idEvento, nombre_asesor, des_evento, fecInicio, fecFin');
+        $this->db->from('eventos');
+        $this->db->join('usuarios', 'eventos.usuarios_id_usuario=usuarios.id_usuario', 'inner');
+        $this->db->where('sucursal_usuario', $sucursal_usuario);
+ 		$query=$this->db->get();
+		return $query->result_array();
+
+    }
+
+
+    // public function get_eventos_asesor($nombre_asesor)
+    // {            
+    //     $this->db->select ('idEvento, nombre_asesor, des_evento, fecInicio, fecFin');
+    //     $this->db->from('eventos');
+    //     $this->db->join('usuarios', 'eventos.usuarios_id_usuario=usuarios.id_usuario', 'inner');
+    //     $this->db->where('nombre_asesor', $nombre_asesor);
+ 	// 	$query=$this->db->get();
+	// 	return $query->result_array();
+    // }
+
+    // public function get_eventos_fecha($id)
+    // {            
+    //     $this->db->select ('idEvento, nombre_asesor, des_evento, fecInicio, fecFin');
+    //     $this->db->from('eventos');
+    //     $this->db->join('usuarios', 'eventos.usuarios_id_usuario=usuarios.id_usuario', 'inner');
+    //     $this->db->where('sucursal_usuario', $sucursal_usuario);
+ 	// 	return $this->db->get()->result();
+    // }
 	
 }
 

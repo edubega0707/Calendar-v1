@@ -11,7 +11,7 @@ $(document).ready(function()
                     var direccion_oficina=$('#direccion_oficina').val();
                     var telefono_oficina_uno=$('#telefono_oficina_uno').val();
                     var telefono_oficina_dos=$('#telefono_oficina_dos').val();
-                    var jefe_oficina=$('#jefe_oficina').val();
+                    //var jefe_oficina=$('#jefe_oficina').val();
 
                     
                   $.post( base_url+'Ccalendar/insert_oficina', 
@@ -20,8 +20,8 @@ $(document).ready(function()
                         ubicacion_oficina:ubicacion_oficina,
                         direccion_oficina:direccion_oficina,
                         telefono_oficina_uno:telefono_oficina_uno,
-                        telefono_oficina_dos:telefono_oficina_dos,
-                        jefe_oficina:jefe_oficina
+                        telefono_oficina_dos:telefono_oficina_dos
+                        //jefe_oficina:jefe_oficina
                   }, 
                   function() 
                   {

@@ -9,19 +9,9 @@
                     var biometrico_evento=$('#select_asesor_biometrico').val();
                     var des_evento=$('#desc_evento').val();
                     var desc_tableta_evento=$('#descripcion_tableta').text();
-                    var desc_biometrico_evento=$('#descripcion_biometrico').text();         
-
+                    var desc_biometrico_evento=$('#descripcion_biometrico').text();                 
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val();
-                    
-                    var folio_evento_1=$('#folio_evento1').val();
-                    var folio_evento_2=$('#folio_evento2').val();
-                    var folio_evento_3=$('#folio_evento3').val();
-                    var folio_evento_4=$('#folio_evento4').val();
-                    var folio_evento_5=$('#folio_evento5').val();
-
-                    var folios=[folio_evento_1,folio_evento_2,folio_evento_3,folio_evento_4,folio_evento_5];                
-                    var folio_evento=folios.toString();
-
+                    var no_tramites_evento=$('#select_asesor_folios').val();
                     var fecInicio=$('#fecha_inicio').val();
                     var hora_inicio=$('#select_hora_inicio').val();
                     var fecFin=$('#fecha_fin').val();
@@ -40,7 +30,7 @@
                         desc_biometrico_evento:desc_biometrico_evento,
                         des_evento: des_evento, 
                         usuarios_id_usuario:usuarios_id_usuario,
-                        folio_evento:folio_evento,
+                        no_tramites_evento:no_tramites_evento,
                         fecInicio:fecInicio,
                         hora_inicio:hora_inicio,
                         hora_fin:hora_fin,

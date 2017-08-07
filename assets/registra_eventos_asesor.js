@@ -11,24 +11,13 @@ $(document).ready(function()
                     var biometrico_evento=$('#select_asesor_biometrico').val();
                     var desc_tableta_evento=$('#descripcion_tableta').text();
                     var desc_biometrico_evento=$('#descripcion_biometrico').text();             
-                    var usuarios_id_usuario=$('#usuarios_id_usuario').val();                 
-                    
-                    var folio_evento_1=$('#folio_evento1').val();
-                    var folio_evento_2=$('#folio_evento2').val();
-                    var folio_evento_3=$('#folio_evento3').val();
-                    var folio_evento_4=$('#folio_evento4').val();
-                    var folio_evento_5=$('#folio_evento5').val();
-
-                    var folios=[folio_evento_1,folio_evento_2,folio_evento_3,folio_evento_4,folio_evento_5];                
-                    var folio_evento=folios.toString();
-
-
+                    var usuarios_id_usuario=$('#usuarios_id_usuario').val(); 
+                    var no_tramites_evento=$('#select_asesor_folios').val();                 
                     var fecInicio=$('#fecha_inicio').val();
                     var hora_inicio=$('#select_hora_inicio').val();
                     var fecFin=$('#fecha_fin').val();
                     var hora_fin=$('#select_hora_fin').val();
                     var status='RESERVADO';
-                    
                     
                     
                   $.post( base_url+'Ccalendar/insert_event_asesor', 
@@ -41,26 +30,23 @@ $(document).ready(function()
                         desc_tableta_evento:desc_tableta_evento,
                         desc_biometrico_evento:desc_biometrico_evento,
                         usuarios_id_usuario:usuarios_id_usuario,
-                        folio_evento:folio_evento,
+                        no_tramites_evento:no_tramites_evento,
                         fecInicio:fecInicio,
                         hora_inicio:hora_inicio,
                         fecFin:fecFin,
                         hora_fin:hora_fin,
-                        status:status
-                                                   
+                        status:status                                                  
                   }, 
                   function() 
                   {
-                         $.alert
+                        $.alert
                         ({
                               title: 'Registro de Eventos',
                               content: 'Evento agregado correctamente!', 
                               type: 'red',                                              
                               theme: 'material',                                                        
-                        });
-                          
-                  })
-       
+                        });                        
+                  })       
                   .fail(function() 
                   {
                         $.alert
@@ -71,11 +57,10 @@ $(document).ready(function()
                               theme: 'material',                                                        
                         });
                   })
-
             }
 
 
-    $('#form_registra_evento_asesor').submit(function(e)
+       $('#form_registra_evento_asesor').submit(function(e)
                     {
                         
                         e.preventDefault()
@@ -110,9 +95,9 @@ $(document).ready(function()
 
                                                       $.post( base_url+'Ccorreo/enviar_correo_dos', 
                                                       { 
-                                                            nombre_asesor: nombre_asesor,
+                                                            nombre_asesor:nombre_asesor,
                                                             nombre_oficina:nombre_oficina,
-                                                            des_evento: des_evento, 
+                                                            des_evento:des_evento, 
                                                             desc_tableta_evento:desc_tableta_evento,
                                                             desc_biometrico_evento:desc_biometrico_evento,                      
                                                             fecInicio:fecInicio,
@@ -123,7 +108,7 @@ $(document).ready(function()
                                                       }, 
                                                       function(data) 
                                                       {
-                                                      console.log(data);  
+                                                           
                                                       })
 
                                                 registra_eventos();
@@ -143,7 +128,7 @@ $(document).ready(function()
                         });
                     })   
             
-});
+       });
 
 
 

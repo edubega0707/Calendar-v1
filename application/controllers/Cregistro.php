@@ -96,9 +96,7 @@ class Cregistro extends CI_controller
 						'clave'=>$password,
 						'rol_usuario'=>$rol_usuario
 						);
-
 					$this->session->set_userdata($session_data);
-
 
 					redirect(base_url().'Cregistro/enter');
 				}
@@ -122,11 +120,12 @@ class Cregistro extends CI_controller
 	}
 
 
-	function enter()
+	public function enter()
 	{
 		$data['session']=$this->session->userdata('username');
 		$data['password']=$this->session->userdata('clave');
 		$data['rol_usuario']=$this->session->userdata('rol_usuario');
+		
 
 		if($data['session']!='')
 		{	
@@ -137,10 +136,15 @@ class Cregistro extends CI_controller
 			   	$data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;				   
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
+				$data['correo_usuario']=$row->correo_usuario;   
 
-				$data['lista_oficinas'] = $this->Mregistro->getoficinas();	
+				$data['lista_oficinas'] = $this->Mregistro->getoficinas();
 
-				//$data['lista_eventos'] = $this->Mcalendar->getEventos($data['sucursal_usuario']);						
+				//Consulta para mostrar los eventos por sucursales
+				$sucursal_historial=$this->input->post('sucursal_historial');
+				$data['oficina_nosirve']=$sucursal_historial;
+				$data['eventos_oficinas']= $this->Mregistro->get_eventos_oficina($sucursal_historial);
+
 
 			   	$this->load->view('Calendar/vheader', $data);
 			   	$this->load->view('Calendar/vcalendar_admin_general');
@@ -148,7 +152,6 @@ class Cregistro extends CI_controller
 
 		   } 
 
-		   //else if($data['session']=='ADMINPACHUCA' || $data['session']=='ADMINPUEBLA' || $data['session']=='ADMINPACHUCAII' || $data['session']=='ADMINSATELITE' || $data['session']=='ADMINSANLUIS' || $data['session']=='ADMINCDAZTECA' || $data['session']=='ADMINPUEBLA' || $data['session']=='ADMINCANCUN' )
 		    else if($data['rol_usuario']=='JEFEOFICINA')
 		   {
 
@@ -161,7 +164,6 @@ class Cregistro extends CI_controller
 				$data['lista_asesores'] = $this->Mregistro->getasesores($data['sucursal_usuario']);
 				$data['lista_tableta'] = $this->Mregistro->gettableta($data['sucursal_usuario']);
 				$data['lista_biometrico'] = $this->Mregistro->getbiometrico($data['sucursal_usuario']);
-
 
 
 						
@@ -193,7 +195,6 @@ class Cregistro extends CI_controller
 		   {
 			   redirect(base_url(). 'Cregistro/login_validation');
 		   }
-	
 		}
 
 		else
@@ -206,12 +207,17 @@ class Cregistro extends CI_controller
 
 
 
-
 	function logout()
 	{
 		$this->session->unset_userdata('username');
 
 		redirect(base_url(). 'Cregistro/login_validation');
+	}
+
+	public function historial_oficinas()
+	{
+
+		
 	}
 
 

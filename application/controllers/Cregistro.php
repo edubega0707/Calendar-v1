@@ -140,12 +140,8 @@ class Cregistro extends CI_controller
 
 				$data['lista_oficinas'] = $this->Mregistro->getoficinas();
 
-				//Consulta para mostrar los eventos por sucursales
-				$sucursal_historial=$this->input->post('sucursal_historial');
-				$data['oficina_nosirve']=$sucursal_historial;
-				$data['eventos_oficinas']= $this->Mregistro->get_eventos_oficina($sucursal_historial);
-
-
+		
+				
 			   	$this->load->view('Calendar/vheader', $data);
 			   	$this->load->view('Calendar/vcalendar_admin_general');
 			   	$this->load->view('Calendar/vfooter');

@@ -192,8 +192,8 @@
 							   {
 										var id_tableta=$('#select_asesor_tableta').val();
 										if (id_tableta=='') 
-										{
-											$('#descripcion_eventos_equipos').hide(600);											
+										{										
+											$('#descripcion_tableta').text("");												
 										} 
 										else 
 										{
@@ -224,7 +224,8 @@
 										
 										if (id_biometrico=='') 
 										{
-											$('#descripcion_eventos_equipos').hide(600);	
+											
+											$("#descripcion_biometrico").text("");	
 										} 
 										else 
 										{
@@ -252,8 +253,6 @@
 															
 							   })
 
-
-								
 										
 							});
 											

@@ -10,6 +10,7 @@ class Cregistro extends CI_controller
 		
 		$this->load->model('Mregistro');
 		$this->load->helper(array('form', 'url'));
+		$this->load->library(array('form_validation', 'email')); 
 	
 	} 
 
@@ -19,32 +20,49 @@ class Cregistro extends CI_controller
 	}
 
 	public function registrar()
-	{ 
-		
-		$this->load->library('form_validation');
+	{ 	
+	
 
 		$this->form_validation->set_rules('nombre_usuario', 'Nombre de Usuario', 'required|trim',
-                        array('required' => 'Debes ingresar el nombre'));
-
-		$this->form_validation->set_rules('tel_usuario', 'Telefono del Usuario', 'required|trim|max_length[10]',
-                        array('required' => 'Debes ingresar el telefono'));
-
-		$this->form_validation->set_rules('correo_usuario', 'Sucursal del usuario', 'required|trim',
-                        array('required' => 'Debes ingresar  correo'));
-
-		$this->form_validation->set_rules('clave_usuario', 'Clave del Usuario', 'required|trim|max_length[100]|is_unique[usuarios.clave_usuario]',
-                        array('required' => 'Debes ingresar el nombre',
-                        	  'is_unique'=>'El correo existe elije otro'));
- 
-		$this->form_validation->set_rules('pass_usuario', 'Contraseña', 'required|trim',
-                        array('required' => 'Debes ingresar  la contraseña'));
+                        array(
+							'required' => 'Ingresar texto en mayusculas y sin acentos',					
+						)						
+						);
+		$this->form_validation->set_rules('rol_usuario', 'Rol del Usuario', 'required|trim',
+                        array(
+							'required' => 'Debes ingresar  la contraseña'
+						)
+						);
 
 		$this->form_validation->set_rules('sucursal_usuario', 'Sucursal del usuario', 'required|trim',
-                        array('required' => 'Debes ingresar  la contraseña'));
+						array(
+							'required' => 'Debes ingresar  la contraseña'
+						)
+						);
+		$this->form_validation->set_rules('tel_usuario', 'Telefono del Usuario', 'required|trim|exact_length[10]|numeric',
+                        array(
+							'required' => 'Debes ingresar el telefono',
+							'exact_length' => 'El telefono debe ser de 10 digitos',
+							'numeric'=>'Solo se permiten numeros'
+						)
+						);
+		$this->form_validation->set_rules('correo_usuario', 'Sucursal del usuario', 'required|trim|valid_email',
+                        array(
+							'required' => 'Debes ingresar  correo',
+							'valid_email'=>'Correo Invalido'
+						)
+						);
+		$this->form_validation->set_rules('clave_usuario', 'Clave del Usuario', 'required|trim|exact_length[5]|is_unique[usuarios.clave_usuario]',
+                        array('required' => 'Ingrese Clave',
+                        	  'is_unique'=>'La clave ya existe elije otro',
+							  'exact_length'=>'La clave debe ser de 5 digitos',
 
-		$this->form_validation->set_rules('rol_usuario', 'Rol del Usuario', 'required|trim',
-                        array('required' => 'Debes ingresar  la contraseña'));
-
+						)
+					    );
+		$this->form_validation->set_rules('pass_usuario', 'Contraseña', 'required|trim',
+                        array('required' => 'Debes ingresar  la contraseña'
+						)
+						);
 
 		if ($this->form_validation->run())
 		{
@@ -55,15 +73,18 @@ class Cregistro extends CI_controller
 			$param['tel_usuario']=$this->input->post('tel_usuario');
 			$param['correo_usuario']=$this->input->post('correo_usuario');		
 			$param['clave_usuario']=$this->input->post('clave_usuario');
-			$param['pass_usuario']=$this->input->post('pass_usuario');
-			
- 			
-             $res=$this->Mregistro->registrar($param);			             
+			$param['pass_usuario']=md5($this->input->post('pass_usuario'));						
+            $res=$this->Mregistro->registrar($param);
+
+			redirect(base_url().'Cregistro/enter');
+
+		
+		  		  			             
 		}
 
 		else
 		{
-			 redirect(base_url(). 'Cregistro/enter');
+			 redirect(base_url(). 'Cregistro/registrar');
 
 		}
 
@@ -72,28 +93,39 @@ class Cregistro extends CI_controller
 
 	public function login_validation()
 	{
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('clave_usuario', 'Clave del usuario', 'required|trim|min_length[2]|max_length[30]',
-                        array('required' => 'Debe ingresar su Clave'));
 
-		$this->form_validation->set_rules('contraseña_usuario', 'Contraseña del usuario','required|trim|min_length[2]|max_length[20]',
-                        array('required' => 'Debe Ingresar Contraseña'));
+		$this->form_validation->set_rules('clave_usuario', 'Clave del usuario', 'required|exact_length[5]|numeric',
+                        array(
+							'required' => 'Debe ingresar su Clave',
+							'exact_length' => 'La Clave debe ser de 5 digitos',
+							'numeric' => 'La clave deber ser unicamente de digitos',
+							
+
+						));
+
+		$this->form_validation->set_rules('pass_usuario', 'Contraseña del usuario','required',
+                        array(
+							'required' => 'Debe Ingresar Contraseña'						
+							)
+							);
       
 
 		if($this->form_validation->run())
 		{
 
-				$username=$this->input->post('clave_usuario');			
-				$password=$this->input->post('contraseña_usuario');		    
+				$clave_usuario=$this->input->post('clave_usuario');			
+				$contraseña_usuario=md5($this->input->post('pass_usuario'));
+
+				$res=$this->Mregistro->can_login($clave_usuario, $contraseña_usuario);		    
 	
-				if ($this->Mregistro->can_login($username, $password)) 
+				if ($res==true) 
 				{
-					$row=$this->Mregistro->perfil_asesor($username);	
+					$row=$this->Mregistro->perfil_asesor($clave_usuario);	
 			  	 	$rol_usuario=$row->rol_usuario;
 
 					$session_data=array(
-						'username'=>$username,
-						'clave'=>$password,
+						'clave_usuario'=>$clave_usuario,
+						'contraseña_usuario'=>$contraseña_usuario,
 						'rol_usuario'=>$rol_usuario
 						);
 					$this->session->set_userdata($session_data);
@@ -103,9 +135,7 @@ class Cregistro extends CI_controller
 
 				else
 				{
-
-					$this->session->set_flashdata('error', 'Usuario y Contraseña Invalidos');
-
+					$this->session->set_flashdata('error', $contraseña_usuario);
 					redirect(base_url(). 'Cregistro/login_validation');
 
 				}					
@@ -122,17 +152,17 @@ class Cregistro extends CI_controller
 
 	public function enter()
 	{
-		$data['session']=$this->session->userdata('username');
-		$data['password']=$this->session->userdata('clave');
+		$data['clave_usuario']=$this->session->userdata('clave_usuario');
+		$data['password']=$this->session->userdata('contraseña_usuario');
 		$data['rol_usuario']=$this->session->userdata('rol_usuario');
 		
 
-		if($data['session']!='')
+		if($data['clave_usuario']!='')
 		{	
 
-		   if ($data['session']=='ADMINISTRADOR' && $data['rol_usuario']=='ADMINISTRADOR' && ($data['password']=='ADMINISTRADOR' || $data['password']=='administrador' ) ) 
+		   if ($data['clave_usuario']=='97697' && $data['rol_usuario']=='ADMINISTRADOR') 
 		   {
-			   	$row=$this->Mregistro->getasesor($data['session']);	
+			   	$row=$this->Mregistro->getasesor($data['clave_usuario']);	
 			   	$data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;				   
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
@@ -151,7 +181,7 @@ class Cregistro extends CI_controller
 		    else if($data['rol_usuario']=='JEFEOFICINA')
 		   {
 
-		   		$row=$this->Mregistro->get_jefes_oficina($data['session']);
+		   		$row=$this->Mregistro->get_jefes_oficina($data['clave_usuario']);
 			    $data['usuario']=$row->nombre_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
 			   	$data['usuarios_id_usuario']=$row->id_usuario;
@@ -172,7 +202,7 @@ class Cregistro extends CI_controller
 		   else if ($data['rol_usuario']=='ASESOR') 		 
 		   {
 
-			   	$row=$this->Mregistro->perfil_asesor($data['session']);	
+			   	$row=$this->Mregistro->perfil_asesor($data['clave_usuario']);	
 			   	$data['usuario']=$row->nombre_usuario;
 				$data['correo_usuario']=$row->correo_usuario;
 			   	$data['sucursal_usuario']=$row->sucursal_usuario;
@@ -210,8 +240,38 @@ class Cregistro extends CI_controller
 		redirect(base_url(). 'Cregistro/login_validation');
 	}
 
-	public function historial_oficinas()
+	public function valida_correo()
 	{
+		$correo_usuario=$this->input->post('correo_usuario');
+		$correo=$this->Mregistro->valida_correo($correo_usuario);
+
+		if ($correo==TRUE) 
+		{
+			echo '<div class="alert alert-danger mt-1" role="alert">El correo ya existe ingrese otro</div>';
+			
+		} else 
+		{
+			echo '<div class="alert alert-success mt-1" role="alert">Correo correcto</div>';
+		}
+		
+
+		
+	}
+
+		public function valida_clave_asesor()
+	{
+		$clave_usuario=$this->input->post('clave_usuario');
+		$clave=$this->Mregistro->valida_clave_asesor($clave_usuario);
+
+		if ($clave==TRUE) 
+		{
+			echo '<div class="alert alert-danger mt-1" role="alert">Esta clave ya existe elije otra</div>';
+			
+		} else 
+		{
+			echo '<div class="alert alert-success mt-1" role="alert">Clave correcta</div>';
+		}
+		
 
 		
 	}

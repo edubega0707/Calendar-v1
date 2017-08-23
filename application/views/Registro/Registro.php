@@ -257,11 +257,11 @@
 
 				<div class="form-group">
 
-					<label for="contraseña_usuario" class="d-flex flex-row align-items-center width-icons"><i class="fa fa-key mr-3 " aria-hidden="true"></i>PIN:</label>
+					<label for="pass_usuario" class="d-flex flex-row align-items-center width-icons"><i class="fa fa-key mr-3 " aria-hidden="true"></i>PIN:</label>
 
-					<input type="password" class="form-control" id="contraseña_usuario" name="contraseña_usuario" placeholder="Contraseña">
+					<input type="password" class="form-control" id="pass_usuario" name="pass_usuario" placeholder="Contraseña">
 
-					<span class="color-error  text-center"><strong><?php echo form_error('contraseña_usuario'); ?></strong></span>
+					<span class="color-error  text-center"><strong><?php echo form_error('pass_usuario'); ?></strong></span>
 				</div>
 				<div class="d-flex flex-column justify-content-center align-items-center text-white mb-5">
 					<button type="submit" class="btn btn btn-success"  href="#login_registro" name="inicia_sesion" id="inicia_sesion">Iniciar Sesion</button>

@@ -76,7 +76,7 @@
                                 type: 'dark',                                              
                                 theme: 'material',
                                 animation: 'zoom',
-                                animationSpeed: 600,
+                                animationSpeed: 400,
                                 closeAnimation: 'scale',
                                 alignMiddle: true,                          
                                 buttons: 

@@ -3,6 +3,7 @@
 
       $(document).ready(function()
             {
+                  
             function registra_usuario()
             {
                     var nombre_usuario=$('#nombre_usuario').val();
@@ -13,7 +14,7 @@
                     var clave_usuario=$('#clave_usuario').val();
                     var pass_usuario=$('#pass_usuario').val();
                     
-                  $.post( base_url+'Cregistro/registrar', 
+                  $.post( base_url+'Cregistro/registrar',  
                   { 
                         nombre_usuario: nombre_usuario, 
                         rol_usuario: rol_usuario,
@@ -58,7 +59,7 @@
                               type: 'dark',                                              
                               theme: 'material',
                               animation: 'zoom',
-                              animationSpeed: 600,
+                              animationSpeed: 300,
                               closeAnimation: 'scale',
                               alignMiddle: true,                          
                               buttons: 
@@ -85,10 +86,20 @@
                                                             pass_usuario:pass_usuario
                                                       }, 
                                                       function() 
-                                                      {                                      
+                                                      {  
+                                                             registra_usuario();
+                                          
+                                                             $('#form_registro')[0].reset();
+                                                             $('#check_username').hide(50);
+                                                             $('#check_telefono').hide(50);
+                                                             $('#check_correo').hide(50);
+                                                             $('#check_clave').hide(50);
+
+                                                                                            
                                                       })
-                                                      registra_usuario();
-                                                      $('#form_registro')[0].reset(); 
+                                                     
+                                                      
+
                                                 }
                                           },
                                     Cancelar: {

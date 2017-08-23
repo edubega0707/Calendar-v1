@@ -365,7 +365,7 @@
 										var id_tableta=$('#select_asesor_tableta').val();
 										if (id_tableta=='') 
 										{
-											$('#descripcion_eventos_equipos').hide(600);											
+											$('#descripcion_tableta').text("");											
 										} 
 										else 
 										{
@@ -396,7 +396,7 @@
 										
 										if (id_biometrico=='') 
 										{
-											$('#descripcion_eventos_equipos').hide(600);	
+											$("#descripcion_biometrico").text("");	
 										} 
 										else 
 										{
@@ -598,10 +598,8 @@
                                           <label for="nombre_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-user mr-3" aria-hidden="true"  style="text-transform:uppercase; font-size: 30px;"></i>Nombre completo:</label>
                                                
 
-                                          <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  pattern="^[A-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS SOLO MAYUSCULAS"  required> 
-                                          <span class="text-white"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
-
-                                        
+                                          <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"   required> 
+                                          <div id="check_username" class="" style="display: none;"></div>                                 
 
                                     </div>
 
@@ -609,15 +607,17 @@
 
                                           <label for="tel_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-mobile mr-3" aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
 
-                                          <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" pattern="^[0-9]{10}" title="El telefono debe ser de 10 digitos" maxlength="10"  required>
-                                          <span class="text-white"><strong><?php echo form_error('tel_usuario'); ?> </strong></span>
-
+                                          <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular"  maxlength="10"  required>
+                                          <div id="check_telefono" class=""></div> 
+                                      
 
                                     </div>
                                      <div class="form-group">
 
                                           <label for="correo_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-envelope-o mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Correo Usuario:</label>
-                                          <input type="mail" class="form-control form-control-sm" id="correo_usuario" name="correo_usuario" placeholder="correo electronico"  required>  
+                                          <input type="mail" class="form-control form-control-sm" id="correo_usuario" name="correo_usuario" placeholder="correo electronico"  required>
+                                           <div id="check_correo" class="">                                  
+                                           </div>   
                                           
                                     </div>
 
@@ -625,17 +625,18 @@
 
                                           <label for="clave_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>Clave:</label>
 
-                                          <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave Usuario"  title="lA CLAVE DEBE SER DE 5 CARACTERES" maxlength="5" required>
-                                          <span class="text-white"><strong><?php echo form_error('clave_usuario'); ?> </strong></span>
+                                          <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave Usuario"  maxlength="5" required>
+                                            <div id="check_clave" class="">                                  
+                                          </div>
+                                        
 
                                     </div>
 
                                     <div class="form-group">
 
                                           <label for="pass_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>PIN:</label>
-
-                                          <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Contraseña"  title="lA CLAVE DEBE SER DE 5 CARACTERES" maxlength="5" required>
-                                          <span class="text-white"><strong><?php echo form_error('pass_usuario'); ?> </strong></span>
+                                          <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Contraseña"   maxlength="5" required>
+                                          
 
                                           <input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
                                           <input type="text" name="rol_usuario" id="rol_usuario" value="ASESOR" style="display: none;">

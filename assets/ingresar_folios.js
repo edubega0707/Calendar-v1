@@ -27,7 +27,7 @@
                                     color='#E85B48';
                             break;
                             case 'RECHAZADO':
-                                    color='#C50000';
+                                    color='#F38181';
                                     status_evento='DISPONIBLE';
                             break;
                             case 'ACEPTADO':

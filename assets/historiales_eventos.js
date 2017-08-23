@@ -27,15 +27,25 @@ $(document).ready(function()
                  $('#suc_historial').on('click', function () 
                     {
                         var sucursal_historial=$('#suc_historial').val();
-                        
-                        $.post(base_url+'Chistoriales/historial_eventos_oficina', 
-                        {                                          
-                                sucursal_historial:sucursal_historial
-                        }, 
-                        function(data) 
-                        {                                 
-                                $('#historiales_eventos').html(data);                            
-                        })
+
+                        if(sucursal_historial=='SO')
+                        {
+                            $('historiales_usuarios').hide(200);
+                            $('historiales_eventos').hide(200);
+                        }
+                        else
+                         {
+                            $.post(base_url+'Chistoriales/historial_eventos_oficina', 
+                            {                                          
+                                    sucursal_historial:sucursal_historial
+                            }, 
+                            function(data) 
+                            {                                 
+                                    $('#historiales_eventos').html(data);                            
+                            })
+
+                         }
+                       
                         
                     }) 
 
@@ -66,16 +76,26 @@ $(document).ready(function()
                 $('#suc_historial').on('click', function () 
                     {
                         var sucursal_historial=$('#suc_historial').val();
+
+                        if(sucursal_historial=='SO')
+                        {
+                            $('historiales_usuarios').hide(200);
+                            $('historiales_eventos').hide(200);
+                        }
+                        else
+                        {
+                            $.post(base_url+'Chistoriales/historial_usuarios_oficina', 
+                            {                                          
+                                    sucursal_historial:sucursal_historial
+                            }, 
+                            function(data) 
+                            {                                 
+                                    $('#historiales_usuarios').html(data);
+                                    
+                            })
+
+                        }
                         
-                        $.post(base_url+'Chistoriales/historial_usuarios_oficina', 
-                        {                                          
-                                sucursal_historial:sucursal_historial
-                        }, 
-                        function(data) 
-                        {                                 
-                                $('#historiales_usuarios').html(data);
-                               
-                        })
                         
                     }) 
                 $('#nombre_asesor').on('keyup', function() 

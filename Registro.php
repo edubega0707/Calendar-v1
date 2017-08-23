@@ -56,7 +56,7 @@
 
 	.bienvenido{background: #E3FDFD; }
 
-	.color1{background: #95E1D3;} 
+	  .color1{background: #95E1D3;} 
 
 	.color2{background: #EAFFD0;}
 
@@ -537,7 +537,7 @@
 							<label for="pass_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true"></i>Contraseña:</label>
 
 							<input type="password" class="form-control" id="pass_usuario" name="pass_usuario" placeholder="Contraseña" >
-							<span class="text-white"><strong><?php echo form_error('pass_usuario'); ?> </strong></span
+							<span class="text-white"><strong><?php echo form_error('pass_usuario'); ?> </strong></span>
 
 						</div>
 

@@ -40,97 +40,70 @@
 
  <!-- Fin de  menu de seccion de admin_general -->
 
- <!-- <div id="seccion-calendario" class="my-3">
+  <div id="seccion-calendario" class="my-3">
       <div class="container my-5">
-            <div class="row justify-content-sm-center my-2">
-                  <h4 id="titulo_historial">HISTORIAL TABLETA</h4>
-            </div>
             <div class="row justify-content-center">
-                  <div class="col-md-3 col-sm-4">
+                   <div class="col-md-3 col-sm-3">
+                        <div class="form-group">
+                        <label for="select_status">Seleccionar Historial</label>
+                              <select class="form-control form-control-sm " id="selc_historial" name="selc_historial" >
+                                          <option value="HG">Seleccionar Historial</option>
+                                          <option value="HE">HISTORIAL DE EVENTOS</option> 
+                                          <option value="HU">HISTORIAL DE USUARIOS</option>                                                        
+                              </select>                             
+                        </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3" id="mostrar_oficinas" style="display:none;">
                         <div class="form-group">
                         <label for="select_status">Oficina:</label>
                               <select class="form-control form-control-sm " id="suc_historial" name="suc_historial" >
-                                          <option>Seleccionar Oficina</option>     
+                                          <option  value="SO">Seleccionar Oficina</option>     
                                           <?php foreach ($lista_oficinas as $oficinas): ?>
                                                  <option><?php echo $oficinas['nombre_oficina']; ?></option>                                                   
                                            <?php endforeach; ?> 
                               </select>                             
                         </div>
                   </div>
-                   <div class="col-md-3 col-sm-4">
+                   <div class="col-md-3 col-sm-3" id="mostrar_usuario" style="display:none;">
                          <div class="form-group">
                               <label for="nom_asesor">Nombre asesor:</label>
-                              <input type="text" class="form-control form-control-sm" id="nom_asesor">
+                              <input type="text" class="form-control form-control-sm" id="nombre_asesor">
                         </div>                           
                   </div> 
-                   <div class="col-md-3 col-sm-4">
+                   <!-- <div class="col-md-3 col-sm-3" id="mostrar_fecha" style="display:none;"> 
                         <div class="form-group">
                               <label for="nom_asesor">Fecha:</label>
-                              <input type="text" class="form-control form-control-sm" id="nom_asesor">
+                              <input type="text" class="form-control form-control-sm" id="fecha_inicio">
                         </div>                     
-                  </div>        
+                  </div>         
+                  -->
+            </div>
+            <div class="row justify-content-sm-center my-2">
+                  <h4 id="titulo_historial"></h4>
             </div>
 
-            <div class="row justify-content-center" id="historiales_eventos" style="display: none;" >
-                  <div class="col-md-10 col-sm-12 col-12"> 
-                   <p>Sucursal: <?php echo $oficina_nosirve;  ?></p>
-                        <table class="table table-responsive table-hover">
-                              <thead class="thead-inverse">
-                                    <tr>
-                                          <th>ID</th>
-                                          <th>NOMBRE DE ASESOR</th>
-                                          <th>DESCRIPCION DEL EVENTO</th>
-                                          <th>FECHA DE INICIO</th>
-                                          <th>FECHA DE FIN</th>
-                                    </tr> 
-                              </thead>
-                              <tbody>
-                              <?php foreach ($eventos_oficinas as $eventos): ?>
-                                    <tr>
-                                          <th><?php echo $eventos['idEvento'];?></th>
-                                          <td><?php echo $eventos['nombre_asesor']; ?></td>
-                                          <td><?php echo $eventos['des_evento']; ?></td>
-                                          <td><?php echo $eventos['fecInicio']; ?></td>
-                                          <td><?php echo $eventos['fecFin']; ?></td>
-                                    </tr>                                                             
-                              <?php endforeach; ?>  
-                                          
-                              </tbody>
-                        </table>
-                  </div>
-                   <script>
-                         var  base_url="<?php echo base_url();?>";
-      
-                     $(document).ready(function()
-                        {
-                              $('#suc_historial').on('change', function () 
-                              {
-                                    var sucursal_historial=$('#suc_historial').val();
-                                    
-                                    $.post(base_url+'Cregistro/enter', 
-                                    {                                          
-                                          sucursal_historial:sucursal_historial
-                                    }, 
-                                    function(data) 
-                                    {
-                                          console.log(sucursal_historial);
-                                          $('#historiales_eventos').show();
-                                    })
-                                    
-                              }) 
-
-                        });
-         
-                   </script>
+            <div class="row justify-content-center"  > 
+              <div class="col-md-11 col-sm-12 col-12" id="historiales_eventos" style="display: none;">
+              
+              </div>      
+            </div> 
+            <div class="row justify-content-center"  > 
+              <div class="col-md-10 col-sm-12 col-12" id="historiales_usuarios" style="display: none;">
+              
+              </div>  
             
             </div> 
+         
 
 
+            <script>
+                  var  base_url="<?php echo base_url();?>";     
+            </script>
             
       </div>
       
 
- </div>   -->
+ </div>   
 
  
 
@@ -335,12 +308,11 @@
                   <div class="form-group row">
                         <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-user mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Nombre completo:</label>
                         <div class="col-12 col-sm-6 col-md-7">
-                             <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo"  style="text-transform:uppercase;" pattern="^[A-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS SOLO MAYUSCULAS"  required>
+                             <input type="text" class="form-control form-control-sm" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre Completo" required>
                              <input type="text" class="form-control form-control-sm" id="correo_usuario_admin" name="correo_usuario_admin" value="<?php echo $correo_usuario; ?>" style="display:none;">
+                             <div id="check_username" class="" style="display: none;"></div> 
                         </div>
-                        <span class="color-error  text-center"><strong><?php echo form_error('nombre_usuario'); ?> </strong></span>
-                       
-                       
+                              
                   </div>
 
                   <div class="form-group row ">
@@ -351,7 +323,8 @@
                               <option value="JEFEOFICINA">JEFEOFICINA</option>
                               <option value="ASESOR">ASESOR</option>                                           
                         </select>
-                        </div>                     
+                        </div>  
+                                      
                   </div>
 
 
@@ -363,7 +336,7 @@
                                <?php foreach ($lista_oficinas as $oficinas): ?>
                                     <option><?php echo $oficinas['nombre_oficina']; ?></option>                                                   
                                <?php endforeach; ?> 
-
+                                
                               </select> 
                         </div>
                        
@@ -373,16 +346,22 @@
 
                         <label for="tel_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-mobile mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
                         <div class="col-12 col-sm-6 col-md-7"> 
-                            <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular"   pattern="^[0-9]{10}" title="El telefono debe ser de 10 digitos" maxlength="10" required >  
+                            <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" maxlength="10" required > 
+                            <div id="check_telefono" class=""></div> 
                         </div>
+                        
+                      
                   
                   </div>
                   <div class="form-group row">
 
                         <label for="correo_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-envelope-o mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Correo Usuario:</label>
                         <div class="col-12 col-sm-6 col-md-7"> 
-                            <input type="mail" class="form-control form-control-sm" id="correo_usuario" name="correo_usuario" placeholder="correo electronico"  required >  
+                            <input type="mail" class="form-control form-control-sm" id="correo_usuario" name="correo_usuario" placeholder="correo electronico" required>
+                             <div id="check_correo" class="">                                  
+                             </div>  
                         </div>
+                       
                   
                   </div>
 
@@ -390,12 +369,13 @@
 
                         <label for="clave_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>Clave usuario:</label>
                          <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave"   title="lA CLAVE DEBE SER DE 5 CARACTERES" maxlength="5" required>
-                        </div>
+                             <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave" maxlength="5" required>
+                              <div id="check_clave" class="">                                  
+                              </div>
+                         </div>
+                          
                         
-
-                       
-
+                  
                   </div>
 
                   <div class="form-group row">
@@ -403,7 +383,7 @@
                         <label for="pass_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>PIN usuario:</label>
                       
                          <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Pin usuario" title="EL PIN DEBE SER DE 5 CARACTERES" maxlength="5" required>
+                             <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Pin usuario" required>
                         </div>
                    
 

@@ -53,9 +53,9 @@ class Mregistro extends CI_Model
 
 
 
-	public function getasesor($sesion)
+	public function getasesor($clave_usuario)
 	{
-		$this->db->where('clave_usuario',  $sesion);
+		$this->db->where('clave_usuario',  $clave_usuario);
 		$this->db->where('rol_usuario',  'ADMINISTRADOR');
 		$query=$this->db->get('usuarios');
 
@@ -65,9 +65,18 @@ class Mregistro extends CI_Model
 		}
 	}
 
-	public function get_jefes_oficina($sesion)
+	
+	public function getoficinas()
 	{
-		$this->db->where('clave_usuario',  $sesion);
+		$query=$this->db->get('Oficinas');
+        return $query->result_array();
+	}
+
+
+
+	public function get_jefes_oficina($clave_usuario)
+	{
+		$this->db->where('clave_usuario',  $clave_usuario);
 		$this->db->where('rol_usuario',  'JEFEOFICINA');
 		$query=$this->db->get('usuarios');
 
@@ -99,19 +108,7 @@ class Mregistro extends CI_Model
         return $query->result_array();
 	}
 
-	public function perfil_asesor($sesion)
-	{
-		$this->db->where('clave_usuario', $sesion);
-		$query=$this->db->get('usuarios');
-		foreach ($query->result() as $row ) 
-		{
-			return $row;
-		}
-        
-	}
-
-
-
+	
 	public function gettableta($sucursal)
 	{
 		
@@ -130,44 +127,54 @@ class Mregistro extends CI_Model
 
 	}
 
-	public function getoficinas()
+
+
+
+	public function perfil_asesor($clave_usuario)
 	{
-		$query=$this->db->get('Oficinas');
-        return $query->result_array();
+		$this->db->where('clave_usuario', $clave_usuario);
+		$query=$this->db->get('usuarios');
+		foreach ($query->result() as $row ) 
+		{
+			return $row;
+		}
+        
 	}
 
+	public function valida_correo($correo_usuario)
+	{
+		$this->db->where('correo_usuario', $correo_usuario);
+		$query=$this->db->get('usuarios');
 
+		if ($query->num_rows()>=1) 
+		{
 
-	  public function get_eventos_oficina($sucursal_usuario)
-    {            
-        $this->db->select ('idEvento, nombre_asesor, des_evento, fecInicio, fecFin');
-        $this->db->from('eventos');
-        $this->db->join('usuarios', 'eventos.usuarios_id_usuario=usuarios.id_usuario', 'inner');
-        $this->db->where('sucursal_usuario', $sucursal_usuario);
- 		$query=$this->db->get();
-		return $query->result_array();
+			return true;
 
-    }
+		}
+		else
+		{
+			return false;
+		}
+	}
 
+	public function valida_clave_asesor($clave_usuario)
+	{
+		$this->db->where('clave_usuario', $clave_usuario);
+		$query=$this->db->get('usuarios');
 
-    // public function get_eventos_asesor($nombre_asesor)
-    // {            
-    //     $this->db->select ('idEvento, nombre_asesor, des_evento, fecInicio, fecFin');
-    //     $this->db->from('eventos');
-    //     $this->db->join('usuarios', 'eventos.usuarios_id_usuario=usuarios.id_usuario', 'inner');
-    //     $this->db->where('nombre_asesor', $nombre_asesor);
- 	// 	$query=$this->db->get();
-	// 	return $query->result_array();
-    // }
+		if ($query->num_rows()>=1) 
+		{
 
-    // public function get_eventos_fecha($id)
-    // {            
-    //     $this->db->select ('idEvento, nombre_asesor, des_evento, fecInicio, fecFin');
-    //     $this->db->from('eventos');
-    //     $this->db->join('usuarios', 'eventos.usuarios_id_usuario=usuarios.id_usuario', 'inner');
-    //     $this->db->where('sucursal_usuario', $sucursal_usuario);
- 	// 	return $this->db->get()->result();
-    // }
+			return true;
+
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	
 }
 

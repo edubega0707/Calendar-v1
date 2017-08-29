@@ -24,6 +24,8 @@
 <script  type="text/javascript" src='<?php echo base_url();?>/assets/ingresar_folios.js'></script>
 <script  type="text/javascript" src='<?php echo base_url();?>/assets/registra_eventos_asesor.js'></script>
 <script  type="text/javascript" src='<?php echo base_url();?>/assets/valida_campos_usuarios.js'></script>
+<script  type="text/javascript" src='<?php echo base_url();?>/assets/datepicker_es.js'></script>
+
 
   
 

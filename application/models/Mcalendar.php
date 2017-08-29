@@ -91,7 +91,6 @@
             'id_oficina'=>'ofi'.DATE('Ymdhis'),
             'nombre_oficina'=>$param_oficina['nombre_oficina'],       
             'ubicacion_oficina'=>$param_oficina['ubicacion_oficina'],
-            'direccion_oficina'=>$param_oficina['direccion_oficina'],
             'telefono_oficina_uno'=>$param_oficina['telefono_oficina_uno'],
             'telefono_oficina_dos'=>$param_oficina['telefono_oficina_dos'],
             'fecha_registro_oficina'=>DATE('Ymd')
@@ -109,7 +108,7 @@
         $campos = array(
             'id_tableta'=>'tablet'.DATE('his'),
             'nombre_oficina'=>$param_tableta['nombre_oficina'],          
-            'descripcion_tableta'=>$param_tableta['descripcion_tableta'],
+            'no_serie'=>$param_tableta['no_serie_tableta'],
             'status_tableta'=>'DISPONIBLE'
             );
 
@@ -140,13 +139,28 @@
         $campos = array(
             'id_biometrico'=>'biome'.DATE('his'),
             'nombre_oficina'=>$param_biometrico['nombre_oficina'],
-            'descripcion_biometrico'=>$param_biometrico['descripcion_biometrico'],
+            'no_serie'=>$param_biometrico['numero_serie_bio'],
             'status_biometrico'=>'DISPONIBLE'
 
             );
 
         return   $this->db->insert('biometrico', $campos);  
     }
+
+
+    public function insert_modulo($param_modulo)
+    {
+        $campos = array(
+            'id_modulo'=>'mod'.DATE('his'),
+            'nombre_oficina'=>$param_modulo['nombre_oficina'],
+            'no_serie'=>$param_modulo['numero_serie_modulo'],
+            'status_modulo'=>'DISPONIBLE'
+
+            );
+
+        return   $this->db->insert('modulos', $campos);  
+    }
+
 
 
 

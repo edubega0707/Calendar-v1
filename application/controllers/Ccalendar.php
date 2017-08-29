@@ -123,26 +123,16 @@ class Ccalendar extends CI_controller
 	
 		$param_oficina['nombre_oficina']=$this->input->post('nombre_oficina');
 		$param_oficina['ubicacion_oficina']=$this->input->post('ubicacion_oficina');
-		$param_oficina['direccion_oficina']=$this->input->post('direccion_oficina');
 		$param_oficina['telefono_oficina_uno']=$this->input->post('telefono_oficina_uno');
 		$param_oficina['telefono_oficina_dos']=$this->input->post('telefono_oficina_dos');
-		//$param_oficina['jefe_oficina']=$this->input->post('jefe_oficina');
-
+	
 		$this->Mcalendar->insert_oficinas($param_oficina);
 		redirect('Cregistro/enter');
 
 
 	}
 
-	public function insert_tableta()
-	{
-		
-		$param_tableta['nombre_oficina']=$this->input->post('nombre_oficina');		
-		$param_tableta['descripcion_tableta']=$this->input->post('descripcion_tableta');
-		$this->Mcalendar->insert_tabletas($param_tableta);
-
-	}
-
+	
 	public function consulta_tableta()
 	{
 
@@ -152,15 +142,31 @@ class Ccalendar extends CI_controller
 			
 	}
 
+	public function insert_tableta()
+	{
+		
+		$param_tableta['nombre_oficina']=$this->input->post('nombre_oficina');		
+		$param_tableta['no_serie_tableta']=$this->input->post('no_serie_tableta');
+		$this->Mcalendar->insert_tabletas($param_tableta);
+	}
 
 
 	public function insert_biometrico()
 	{
 		
 		$param_biometrico['nombre_oficina']=$this->input->post('nombre_oficina');
-		$param_biometrico['descripcion_biometrico']=$this->input->post('descripcion_biometrico');
+		$param_biometrico['numero_serie_bio']=$this->input->post('numero_serie_bio');
 		
 		$this->Mcalendar->insert_biometrico($param_biometrico);
+	}
+
+	public function insert_modulo()
+	{
+		
+		$param_modulo['nombre_oficina']=$this->input->post('nombre_oficina');
+		$param_modulo['numero_serie_modulo']=$this->input->post('numero_serie_modulo');
+		
+		$this->Mcalendar->insert_modulo($param_modulo);
 	}
 
 	public function consulta_biometrico()

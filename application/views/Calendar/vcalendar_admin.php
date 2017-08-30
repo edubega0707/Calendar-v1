@@ -36,16 +36,12 @@
 							$.each(c,function(i,item){
                                                 $('#id_Evento').val(item.idEvento);
                                                 $('#no_tramites_evento').val(item.no_tramites_evento);
-								$('#nom_asesor').val(item.nombre_asesor);
-                                                $('#des_event').val(item.des_evento);
-                                                $('#id_tableta').val(item.tableta_evento);
-                                                $('#id_biometrico').val(item.biometrico_evento);
-                                                $('#desc_tableta').val(item.desc_tableta_evento );
-                                                $('#desc_biometrico').val(item.desc_biometrico_evento);
-								$('#fec_inic').val(item.fecInicio);
-								$('#fec_fin').val(item.fecFin);
-								$('#hora_inic').val(item.hora_inicio);
-								$('#hora_finic').val(item.hora_fin);							
+								$('#nom_asesor').val(item.nombre_asesor);                                              
+                                                $('#serie_tableta').val(item.no_serie_tableta);
+                                                $('#serie_biometrico').val(item.no_serie_biometrico);
+                                                $('#serie_modulo').val(item.no_serie_modulo);                                                                                       
+								$('#fec_inic').val(item.fecInicio);							
+								$('#hora_inic').val(item.hora_inicio);													
 								$('#status_evento').val(item.status);
 								
 							});
@@ -85,35 +81,30 @@
        					<div class="form-group">
        						<label for="nom_asesor">Nombre asesor:</label>
        						<input type="text" class="form-control form-control-sm" id="id_Evento" name="id_Evento" style="display: none;">
-                                           <input type="text" class="form-control form-control-sm" id="no_tramites_evento" name="no_tramites_evento" style="display: none;">
+                                          <input type="text" class="form-control form-control-sm" id="no_tramites_evento" name="no_tramites_evento" style="display: none;">
        						<input type="text" class="form-control form-control-sm" id="nom_asesor">
        					</div>
-       					<div class="form-group">
-       						<label for="des_event">Descripción:</label>
-       						<textarea class="form-control form-control-sm" id="des_event" rows="3" ></textarea>
-       					</div>
+       					
 
                                      <div class="form-group row justify-content-sm-center">   				
-       						<label for="fec_fin" class="col-sm-2 col-form-label">Nombre Tableta</label>
+       						<label for="fec_fin" class="col-sm-4 col-form-label">No. serie tableta</label>
        						<div class="col-sm-4">	
-       							<input type="text" class="form-control form-control-sm" id="id_tableta" >
-       						</div>
-                                           <label for="fec_fin" class="col-sm-2 col-form-label">Nombre Biometrico</label>
+       							<input type="text" class="form-control form-control-sm" id="serie_tableta" >
+       						</div>                                     
+       					</div>
+                                    <div class="form-group row justify-content-sm-center">   				
+                                          <label for="fec_fin" class="col-sm-4 col-form-label">No.serie biometrico</label>
+                                          <div class="col-sm-4">	
+                                                <input type="text" class="form-control form-control-sm" id="serie_biometrico" >
+                                          </div>                                
+                                    </div>
+                                     <div class="form-group row justify-content-sm-center">   				
+                                          <label for="fec_fin" class="col-sm-4 col-form-label">No.serie modulo</label>
        						<div class="col-sm-4">	
-       							<input type="text" class="form-control form-control-sm" id="id_biometrico" >
-       						</div>
+       							<input type="text" class="form-control form-control-sm" id="serie_modulo" >
+       						</div>                                  
        					</div>
 
-                                     <div class="form-group">
-       						<label for="des_eve">Descripción tableta:</label>
-       						<textarea class="form-control form-control-sm" id="desc_tableta" rows="2" ></textarea>
-       					</div>
-                                     <div class="form-group">
-       						<label for="des_event">Descripción biometrico:</label>
-       						<textarea class="form-control form-control-sm" id="desc_biometrico" rows="2" ></textarea>
-       					</div>
-  					
-                             
        					<div class="form-group row justify-content-sm-center">
        						<label for="fec_inic" class="col-sm-3 col-form-label">Fecha solicitud:</label>
        						<div class="col-sm-4">	
@@ -124,21 +115,8 @@
        						<div class="col-sm-3">	
        							<input type="text" class="form-control form-control-sm" id="hora_inic">
        						</div>
-
        					</div>
 
-       					<div class="form-group row justify-content-sm-center">   				
-       						<label for="fec_fin" class="col-sm-3 col-form-label">Fecha Entrega:</label>
-       						<div class="col-sm-4">	
-       							<input type="text" class="form-control form-control-sm" id="fec_fin" >
-       						</div>
-
-       						<label for="hora_finc" class="col-sm-2 col-form-label">Hora de entrega:</label>
-       						<div class="col-sm-3">	
-       							<input type="text" class="form-control form-control-sm" id="hora_finic" >
-       						</div>
-
-       					</div>
        			
        		      		<div class="form-group row justify-content-sm-center">   				
        						<label for="fec_fin" class="col-sm-3 col-form-label">Status</label>
@@ -150,7 +128,7 @@
 
        					<div class="form-group row justify-content-sm-center">
        						<label for="select_status" class="col-sm-4 col-form-label">Cambiar Status: </label>
-       						<select class="form-control-sm  col-sm-5" id="select_status" name="select_status">
+       						<select class="form-control form-control-sm  col-sm-5" id="select_status" name="select_status">
        			
        							<option>PENDIENTE</option>
        							<option>ACEPTADO</option>
@@ -170,7 +148,12 @@
                                           <input type="text" class="form-control form-control-sm" id="folio_evento<?php echo$i; ?>" name="folio_evento<?php echo$i;?>" placeholder="Folio TYS <?php echo$i;?>"  >
                                     </div> 
                               </div>
-                              <?php } ?>   
+                              <?php } ?>
+
+                              <div class="form-group" style="display: none;" id="observaciones_evento">
+                                    <label for="notas_evento">Observaciones:</label>
+                                    <textarea class="form-control form-control-sm" id="notas_evento" rows="3" ></textarea>
+                              </div> 
 
 
                                      <script>
@@ -178,8 +161,11 @@
                                            {
                                                  var  no_tramites_evento=$('#no_tramites_evento').val();
                                                  var status=$("#select_status").val();
+
                                                  if(status=='FINALIZADO')
-                                                 {                                                   
+                                                 {      
+                                                      $('#observaciones_evento').show(600); 
+                                                                                    
                                                       switch (no_tramites_evento) 
                                                       {
                                                             case '0':
@@ -189,7 +175,7 @@
                                                                   $('#folio_tys_evento3').hide(1000);
                                                                   $('#folio_tys_evento4').hide(1000);
                                                                   $('#folio_tys_evento5').hide(1000);
-                                                
+                                                                
                                                             break;
                                                             case '1':
                                                                   $('#titu_tramites').show(1000);
@@ -252,8 +238,7 @@
                                      </script>
 
        					<div class="form-group row justify-content-sm-center">
-       						<div class="input-group date col-sm-2">	
-       				     			
+       						<div class="input-group date col-sm-2">			     			
        				                  <button type="button" class="btn btn-primary" id="modificar_evento" data-dismiss="modal">Guardar</button>
        						</div>
        					</div>   		
@@ -280,16 +265,16 @@
                         <hr>
 
                         <form id="form_eventos" name="form_eventos" >
-                              <div class="form-group row justify-content-sm-center">
+                              <div class="form-group row justify-content-sm-center" >
                                     <label for="select_status" class="col-sm-2 col-form-label">Seleccionar asesor:</label>
-                                    <select class="form-control form-control-sm col-sm-6" id="select_asesor_evento" name="select_asesor_evento">
+                                    <select class="form-control form-control-sm col-sm-6" id="select_asesor_evento" name="select_asesor_evento" required>
                                          <option>Seleccionar asesor</option> 
                                          <?php foreach ($lista_asesores as $asesor): ?>             
                                                 <option><?php echo $asesor['nombre_usuario']; ?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
                               </div>
-                              <div class="form-group row justify-content-sm-center">
+                              <!-- <div class="form-group row justify-content-sm-center">
                                  <div class="alert alert-info col-sm-8" role="alert" id="evento_rechazado"  style="display: none;">
                                     
                                  </div> 
@@ -317,7 +302,7 @@
 
                                  </script>
 
-                              </div>
+                              </div> -->
 
                               <!-- Inicio Seleccionar tableta Y biometrico -->
                               <div class="form-group row justify-content-sm-center">                              
@@ -328,7 +313,7 @@
                                            <?php endforeach; ?>  							
                                     </select>
 
-                                    <select class="form-control form-control-sm col-sm-3" id="select_asesor_biometrico" name="select_asesor_biometrico">
+                                    <select class="form-control form-control-sm col-sm-3 mr-3" id="select_asesor_biometrico" name="select_asesor_biometrico">
                                          <option value="">Seleccionar biometrico</option>
                                          <?php foreach ($lista_biometrico as $biometrico): ?>                                            
                                                 <option><?php echo $biometrico['no_serie'];?></option>                                                   
@@ -344,105 +329,51 @@
                                     </select>
 
                               </div>
-                              <!-- Fin de  Seleccionar tableta y biometrico -->
-
-                              <!-- Fin de Select Biometrico -->
-                              <!-- <div id="descripcion_eventos_equipos" class="form-group row justify-content-sm-center" style="display: none;">
-						<div class="alert alert-success col-md-8 col-sm-10 my-3" role="alert" >
-							<div class="row">
-							  <div class="col-md-12 col-sm-12 my-1">
-									<strong>Tableta</strong><p id="descripcion_tableta"></p> 
-							  </div>
-							   <div class="col-md-12 col-sm-12">
-							   		<strong>Biometrico</strong><p id="descripcion_biometrico"></p>
-							  </div>				
-							</div>														
-						</div>
-					</div>
-
-					 <script>
-					    
-							$(document).ready(function()
-							{ 
-							   $('#select_asesor_tableta').on('change', function()
-							   {
-										var id_tableta=$('#select_asesor_tableta').val();
-										if (id_tableta=='') 
-										{
-											$('#descripcion_tableta').text("");											
-										} 
-										else 
-										{
-											$.post( base_url+'Ccalendar/consulta_tableta', 
-											{ 
-													id_tableta:id_tableta
-													
-											}, 
-											function(data) 
-											{						
-											$('#descripcion_eventos_equipos').show(1000);
-											$('#descripcion_tableta').text(data);		
-																								
-											})
-											.fail(function() 
-											{
-												console.log("Error")
-											})	
-										}
-										
-							
-											
-							   })
-
-							   $('#select_asesor_biometrico').on('change', function()
-							   {
-										var id_biometrico=$('#select_asesor_biometrico').val();
-										
-										if (id_biometrico=='') 
-										{
-											$("#descripcion_biometrico").text("");	
-										} 
-										else 
-										{
-											$.post( base_url+'Ccalendar/consulta_biometrico', 
-											{ 
-													id_biometrico:id_biometrico
-													
-											}, 
-											function(data) 
-											{					
-											      $('#descripcion_eventos_equipos').show(500);
-												$("#descripcion_biometrico").text(data);
-												$("#descripcion_biometrico").show(1000);
-													
-												
-												
-																								
-											})
-											.fail(function() 
-											{
-												console.log("Error")
-											})	
-										}
-									
-															
-							   })
-
-
-								
-										
-							});
-											
-					</script>
                               
-                              -->
-                            
+
+                              <script>
+                                $('#select_asesor_tableta').on('change',deshabilitar);
+                                $('#select_asesor_biometrico').on('change',deshabilitar);
+                                $('#select_asesor_modulo').on('change',deshabilitar_tableta);
+
+                                function deshabilitar()
+                                {
+                                    var opcion=$('#select_asesor_tableta').val();
+                                    var opcion2=$('#select_asesor_biometrico').val();
+
+                                    if (opcion=='' && opcion2=='') 
+                                    {
+                                          document.getElementById('select_asesor_modulo').disabled=false;  
+                                    }
+                                     
+                                    else 
+                                    {
+                                          document.getElementById('select_asesor_modulo').disabled=true; 
+                                    }
+                                    
+                                }
+                                function deshabilitar_tableta()
+                                {               
+                                    var opcion=$('#select_asesor_modulo').val();                     
+                                    if (opcion=='') 
+                                    {
+                                          document.getElementById('select_asesor_tableta').disabled=false;
+                                          document.getElementById('select_asesor_biometrico').disabled=false;
+                                          document.getElementById('select_asesor_folios').disabled=false; 
+                                    } 
+                                    else 
+                                    {
+                                          document.getElementById('select_asesor_tableta').disabled=true;
+                                          document.getElementById('select_asesor_biometrico').disabled=true;
+                                          document.getElementById('select_asesor_folios').disabled=true;
+                                    } 
+                                   
+                                }
+                              </script>
+      
 
                               <div class="form-group row justify-content-sm-center">
-                                    <!-- <label for="desc_evento" class="col-sm-2 col-form-label">Descripción:</label>
-                                    <div class="col-sm-6">
-                                          <textarea class="form-control form-control-sm" id="desc_evento" name="desc_evento" rows="5" placeholder="Descripción" required style="text-transform:uppercase;"></textarea>
-                                    </div>                                  -->
+                        
                                     <input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
                                     <input type="text" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
@@ -466,7 +397,7 @@
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
                                     <div class="col-sm-2">  
                                           <div class="input-group date" id="fecha_inicio_evento">
-                                                <input type="text" class="form-control form-control-sm" name="fecha_inicio" id="fecha_inicio">
+                                                <input type="text" class="form-control form-control-sm" name="fecha_inicio" id="fecha_inicio" required>
                                           </div>                                                                        
                                     </div>
 
@@ -493,49 +424,6 @@
                                     </div>      
 
                    </div>
-
-
-                              <!-- <div class="form-group row justify-content-sm-center">
-                                          <label for="fecha_fin" class="col-sm-2 col-form-label">Fecha entrega:</label>
-                                          <div class="col-sm-2">  
-                                                <div class="input-group date" id="fecha_fin_evento">
-                                                      <input type="text" class="form-control form-control-sm" name="fecha_fin" id="fecha_fin"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
-                                                </div>                                                                        
-                                          </div>
-                        
-                                    <label for="select_hora_fin" class="col-sm-2 col-form-label">Hora entrega:</label required>
-                                    <div class="col-sm-2">
-                                          <select class="form-control form-control-sm" id="select_hora_fin" name="select_hora_fin">
-                                                 <option>00:00</option>
-                                                 <option>01:00</option>
-                                                 <option>02:00</option>
-                                                 <option>03:00</option>
-                                                 <option>04:00</option>
-                                                 <option>05:00</option>
-                                                 <option>06:00</option>
-                                                 <option>07:00</option>
-                                                 <option>08:00</option>
-                                                 <option>09:00</option>
-                                                 <option>10:00</option>
-                                                 <option>11:00</option>
-                                                 <option>12:00</option>
-                                                 <option>13:00</option>
-                                                 <option>14:00</option>
-                                                 <option>15:00</option>
-                                                 <option>16:00</option>
-                                                 <option>17:00</option>
-                                                 <option>18:00</option>
-                                                 <option>19:00</option>
-                                                 <option>20:00</option>
-                                                 <option>21:00</option>
-                                                 <option>22:00</option>
-                                                 <option>23:00</option> 
-                                          </select>                                                                     
-                                    </div>
-                                    
-                                    
-                              </div> -->
-
                               <div class="form-group row justify-content-sm-center">
                                     <div class="input-group date col-sm-2">                                       
                                       <button type="submit" class="btn btn-primary" id="registrar_evento">Enviar</button>

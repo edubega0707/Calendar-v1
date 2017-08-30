@@ -24,9 +24,9 @@ class Chistoriales extends CI_Controller
 					<tr>
 						<th>ID EVENTO</th>
 						<th>MOMBRE DE ASESOR</th>
-						<th>DESCRIPCION DEL EVENTO</th>
-						<th>FECHA DE INICIO</th>
-						<th>FECHA DE FIN</th>
+						<th>NO TRAMITES</th>
+						<th>FECHA DE SOLICITUD</th>
+					
 						<th>TRAMITES</th>								
 					</tr>
 				</thead>
@@ -35,9 +35,8 @@ class Chistoriales extends CI_Controller
                                 echo "<tr>
 											<th>".$eventos['idEvento']."</th>
 											<th>".$eventos['nombre_asesor']."</th>
-											<th>".$eventos['des_evento']."</th>
+											<th>".$eventos['no_tramites_evento']."</th>
 											<th>".$eventos['fecInicio']."</th>
-											<th>".$eventos['fecFin']."</th>
 											<th>".$eventos['folio_evento']."</th>                                       
                                     </tr> ";                                                           
             		 endforeach;

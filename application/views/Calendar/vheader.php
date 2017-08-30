@@ -10,19 +10,22 @@
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans|Roboto+Slab" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/libs/bootstrap-datepicker/css/bootstrap-datepicker.css">
+	<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/libs/bootstrap-datepicker/css/bootstrap-datepicker.css"> -->
 	<link href='<?php echo base_url();?>/assets/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
 	<link href='<?php echo base_url();?>/assets/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print'/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/estilosagenda.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/jquery-confirm.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/jquery-ui.min.css">
+	
 
 
 	<script type="text/javascript" src="<?php echo base_url();?>/public/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>/public/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>/public/js/tether.min.js"></script>
 	<script src='<?php echo base_url();?>/assets/fullcalendar/lib/moment.min.js'></script>
 	<script type="text/javascript" src="<?php echo base_url();?>/public/js/bootstrap.min.js"></script>		
-	<script type="text/javascript" src="<?php echo base_url();?>/public/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url();?>/public/libs/bootstrap-datepicker/locales/bootstrap-datepicker.ar.min.js"></script>
+	<!-- <script type="text/javascript" src="<?php echo base_url();?>/public/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>/public/libs/bootstrap-datepicker/locales/bootstrap-datepicker.ar.min.js"></script> -->
 	
 	
 	<script  type="text/javascript" src='<?php echo base_url();?>/assets/fullcalendar/fullcalendar.js'></script> 
@@ -30,7 +33,6 @@
 	<script  type="text/javascript" src="<?php echo base_url();?>/public/js/jquery-confirm.min.js"></script>
 	<script  type="text/javascript" src="<?php echo base_url();?>/public/js/smooth-scroll.min.js"></script>
 
-	
 	 
 	
 	<style>

@@ -276,7 +276,7 @@
 
 <!-- fORMULARIO DE REGISTRO DE TRAMITES -->
 <div class="container formulario">
-                        <h4>Solicitar Tableta</h4>
+                        <h4>Solicitar Equipo</h4>
                         <hr>
 
                         <form id="form_eventos" name="form_eventos" >
@@ -308,9 +308,7 @@
                                                             function(data) 
                                                             {
                                                                   $('#evento_rechazado').fadeIn();
-                                                                  $('#evento_rechazado').text(data);
-
-                              
+                                                                  $('#evento_rechazado').text(data);                      
                                                             })
                                           
                                                 }
@@ -322,20 +320,26 @@
                               </div>
 
                               <!-- Inicio Seleccionar tableta Y biometrico -->
-                              <div class="form-group row justify-content-sm-center">
-                                    <label for="select_status" class="col-sm-2 col-form-label">Seleccionar tableta:</label>
-                                    <select class="form-control form-control-sm col-sm-2" id="select_asesor_tableta" name="select_asesor_tableta">
-                                         <option value="">Seleccionar tableta</option>
+                              <div class="form-group row justify-content-sm-center">                              
+                                    <select class="form-control form-control-sm col-sm-3 mr-3" id="select_asesor_tableta" name="select_asesor_tableta">
+                                         <option value="">Seleccionar Tableta</option>
                                          <?php foreach ($lista_tableta as $tableta): ?>                                              
-                                                <option><?php echo $tableta['id_tableta'];?></option>                                                   
+                                                <option><?php echo $tableta['no_serie'];?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 
-                                     <label for="select_status" class="col-sm-2 col-form-label">Seleccionar Biometrico:</label>
-                                    <select class="form-control form-control-sm col-sm-2" id="select_asesor_biometrico" name="select_asesor_biometrico">
+                                    <select class="form-control form-control-sm col-sm-3" id="select_asesor_biometrico" name="select_asesor_biometrico">
                                          <option value="">Seleccionar biometrico</option>
                                          <?php foreach ($lista_biometrico as $biometrico): ?>                                            
-                                                <option><?php echo $biometrico['id_biometrico'];?></option>                                                   
+                                                <option><?php echo $biometrico['no_serie'];?></option>                                                   
+                                           <?php endforeach; ?>  							
+                                    </select>
+
+                                 
+                                    <select class="form-control form-control-sm col-sm-3" id="select_asesor_modulo" name="select_asesor_modulo">
+                                         <option value="">Seleccionar Modulo</option>
+                                         <?php foreach ($lista_modulos as $lista_modulos): ?>                                            
+                                                <option><?php echo $lista_modulos['no_serie'];?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
 
@@ -343,7 +347,7 @@
                               <!-- Fin de  Seleccionar tableta y biometrico -->
 
                               <!-- Fin de Select Biometrico -->
-                              <div id="descripcion_eventos_equipos" class="form-group row justify-content-sm-center" style="display: none;">
+                              <!-- <div id="descripcion_eventos_equipos" class="form-group row justify-content-sm-center" style="display: none;">
 						<div class="alert alert-success col-md-8 col-sm-10 my-3" role="alert" >
 							<div class="row">
 							  <div class="col-md-12 col-sm-12 my-1">
@@ -431,14 +435,14 @@
 											
 					</script>
                               
-                             
+                              -->
                             
 
                               <div class="form-group row justify-content-sm-center">
-                                    <label for="desc_evento" class="col-sm-2 col-form-label">Descripción:</label>
+                                    <!-- <label for="desc_evento" class="col-sm-2 col-form-label">Descripción:</label>
                                     <div class="col-sm-6">
                                           <textarea class="form-control form-control-sm" id="desc_evento" name="desc_evento" rows="5" placeholder="Descripción" required style="text-transform:uppercase;"></textarea>
-                                    </div>                                 
+                                    </div>                                  -->
                                     <input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">
                                     <input type="text" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
@@ -457,31 +461,18 @@
 						                              
                                </div> 
                  
-                             
-
-                             
-                             
-                             
-                             
+        
                               <div class="form-group row justify-content-sm-center">
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
                                     <div class="col-sm-2">  
                                           <div class="input-group date" id="fecha_inicio_evento">
-                                                <input type="text" class="form-control form-control-sm" name="fecha_inicio" id="fecha_inicio"><span class="input-group-addon"><i class="glyphicon glyphicon-th" required></i></span>
+                                                <input type="text" class="form-control form-control-sm" name="fecha_inicio" id="fecha_inicio">
                                           </div>                                                                        
                                     </div>
 
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Hora solicitud:</label>
                                     <div class="col-sm-2">  
-                                          <select class="form-control form-control-sm" id="select_hora_inicio" name="select_hora_inicio" placeholder="Fecha Inicio" required>
-                                                 <option>00:00</option>
-                                                 <option>01:00</option>
-                                                 <option>02:00</option>
-                                                 <option>03:00</option>
-                                                 <option>04:00</option>
-                                                 <option>05:00</option>
-                                                 <option>06:00</option>
-                                                 <option>07:00</option>
+                                          <select class="form-control form-control-sm" id="select_hora_inicio" name="select_hora_inicio" placeholder="Fecha Inicio" required>                             
                                                  <option>08:00</option>
                                                  <option>09:00</option>
                                                  <option>10:00</option>
@@ -504,7 +495,7 @@
                    </div>
 
 
-                              <div class="form-group row justify-content-sm-center">
+                              <!-- <div class="form-group row justify-content-sm-center">
                                           <label for="fecha_fin" class="col-sm-2 col-form-label">Fecha entrega:</label>
                                           <div class="col-sm-2">  
                                                 <div class="input-group date" id="fecha_fin_evento">
@@ -543,7 +534,7 @@
                                     </div>
                                     
                                     
-                              </div>
+                              </div> -->
 
                               <div class="form-group row justify-content-sm-center">
                                     <div class="input-group date col-sm-2">                                       
@@ -556,19 +547,6 @@
 
                         <script type="text/javascript">
                               var  base_url= "<?php echo base_url();?>"
-
-                              $('#fecha_inicio_evento').datepicker({
-                                    format: "yyyy-mm-dd",
-                                    language: "es"
-                              });
-
-                              $('#fecha_fin_evento').datepicker({
-                                    format: "yyyy-mm-dd",
-                                    language: "es"
-                              });
-
-
-                             
                         </script>
                        
 </div>

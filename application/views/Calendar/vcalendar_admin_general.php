@@ -477,14 +477,7 @@
                        
                   </div>
 
-                  <div class="form-group row">
-                        <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-map-marker mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Direccion de la oficina:</label>
-                        <div class="col-12 col-sm-6 col-md-7">  
-                              <textarea class="form-control form-control-sm" id="direccion_oficina" name="direccion_oficina" rows="5" placeholder="Direccion de la oficina"  style="text-transform:uppercase;" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS" ></textarea>                                
-                        </div>
-                         
-                  </div>
-
+            
                   <div class="form-group row">
 
                         <label for="tel_usuario" class="d-flex flex-row align-items-center  col-10 col-sm-6 col-md-4"><i class="fa fa-phone mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefonos oficina:</label>
@@ -527,26 +520,26 @@
 <!-- FORMULARIO DE REGISTRO DE EQUIPOS -->
 <div class="container my-4" id="seccion-equipos">
       <div class="row flex-md-row  align-items-center justify-content-around ">
-            <div class="col-md-6  flex-md-column  align-items-center justify-content-center" id="registro"> 
+
+            <div class="col-md-4  col-sm-10  col-12 flex-md-column  align-items-center justify-content-center" id="registro"> 
             
-                  <div class="p-4 m-2  my-3 form-shadow">
+                  <div class="p-3 m-2 my-2 form-shadow">
 
                         <form id="form_registro_tableta" name="form_registro_tableta">
                   
-                              <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
+                              <div class="row d-flex flex-row justify-content-center align-items-center mb-2">                
 
-                                    <img  class="img-fluid  mr-3" width="50px;" src="<?php echo base_url();?>/public/img/tablet.svg" alt="Calendar">
+                                    <img  class="img-fluid mr-3" width="40px;" src="<?php echo base_url();?>/public/img/tablet.svg" alt="Calendar">
 
-                                    <p class="h5 text-center">REGISTRO DE TABLETA</p>
-                                          
+                                    <p class="h5 text-center">REGISTRO DE TABLETA</p>                                       
 
                               </div>
-                              <hr class="hr_p2 my-5">       
+                              <hr class="hr_p2 my-3">       
                               <div class="form-group row ">                             
-                                    <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
+                                    <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-5"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Sucursal:</label>
                                     <div class="col-12 col-sm-6 col-md-7">
                                           <select class="form-control form-control-sm " id="sucursal_usuario_tableta" name="sucursal_usuario_tableta" required>
-                                          <option value="">Seleccionar oficina</option> 
+                                          <option value="">Sucursal</option> 
                                           <?php foreach ($lista_oficinas as $oficinas): ?>
                                                 <option><?php echo $oficinas['nombre_oficina']; ?></option>                                                   
                                           <?php endforeach; ?> 
@@ -557,13 +550,12 @@
 
                            
                               <div class="form-group row">
-                                    <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Descripcion del equipo:</label>
-                                    <div class="col-12 col-sm-6 col-md-7">  
-                                          <textarea class="form-control form-control-sm" id="descripcion_tableta" name="descripcion_tableta" rows="5" placeholder="Descripcion del equipo" required style="text-transform:uppercase;" pattern="^[a-zA-Z ]*$" title="INGRESAR TEXTO SIN ACENTOS" ></textarea>                                
+                                    <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-5"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>No de serie:</label>
+                                    <div class="col-12 col-sm-6 col-md-7"> 
+                                          <input type="text" class="form-control form-control-sm" id="numero_serie_tableta" name="numero_serie_tableta" placeholder="Numero de serie equipo"  required>                                                                   
                                     </div>
                                     
                               </div>
-
 
                               <div class="d-flex flex-row justify-content-center align-items-center text-white mt-3" >
 
@@ -580,24 +572,25 @@
 
             </div>
 
-             <div class="col-md-6  flex-md-column  align-items-center justify-content-center" id="registro"> 
-                  <div class="p-4 m-2  my-3 form-shadow">
+             <div class="col-md-4 col-sm-10  col-12 flex-md-column  align-items-center justify-content-center" id="registro"> 
+                  <div class="p-3 m-2  my-2 form-shadow">
                         <form id="form_registro_biometrico" name="form_registro_biometrico">
                   
-                              <div class="row d-flex flex-row justify-content-center align-items-center mb-4">                
+                              <div class="row d-flex flex-row justify-content-center align-items-center mb-3">                
 
-                                    <img  class="img-fluid  mr-3" width="50px;" src="<?php echo base_url();?>/public/img/add.svg" alt="Calendar">
+                                    <img  class="img-fluid  mr-3" width="40px;" src="<?php echo base_url();?>/public/img/add.svg" alt="Calendar">
 
                                     <p class="h5 text-center">REGISTRO DE BIOMETRICO</p>
                                           
 
                               </div>
-                              <hr class="hr_p2 my-5">
+                              <hr class="hr_p2 my-3">
                        
                                      <div class="form-group row ">                             
-                                          <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Seleccionar sucursal:</label>
+                                          <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-5"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i> Sucursal:</label>
                                           <div class="col-12 col-sm-6 col-md-7">
                                                 <select class="form-control form-control-sm " id="sucursal_usuario_biometrico" name="sucursal_usuario" required>
+                                                <option value="">Sucursal</option> 
                                                 <?php foreach ($lista_oficinas as $oficinas): ?>
                                                       <option><?php echo $oficinas['nombre_oficina']; ?></option>                                                   
                                                 <?php endforeach; ?> 
@@ -607,9 +600,9 @@
                                     </div>
 
                                     <div class="form-group row">
-                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>Descripcion del equipo:</label>
+                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-5"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>No. de serie:</label>
                                           <div class="col-12 col-sm-6 col-md-7">  
-                                                <textarea class="form-control form-control-sm" id="descripcion_biometrico" name="descripcion_biometrico" rows="5" placeholder="Descripcion del equipo" required style="text-transform:uppercase;"></textarea>                                
+                                          <input type="text" class="form-control form-control-sm" id="numero_serie_bio" name="numero_serie_bio" placeholder="Numero de serie equipo"  required>                             
                                           </div>
                                           
                                     </div>
@@ -633,6 +626,64 @@
 
                   </div>
             </div>
+
+            <div class="col-md-4 col-sm-10  col-12 flex-md-column  align-items-center justify-content-center" id="registro"> 
+                  <div class="p-3 m-2  my-2 form-shadow">
+                        <form id="form_registro_modulo" name="form_registro_modulo">
+                  
+                              <div class="row d-flex flex-row justify-content-center align-items-center mb-3">                
+
+                                    <img  class="img-fluid  mr-3" width="40px;" src="<?php echo base_url();?>/public/img/mas.png" alt="Calendar">
+
+                                    <p class="h5 text-center">REGISTRO DE MODULOS</p>
+                                    
+                              </div>
+                              <hr class="hr_p2 my-3">
+                       
+                                     <div class="form-group row ">                             
+                                          <label for="sucursal_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-5"><i class="fa fa-building-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i> Sucursal:</label>
+                                          <div class="col-12 col-sm-6 col-md-7">
+                                                <select class="form-control form-control-sm " id="sucursal_usuario_modulo" name="sucursal_usuario_modulo" required>
+                                                <option value="">Sucursal</option> 
+                                                <?php foreach ($lista_oficinas as $oficinas): ?>
+                                                      <option><?php echo $oficinas['nombre_oficina']; ?></option>                                                   
+                                                <?php endforeach; ?> 
+
+                                                </select> 
+                                          </div>                             
+                                    </div>
+
+                                    <div class="form-group row">
+                                          <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-5"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>No serie:</label>
+                                          <div class="col-12 col-sm-6 col-md-7">  
+                                          <input type="text" class="form-control form-control-sm" id="numero_serie_modulo" name="numero_serie_modulo" placeholder="Numero de serie "  required>                                
+                                          </div>
+                                          
+                                    </div>
+
+                  
+                  
+
+
+                              <div class="d-flex flex-row justify-content-center align-items-center text-white mt-3" >
+
+                                    <div class="d-flex flex-column justify-content-center align-items-center text-white">
+
+                                          <button type="submit" class="btn  btn-primary" id="registrar_modulo">Registrar</button>
+
+                                    </div>
+
+                              </div>
+
+                  
+                        </form>
+
+                  </div>
+            </div>
+
+            
+
+
 
       </div>
 </div>

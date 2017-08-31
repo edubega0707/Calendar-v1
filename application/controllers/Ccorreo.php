@@ -139,24 +139,19 @@ class Ccorreo extends CI_Controller
 	}
 
 
-
-
 	public function enviar_correo_dos()
 	{
 					
 			$nombre_asesor=$this->input->post('nombre_asesor');
-			$nombre_oficina=$this->input->post('nombre_oficina');
-			$des_evento=$this->input->post('des_evento');
-			$desc_tableta_evento=$this->input->post('desc_tableta_evento');
-			$desc_biometrico_evento=$this->input->post('desc_biometrico_evento');
-		
-
-
+			$nombre_oficina=$this->input->post('nombre_oficina');						
 			$correo_usuario=$this->input->post('correo_usuario');
+			$fecInicio=$this->input->post('fecInicio');						
+			$hora_inicio=$this->input->post('hora_inicio');
+
             $correo_oficina=$this->Mregistro->correo_oficina($nombre_oficina);
 
 
-			$para =$correo_oficina;
+			$para =$correo_usuario;
 
 			// título
 			$título = 'Solicitud de Prestamo de tableta';
@@ -169,19 +164,15 @@ class Ccorreo extends CI_Controller
 			<title>Sistema de Integracion Dinamica de Tableta</title>
 			</head>
 				<body>
-				<p>El asesor '.$nombre_asesor.' Solicita prestamo de tableta</p>
+				<p>Bienvenido '.$nombre_asesor.' al Sistema de integracion dinamica de tableta</p>
 				<br>
 				<br>
-				<p>Descripcion De la solicitud:<p>
-				<br>
-				<p>'.$des_evento.'</p>
-				<br>
-				<br>
-				<h5> DESCRIPCION TABLETA: '.$desc_tableta_evento.'</h5>
-				<br>
-				<h5>DESCRIPCION BIOMETRICO:  '.$desc_biometrico_evento.'</h5>
-				<br>
-				<h4>POR FAVOR REVISAR MI SOLICITUD</h4>
+				<p>Tu solicitud ha sido enviada te invitamos a estar pendiente dde tu solicitud para 
+				   poder verificar si la tableta estara disponible  el dia que usted ha solicitador
+				<p>
+				<br>			
+				<br>		
+				<h4>ATT  DIPRA</h4>
 				<br>
 				
 							
@@ -196,7 +187,7 @@ class Ccorreo extends CI_Controller
 			$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 			// Cabeceras adicionales
-			$cabeceras .= 'From: ' . $correo_usuario . " \r\n";		
+			$cabeceras .= 'From: ' . $correo_oficina . " \r\n";		
 
 			// Enviarlo
 			mail($para, $título, $mensaje, $cabeceras);

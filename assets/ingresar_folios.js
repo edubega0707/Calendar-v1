@@ -10,13 +10,14 @@
                         var folio_evento_4=$('#folio_evento4').val();
                         var folio_evento_5=$('#folio_evento5').val();
                         var folios=[folio_evento_1,folio_evento_2,folio_evento_3,folio_evento_4,folio_evento_5];                
-                        var folio_evento=folios.toString();
-
+                        var folio_evento=folios.toString();                       
+                        var notas_evento=$('#notas_evento').val();
 
                         var id=$('#id_Evento').val();
                         var status=$('#select_status').val();                                                     
-                        var tableta_evento=$('#id_tableta').val();
-                        var biometrico_evento=$('#id_biometrico').val();
+                        var no_serie_tableta=$('#serie_tableta').val();
+                        var no_serie_biometrico=$('#serie_biometrico').val();
+                        var no_serie_modulo=$('#serie_modulo').val();
                         var nombre_oficina=$('#sucursal_usuario').val();
                         var color='';
                         var status_evento= '';
@@ -42,10 +43,12 @@
                             $.post( base_url+'Ccalendar/modificar_evento', 
                             { 
                                     folio_evento:folio_evento, 
+                                    notas_evento:notas_evento, 
                                     id:id,
                                     status:status,
-                                    tableta_evento:tableta_evento,
-                                    biometrico_evento:biometrico_evento,
+                                    no_serie_tableta:no_serie_tableta,
+                                    no_serie_biometrico:no_serie_biometrico,
+                                    no_serie_modulo:no_serie_modulo,
                                     nombre_oficina:nombre_oficina,
                                     color:color,
                                     status_evento:status_evento

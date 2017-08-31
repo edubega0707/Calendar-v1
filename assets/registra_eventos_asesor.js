@@ -5,18 +5,14 @@ $(document).ready(function()
             function registra_eventos()
             {
                     var nombre_asesor=$('#nombre_asesor').val();
-                    var nombre_oficina=$('#sucursal_usuario').val();
-                    var des_evento=$('#desc_evento').val();                                     
-                    var tableta_evento=$('#select_asesor_tableta').val();
-                    var biometrico_evento=$('#select_asesor_biometrico').val();
-                    var desc_tableta_evento=$('#descripcion_tableta').text();
-                    var desc_biometrico_evento=$('#descripcion_biometrico').text();             
+                    var nombre_oficina=$('#sucursal_usuario').val();                                              
+                    var no_serie_tableta=$('#select_asesor_tableta').val();
+                    var no_serie_biometrico=$('#select_asesor_biometrico').val();
+                    var no_serie_modulo=$('#select_asesor_modulo').val();                     
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val(); 
                     var no_tramites_evento=$('#select_asesor_folios').val();                 
                     var fecInicio=$('#fecha_inicio').val();
-                    var hora_inicio=$('#select_hora_inicio').val();
-                    var fecFin=$('#fecha_fin').val();
-                    var hora_fin=$('#select_hora_fin').val();
+                    var hora_inicio=$('#select_hora_inicio').val();                 
                     var status='RESERVADO';
                     
                     
@@ -24,17 +20,13 @@ $(document).ready(function()
                   { 
                         nombre_asesor: nombre_asesor,
                         nombre_oficina:nombre_oficina,
-                        des_evento: des_evento, 
-                        tableta_evento:tableta_evento,
-                        biometrico_evento:biometrico_evento,
-                        desc_tableta_evento:desc_tableta_evento,
-                        desc_biometrico_evento:desc_biometrico_evento,
+                        no_serie_tableta:no_serie_tableta,
+                        no_serie_biometrico:no_serie_biometrico, 
+                        no_serie_modulo:no_serie_modulo,              
                         usuarios_id_usuario:usuarios_id_usuario,
                         no_tramites_evento:no_tramites_evento,
                         fecInicio:fecInicio,
-                        hora_inicio:hora_inicio,
-                        fecFin:fecFin,
-                        hora_fin:hora_fin,
+                        hora_inicio:hora_inicio,                  
                         status:status                                                  
                   }, 
                   function() 
@@ -83,27 +75,17 @@ $(document).ready(function()
                                           action: function()
                                           {      
                                                       var nombre_asesor=$('#nombre_asesor').val();
-                                                      var nombre_oficina=$('#sucursal_usuario').val();
-                                                      var des_evento=$('#desc_evento').val();                                                                                        
-                                                      var desc_tableta_evento=$('#descripcion_tableta').text();
-                                                      var desc_biometrico_evento=$('#descripcion_biometrico').text();                                                      
+                                                      var nombre_oficina=$('#sucursal_usuario').val();                                                                                                                                                                                                                                     
                                                       var fecInicio=$('#fecha_inicio').val();
-                                                      var hora_inicio=$('#select_hora_inicio').val();
-                                                      var fecFin=$('#fecha_fin').val();
-                                                      var hora_fin=$('#select_hora_fin').val();
+                                                      var hora_inicio=$('#select_hora_inicio').val();                                     
                                                       var correo_usuario=$('#correo_usuario').val();
 
                                                       $.post( base_url+'Ccorreo/enviar_correo_dos', 
                                                       { 
                                                             nombre_asesor:nombre_asesor,
-                                                            nombre_oficina:nombre_oficina,
-                                                            des_evento:des_evento, 
-                                                            desc_tableta_evento:desc_tableta_evento,
-                                                            desc_biometrico_evento:desc_biometrico_evento,                      
+                                                            nombre_oficina:nombre_oficina,                                                                                              
                                                             fecInicio:fecInicio,
-                                                            hora_inicio:hora_inicio,
-                                                            fecFin:fecFin,
-                                                            hora_fin:hora_fin,
+                                                            hora_inicio:hora_inicio,                                                        
                                                             correo_usuario:correo_usuario                                                                             
                                                       }, 
                                                       function(data) 

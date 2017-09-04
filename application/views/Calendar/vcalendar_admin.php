@@ -18,7 +18,7 @@
 					},
 					defaultDate: new Date(),
 				navLinks: true, // can click day/week names to navigate views
-				editable: true,
+				editable: false,
 				eventLimit: true, // allow "more" link when too many events
 				events: $.parseJSON(data),
 
@@ -41,7 +41,9 @@
                                                 $('#serie_biometrico').val(item.no_serie_biometrico);
                                                 $('#serie_modulo').val(item.no_serie_modulo);                                                                                       
 								$('#fec_inic').val(item.fecInicio);							
-								$('#hora_inic').val(item.hora_inicio);													
+                                                $('#hora_inic').val(item.hora_inicio);
+                                                $('#fec_entrega').val(item.fecFin);
+                                                $('#hora_entrega').val(item.hora_inicio);                                               													
 								$('#status_evento').val(item.status);
 								
 							});
@@ -114,6 +116,18 @@
        						<label for="hora_inic" class="col-sm-2 col-form-label">Hora solicitud:</label>
        						<div class="col-sm-3">	
        							<input type="text" class="form-control form-control-sm" id="hora_inic">
+       						</div>
+       					</div>
+
+                                     <div class="form-group row justify-content-sm-center">
+       						<label for="fec_inic" class="col-sm-3 col-form-label">Fecha entrega</label>
+       						<div class="col-sm-4">	
+       							<input type="text" class="form-control form-control-sm" id="fec_entrega" >
+       						</div>
+
+       						<label for="hora_inic" class="col-sm-2 col-form-label">Hora Entrega:</label>
+       						<div class="col-sm-3">	
+       							<input type="text" class="form-control form-control-sm" id="hora_entrega">
        						</div>
        					</div>
 
@@ -312,6 +326,8 @@
                                                 <option><?php echo $tableta['no_serie'];?></option>                                                   
                                            <?php endforeach; ?>  							
                                     </select>
+                                    <div id="check_asesor" class="">                                  
+                                    </div>
 
                                     <select class="form-control form-control-sm col-sm-3 mr-3" id="select_asesor_biometrico" name="select_asesor_biometrico">
                                          <option value="">Seleccionar biometrico</option>
@@ -381,7 +397,7 @@
                                <div class="form-group row justify-content-sm-center">
 
 					 	<label for="select_status" class="col-sm-3 col-form-label">No tramites a ingresar:</label>
-							<select class="form-control form-control-sm col-sm-2" id="select_asesor_folios" name="select_asesor_folios">
+							<select class="form-control form-control-sm col-sm-2" id="select_asesor_folios" name="select_asesor_folios" required>
 									<option value="0">Tramites</option>
 									<option>1</option>
 									<option>2</option>
@@ -397,13 +413,17 @@
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
                                     <div class="col-sm-2">  
                                           <div class="input-group date" id="fecha_inicio_evento">
-                                                <input type="text" class="form-control form-control-sm" name="fecha_inicio" id="fecha_inicio" required>
-                                          </div>                                                                        
+                                                <input type="text" class="form-control form-control-sm" name="fecha_inicio" id="fecha_inicio" required>                                                       
+                                          </div>
+                                          <div class="input-group date" id="fecha_inicio_evento">                                               
+                                                <input type="text" class="form-control form-control-sm" name="fecha_fin" id="fecha_fin" style="display: none;">            
+                                          </div>                                                                         
                                     </div>
 
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Hora solicitud:</label>
                                     <div class="col-sm-2">  
                                           <select class="form-control form-control-sm" id="select_hora_inicio" name="select_hora_inicio" placeholder="Fecha Inicio" required>                             
+                                                 <option>Hora</option>
                                                  <option>08:00</option>
                                                  <option>09:00</option>
                                                  <option>10:00</option>
@@ -421,6 +441,8 @@
                                                  <option>22:00</option>
                                                  <option>23:00</option>
                                           </select>
+                                          <div id="check_hora" class="">                                  
+                                          </div>
                                     </div>      
 
                    </div>

@@ -21,7 +21,8 @@ class Ccalendar extends CI_controller
 
 		$param['idEvento']="event".DATE('Ymdhis');
 		$param['nombre_asesor']=$this->input->post('nombre_asesor');		
-		$param['fecInicio']=$this->input->post('fecInicio');		
+		$param['fecInicio']=$this->input->post('fecInicio');
+		$param['fecFin']=$this->input->post('fecFin');			
 		$param['hora_inicio']=$this->input->post('hora_inicio');				
 		$param['no_serie_tableta']=$this->input->post('no_serie_tableta');
 		$param['no_serie_biometrico']=$this->input->post('no_serie_biometrico');
@@ -50,7 +51,8 @@ class Ccalendar extends CI_controller
 	{  
 	    $param['idEvento']="event".DATE('Ymdhis');
 		$param['nombre_asesor']=$this->input->post('nombre_asesor');		
-		$param['fecInicio']=$this->input->post('fecInicio');		
+		$param['fecInicio']=$this->input->post('fecInicio');
+		$param['fecFin']=$this->input->post('fecFin');		
 		$param['hora_inicio']=$this->input->post('hora_inicio');				
 		$param['no_serie_tableta']=$this->input->post('no_serie_tableta');
 		$param['no_serie_biometrico']=$this->input->post('no_serie_biometrico');

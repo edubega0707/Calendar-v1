@@ -248,11 +248,11 @@ class Cregistro extends CI_controller
 
 		if ($correo==TRUE) 
 		{
-			echo '<div class="alert alert-danger mt-1" role="alert">El correo ya existe ingrese otro</div>';
+			echo '<div class="rounded px-3 py-1"  style="background: #F07B3F;"><i class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></i>Este correo ya existe elija otro</div>';
 			
 		} else 
 		{
-			echo '<div class="alert alert-success mt-1" role="alert">Correo correcto</div>';
+			echo '<div class="rounded px-3 py-1" style="background: #A2E4A2;"><i class="fa fa-check mr-2" aria-hidden="true"></i>Campo correcto</div>';
 		}
 		
 
@@ -266,11 +266,11 @@ class Cregistro extends CI_controller
 
 		if ($clave==TRUE) 
 		{
-			echo '<div class="alert alert-danger mt-1" role="alert">Esta clave ya existe elije otra</div>';
+			echo '<div class="rounded px-3 py-1"  style="background: #F07B3F;"><i class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></i>Esta clave ya existe elije otra</div>';
 			
 		} else 
 		{
-			echo '<div class="alert alert-success mt-1" role="alert">Clave correcta</div>';
+			echo '<div class="rounded px-3 py-1" style="background: #A2E4A2;"><i class="fa fa-check mr-2" aria-hidden="true"></i>Campo correcto</div>';
 		}
 		
 

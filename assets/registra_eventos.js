@@ -1,6 +1,6 @@
   
  $(document).ready(function()
-            {
+            { 
                   
             function registra_eventos()
             {
@@ -12,6 +12,7 @@
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val();
                     var no_tramites_evento=$('#select_asesor_folios').val();
                     var fecInicio=$('#fecha_inicio').val();
+                    var fecFin=$('#fecha_fin').val();
                     var hora_inicio=$('#select_hora_inicio').val();                
                     var status='RESERVADO';
                     
@@ -27,6 +28,7 @@
                         usuarios_id_usuario:usuarios_id_usuario,
                         no_tramites_evento:no_tramites_evento,
                         fecInicio:fecInicio,
+                        fecFin:fecFin,
                         hora_inicio:hora_inicio,                    
                         status:status                           
                   }, 
@@ -56,43 +58,49 @@
             }
 
 
-    $('#form_eventos').submit(function(e)
-      {                       
-            e.preventDefault()
+            $('#form_eventos').submit(function(e)
+            {        
+                  
+         
+                  e.preventDefault()
 
-            $.confirm
-            ({
-                        title: 'Registrar',
-                        content: '¿Desea registrar este evento?',
-                        type: 'dark',                                              
-                        theme: 'material',
-                        animation: 'zoom',
-                        animationSpeed: 400,
-                        closeAnimation: 'scale',
-                        alignMiddle: true,                          
-                        buttons: 
-                        {
-                        Aceptar: {
-                              text: 'Aceptar',
-                              btnClass: 'btn-blue',
-                              action: function()
+                  $.confirm
+                  ({
+                              title: 'Registrar',
+                              content: '¿Desea registrar este evento?',
+                              type: 'dark',                                              
+                              theme: 'material',
+                              animation: 'zoom',
+                              animationSpeed: 400,
+                              closeAnimation: 'scale',
+                              alignMiddle: true,                          
+                              buttons: 
                               {
-                                    registra_eventos();
-                                    $('#form_eventos')[0].reset();  
-                                    location.href =base_url+'Cregistro/enter';  
-                              }
-                        },
-                        Cancelar: {
-                                    text: 'Cancelar',
-                                    btnClass: 'btn-red',
-                                    action: function(){
+                              Aceptar: {
+                                    text: 'Aceptar',
+                                    btnClass: 'btn-blue',
+                                    action: function()
+                                    {
+                                          registra_eventos();
+                                          $('#form_eventos')[0].reset();  
+                                          location.href =base_url+'Cregistro/enter';  
                                     }
-                        }
-                        
-                        }
-                        
-            });
-            })              
+                              },
+                              Cancelar: {
+                                          text: 'Cancelar',
+                                          btnClass: 'btn-red',
+                                          action: function(){
+                                          }
+                              }
+                              
+                              }
+                              
+                  });
+
+            }) 
+            
+            
+
       });
 
 

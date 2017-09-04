@@ -25,11 +25,59 @@
         $(function() 
         {
             $('#fecha_inicio').datepicker(
-                {
-                    dateFormat: 'yy-mm-dd',
-                    minDate: 0      
-                 });
+            {
+                dateFormat: 'yy-mm-dd',
+                minDate: 0      
+             });
+
+            $('#fecha_fin').datepicker(
+            {
+                dateFormat: 'yy-mm-dd',
+                minDate: 0      
+            });
+                                
+            $("#fecha_inicio").on("change", function() {
+            var fecha = $("#fecha_inicio").datepicker("getDate");
+            fecha.setDate(fecha.getDate() +1); 
+
+            $("#fecha_fin").datepicker("setDate", fecha);
+            });
+
+
+            
+            
         });
+
+         
+        $('#select_asesor_modulo').on('change', function()
+        {
+                
+                var modulo=$('#select_asesor_modulo').val();
+                if (modulo=='') 
+                {
+                        $("#fecha_inicio").on("change", function() {
+                        var fecha = $("#fecha_inicio").datepicker("getDate");
+                        fecha.setDate(fecha.getDate()+ 1); 
+            
+                        $("#fecha_fin").datepicker("setDate", fecha);
+                        });
+                    
+                }
+                 else 
+                {
+                       $("#fecha_inicio").on("change", function() {
+                        var fecha = $("#fecha_inicio").datepicker("getDate");
+                        fecha.setDate(fecha.getDate() +5 ); 
+            
+                        $("#fecha_fin").datepicker("setDate", fecha);
+                        });
+                   
+                }
+            
+        })
+
+
+
 
         
 

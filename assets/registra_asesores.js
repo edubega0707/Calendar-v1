@@ -4,7 +4,7 @@
             function registra_asesor()
             {
                     var nombre_usuario=$('#nombre_usuario').val();
-                    var tel_usuario=$('#tel_usuario').val();
+                    //var tel_usuario=$('#tel_usuario').val();
                     var correo_usuario=$('#correo_usuario').val();
                     var clave_usuario=$('#clave_usuario').val();
                     var pass_usuario=$('#pass_usuario').val();
@@ -15,7 +15,7 @@
                   $.post( base_url+'Cregistro/registrar', 
                   { 
                         nombre_usuario: nombre_usuario, 
-                        tel_usuario: tel_usuario,
+                        //tel_usuario: tel_usuario,
                         correo_usuario:correo_usuario,
                         clave_usuario:clave_usuario,
                         pass_usuario:pass_usuario,
@@ -73,8 +73,7 @@
                                                 {
                                                      registra_asesor();
                                                      $('#form_asesores')[0].reset();                                                   
-                                                      $('#check_username').hide();
-                                                      $('#check_telefono').hide();
+                                                      $('#check_username').hide();                                                     
                                                       $('#check_correo').hide();
                                                       $('#check_clave').hide();
                                                      location.href =base_url+'Cregistro/enter';    
@@ -141,33 +140,33 @@ function checkusername()
 
 }
 
-function checktelefono()
-{
-    $('#check_telefono').show(80);
-    var telefono_usuario=document.getElementById('tel_usuario').value;
+// function checktelefono()
+// {
+//     $('#check_telefono').show(80);
+//     var telefono_usuario=document.getElementById('tel_usuario').value;
    
    
-  if( telefono_usuario == null || telefono_usuario.length == 0  )
-     {
-        $('#check_telefono').html('<div class="alert alert-danger mt-1" role="alert">No se aceptan campos vacios</div>');
+//   if( telefono_usuario == null || telefono_usuario.length == 0  )
+//      {
+//         $('#check_telefono').html('<div class="alert alert-danger mt-1" role="alert">No se aceptan campos vacios</div>');
        
-        document.getElementById('registrar').disabled=true;
-     }
-  else if(!/[0-9]{10}/.test(telefono_usuario))
-    {
-        $('#check_telefono').html('<div class="alert alert-danger mt-1" role="alert">Ingresa solo los 10 digitos</div>');
+//         document.getElementById('registrar').disabled=true;
+//      }
+//   else if(!/[0-9]{10}/.test(telefono_usuario))
+//     {
+//         $('#check_telefono').html('<div class="alert alert-danger mt-1" role="alert">Ingresa solo los 10 digitos</div>');
       
-        document.getElementById('registrar').disabled=true;
-    }
+//         document.getElementById('registrar').disabled=true;
+//     }
 
-    else
-    {
-         $('#check_telefono').html('<div class="alert alert-success mt-1" role="alert">Campo correcto</div>');
-         document.getElementById('registrar').disabled=false;
+//     else
+//     {
+//          $('#check_telefono').html('<div class="alert alert-success mt-1" role="alert">Campo correcto</div>');
+//          document.getElementById('registrar').disabled=false;
 
-    }
+//     }
 
-}
+// }
 
 function checkcorreo()
 {

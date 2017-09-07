@@ -552,7 +552,7 @@
                               <div class="form-group row">
                                     <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-5"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>No de serie:</label>
                                     <div class="col-12 col-sm-6 col-md-7"> 
-                                          <input type="text" class="form-control form-control-sm" id="numero_serie_tableta" name="numero_serie_tableta" placeholder="Numero de serie equipo"  required>                                                                   
+                                          <input type="text" class="form-control form-control-sm" id="numero_serie_tableta" name="numero_serie_tableta" placeholder="Numero de serie"  required>                                                                   
                                     </div>
                                     
                               </div>
@@ -602,7 +602,7 @@
                                     <div class="form-group row">
                                           <label for="nombre_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-5"><i class="fa fa-file-text-o mr-3" aria-hidden="true"  style="font-size: 30px;"></i>No. de serie:</label>
                                           <div class="col-12 col-sm-6 col-md-7">  
-                                          <input type="text" class="form-control form-control-sm" id="numero_serie_bio" name="numero_serie_bio" placeholder="Numero de serie equipo"  required>                             
+                                          <input type="text" class="form-control form-control-sm" id="numero_serie_bio" name="numero_serie_bio" placeholder="Numero de serie"  required>                             
                                           </div>
                                           
                                     </div>

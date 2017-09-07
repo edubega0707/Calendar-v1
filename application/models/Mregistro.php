@@ -14,7 +14,7 @@ class Mregistro extends CI_Model
 
 					'nombre_usuario'=>$param['nombre_usuario'],      
 
-					'tel_usuario'=>$param['tel_usuario'],
+					//'tel_usuario'=>$param['tel_usuario'],
 
 					'correo_usuario'=>$param['correo_usuario'],
 

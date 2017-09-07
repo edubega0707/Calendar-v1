@@ -92,7 +92,7 @@ class Ccorreo extends CI_Controller
 			$para =$correo_usuario;
 
 			// título
-			$título = 'REGISTRO DE USUARIOS';
+			$título = 'REGISTRO DE USUARIOS SISTEMA DE AGENDA DE INTEGRACION DINAMICA';
 
 			// mensaje
 			$mensaje = '
@@ -102,10 +102,13 @@ class Ccorreo extends CI_Controller
 			<title>Sistema de Integracion Dinamica de Tableta</title>
 			</head>
 				<body>
-				<p>Bienvenido '.$nombre_usuario.' al Sistema de Integracion Dinamica de Tableta</p>
+				<p>Bienvenido '.$nombre_usuario.' al Sistema de Integracion Dinamica de Tableta </p>
 				<br>
 				<br>
 				<p>Descripcion De la solicitud:<p>
+				<p>Este sistema fue desarrollado por el personal de Sistemas de DIPRA, cualquier
+				comentario o sugerencia para la mejora del sistema comunicarse al area correspondiente.
+				</p> 
 				<br>
 				<p>Para poder ingresar al sistema  ingresa a la siguiente liga:</p>
 				<br>

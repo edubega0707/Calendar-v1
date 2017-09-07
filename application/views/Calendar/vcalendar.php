@@ -37,7 +37,9 @@
 								$('#nom_asesor').val(item.nombre_asesor);
 								$('#des_event').val(item.des_evento);
 								$('#fec_inic').val(item.fecInicio);
-								$('#hora_inic').val(item.hora_inicio);											
+								$('#hora_inic').val(item.hora_inicio);
+								$('#fec_entrega').val(item.fecFin);
+								$('#hora_entrega').val(item.hora_inicio);											
 								$('#status_evento').val(item.status);
 							});
 
@@ -85,6 +87,17 @@
        						<label for="hora_inic" class="col-sm-2 col-form-label">Hora solicitud:</label>
        						<div class="col-sm-3">	
        							<input type="text" class="form-control form-control-sm" id="hora_inic">
+       						</div>
+       					</div>
+						<div class="form-group row justify-content-sm-center">
+       						<label for="fec_inic" class="col-sm-3 col-form-label">Fecha entrega</label>
+       						<div class="col-sm-4">	
+       							<input type="text" class="form-control form-control-sm" id="fec_entrega" >
+       						</div>
+
+       						<label for="hora_inic" class="col-sm-2 col-form-label">Hora Entrega:</label>
+       						<div class="col-sm-3">	
+       							<input type="text" class="form-control form-control-sm" id="hora_entrega">
        						</div>
        					</div>
      		
@@ -211,7 +224,10 @@
 						<div class="col-sm-2">	
 							<div class="input-group date" id="fecha_inicio_date">
 								<input type="text" class="form-control form-control-sm" name="fecha_inicio" id="fecha_inicio" required>
-							</div>												
+							</div>
+							<div class="input-group date" id="fecha_inicio_evento">                                               
+                                <input type="text" class="form-control form-control-sm" name="fecha_fin" id="fecha_fin" style="display: none;">            
+                        	 </div>												
 						</div>
 
 						<label for="select_hora_inicio" class="col-sm-2 col-form-label">Hora solicitud:</label>

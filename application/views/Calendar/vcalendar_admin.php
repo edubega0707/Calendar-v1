@@ -491,15 +491,13 @@
 
                                     </div>
 
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
 
                                           <label for="tel_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-mobile mr-3" aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
 
-                                          <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular"  maxlength="10"  required>
-                                          <div id="check_telefono" class=""></div> 
-                                      
+                                          <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular"  maxlength="10"  >
 
-                                    </div>
+                                    </div> -->
                                      <div class="form-group">
 
                                           <label for="correo_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-envelope-o mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Correo Usuario:</label>

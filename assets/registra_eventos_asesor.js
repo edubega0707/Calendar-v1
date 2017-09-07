@@ -12,6 +12,7 @@ $(document).ready(function()
                     var usuarios_id_usuario=$('#usuarios_id_usuario').val(); 
                     var no_tramites_evento=$('#select_asesor_folios').val();                 
                     var fecInicio=$('#fecha_inicio').val();
+                    var fecFin=$('#fecha_fin').val();
                     var hora_inicio=$('#select_hora_inicio').val();                 
                     var status='RESERVADO';
                     
@@ -26,6 +27,7 @@ $(document).ready(function()
                         usuarios_id_usuario:usuarios_id_usuario,
                         no_tramites_evento:no_tramites_evento,
                         fecInicio:fecInicio,
+                        fecFin:fecFin,
                         hora_inicio:hora_inicio,                  
                         status:status                                                  
                   }, 

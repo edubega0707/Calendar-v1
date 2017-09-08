@@ -4,7 +4,19 @@
                   
             function registra_eventos()
             {
-                                     
+                    var nombre_asesor=$('#select_asesor_evento').val();
+                    var nombre_oficina=$('#sucursal_usuario').val();
+                    var no_serie_tableta=$('#select_asesor_tableta').val();
+                    var no_serie_biometrico=$('#select_asesor_biometrico').val();
+                    var no_serie_modulo=$('#select_asesor_modulo').val();                             
+                    var usuarios_id_usuario=$('#usuarios_id_usuario').val();          
+                    var fecInicio=$('#fecha_inicio').val();
+                    var fecFin=$('#fecha_fin').val();
+                    var hora_inicio=$('#select_hora_inicio').val();                
+                    var status='RESERVADO';
+                    
+                    
+                    
                  $.post( base_url+'Ccalendar/insert_event_admin', 
                   { 
                         nombre_asesor: nombre_asesor,
@@ -13,7 +25,6 @@
                         no_serie_biometrico:no_serie_biometrico,
                         no_serie_modulo:no_serie_modulo,                
                         usuarios_id_usuario:usuarios_id_usuario,
-                        no_tramites_evento:no_tramites_evento,
                         fecInicio:fecInicio,
                         fecFin:fecFin,
                         hora_inicio:hora_inicio,                    

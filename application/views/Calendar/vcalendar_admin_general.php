@@ -342,17 +342,15 @@
                        
                   </div>
 
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
 
                         <label for="tel_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-mobile mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Telefono Celular:</label>
                         <div class="col-12 col-sm-6 col-md-7"> 
                             <input type="text" class="form-control form-control-sm" id="tel_usuario" name="tel_usuario" placeholder="Celular" maxlength="10" required > 
                             <div id="check_telefono" class=""></div> 
                         </div>
-                        
-                      
-                  
-                  </div>
+
+                  </div> -->
                   <div class="form-group row">
 
                         <label for="correo_usuario" class="d-flex flex-row align-items-center  col-12 col-sm-6 col-md-4"><i class="fa fa-envelope-o mr-3 " aria-hidden="true" style="font-size: 30px;"></i>Correo Usuario:</label>
@@ -369,7 +367,7 @@
 
                         <label for="clave_usuario" class="d-flex flex-row align-items-center col-12 col-sm-6 col-md-4"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>Clave usuario:</label>
                          <div class="col-12 col-sm-6 col-md-7"> 
-                             <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave" maxlength="5" required>
+                             <input type="text" class="form-control form-control-sm" id="clave_usuario" name="clave_usuario" placeholder="Clave" maxlength="6" required>
                               <div id="check_clave" class="">                                  
                               </div>
                          </div>

@@ -42,12 +42,11 @@ class Cregistro extends CI_controller
 	public function login_validation()
 	{
 
-		$this->form_validation->set_rules('clave_usuario', 'Clave del usuario', 'required|exact_length[5]|numeric',
+		$this->form_validation->set_rules('clave_usuario', 'Clave del usuario', 'required|max_length[6]|numeric',
                         array(
 							'required' => 'Debe ingresar su Clave',
-							'exact_length' => 'La Clave debe ser de 5 digitos',
+							'max_length' => 'La Clave debe ser de 6 digitos',
 							'numeric' => 'La clave deber ser unicamente de digitos',
-							
 
 						));
 

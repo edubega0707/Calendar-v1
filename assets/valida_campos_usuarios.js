@@ -111,9 +111,9 @@ function check_clave_usuario()
         document.getElementById('registrar').disabled=true;
      }
 
-   else if(!/(^([0-9]{5,5})|^)$/.test(clave_usuario))
+   else if(!/(^([0-9]{6,6})|^)$/.test(clave_usuario))
     {
-        $('#check_clave').html('<div class=" rounded px-3 py-1" style="background: #F07B3F;"><i class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></i>La clave es unicamente de 5 digitos</div>');
+        $('#check_clave').html('<div class=" rounded px-3 py-1" style="background: #F07B3F;"><i class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></i>La clave es unicamente de 6 digitos</div>');
         document.getElementById('registrar').disabled=true;
     }
     

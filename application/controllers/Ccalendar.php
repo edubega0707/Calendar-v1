@@ -57,7 +57,6 @@ class Ccalendar extends CI_controller
 		$param['no_serie_tableta']=$this->input->post('no_serie_tableta');
 		$param['no_serie_biometrico']=$this->input->post('no_serie_biometrico');
 		$param['no_serie_modulo']=$this->input->post('no_serie_modulo');		
-		$param['no_tramites_evento']=$this->input->post('no_tramites_evento');
 		$param['usuarios_id_usuario']=$this->input->post('usuarios_id_usuario');
 
 		$res=$this->Mcalendar->insert($param);
@@ -98,10 +97,10 @@ class Ccalendar extends CI_controller
 
 	public function modificar_evento()
 	{
- 
+		$no_tramites_evento=$this->input->post('no_tramites_evento');
 		$status=$this->input->post('status');
 		$idEvento=$this->input->post('id');
-		$color=$this->input->post('color');
+		$color=$this->input->post('color');	
 		$notas_evento=$this->input->post('notas_evento');
 		$no_serie_tableta=$this->input->post('no_serie_tableta');
 		$no_serie_biometrico=$this->input->post('no_serie_biometrico');
@@ -110,7 +109,7 @@ class Ccalendar extends CI_controller
 		$sucursal=$this->input->post('nombre_oficina');
 		$folio_evento=$this->input->post('folio_evento');
 
-		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color, $folio_evento, $notas_evento);
+		$evento=$this->Mcalendar->modificar_evento($status, $idEvento, $color, $folio_evento, $notas_evento, $no_tramites_evento);
 
 		
 		$tableta=$this->Mcalendar->modificar_status_tableta($no_serie_tableta, $status_evento, $sucursal);

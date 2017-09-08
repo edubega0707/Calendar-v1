@@ -18,7 +18,7 @@
 					},
 					defaultDate: new Date(),
 				navLinks: true, // can click day/week names to navigate views
-				editable: false,
+				editable: true,
 				eventLimit: true, // allow "more" link when too many events
 				events: $.parseJSON(data),
 
@@ -35,7 +35,6 @@
 							var c=JSON.parse(data);								
 							$.each(c,function(i,item){
                                                 $('#id_Evento').val(item.idEvento);
-                                                $('#no_tramites_evento').val(item.no_tramites_evento);
 								$('#nom_asesor').val(item.nombre_asesor);                                              
                                                 $('#serie_tableta').val(item.no_serie_tableta);
                                                 $('#serie_biometrico').val(item.no_serie_biometrico);
@@ -83,7 +82,7 @@
        					<div class="form-group">
        						<label for="nom_asesor">Nombre asesor:</label>
        						<input type="text" class="form-control form-control-sm" id="id_Evento" name="id_Evento" style="display: none;">
-                                          <input type="text" class="form-control form-control-sm" id="no_tramites_evento" name="no_tramites_evento" style="display: none;">
+                                        
        						<input type="text" class="form-control form-control-sm" id="nom_asesor">
        					</div>
        					
@@ -142,18 +141,29 @@
 
        					<div class="form-group row justify-content-sm-center">
        						<label for="select_status" class="col-sm-4 col-form-label">Cambiar Status: </label>
-       						<select class="form-control form-control-sm  col-sm-5" id="select_status" name="select_status">
-       			
+       						<select class="form-control form-control-sm  col-sm-5" id="select_status" name="select_status">     			
        							<option>PENDIENTE</option>
        							<option>ACEPTADO</option>
        							<option>RECHAZADO</option>
                                                 <option>FINALIZADO</option>        							
        						</select>
        					</div>
-
+                              <div class="form-group row justify-content-sm-center" style="display: none;" id="no_tramites">
+					 	<label for="select_status" class="col-sm-5 col-form-label">No tramites a ingresar:</label>
+							<select class="form-control form-control-sm col-sm-4" id="select_asesor_folios" name="select_asesor_folios" required>
+									<option value="0">Tramites</option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>															
+							</select>						                              
+                              </div> 
                               <div class="form-group row justify-content-sm-center" style="display: none;" id="titu_tramites">     				
                                     <label for="select_status" class="col-sm-10 col-form-label">Ingresa Tus tramites: </label>     						
        				</div>
+                         
+
                               <?php 
                               for ($i=1; $i <=5 ; $i++) { ?>		  
                               <div class="form-group row justify-content-sm-center" id="folio_tys_evento<?php echo$i; ?>" style="display: none;">
@@ -171,16 +181,31 @@
 
 
                                      <script>
-                                           $("#select_status").on('change', function() 
+                                           $("#select_status").on('change', function()                                          
                                            {
-                                                 var  no_tramites_evento=$('#no_tramites_evento').val();
+                                          
                                                  var status=$("#select_status").val();
+                                                 var serie_modulo=$("#serie_modulo").val();
 
-                                                 if(status=='FINALIZADO')
+                                                 if(status=='FINALIZADO' && serie_modulo.length ==0)
                                                  {      
-                                                      $('#observaciones_evento').show(600); 
-                                                                                    
-                                                      switch (no_tramites_evento) 
+                                                      $('#observaciones_evento').show(600);
+                                                      $('#no_tramites').show(600);
+                                                      $('#select_asesor_folios').on('change', mostrar_folios)                                                     	
+                                                 }
+                                                 else 
+                                                 {
+                                                      $('#observaciones_evento').hide();
+                                                      $('#no_tramites').hide();
+                                                      
+                                                 }
+                                                                                     
+                                          })
+
+                                          function mostrar_folios() 
+                                          {
+                                                var no_tramites=$('#select_asesor_folios').val();
+                                                switch (no_tramites) 
                                                       {
                                                             case '0':
                                                                   $('#titu_tramites').hide(1000);
@@ -241,14 +266,9 @@
                                                                   $('#folio_tys_evento4').hide(1000);
                                                                   $('#folio_tys_evento5').hide(1000);                                                              
                                                             break;
-                                                      }	
-                                                 }
-                                                 else
-                                                 {
-                                                      
-                                                 }
-                                                                                     
-                                      })
+                                                      }
+                                                
+                                          }
                                      </script>
 
        					<div class="form-group row justify-content-sm-center">
@@ -375,13 +395,13 @@
                                     {
                                           document.getElementById('select_asesor_tableta').disabled=false;
                                           document.getElementById('select_asesor_biometrico').disabled=false;
-                                          document.getElementById('select_asesor_folios').disabled=false; 
+                                           
                                     } 
                                     else 
                                     {
                                           document.getElementById('select_asesor_tableta').disabled=true;
                                           document.getElementById('select_asesor_biometrico').disabled=true;
-                                          document.getElementById('select_asesor_folios').disabled=true;
+                                          
                                     } 
                                    
                                 }
@@ -394,20 +414,8 @@
                                     <input type="text" name="usuarios_id_usuario" id="usuarios_id_usuario" value="<?php echo $usuarios_id_usuario; ?>" style="display: none;">
                               </div>
 
-                               <div class="form-group row justify-content-sm-center">
-
-					 	<label for="select_status" class="col-sm-3 col-form-label">No tramites a ingresar:</label>
-							<select class="form-control form-control-sm col-sm-2" id="select_asesor_folios" name="select_asesor_folios" required>
-									<option value="0">Tramites</option>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>															
-							</select>
-						                              
-                               </div> 
-                 
+                               <!-- 
+                                -->
         
                               <div class="form-group row justify-content-sm-center">
                                     <label for="desc_evento" class="col-sm-2 col-form-label">Fecha Solicitud:</label>
@@ -521,7 +529,7 @@
                                     <div class="form-group">
 
                                           <label for="pass_usuario" class="d-flex flex-row align-items-center"><i class="fa fa-key mr-3" aria-hidden="true" style="font-size: 30px;"></i>PIN:</label>
-                                          <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Contraseña"   maxlength="5" required>
+                                          <input type="password" class="form-control form-control-sm" id="pass_usuario" name="pass_usuario" placeholder="Contraseña"   maxlength="6" required>
                                           
 
                                           <input type="text" name="sucursal_usuario" id="sucursal_usuario" value="<?php echo $sucursal_usuario; ?>" style="display: none;">

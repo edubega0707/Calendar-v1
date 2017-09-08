@@ -24,7 +24,6 @@
             'no_serie_tableta'=>$param['no_serie_tableta'],
             'no_serie_biometrico'=>$param['no_serie_biometrico'],
             'no_serie_modulo'=>$param['no_serie_modulo'],
-            'no_tramites_evento'=>$param['no_tramites_evento'],
             'evento_color'=>'#A5F2E7',  
             'status'=>'ACEPTADO',
             'usuarios_id_usuario'=>$param['usuarios_id_usuario'] 
@@ -65,10 +64,11 @@
 
 
 
-    public function modificar_evento($status, $idEvento, $color, $folio_evento, $notas_evento)
+    public function modificar_evento($status, $idEvento, $color, $folio_evento, $notas_evento, $no_tramites_evento)
     {
         $this->db->set('status', $status);
         $this->db->set('evento_color',$color);
+        $this->db->set('no_tramites_evento',$no_tramites_evento);
         $this->db->set('folio_evento',$folio_evento);
         $this->db->set('notas_evento',$notas_evento);
         $this->db->where('idEvento', $idEvento);

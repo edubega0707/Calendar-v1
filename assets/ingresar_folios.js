@@ -4,6 +4,7 @@
                 
                 function modificar()
                 {
+                        
                         var folio_evento_1=$('#folio_evento1').val();
                         var folio_evento_2=$('#folio_evento2').val();
                         var folio_evento_3=$('#folio_evento3').val();
@@ -19,6 +20,7 @@
                         var no_serie_biometrico=$('#serie_biometrico').val();
                         var no_serie_modulo=$('#serie_modulo').val();
                         var nombre_oficina=$('#sucursal_usuario').val();
+                        var no_tramites_evento=$('#select_asesor_folios').val();
                         var color='';
                         var status_evento= '';
 
@@ -42,7 +44,8 @@
 
                             $.post( base_url+'Ccalendar/modificar_evento', 
                             { 
-                                    folio_evento:folio_evento, 
+                                    no_tramites_evento:no_tramites_evento,
+                                    folio_evento:folio_evento,                                   
                                     notas_evento:notas_evento, 
                                     id:id,
                                     status:status,
@@ -52,7 +55,6 @@
                                     nombre_oficina:nombre_oficina,
                                     color:color,
                                     status_evento:status_evento
-
                             }, 
                             function() 
                             {
@@ -93,7 +95,8 @@
                             alignMiddle: true,                          
                             buttons: 
                             {
-                                    Aceptar: {
+                                    Aceptar: 
+                                        {
                                                 text: 'Aceptar',
                                                 btnClass: 'btn-blue',
                                                 action: function()
@@ -102,7 +105,8 @@
                                                     location.href =base_url+'Cregistro/enter'; 
                                                 }
                                         },
-                                    Cancelar: {
+                                    Cancelar: 
+                                    {
                                         text: 'Cancelar',
                                         btnClass: 'btn-red',
                                         action: function(){
